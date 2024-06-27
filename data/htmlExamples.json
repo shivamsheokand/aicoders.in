@@ -1,0 +1,277 @@
+[
+  {
+    "title": "Basic Structure",
+    "description": "Learn the basic structure of an HTML document.",
+    "code": "<!DOCTYPE html>\n<html>\n<head>\n  <title>My First HTML</title>\n</head>\n<body>\n  <h1>Hello, World!</h1>\n</body>\n</html>"
+  },
+  {
+    "title": "Headings",
+    "description": "Create headings in HTML.",
+    "code": "<h1>This is a heading</h1>\n<h2>This is a sub-heading</h2>\n<h3>This is a smaller heading</h3>"
+  },
+  {
+    "title": "Paragraphs",
+    "description": "Add paragraphs to your HTML document.",
+    "code": "<p>This is a paragraph.</p>\n<p>This is another paragraph.</p>"
+  },
+  {
+    "title": "Links",
+    "description": "Create hyperlinks in HTML.",
+    "code": "<a href=\"https://www.example.com\">This is a link</a>"
+  },
+  {
+    "title": "Images",
+    "description": "Add images to your HTML document.",
+    "code": "<img src=\"image.jpg\" alt=\"An image\" width=\"500\" height=\"600\">"
+  },
+  {
+    "title": "Lists",
+    "description": "Create ordered and unordered lists.",
+    "code": "<ul>\n  <li>Item 1</li>\n  <li>Item 2</li>\n  <li>Item 3</li>\n</ul>\n\n<ol>\n  <li>First item</li>\n  <li>Second item</li>\n  <li>Third item</li>\n</ol>"
+  },
+  {
+    "title": "Tables",
+    "description": "Create tables to display data.",
+    "code": "<table border=\"1\">\n  <tr>\n    <th>Header 1</th>\n    <th>Header 2</th>\n  </tr>\n  <tr>\n    <td>Data 1</td>\n    <td>Data 2</td>\n  </tr>\n</table>"
+  },
+  {
+    "title": "Forms",
+    "description": "Create a form to collect user input.",
+    "code": "<form action=\"/submit\" method=\"post\">\n  <label for=\"name\">Name:</label>\n  <input type=\"text\" id=\"name\" name=\"name\"><br><br>\n  <input type=\"submit\" value=\"Submit\">\n</form>"
+  },
+  {
+    "title": "Input Types",
+    "description": "Explore different input types in HTML forms.",
+    "code": "<form>\n  <label for=\"text\">Text:</label>\n  <input type=\"text\" id=\"text\" name=\"text\"><br><br>\n  <label for=\"email\">Email:</label>\n  <input type=\"email\" id=\"email\" name=\"email\"><br><br>\n  <label for=\"number\">Number:</label>\n  <input type=\"number\" id=\"number\" name=\"number\"><br><br>\n  <input type=\"submit\" value=\"Submit\">\n</form>"
+  },
+  {
+    "title": "Semantic HTML",
+    "description": "Use semantic HTML elements to improve the structure of your document.",
+    "code": "<header>\n  <h1>My Website</h1>\n</header>\n<nav>\n  <ul>\n    <li><a href=\"#\">Home</a></li>\n    <li><a href=\"#\">About</a></li>\n    <li><a href=\"#\">Contact</a></li>\n  </ul>\n</nav>\n<main>\n  <article>\n    <h2>Article Title</h2>\n    <p>This is an article.</p>\n  </article>\n</main>\n<footer>\n  <p>© 2024 My Website</p>\n</footer>"
+  },
+  {
+    "title": "Audio and Video",
+    "description": "Embed audio and video content.",
+    "code": "<audio controls>\n  <source src=\"audio.mp3\" type=\"audio/mpeg\">\n  Your browser does not support the audio element.\n</audio>\n\n<video width=\"320\" height=\"240\" controls>\n  <source src=\"movie.mp4\" type=\"video/mp4\">\n  Your browser does not support the video tag.\n</video>"
+  },
+  {
+    "title": "Canvas",
+    "description": "Use the canvas element to draw graphics.",
+    "code": "<canvas id=\"myCanvas\" width=\"200\" height=\"100\" style=\"border:1px solid #000000;\"></canvas>\n\n<script>\nvar c = document.getElementById(\"myCanvas\");\nvar ctx = c.getContext(\"2d\");\nctx.moveTo(0, 0);\nctx.lineTo(200, 100);\nctx.stroke();\n</script>"
+  },
+  {
+    "title": "SVG",
+    "description": "Use SVG (Scalable Vector Graphics) for drawing.",
+    "code": "<svg width=\"100\" height=\"100\">\n  <circle cx=\"50\" cy=\"50\" r=\"40\" stroke=\"black\" stroke-width=\"3\" fill=\"red\" />\n</svg>"
+  },
+  {
+    "title": "Meta Tags",
+    "description": "Use meta tags to provide metadata about your HTML document.",
+    "code": "<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"description\" content=\"Free Web tutorials\">\n  <meta name=\"keywords\" content=\"HTML, CSS, JavaScript\">\n  <meta name=\"author\" content=\"John Doe\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n</head>"
+  },
+  {
+    "title": "Responsive Design",
+    "description": "Create responsive web pages that look good on all devices.",
+    "code": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\n<style>\n  body {\n    font-family: Arial, sans-serif;\n  }\n  .container {\n    width: 100%;\n    margin: 0 auto;\n  }\n  @media (min-width: 600px) {\n    .container {\n      width: 80%;\n    }\n  }\n  @media (min-width: 768px) {\n    .container {\n      width: 70%;\n    }\n  }\n</style>\n\n<div class=\"container\">\n  <h1>Responsive Design</h1>\n  <p>This container adjusts its width based on the screen size.</p>\n</div>"
+  },
+  {
+    "title": "Comments",
+    "description": "Add comments in HTML for documentation purposes.",
+    "code": "<!-- This is a comment. Comments are not displayed in the browser. -->"
+  },
+  {
+    "title": "Bold and Italic Text",
+    "description": "Style text with bold and italic formatting.",
+    "code": "<p>This is <b>bold</b> and <i>italic</i> text.</p>"
+  },
+  {
+    "title": "Horizontal Line",
+    "description": "Insert a horizontal line in HTML.",
+    "code": "<p>Before<hr>After</p>"
+  },
+  {
+    "title": "Inline Styles",
+    "description": "Apply inline styles to HTML elements.",
+    "code": "<p style=\"color: red; font-size: 18px;\">This text is styled with inline CSS.</p>"
+  },
+  {
+    "title": "Block vs Inline Elements",
+    "description": "Understand the difference between block and inline HTML elements.",
+    "code": "<div>This is a block element. It takes up the full width available.</div><span>This is an inline element. It only takes up the necessary width.</span>"
+  },
+  {
+    "title": "Dropdown Menu",
+    "description": "Create a dropdown menu in HTML.",
+    "code": "<select>\n  <option value=\"volvo\">Volvo</option>\n  <option value=\"saab\">Saab</option>\n  <option value=\"mercedes\">Mercedes</option>\n  <option value=\"audi\">Audi</option>\n</select>"
+  },
+  {
+    "title": "Nested Elements",
+    "description": "Use nested HTML elements to create complex structures.",
+    "code": "<div>\n  <h2>Parent Element</h2>\n  <p>This is the parent paragraph.</p>\n  <div>\n    <h3>Child Element</h3>\n    <p>This is the child paragraph.</p>\n  </div>\n</div>"
+  },
+  {
+    "title": "Checkbox and Radio Buttons",
+    "description": "Create checkbox and radio button inputs in HTML forms.",
+    "code": "<form>\n  <label for=\"checkbox\">Checkbox:</label>\n  <input type=\"checkbox\" id=\"checkbox\" name=\"checkbox\"><br><br>\n  <label for=\"radio1\">Radio 1:</label>\n  <input type=\"radio\" id=\"radio1\" name=\"radio\" value=\"radio1\"><br>\n  <label for=\"radio2\">Radio 2:</label>\n  <input type=\"radio\" id=\"radio2\" name=\"radio\" value=\"radio2\"><br><br>\n  <input type=\"submit\" value=\"Submit\">\n</form>"
+  },
+  {
+    "title": "IFrames",
+    "description": "Embed content from another webpage using an iframe.",
+    "code": "<iframe src=\"https://www.example.com\"></iframe>"
+  },
+  {
+    "title": "Button Elements",
+    "description": "Use button elements in HTML forms.",
+    "code": "<button type=\"button\">Click me</button>"
+  },
+  {
+    "title": "Abbreviations",
+    "description": "Use the <abbr> element for abbreviations and acronyms.",
+    "code": "<p><abbr title=\"World Health Organization\">WHO</abbr> is a specialized agency of the United Nations.</p>"
+  },
+  {
+    "title": "Superscript and Subscript",
+    "description": "Use <sup> for superscript and <sub> for subscript text.",
+    "code": "<p>This is <sup>superscript</sup> and this is <sub>subscript</sub> text.</p>"
+  },
+  {
+    "title": "Blockquotes",
+    "description": "Use blockquotes to indicate quoted content.",
+    "code": "<blockquote>\n  <p>This is a blockquote. It indicates quoted content.</p>\n</blockquote>"
+  },
+  {
+    "title": "Character Entities",
+    "description": "Use character entities for special characters.",
+    "code": "<p>&copy; 2024 My Website &reg;</p>"
+  },
+  {
+    "title": "Whitespace and Line Breaks",
+    "description": "Understand how whitespace and line breaks affect HTML rendering.",
+    "code": "<p>This text\ncontains\nline breaks</p>"
+  },
+  {
+    "title": "Button Links",
+    "description": "Create links that look like buttons using HTML.",
+    "code": "<a href=\"#\" class=\"button\">Click me</a>"
+  },
+  {
+    "title": "Details and Summary",
+    "description": "Create collapsible content with the <details> and <summary> elements.",
+    "code": "<details>\n  <summary>Click to expand</summary>\n  <p>This is hidden content that can be expanded.</p>\n</details>"
+  },
+  {
+    "title": "Datalist and Input",
+    "description": "Create a dropdown list of predefined options using <datalist> and <input>.",
+    "code": "<label for=\"cars\">Choose a car:</label>\n<input list=\"carList\" id=\"cars\" name=\"cars\">\n<datalist id=\"carList\">\n  <option value=\"Volvo\">\n  <option value=\"Saab\">\n  <option value=\"Mercedes\">\n  <option value=\"Audi\">\n</datalist>"
+  },
+  {
+    "title": "Fieldset and Legend",
+    "description": "Group related form elements with <fieldset> and add a caption with <legend>.",
+    "code": "<fieldset>\n  <legend>Personal Information</legend>\n  <label for=\"fname\">First Name:</label>\n  <input type=\"text\" id=\"fname\" name=\"fname\"><br><br>\n  <label for=\"lname\">Last Name:</label>\n  <input type=\"text\" id=\"lname\" name=\"lname\"><br><br>\n</fieldset>"
+  },
+  {
+    "title": "Meter Element",
+    "description": "Use the <meter> element to create a gauge.",
+    "code": "<label for=\"disk_c\">Disk usage:</label>\n<meter id=\"disk_c\" value=\"2\" min=\"0\" max=\"10\">2 out of 10</meter>"
+  },
+  {
+    "title": "Progress Element",
+    "description": "Display progress of a task with the <progress> element.",
+    "code": "<label for=\"file\">File upload progress:</label>\n<progress id=\"file\" value=\"70\" max=\"100\">70%</progress>"
+  },
+  {
+    "title": "Output Element",
+    "description": "Display calculation results with the <output> element.",
+    "code": "<form oninput=\"x.value=parseInt(a.value)+parseInt(b.value)\">\n  <input type=\"range\" id=\"a\" value=\"50\"> +\n  <input type=\"number\" id=\"b\" value=\"50\">\n  = <output name=\"x\" for=\"a b\">100</output>\n</form>"
+  },
+  {
+    "title": "Time Element",
+    "description": "Display dates and times with the <time> element.",
+    "code": "<p>Meeting time: <time datetime=\"2024-06-28T09:00\">9:00 AM</time></p>"
+  },
+  {
+    "title": "Keygen Element",
+    "description": "Generate and submit public/private key pairs with the <keygen> element.",
+    "code": "<form>\n  <keygen name=\"keypair\">\n  <input type=\"submit\">\n</form>"
+  },
+  {
+    "title": "Mark Element",
+    "description": "Highlight text with the <mark> element.",
+    "code": "<p>Search results: <mark>HTML</mark> tutorials.</p>"
+  },
+  {
+    "title": "Pre Element",
+    "description": "Preserve formatting and whitespace with the <pre> element.",
+    "code": "<pre>\n  This   text\n  preserves    whitespace.\n</pre>"
+  },
+  {
+    "title": "Object Element",
+    "description": "Embed multimedia content with the <object> element.",
+    "code": "<object data=\"movie.mp4\" width=\"320\" height=\"240\"></object>"
+  },
+  {
+    "title": "Map Element",
+    "description": "Display an image map with clickable areas using the <map> and <area> elements.",
+    "code": "<img src=\"planets.jpg\" alt=\"Planets\" usemap=\"#planetmap\">\n<map name=\"planetmap\">\n  <area shape=\"rect\" coords=\"0,0,82,126\" href=\"sun.htm\" alt=\"Sun\">\n  <area shape=\"circle\" coords=\"90,58,3\" href=\"mercury.htm\" alt=\"Mercury\">\n  <area shape=\"circle\" coords=\"124,58,8\" href=\"venus.htm\" alt=\"Venus\">\n</map>"
+  },
+  {
+    "title": "Base Element",
+    "description": "Set the base URL for relative URLs in a document with the <base> element.",
+    "code": "<head>\n  <base href=\"https://www.example.com/\">\n</head>\n<body>\n  <img src=\"/images/logo.png\" alt=\"Logo\">\n</body>"
+  },
+  {
+    "title": "Script Element",
+    "description": "Include JavaScript in HTML with the <script> element.",
+    "code": "<script>\n  document.getElementById(\"demo\").innerHTML = \"Hello JavaScript!\";\n</script>"
+  },
+  {
+    "title": "Noscript Element",
+    "description": "Provide alternative content for browsers that do not support JavaScript with the <noscript> element.",
+    "code": "<noscript>\n  <p>This page requires JavaScript to be enabled.</p>\n</noscript>"
+  },
+  {
+    "title": "Marquee",
+    "description": "Create a scrolling or moving text or image.",
+    "code": "<marquee behavior=\"scroll\" direction=\"left\">Scrolling text...</marquee>"
+  },
+  {
+    "title": "Meter",
+    "description": "Define a scalar measurement within a known range.",
+    "code": "<meter value=\"5\" min=\"0\" max=\"10\">5 out of 10</meter>"
+  },
+  {
+    "title": "Progress",
+    "description": "Represents the completion progress of a task.",
+    "code": "<progress value=\"50\" max=\"100\">50%</progress>"
+  },
+  {
+    "title": "Time",
+    "description": "Represents a specific period in time or a date.",
+    "code": "<time datetime=\"2024-06-27\">June 27, 2024</time>"
+  },
+  {
+    "title": "Template",
+    "description": "Defines fragments of HTML that can be cloned and inserted in the document by JavaScript.",
+    "code": "<template>\n  <h2>Template Example</h2>\n  <p>This content is part of a template.</p>\n</template>"
+  },
+  {
+    "title": "Figure and Figcaption",
+    "description": "Groups media content and its caption.",
+    "code": "<figure>\n  <img src=\"image.jpg\" alt=\"A beautiful image\">\n  <figcaption>Caption describing the image.</figcaption>\n</figure>"
+  },
+  {
+    "title": "Aside",
+    "description": "Defines content aside from the main content, often used for sidebars or related content.",
+    "code": "<aside>\n  <h2>Related Content</h2>\n  <p>This content is related to the main article.</p>\n</aside>"
+  },
+  {
+    "title": "Output",
+    "description": "Represents the result of a calculation or user action.",
+    "code": "<output for=\"value\">Result</output>\n<input type=\"range\" id=\"value\" value=\"50\" min=\"0\" max=\"100\">"
+  },
+  {
+    "title": "Keygen",
+    "description": "Used to generate key pairs, typically used in forms to allow the user to securely submit encrypted data.",
+    "code": "<keygen name=\"keypair\">"
+  }
+]

@@ -1,0 +1,779 @@
+[
+  {
+    "title": "Basic Syntax",
+    "description": "Learn the basic syntax of CSS.",
+    "code": "body {\n  font-family: Arial, sans-serif;\n  background-color: #f0f0f0;\n}"
+  },
+  {
+    "title": "Selectors",
+    "description": "Use different types of CSS selectors.",
+    "code": "/* Element Selector */\np {\n  color: blue;\n}\n\n/* Class Selector */\n.intro {\n  font-size: 20px;\n}\n\n/* ID Selector */\n#main {\n  padding: 10px;\n}\n\n/* Attribute Selector */\na[target='_blank'] {\n  color: red;\n}"
+  },
+  {
+    "title": "Colors",
+    "description": "Apply colors using different color values.",
+    "code": "body {\n  background-color: #ffffff; /* Hex */\n  color: rgb(0, 0, 0); /* RGB */\n}\n\na {\n  color: rgba(255, 0, 0, 0.5); /* RGBA */\n}\n\nh1 {\n  color: hsl(120, 100%, 50%); /* HSL */\n}"
+  },
+  {
+    "title": "Box Model",
+    "description": "Understand the CSS box model.",
+    "code": "div {\n  width: 200px;\n  height: 100px;\n  padding: 20px;\n  margin: 10px;\n  border: 2px solid black;\n  box-sizing: border-box;\n}"
+  },
+  {
+    "title": "Flexbox",
+    "description": "Create flexible layouts using Flexbox.",
+    "code": "/* Container */\n.container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n}\n\n/* Items */\n.item {\n  background-color: lightblue;\n  padding: 20px;\n  margin: 10px;\n  border: 2px solid darkblue;\n}"
+  },
+  {
+    "title": "Grid Layout",
+    "description": "Create layouts using CSS Grid.",
+    "code": "/* Container */\n.container {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 10px;\n}\n\n/* Items */\n.item {\n  background-color: lightgreen;\n  padding: 20px;\n  border: 2px solid darkgreen;\n}"
+  },
+  {
+    "title": "Responsive Design",
+    "description": "Create responsive layouts using media queries.",
+    "code": "body {\n  font-family: Arial, sans-serif;\n}\n\n.container {\n  width: 100%;\n  margin: 0 auto;\n}\n\n@media (min-width: 600px) {\n  .container {\n    width: 80%;\n  }\n}\n\n@media (min-width: 768px) {\n  .container {\n    width: 70%;\n  }\n}"
+  },
+  {
+    "title": "Animations",
+    "description": "Add animations using CSS.",
+    "code": "/* Keyframes */\n@keyframes slideIn {\n  from {\n    transform: translateX(-100%);\n  }\n  to {\n    transform: translateX(0);\n  }\n}\n\n/* Element */\n.box {\n  width: 100px;\n  height: 100px;\n  background-color: coral;\n  animation: slideIn 2s ease-in-out;\n}"
+  },
+  {
+    "title": "Transitions",
+    "description": "Add transitions for smooth animations.",
+    "code": "a {\n  color: blue;\n  transition: color 0.3s ease;\n}\n\na:hover {\n  color: red;\n}"
+  },
+  {
+    "title": "Custom Properties (Variables)",
+    "description": "Use CSS variables for better maintainability.",
+    "code": ":root {\n  --main-bg-color: #282c34;\n  --main-text-color: #ffffff;\n}\n\nbody {\n  background-color: var(--main-bg-color);\n  color: var(--main-text-color);\n}"
+  },
+  {
+    "title": "Pseudo-classes",
+    "description": "Style elements based on their state.",
+    "code": "/* Hover */\na:hover {\n  color: green;\n}\n\n/* Focus */\ninput:focus {\n  border-color: blue;\n}\n\n/* Active */\nbutton:active {\n  background-color: red;\n}"
+  },
+  {
+    "title": "Pseudo-elements",
+    "description": "Style specific parts of an element.",
+    "code": "p::first-line {\n  font-weight: bold;\n}\n\np::before {\n  content: 'Note: ';\n  font-weight: bold;\n  color: red;\n}"
+  },
+  {
+    "title": "Backgrounds",
+    "description": "Add background colors and images.",
+    "code": "body {\n  background-color: #f0f0f0;\n  background-image: url('background.jpg');\n  background-size: cover;\n  background-position: center;\n}"
+  },
+  {
+    "title": "Text Shadows",
+    "description": "Add shadows to text for a 3D effect.",
+    "code": "h1 {\n  color: #333;\n  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);\n}"
+  },
+  {
+    "title": "Box Shadows",
+    "description": "Add shadows to elements for depth.",
+    "code": "div {\n  width: 200px;\n  height: 100px;\n  background-color: white;\n  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);\n}"
+  },
+  {
+    "title": "Gradients",
+    "description": "Use gradients for background effects.",
+    "code": "/* Linear Gradient */\n.box {\n  width: 200px;\n  height: 100px;\n  background: linear-gradient(to right, red, yellow);\n}\n\n/* Radial Gradient */\n.circle {\n  width: 100px;\n  height: 100px;\n  border-radius: 50%;\n  background: radial-gradient(circle, blue, green);\n}"
+  },
+  {
+    "title": "Positioning",
+    "description": "Position elements using different methods.",
+    "code": "/* Relative Positioning */\n.relative {\n  position: relative;\n  top: 20px;\n  left: 20px;\n}\n\n/* Absolute Positioning */\n.absolute {\n  position: absolute;\n  top: 50px;\n  left: 50px;\n}\n\n/* Fixed Positioning */\n.fixed {\n  position: fixed;\n  top: 10px;\n  right: 10px;\n}\n\n/* Sticky Positioning */\n.sticky {\n  position: sticky;\n  top: 0;\n}"
+  },
+  {
+    "title": "Z-Index",
+    "description": "Control the stacking order of elements.",
+    "code": ".box1 {\n  position: absolute;\n  z-index: 1;\n  background-color: red;\n}\n\n.box2 {\n  position: absolute;\n  z-index: 2;\n  background-color: blue;\n}"
+  },
+  {
+    "title": "CSS Frameworks",
+    "description": "Use popular CSS frameworks like Bootstrap.",
+    "code": "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\">\n\n<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"col\">\n      Column 1\n    </div>\n    <div class=\"col\">\n      Column 2\n    </div>\n    <div class=\"col\">\n      Column 3\n    </div>\n  </div>\n</div>"
+  },
+  {
+    "title": "Transformations",
+    "description": "Apply transformations to elements.",
+    "code": "div {\n  width: 100px;\n  height: 100px;\n  background-color: coral;\n  transform: rotate(45deg);\n}\n\n/* Other transformations: translate, scale, skew */\n/* Example: transform: translate(50px, 100px); */\n/* Example: transform: scale(1.5); */\n/* Example: transform: skew(30deg, 20deg); */"
+  },
+  {
+    "title": "Keyframe Animations",
+    "description": "Create animations using keyframes.",
+    "code": "/* Define keyframes */\n@keyframes example {\n  0% {background-color: red; left: 0px; top: 0px;}\n  25% {background-color: yellow; left: 200px; top: 0px;}\n  50% {background-color: blue; left: 200px; top: 200px;}\n  75% {background-color: green; left: 0px; top: 200px;}\n  100% {background-color: red; left: 0px; top: 0px;}\n}\n\n/* Apply animation to element */\ndiv {\n  width: 100px;\n  height: 100px;\n  position: relative;\n  animation-name: example;\n  animation-duration: 4s;\n  animation-iteration-count: infinite;\n}"
+  },
+  {
+    "title": "Custom Fonts",
+    "description": "Use custom fonts in your webpage.",
+    "code": "@font-face {\n  font-family: 'MyCustomFont';\n  src: url('mycustomfont.woff2') format('woff2');\n}\n\nbody {\n  font-family: 'MyCustomFont', Arial, sans-serif;\n}"
+  },
+  {
+    "title": "CSS Variables with JavaScript",
+    "description": "Modify CSS variables using JavaScript.",
+    "code": ":root {\n  --main-color: #3498db;\n}\n\nbody {\n  background-color: var(--main-color);\n}\n\n/* JavaScript */\n<script>\n  document.documentElement.style.setProperty('--main-color', '#e74c3c');\n</script>"
+  },
+  {
+    "title": "Advanced Selectors",
+    "description": "Use advanced selectors like nth-child and nth-of-type.",
+    "code": "/* Select every odd child */\nli:nth-child(odd) {\n  background-color: #f0f0f0;\n}\n\n/* Select every 3rd element of its type */\nli:nth-of-type(3n) {\n  color: red;\n}"
+  },
+  {
+    "title": "CSS Counters",
+    "description": "Use CSS counters for numbered lists.",
+    "code": "body {\n  counter-reset: section;\n}\nh2::before {\n  counter-increment: section;\n  content: \"Section \" counter(section) \": \";\n}"
+  },
+  {
+    "title": "Multiple Backgrounds",
+    "description": "Apply multiple backgrounds to an element.",
+    "code": "body {\n  background-image: url('background1.jpg'), url('background2.png');\n  background-position: left top, right bottom;\n  background-repeat: no-repeat;\n}"
+  },
+  {
+    "title": "Content Alignment",
+    "description": "Align content using flexbox and grid.",
+    "code": "/* Flexbox alignment */\n.container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n}\n\n/* Grid alignment */\n.grid-container {\n  display: grid;\n  place-items: center;\n  height: 100vh;\n}"
+  },
+  {
+    "title": "CSS Shapes",
+    "description": "Create different shapes using CSS.",
+    "code": "/* Circle */\n.circle {\n  width: 100px;\n  height: 100px;\n  background-color: red;\n  border-radius: 50%;\n}\n\n/* Triangle */\n.triangle {\n  width: 0;\n  height: 0;\n  border-left: 50px solid transparent;\n  border-right: 50px solid transparent;\n  border-bottom: 100px solid blue;\n}"
+  },
+  {
+    "title": "Clip Path",
+    "description": "Clip elements to create complex shapes.",
+    "code": "/* Clip path to create a polygon */\n.clip-path {\n  width: 200px;\n  height: 200px;\n  background-color: coral;\n  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);\n}\n"
+  },
+  {
+    "title": "Transparency",
+    "description": "Create semi-transparent elements.",
+    "code": ".transparent-box {\n  background-color: rgba(255, 0, 0, 0.5);\n}"
+  },
+  {
+    "title": "Text Effects",
+    "description": "Apply text effects like text-stroke.",
+    "code": "h1 {\n  color: white;\n  -webkit-text-stroke: 2px black;\n}"
+  },
+  {
+    "title": "Overflow",
+    "description": "Handle overflowing content.",
+    "code": ".overflow-container {\n  width: 200px;\n  height: 200px;\n  overflow: auto;\n}"
+  },
+  {
+    "title": "Transform Origin",
+    "description": "Change the origin of transformations.",
+    "code": "div {\n  transform: rotate(45deg);\n  transform-origin: top left;\n}"
+  },
+  {
+    "title": "Outline",
+    "description": "Style outlines around elements.",
+    "code": "input {\n  outline: 2px dashed blue;\n}"
+  },
+  {
+    "title": "Filters",
+    "description": "Apply visual effects like blur and brightness.",
+    "code": "img {\n  filter: blur(5px) brightness(80%);\n}"
+  },
+  {
+    "title": "CSS Variables Scope",
+    "description": "Understand variable scope in CSS.",
+    "code": ":root {\n  --main-color: #3498db;\n}\n\nbody {\n  --main-color: #e74c3c;\n  background-color: var(--main-color);\n}"
+  },
+  {
+    "title": "Calc() Function",
+    "description": "Perform calculations in CSS properties.",
+    "code": "div {\n  width: calc(100% - 50px);\n}"
+  },
+  {
+    "title": "Inheritance",
+    "description": "Understand CSS property inheritance.",
+    "code": "div {\n  font-size: 16px;\n}\n\np {\n  /* Inherits font-size from div */\n}"
+  },
+  {
+    "title": "Aspect Ratio",
+    "description": "Maintain aspect ratio of elements.",
+    "code": ".aspect-ratio-box {\n  width: 200px;\n  height: 100px;\n  aspect-ratio: 2 / 1;\n}"
+  },
+  {
+    "title": "Column Layouts",
+    "description": "Create column-based layouts with CSS.",
+    "code": ".columns {\n  column-count: 3;\n  column-gap: 20px;\n}"
+  },
+  {
+    "title": "List Styles",
+    "description": "Style list items.",
+    "code": "ul {\n  list-style-type: circle;\n}"
+  },
+  {
+    "title": "Text Overflow",
+    "description": "Handle text overflow in containers.",
+    "code": "p {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}"
+  },
+  {
+    "title": "Grid Areas",
+    "description": "Define named grid areas in CSS Grid layouts.",
+    "code": ".grid-container {\n  display: grid;\n  grid-template-areas:\n    'header header header'\n    'main main sidebar'\n    'footer footer footer';\n}"
+  },
+  {
+    "title": "Web Fonts",
+    "description": "Use web fonts from Google Fonts or other sources.",
+    "code": "@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');\n\nbody {\n  font-family: 'Roboto', sans-serif;\n}"
+  },
+  {
+    "title": "Flexbox Order",
+    "description": "Control the order of flex items.",
+    "code": ".flex-container {\n  display: flex;\n}\n\n.item1 {\n  order: 2;\n}\n\n.item2 {\n  order: 1;\n}"
+  },
+  {
+    "title": "Viewport Units",
+    "description": "Use viewport-relative units for responsive design.",
+    "code": "div {\n  width: 50vw;\n  height: 50vh;\n}"
+  },
+  {
+    "title": "CSS Grid Alignment",
+    "description": "Align grid items using alignment properties.",
+    "code": ".grid-container {\n  display: grid;\n  justify-items: center;\n  align-items: center;\n}"
+  },
+  {
+    "title": "CSS Shapes (Ellipse)",
+    "description": "Create ellipses using CSS shapes.",
+    "code": ".ellipse {\n  width: 200px;\n  height: 100px;\n  shape-outside: ellipse();\n}"
+  },
+  {
+    "title": "User Interface (UI) Effects",
+    "description": "Apply styles to form elements for better UI.",
+    "code": "input[type='text'],\ninput[type='email'],\ninput[type='password'] {\n  padding: 10px;\n  border: 1px solid #ccc;\n  border-radius: 5px;\n}"
+  },
+  {
+    "title": "Scroll Snap",
+    "description": "Create smooth scrolling experiences.",
+    "code": ".scroll-container {\n  scroll-snap-type: y mandatory;\n}"
+  },
+  {
+    "title": "Variable Fonts",
+    "description": "Utilize variable fonts for responsive typography.",
+    "code": "body {\n  font-family: 'Inter var', sans-serif;\n}"
+  },
+  {
+    "title": "Aspect Ratio Boxes",
+    "description": "Maintain aspect ratio with padding hack.",
+    "code": ".aspect-ratio-box {\n  position: relative;\n  width: 100%;\n  padding-top: 56.25%; /* 16:9 Aspect Ratio */\n}"
+  },
+  {
+    "title": "Backdrop Filter",
+    "description": "Apply visual effects to the area behind an element.",
+    "code": ".blurry-background {\n  backdrop-filter: blur(10px);\n}"
+  },
+  {
+    "title": "Scroll Behavior",
+    "description": "Control scroll behavior between anchor links.",
+    "code": "html {\n  scroll-behavior: smooth;\n}"
+  },
+  {
+    "title": "CSS Grid Autofill",
+    "description": "Use autofill for responsive grid layouts.",
+    "code": ".grid-container {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));\n}"
+  },
+  {
+    "title": "CSS Grid Minmax",
+    "description": "Set minimum and maximum sizes in CSS Grid.",
+    "code": ".grid-item {\n  grid-column: span 2;\n  min-width: 100px;\n  max-width: 200px;\n}"
+  },
+  {
+    "title": "Shape Outside (Circle)",
+    "description": "Wrap text around circular shapes.",
+    "code": ".circle-text {\n  float: left;\n  width: 100px;\n  height: 100px;\n  shape-outside: circle();\n}"
+  },
+  {
+    "title": "CSS Grid Alignment (Justify Self)",
+    "description": "Align individual grid items within the grid area.",
+    "code": ".grid-item {\n  justify-self: center;\n}"
+  },
+  {
+    "title": "CSS Containment",
+    "description": "Improve rendering performance with containment.",
+    "code": ".container {\n  contain: content;\n}"
+  },
+  {
+    "title": "CSS Grid Template Areas",
+    "description": "Define complex grid layouts with named areas.",
+    "code": ".grid-container {\n  display: grid;\n  grid-template-areas:\n    'header header header'\n    'sidebar main main'\n    'footer footer footer';\n}"
+  },
+  {
+    "title": "CSS Grid Auto-placement",
+    "description": "Allow items to auto-place within the grid.",
+    "code": ".grid-container {\n  display: grid;\n  grid-auto-flow: dense;\n}"
+  },
+  {
+    "title": "CSS Grid Line-based Placement",
+    "description": "Position items using grid line numbers.",
+    "code": ".grid-item {\n  grid-column: 2 / span 2;\n  grid-row: 1 / 3;\n}"
+  },
+  {
+    "title": "CSS Grid Nesting",
+    "description": "Create nested grid layouts.",
+    "code": ".outer-grid {\n  display: grid;\n  grid-template-columns: 1fr 2fr;\n}\n\n.inner-grid {\n  display: grid;\n  grid-template-rows: repeat(2, 100px);\n}"
+  },
+  {
+    "title": "CSS Grid Responsive Layouts",
+    "description": "Make grid layouts responsive with media queries.",
+    "code": ".grid-container {\n  display: grid;\n  grid-template-columns: 1fr;\n}\n\n@media (min-width: 768px) {\n  .grid-container {\n    grid-template-columns: 1fr 1fr;\n  }\n}"
+  },
+  {
+    "title": "Scroll Snap Type",
+    "description": "Control scrolling behavior for snap points.",
+    "code": ".scroll-container {\n  scroll-snap-type: x mandatory;\n}"
+  },
+  {
+    "title": "CSS Variables Calculation",
+    "description": "Perform calculations with CSS variables.",
+    "code": ":root {\n  --main-width: 200px;\n}\n\ndiv {\n  width: calc(var(--main-width) * 2);\n}"
+  },
+  {
+    "title": "CSS Shapes (Polygon)",
+    "description": "Create custom polygon shapes using CSS shapes.",
+    "code": ".polygon-shape {\n  width: 200px;\n  height: 200px;\n  shape-outside: polygon(0% 0%, 0% 100%, 100% 100%);\n}"
+  },
+  {
+    "title": "CSS Text Decoration",
+    "description": "Style text decorations like underline and overline.",
+    "code": "a {\n  text-decoration: underline dotted blue;\n}"
+  },
+  {
+    "title": "CSS Grid Area Spanning",
+    "description": "Span items across multiple grid areas.",
+    "code": ".grid-item {\n  grid-area: header;\n}"
+  },
+  {
+    "title": "CSS Aspect Ratio with Padding",
+    "description": "Create responsive aspect ratio containers using padding.",
+    "code": ".aspect-ratio-container {\n  position: relative;\n  width: 100%;\n  padding-top: 75%; /* 4:3 Aspect Ratio */\n}"
+  },
+  {
+    "title": "CSS Flexbox Alignment (Self)",
+    "description": "Align individual flex items within their container.",
+    "code": ".flex-item {\n  align-self: center;\n}"
+  },
+  {
+    "title": "CSS Grid Implicit Grid",
+    "description": "Handle items placed outside of explicitly defined grid areas.",
+    "code": ".grid-container {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));\n  grid-gap: 10px;\n}"
+  },
+  {
+    "title": "CSS Grid Alignment (Place Content)",
+    "description": "Place content using shorthand alignment properties.",
+    "code": ".grid-container {\n  display: grid;\n  place-content: center space-between;\n}"
+  },
+  {
+    "title": "CSS Transitions (Transform)",
+    "description": "Animate transforms for smooth transitions.",
+    "code": ".transition-box {\n  transition: transform 0.3s ease;\n}\n\n.transition-box:hover {\n  transform: scale(1.1);\n}"
+  },
+  {
+    "title": "CSS Filter Effects",
+    "description": "Apply filter effects like grayscale and contrast.",
+    "code": ".filtered-image {\n  filter: grayscale(50%) contrast(200%);\n}"
+  },
+  {
+    "title": "CSS Variables in Media Queries",
+    "description": "Use CSS variables inside media queries.",
+    "code": ":root {\n  --breakpoint-medium: 768px;\n}\n\n@media (min-width: var(--breakpoint-medium)) {\n  .container {\n    width: 80%;\n  }\n}"
+  },
+  {
+    "title": "CSS Flexbox Order",
+    "description": "Control the order of flex items.",
+    "code": ".flex-container {\n  display: flex;\n}\n\n.item1 {\n  order: 2;\n}\n\n.item2 {\n  order: 1;\n}"
+  },
+  {
+    "title": "CSS Grid Placement",
+    "description": "Place grid items using named lines.",
+    "code": ".grid-item {\n  grid-column-start: main-start;\n  grid-column-end: main-end;\n}"
+  },
+  {
+    "title": "CSS Grid Auto-fit",
+    "description": "Automatically fit items in a grid container.",
+    "code": ".grid-container {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n}"
+  },
+  {
+    "title": "CSS Grid Gap",
+    "description": "Set gaps between grid items.",
+    "code": ".grid-container {\n  display: grid;\n  grid-gap: 20px;\n}"
+  },
+  {
+    "title": "CSS Grid Spanning",
+    "description": "Span items across multiple grid tracks.",
+    "code": ".grid-item {\n  grid-column: span 2;\n  grid-row: span 2;\n}"
+  },
+  {
+    "title": "CSS Flexbox Wrap",
+    "description": "Control flex items wrapping behavior.",
+    "code": ".flex-container {\n  display: flex;\n  flex-wrap: wrap;\n}"
+  },
+  {
+    "title": "CSS Overflow",
+    "description": "Control how content overflows its container.",
+    "code": ".overflow-container {\n  overflow: hidden;\n}"
+  },
+  {
+    "title": "CSS Perspective",
+    "description": "Apply perspective to create 3D effects.",
+    "code": ".perspective-container {\n  perspective: 1000px;\n}\n\n.perspective-element {\n  transform: rotateY(45deg);\n}"
+  },
+  {
+    "title": "CSS Masking",
+    "description": "Create masks to control visibility of elements.",
+    "code": ".masked-element {\n  mask-image: linear-gradient(to right, transparent, black);\n}"
+  },
+  {
+    "title": "CSS Text Overflow",
+    "description": "Handle text overflow with ellipsis.",
+    "code": ".overflow-text {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}"
+  },
+  {
+    "title": "CSS Flexbox Alignment (Space-around)",
+    "description": "Distribute flex items with space around them.",
+    "code": ".flex-container {\n  display: flex;\n  justify-content: space-around;\n}"
+  },
+  {
+    "title": "CSS Grid Template Rows",
+    "description": "Define explicit rows in a CSS grid layout.",
+    "code": ".grid-container {\n  display: grid;\n  grid-template-rows: 100px 200px;\n}"
+  },
+  {
+    "title": "CSS Grid Template Columns",
+    "description": "Define explicit columns in a CSS grid layout.",
+    "code": ".grid-container {\n  display: grid;\n  grid-template-columns: 1fr 2fr;\n}"
+  },
+  {
+    "title": "CSS Text Alignment",
+    "description": "Align text horizontally and vertically.",
+    "code": ".aligned-text {\n  text-align: center;\n  line-height: 2;\n}"
+  },
+  {
+    "title": "CSS Transitions (Opacity)",
+    "description": "Animate opacity for smooth transitions.",
+    "code": ".fade-in {\n  opacity: 0;\n  transition: opacity 0.3s ease-in-out;\n}\n\n.fade-in:hover {\n  opacity: 1;\n}"
+  },
+  {
+    "title": "CSS Text Decoration (Line-through)",
+    "description": "Apply line-through text decoration.",
+    "code": ".strike-through {\n  text-decoration: line-through;\n}"
+  },
+  {
+    "title": "CSS Animations (Infinite)",
+    "description": "Create infinitely looping animations.",
+    "code": "@keyframes bounce {\n  0%, 100% { transform: translateY(0); }\n  50% { transform: translateY(-20px); }\n}\n\n.bouncing-element {\n  animation: bounce 2s infinite;\n}"
+  },
+  {
+    "title": "CSS Flexbox Order (Reverse)",
+    "description": "Reverse the order of flex items.",
+    "code": ".flex-container {\n  display: flex;\n  flex-direction: row-reverse;\n}"
+  },
+  {
+    "title": "CSS Grid Auto-placement (Dense)",
+    "description": "Optimize grid layout packing with dense auto-placement.",
+    "code": ".grid-container {\n  display: grid;\n  grid-auto-flow: dense;\n}"
+  },
+  {
+    "title": "CSS Box Sizing",
+    "description": "Control how the width and height of an element are calculated.",
+    "code": ".box-sizing-example {\n  box-sizing: border-box;\n}"
+  },
+  {
+    "title": "CSS Shadows (Multiple)",
+    "description": "Apply multiple shadows to an element.",
+    "code": ".multiple-shadows {\n  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1),\n              0 4px 8px rgba(0, 0, 0, 0.2);\n}"
+  },
+  {
+    "title": "CSS Text Transform",
+    "description": "Transform text to uppercase or lowercase.",
+    "code": ".uppercase-text {\n  text-transform: uppercase;\n}"
+  },
+  {
+    "title": "CSS Custom Scrollbar",
+    "description": "Customize the appearance of scrollbars.",
+    "code": "body {\n  scrollbar-width: thin;\n  scrollbar-color: #333 #f0f0f0;\n}\n\n::-webkit-scrollbar {\n  width: 8px;\n}\n\n::-webkit-scrollbar-thumb {\n  background-color: #333;\n  border-radius: 4px;\n}\n\n::-webkit-scrollbar-track {\n  background-color: #f0f0f0;\n}"
+  },
+  {
+    "title": "CSS Perspective Origin",
+    "description": "Define the origin of the perspective for 3D transforms.",
+    "code": ".perspective-origin-example {\n  perspective: 500px;\n  perspective-origin: 50% 50%;\n}"
+  },
+  {
+    "title": "CSS Text Shadow (Multiple)",
+    "description": "Apply multiple text shadows for layered effects.",
+    "code": ".multiple-text-shadow {\n  text-shadow: 1px 1px 2px #333, -1px -1px 0 #fff;\n}"
+  },
+  {
+    "title": "CSS Gradient (Repeating)",
+    "description": "Create repeating linear gradients.",
+    "code": ".repeating-gradient {\n  background: repeating-linear-gradient(45deg, #f00, #f00 10px, #0f0 10px, #0f0 20px);\n}"
+  },
+  {
+    "title": "CSS Flexbox Alignment (Space-evenly)",
+    "description": "Distribute flex items evenly with space around them.",
+    "code": ".flex-container {\n  display: flex;\n  justify-content: space-evenly;\n}"
+  },
+  {
+    "title": "CSS Grid Auto-fit and Minmax",
+    "description": "Automatically fit grid items with a minimum size.",
+    "code": ".grid-container {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\n}"
+  },
+  {
+    "title": "CSS Counter Increment",
+    "description": "Increment counters for elements.",
+    "code": "body {\n  counter-reset: section;\n}\n\nh2::before {\n  counter-increment: section;\n  content: \"Section \" counter(section) \": \";\n}"
+  },
+  {
+    "title": "CSS Mask Image",
+    "description": "Use images as masks to control element visibility.",
+    "code": ".masked-element {\n  mask-image: url('mask.svg');\n  mask-size: cover;\n}"
+  },
+  {
+    "title": "CSS Object Fit",
+    "description": "Control how replaced elements like images are sized inside their containers.",
+    "code": ".fit-image {\n  width: 200px;\n  height: 200px;\n  object-fit: cover;\n}"
+  },
+  {
+    "title": "CSS Flexbox Alignment (Baseline)",
+    "description": "Align flex items along their baselines.",
+    "code": ".flex-container {\n  display: flex;\n  align-items: baseline;\n}"
+  },
+  {
+    "title": "CSS Grid Line Naming",
+    "description": "Name grid lines for easier referencing.",
+    "code": ".grid-container {\n  display: grid;\n  grid-template-columns: [sidebar-start] 1fr [content-start] 3fr [content-end];\n}"
+  },
+  {
+    "title": "CSS Transform (Origin)",
+    "description": "Specify the transform origin for 2D and 3D transforms.",
+    "code": ".transformed-element {\n  transform-origin: bottom right;\n}"
+  },
+  {
+    "title": "CSS Text Overflow (Clip)",
+    "description": "Clip text that overflows its container.",
+    "code": ".clipped-text {\n  overflow: hidden;\n  text-overflow: clip;\n}"
+  },
+  {
+    "title": "CSS Grid Implicit Rows",
+    "description": "Handle auto-generated rows in CSS Grid.",
+    "code": ".grid-container {\n  display: grid;\n  grid-auto-rows: minmax(100px, auto);\n}"
+  },
+  {
+    "title": "CSS Aspect Ratio with Padding (Extended)",
+    "description": "Create responsive aspect ratio containers using padding with different ratios.",
+    "code": ".aspect-ratio-container-4-3 {\n  position: relative;\n  width: 100%;\n  padding-top: calc(3 / 4 * 100%);\n}\n\n.aspect-ratio-container-16-9 {\n  position: relative;\n  width: 100%;\n  padding-top: calc(9 / 16 * 100%);\n}"
+  },
+  {
+    "title": "CSS Grid Area",
+    "description": "Define named grid areas for layout.",
+    "code": ".grid-container {\n  display: grid;\n  grid-template-areas:\n    'header header header'\n    'sidebar content content'\n    'footer footer footer';\n}"
+  },
+  {
+    "title": "CSS Text Alignment (Justify)",
+    "description": "Justify text to align content evenly within its container.",
+    "code": ".justified-text {\n  text-align: justify;\n}"
+  },
+  {
+    "title": "CSS Backdrop Filter",
+    "description": "Apply visual effects to the area behind an element.",
+    "code": ".backdrop-element {\n  backdrop-filter: blur(10px);\n}"
+  },
+  {
+    "title": "CSS Grid Template Areas (Responsive)",
+    "description": "Create responsive grid layouts using named areas.",
+    "code": ".grid-container {\n  display: grid;\n  grid-template-areas:\n    'header header'\n    'sidebar content'\n    'footer footer';\n}"
+  },
+  {
+    "title": "CSS Outline",
+    "description": "Add an outline around an element.",
+    "code": ".outlined-element {\n  outline: 2px dashed #333;\n}"
+  },
+  {
+    "title": "CSS Overflow (Hidden)",
+    "description": "Hide content that overflows its container.",
+    "code": ".overflow-hidden {\n  overflow: hidden;\n}"
+  },
+  {
+    "title": "CSS Scroll Snap",
+    "description": "Enable snapping behavior for scrollable elements.",
+    "code": ".scroll-snap-container {\n  scroll-snap-type: y mandatory;\n}"
+  },
+  {
+    "title": "CSS Grid Auto-placement (Sparse)",
+    "description": "Place grid items without forced ordering.",
+    "code": ".grid-container {\n  display: grid;\n  grid-auto-flow: dense;\n}"
+  },
+  {
+    "title": "CSS Position Sticky (Bottom)",
+    "description": "Stick an element to the bottom of its container.",
+    "code": ".sticky-footer {\n  position: sticky;\n  bottom: 0;\n}"
+  },
+  {
+    "title": "CSS Custom Properties (Advanced)",
+    "description": "Use custom properties with complex values.",
+    "code": ":root {\n  --main-color: #3498db;\n  --main-font: 'Roboto', sans-serif;\n}\n\nbody {\n  background-color: var(--main-color);\n  font-family: var(--main-font);\n}"
+  },
+  {
+    "title": "CSS Gradients (Radial Repeating)",
+    "description": "Create repeating radial gradients.",
+    "code": ".repeating-radial-gradient {\n  background: repeating-radial-gradient(circle, #f00, #f00 10px, #0f0 10px, #0f0 20px);\n}"
+  },
+  {
+    "title": "CSS Transform (Translate)",
+    "description": "Move elements along the X and Y axes.",
+    "code": ".translated-element {\n  transform: translate(50px, 100px);\n}"
+  },
+  {
+    "title": "CSS Animation (Delay)",
+    "description": "Delay the start of an animation.",
+    "code": "@keyframes bounce {\n  0%, 100% { transform: translateY(0); }\n  50% { transform: translateY(-20px); }\n}\n\n.bouncing-element {\n  animation: bounce 2s ease-in-out 1s infinite;\n}"
+  },
+  {
+    "title": "CSS Grid Spanning (Responsive)",
+    "description": "Span grid items across multiple columns or rows.",
+    "code": ".grid-item {\n  grid-column: span 2;\n  grid-row: span 3;\n}"
+  },
+  {
+    "title": "CSS Text Decoration (Underline)",
+    "description": "Add underlines to text.",
+    "code": ".underlined-text {\n  text-decoration: underline;\n}"
+  },
+  {
+    "title": "CSS Grid Auto-fill",
+    "description": "Automatically fill grid tracks with content.",
+    "code": ".grid-container {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));\n}"
+  },
+  {
+    "title": "CSS Variables (Fallback Values)",
+    "description": "Provide fallback values for CSS variables.",
+    "code": ":root {\n  --main-color: #3498db;\n}\n\nbody {\n  background-color: var(--main-color, #f0f0f0);\n}"
+  },
+  {
+    "title": "CSS Border Radius",
+    "description": "Round the corners of elements.",
+    "code": ".rounded-element {\n  border-radius: 10px;\n}"
+  },
+  {
+    "title": "CSS Outline Offset",
+    "description": "Adjust the distance between an outline and its border.",
+    "code": ".outlined-element {\n  outline: 2px solid red;\n  outline-offset: 10px;\n}"
+  },
+  {
+    "title": "CSS Text Shadow (Inset)",
+    "description": "Apply inset shadows to text.",
+    "code": ".inset-text-shadow {\n  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) inset, -1px -1px 2px rgba(0, 0, 0, 0.5) inset;\n}"
+  },
+  {
+    "title": "CSS Flexbox Order (Reset)",
+    "description": "Reset the order of flex items to their natural order.",
+    "code": ".flex-container {\n  display: flex;\n  flex-direction: row;\n}\n\n.flex-item {\n  order: 0; /* Reset order to default */\n}"
+  },
+  {
+    "title": "CSS Grid Template Columns (Fractional Units)",
+    "description": "Use fractional units to create responsive grid layouts.",
+    "code": ".grid-container {\n  display: grid;\n  grid-template-columns: 1fr 2fr 1fr;\n}"
+  },
+  {
+    "title": "CSS Positioning (Center)",
+    "description": "Center elements using positioning.",
+    "code": ".centered-element {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}"
+  },
+  {
+    "title": "CSS Grid Gap (Responsive)",
+    "description": "Adjust grid gaps responsively.",
+    "code": ".grid-container {\n  display: grid;\n  gap: 20px;\n}\n\n@media (max-width: 768px) {\n  .grid-container {\n    gap: 10px;\n  }\n}"
+  },
+  {
+    "title": "CSS Text Overflow (Ellipsis)",
+    "description": "Truncate text with an ellipsis when it overflows.",
+    "code": ".ellipsis-text {\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}"
+  },
+  {
+    "title": "CSS Pseudo-classes (Checked)",
+    "description": "Style elements based on their checked state.",
+    "code": "input[type='checkbox']:checked + label {\n  text-decoration: line-through;\n}"
+  },
+  {
+    "title": "CSS Transform (Scale)",
+    "description": "Scale elements up or down.",
+    "code": ".scaled-element {\n  transform: scale(1.2);\n}"
+  },
+  {
+    "title": "CSS Grid Align Items (Center)",
+    "description": "Vertically center grid items.",
+    "code": ".grid-container {\n  display: grid;\n  align-items: center;\n}"
+  },
+  {
+    "title": "CSS Selectors (Direct Child)",
+    "description": "Target direct child elements.",
+    "code": ".parent > .direct-child {\n  color: red;\n}"
+  },
+  {
+    "title": "CSS Media Queries (Mobile First)",
+    "description": "Write media queries starting with mobile styles.",
+    "code": "@media (min-width: 768px) {\n  .responsive-element {\n    font-size: 18px;\n  }\n}"
+  },
+  {
+    "title": "CSS Grid Implicit Tracks",
+    "description": "Automatically create grid tracks.",
+    "code": ".grid-container {\n  display: grid;\n  grid-auto-columns: 100px;\n  grid-auto-rows: 100px;\n}"
+  },
+  {
+    "title": "CSS Animation (Bounce)",
+    "description": "Animate elements with a bouncing effect.",
+    "code": "@keyframes bounce {\n  0%, 100% { transform: translateY(0); }\n  50% { transform: translateY(-20px); }\n}\n\n.bouncing-element {\n  animation: bounce 0.5s infinite;\n}"
+  },
+  {
+    "title": "CSS Flexbox Wrap (Reverse)",
+    "description": "Reverse the wrapping order of flex items.",
+    "code": ".flex-container {\n  display: flex;\n  flex-wrap: wrap-reverse;\n}"
+  },
+  {
+    "title": "CSS Grid Template Areas (Advanced)",
+    "description": "Define complex layouts using named grid areas.",
+    "code": ".grid-container {\n  display: grid;\n  grid-template-areas:\n    'header header header'\n    'sidebar content content'\n    'footer footer footer';\n}"
+  },
+  {
+    "title": "CSS Variables (Dynamic Update)",
+    "description": "Update CSS variables dynamically with JavaScript.",
+    "code": ":root {\n  --main-color: #3498db;\n}\n\nbody {\n  background-color: var(--main-color);\n}\n\n<script>\n  document.documentElement.style.setProperty('--main-color', '#e74c3c');\n</script>"
+  },
+  {
+    "title": "CSS Transition (Height)",
+    "description": "Animate height changes smoothly.",
+    "code": ".expandable-element {\n  height: 100px;\n  overflow: hidden;\n  transition: height 0.3s ease;\n}\n\n.expanded {\n  height: 200px;\n}"
+  },
+  [
+    {
+      "title": "CSS Animations (Keyframes)",
+      "description": "Create a custom animation using keyframes.",
+      "code": "@keyframes slide-in {\n  0% { transform: translateX(-100%); }\n  100% { transform: translateX(0); }\n}\n\n.animated-element {\n  animation: slide-in 1s forwards;\n}"
+    },
+    {
+      "title": "CSS Transitions (Transform)",
+      "description": "Smoothly transition transform properties.",
+      "code": ".transition-element {\n  transition: transform 0.3s ease;\n}\n\n.transition-element:hover {\n  transform: scale(1.1);\n}"
+    },
+    {
+      "title": "CSS Gradients (Radial Gradient)",
+      "description": "Create a radial gradient background.",
+      "code": ".gradient-background {\n  background: radial-gradient(circle, #ff5f6d, #ffc371);\n}"
+    },
+    {
+      "title": "CSS Filters (Blur Effect)",
+      "description": "Apply a blur effect to an image or element.",
+      "code": ".blurred-image {\n  filter: blur(5px);\n}"
+    },
+    {
+      "title": "CSS Flexbox (Responsive Alignment)",
+      "description": "Responsive alignment of flex items.",
+      "code": ".flex-container {\n  display: flex;\n  justify-content: center;\n  align-items: flex-start;\n}\n\n@media screen and (max-width: 768px) {\n  .flex-container {\n    flex-direction: column;\n    align-items: center;\n  }\n}"
+    },
+    {
+      "title": "CSS Grid (Complex Layout)",
+      "description": "Create a complex grid layout with CSS Grid.",
+      "code": ".grid-container {\n  display: grid;\n  grid-template-columns: 1fr 2fr 1fr;\n  grid-template-rows: auto;\n  gap: 20px;\n}\n\n.grid-item {\n  grid-column: 2 / 3;\n  grid-row: 1;\n}"
+    }
+  ]
+]

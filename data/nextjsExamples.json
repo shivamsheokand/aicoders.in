@@ -1,0 +1,482 @@
+[
+  {
+    "title": "Creating a Next.js Page",
+    "description": "How to create a basic page in Next.js 14.",
+    "code": "// Creating a Next.js Page example\nimport React from 'react';\n\nconst HomePage = () => {\n  return (\n    <div>\n      <h1>Welcome to Next.js 14!</h1>\n      <p>This is the home page.</p>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Dynamic Routes",
+    "description": "How to create dynamic routes in Next.js 14.",
+    "code": "// Dynamic Routes example\nimport { useRouter } from 'next/router';\nimport React from 'react';\n\nconst PostPage = () => {\n  const router = useRouter();\n  const { id } = router.query;\n\n  return (\n    <div>\n      <h1>Post: {id}</h1>\n      <p>This is a dynamic route example.</p>\n    </div>\n  );\n};\n\nexport default PostPage;"
+  },
+  {
+    "title": "API Routes",
+    "description": "How to create an API route in Next.js 14.",
+    "code": "// API Routes example\n// File: pages/api/hello.js\nexport default function handler(req, res) {\n  res.status(200).json({ message: 'Hello from Next.js 14 API!' });\n}"
+  },
+  {
+    "title": "Using getStaticProps",
+    "description": "How to use getStaticProps for static generation in Next.js 14.",
+    "code": "// Using getStaticProps example\nimport React from 'react';\n\nexport async function getStaticProps() {\n  return {\n    props: { message: 'This is static content generated at build time.' },\n  };\n}\n\nconst StaticPage = ({ message }) => {\n  return (\n    <div>\n      <h1>Static Page</h1>\n      <p>{message}</p>\n    </div>\n  );\n};\n\nexport default StaticPage;"
+  },
+  {
+    "title": "Using getServerSideProps",
+    "description": "How to use getServerSideProps for server-side rendering in Next.js 14.",
+    "code": "// Using getServerSideProps example\nimport React from 'react';\n\nexport async function getServerSideProps() {\n  return {\n    props: { message: 'This is server-side rendered content.' },\n  };\n}\n\nconst SSRPage = ({ message }) => {\n  return (\n    <div>\n      <h1>SSR Page</h1>\n      <p>{message}</p>\n    </div>\n  );\n};\n\nexport default SSRPage;"
+  },
+  {
+    "title": "Using Link for Navigation",
+    "description": "How to use the Link component for navigation in Next.js 14.",
+    "code": "// Using Link for Navigation example\nimport Link from 'next/link';\nimport React from 'react';\n\nconst NavigationPage = () => {\n  return (\n    <div>\n      <h1>Navigation Example</h1>\n      <p>\n        <Link href=\"/about\">\n          <a>Go to About Page</a>\n        </Link>\n      </p>\n    </div>\n  );\n};\n\nexport default NavigationPage;"
+  },
+  {
+    "title": "Custom Document",
+    "description": "How to customize the HTML document in Next.js 14.",
+    "code": "// Custom Document example\n// File: pages/_document.js\nimport Document, { Html, Head, Main, NextScript } from 'next/document';\n\nclass MyDocument extends Document {\n  render() {\n    return (\n      <Html>\n        <Head>\n          <link rel=\"stylesheet\" href=\"/styles.css\" />\n        </Head>\n        <body>\n          <Main />\n          <NextScript />\n        </body>\n      </Html>\n    );\n  }\n}\n\nexport default MyDocument;"
+  },
+  {
+    "title": "Using Custom App",
+    "description": "How to customize the App component in Next.js 14.",
+    "code": "// Using Custom App example\n// File: pages/_app.js\nimport React from 'react';\nimport '../styles/globals.css';\n\nconst MyApp = ({ Component, pageProps }) => {\n  return <Component {...pageProps} />;\n};\n\nexport default MyApp;"
+  },
+  {
+    "title": "CSS Modules",
+    "description": "How to use CSS Modules for styling in Next.js 14.",
+    "code": "// CSS Modules example\n// File: styles/Home.module.css\n.container {\n  padding: 0 2rem;\n}\n\n// File: pages/index.js\nimport styles from '../styles/Home.module.css';\n\nconst Home = () => {\n  return (\n    <div className={styles.container}>\n      <h1>Welcome to Next.js 14!</h1>\n    </div>\n  );\n};\n\nexport default Home;"
+  },
+  {
+    "title": "API with Dynamic Route",
+    "description": "How to create an API route with dynamic parameters in Next.js 14.",
+    "code": "// API with Dynamic Route example\n// File: pages/api/post/[id].js\nexport default function handler(req, res) {\n  const { id } = req.query;\n  res.status(200).json({ message: `Post ID: ${id}` });\n}"
+  },
+  {
+    "title": "Custom 404 Page",
+    "description": "How to create a custom 404 page in Next.js 14.",
+    "code": "// Custom 404 Page example\n// File: pages/404.js\nimport React from 'react';\n\nconst Custom404 = () => {\n  return (\n    <div>\n      <h1>404 - Page Not Found</h1>\n    </div>\n  );\n};\n\nexport default Custom404;"
+  },
+  {
+    "title": "Static Generation with getStaticPaths",
+    "description": "How to use getStaticPaths for dynamic static generation in Next.js 14.",
+    "code": "// Static Generation with getStaticPaths example\nimport React from 'react';\n\nexport async function getStaticPaths() {\n  const paths = [\n    { params: { id: '1' } },\n    { params: { id: '2' } },\n  ];\n  return { paths, fallback: false };\n}\n\nexport async function getStaticProps({ params }) {\n  return { props: { id: params.id } };\n}\n\nconst PostPage = ({ id }) => {\n  return (\n    <div>\n      <h1>Post ID: {id}</h1>\n    </div>\n  );\n};\n\nexport default PostPage;"
+  },
+  {
+    "title": "Using Environment Variables",
+    "description": "How to use environment variables in Next.js 14.",
+    "code": "// Using Environment Variables example\n// File: .env.local\nNEXT_PUBLIC_API_URL=https://api.example.com\n\n// File: pages/index.js\nimport React from 'react';\n\nconst HomePage = () => {\n  return (\n    <div>\n      <h1>API URL: {process.env.NEXT_PUBLIC_API_URL}</h1>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Redirects in getServerSideProps",
+    "description": "How to use redirects in getServerSideProps in Next.js 14.",
+    "code": "// Redirects in getServerSideProps example\nimport React from 'react';\n\nexport async function getServerSideProps() {\n  return {\n    redirect: {\n      destination: '/login',\n      permanent: false,\n    },\n  };\n}\n\nconst RedirectPage = () => {\n  return null;\n};\n\nexport default RedirectPage;"
+  },
+  {
+    "title": "Incremental Static Regeneration",
+    "description": "How to use Incremental Static Regeneration in Next.js 14.",
+    "code": "// Incremental Static Regeneration example\nimport React from 'react';\n\nexport async function getStaticProps() {\n  return {\n    props: { message: 'This page uses Incremental Static Regeneration.' },\n    revalidate: 10,\n  };\n}\n\nconst ISRPage = ({ message }) => {\n  return (\n    <div>\n      <h1>{message}</h1>\n    </div>\n  );\n};\n\nexport default ISRPage;"
+  },
+  {
+    "title": "Image Optimization",
+    "description": "How to use the Next.js Image component for optimization.",
+    "code": "// Image Optimization example\nimport React from 'react';\nimport Image from 'next/image';\n\nconst ImagePage = () => {\n  return (\n    <div>\n      <Image src=\"/vercel.svg\" alt=\"Vercel Logo\" width={72} height={16} />\n    </div>\n  );\n};\n\nexport default ImagePage;"
+  },
+  {
+    "title": "Custom Head Metadata",
+    "description": "How to add custom head metadata in Next.js 14.",
+    "code": "// Custom Head Metadata example\nimport React from 'react';\nimport Head from 'next/head';\n\nconst MetaPage = () => {\n  return (\n    <div>\n      <Head>\n        <title>Custom Meta Page</title>\n        <meta name=\"description\" content=\"This is a custom meta page\" />\n      </Head>\n      <h1>Custom Meta Page</h1>\n    </div>\n  );\n};\n\nexport default MetaPage;"
+  },
+  {
+    "title": "Custom Error Page",
+    "description": "How to create a custom error page in Next.js 14.",
+    "code": "// Custom Error Page example\n// File: pages/_error.js\nimport React from 'react';\n\nconst ErrorPage = ({ statusCode }) => {\n  return (\n    <div>\n      <h1>Error: {statusCode}</h1>\n    </div>\n  );\n};\n\nErrorPage.getInitialProps = ({ res, err }) => {\n  const statusCode = res ? res.statusCode : err ? err.statusCode : 404;\n  return { statusCode };\n};\n\nexport default ErrorPage;"
+  },
+  {
+    "title": "Middleware for Authentication",
+    "description": "How to use middleware for authentication in Next.js 14.",
+    "code": "// Middleware for Authentication example\n// File: pages/_middleware.js\nimport { NextResponse } from 'next/server';\n\nexport function middleware(req) {\n  const { pathname } = req.nextUrl;\n  if (pathname.startsWith('/protected')) {\n    const token = req.cookies['auth-token'];\n    if (!token) {\n      return NextResponse.redirect('/login');\n    }\n  }\n  return NextResponse.next();\n}"
+  },
+  {
+    "title": "Using Context API",
+    "description": "How to use the Context API in Next.js 14.",
+    "code": "// Using Context API example\nimport React, { createContext, useContext, useState } from 'react';\n\nconst ThemeContext = createContext();\n\nconst ThemeProvider = ({ children }) => {\n  const [theme, setTheme] = useState('light');\n  return (\n    <ThemeContext.Provider value={{ theme, setTheme }}>\n      {children}\n    </ThemeContext.Provider>\n  );\n};\n\nconst HomePage = () => {\n  const { theme, setTheme } = useContext(ThemeContext);\n  return (\n    <div>\n      <h1>Current Theme: {theme}</h1>\n      <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>\n        Toggle Theme\n      </button>\n    </div>\n  );\n};\n\nconst App = ({ Component, pageProps }) => {\n  return (\n    <ThemeProvider>\n      <Component {...pageProps} />\n    </ThemeProvider>\n  );\n};\n\nexport default App;"
+  },
+  {
+    "title": "Client-side Data Fetching",
+    "description": "How to fetch data client-side in Next.js 14.",
+    "code": "// Client-side Data Fetching example\nimport React, { useEffect, useState } from 'react';\n\nconst DataFetchingPage = () => {\n  const [data, setData] = useState(null);\n\n  useEffect(() => {\n    fetch('/api/data')\n      .then((response) => response.json())\n      .then((data) => setData(data));\n  }, []);\n\n  if (!data) return <p>Loading...</p>;\n\n  return (\n    <div>\n      <h1>Data: {JSON.stringify(data)}</h1>\n    </div>\n  );\n};\n\nexport default DataFetchingPage;"
+  },
+  {
+    "title": "Static File Serving",
+    "description": "How to serve static files in Next.js 14.",
+    "code": "// Static File Serving example\n// Place file in public directory: public/hello.txt\n// File: pages/static-file.js\nimport React from 'react';\n\nconst StaticFilePage = () => {\n  return (\n    <div>\n      <a href=\"/hello.txt\" download>\n        Download hello.txt\n      </a>\n    </div>\n  );\n};\n\nexport default StaticFilePage;"
+  },
+  {
+    "title": "Internationalization (i18n)",
+    "description": "How to add internationalization (i18n) in Next.js 14.",
+    "code": "// Internationalization (i18n) example\n// File: next.config.js\nmodule.exports = {\n  i18n: {\n    locales: ['en', 'fr'],\n    defaultLocale: 'en',\n  },\n};\n\n// File: pages/index.js\nimport { useRouter } from 'next/router';\nimport React from 'react';\n\nconst HomePage = () => {\n  const { locale, locales, defaultLocale } = useRouter();\n  return (\n    <div>\n      <h1>Current Locale: {locale}</h1>\n      <p>Default Locale: {defaultLocale}</p>\n      <p>Available Locales: {locales.join(', ')}</p>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Adding TypeScript",
+    "description": "How to add TypeScript to a Next.js 14 project.",
+    "code": "// Adding TypeScript example\n// Install TypeScript: npm install --save-dev typescript @types/react @types/node\n// Create tsconfig.json\n// File: tsconfig.json\n{\n  \"compilerOptions\": {\n    \"target\": \"es5\",\n    \"lib\": [\"dom\", \"dom.iterable\", \"esnext\"],\n    \"allowJs\": true,\n    \"skipLibCheck\": true,\n    \"strict\": true,\n    \"forceConsistentCasingInFileNames\": true,\n    \"noEmit\": true,\n    \"esModuleInterop\": true,\n    \"module\": \"esnext\",\n    \"moduleResolution\": \"node\",\n    \"resolveJsonModule\": true,\n    \"isolatedModules\": true,\n    \"jsx\": \"preserve\"\n  },\n  \"include\": [\"next-env.d.ts\", \"**/*.ts\", \"**/*.tsx\"],\n  \"exclude\": [\"node_modules\"]\n}\n\n// File: next-env.d.ts\n/// <reference types=\"next\" />\n/// <reference types=\"next/types/global\" />\n/// <reference types=\"next/image-types/global\" />\n\n// NOTE: This file should not be edited\n// see https://nextjs.org/docs/basic-features/typescript for more information."
+  },
+  {
+    "title": "Customizing Babel Configuration",
+    "description": "How to customize the Babel configuration in Next.js 14.",
+    "code": "// Customizing Babel Configuration example\n// File: .babelrc\n{\n  \"presets\": [\"next/babel\"],\n  \"plugins\": [\n    [\n      \"@babel/plugin-proposal-decorators\",\n      { \"legacy\": true }\n    ]\n  ]\n}"
+  },
+  {
+    "title": "Adding ESLint",
+    "description": "How to add ESLint to a Next.js 14 project.",
+    "code": "// Adding ESLint example\n// Install ESLint: npm install eslint\n// Create .eslintrc.json\n// File: .eslintrc.json\n{\n  \"extends\": \"next\",\n  \"rules\": {\n    \"react/react-in-jsx-scope\": \"off\"\n  }\n}\n\n// File: pages/index.js\nimport React from 'react';\n\nconst HomePage = () => {\n  return (\n    <div>\n      <h1>Welcome to Next.js 14!</h1>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Using Next.js with Redux",
+    "description": "How to use Redux for state management in Next.js 14.",
+    "code": "// Using Next.js with Redux example\n// Install Redux: npm install redux react-redux\n// File: store.js\nimport { createStore } from 'redux';\nimport { Provider } from 'react-redux';\n\nconst reducer = (state = { count: 0 }, action) => {\n  switch (action.type) {\n    case 'INCREMENT':\n      return { ...state, count: state.count + 1 };\n    default:\n      return state;\n  }\n};\n\nconst store = createStore(reducer);\n\nconst App = ({ Component, pageProps }) => {\n  return (\n    <Provider store={store}>\n      <Component {...pageProps} />\n    </Provider>\n  );\n};\n\nexport default App;\n\n// File: pages/index.js\nimport React from 'react';\nimport { useDispatch, useSelector } from 'react-redux';\n\nconst HomePage = () => {\n  const dispatch = useDispatch();\n  const count = useSelector((state) => state.count);\n\n  return (\n    <div>\n      <h1>Count: {count}</h1>\n      <button onClick={() => dispatch({ type: 'INCREMENT' })}>Increment</button>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Adding Tailwind CSS",
+    "description": "How to add Tailwind CSS to a Next.js 14 project.",
+    "code": "// Adding Tailwind CSS example\n// Install Tailwind CSS: npm install tailwindcss\n// Create tailwind.config.js\n// File: tailwind.config.js\nmodule.exports = {\n  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],\n  darkMode: false, // or 'media' or 'class'\n  theme: {\n    extend: {},\n  },\n  variants: {\n    extend: {},\n  },\n  plugins: [],\n};\n\n// File: postcss.config.js\nmodule.exports = {\n  plugins: {\n    tailwindcss: {},\n    autoprefixer: {},\n  },\n};\n\n// File: styles/globals.css\n@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n// File: pages/_app.js\nimport '../styles/globals.css';\n\nconst MyApp = ({ Component, pageProps }) => {\n  return <Component {...pageProps} />;\n};\n\nexport default MyApp;"
+  },
+  {
+    "title": "Adding SASS/SCSS",
+    "description": "How to add SASS/SCSS to a Next.js 14 project.",
+    "code": "// Adding SASS/SCSS example\n// Install SASS: npm install sass\n// File: styles/globals.scss\nbody {\n  font-family: 'Arial', sans-serif;\n}\n\n// File: pages/_app.js\nimport '../styles/globals.scss';\n\nconst MyApp = ({ Component, pageProps }) => {\n  return <Component {...pageProps} />;\n};\n\nexport default MyApp;"
+  },
+  {
+    "title": "Preloading Fonts",
+    "description": "How to preload fonts in Next.js 14 for better performance.",
+    "code": "// Preloading Fonts example\n// File: pages/_document.js\nimport Document, { Html, Head, Main, NextScript } from 'next/document';\n\nclass MyDocument extends Document {\n  render() {\n    return (\n      <Html>\n        <Head>\n          <link rel=\"preload\" href=\"/fonts/myfont.woff2\" as=\"font\" type=\"font/woff2\" crossOrigin=\"anonymous\" />\n        </Head>\n        <body>\n          <Main />\n          <NextScript />\n        </body>\n      </Html>\n    );\n  }\n}\n\nexport default MyDocument;"
+  },
+  {
+    "title": "Dynamic Import",
+    "description": "How to dynamically import components in Next.js 14.",
+    "code": "// Dynamic Import example\nimport dynamic from 'next/dynamic';\nimport React from 'react';\n\nconst DynamicComponent = dynamic(() => import('../components/DynamicComponent'));\n\nconst HomePage = () => {\n  return (\n    <div>\n      <h1>Welcome to Next.js 14!</h1>\n      <DynamicComponent />\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Using SWR for Data Fetching",
+    "description": "How to use SWR for data fetching in Next.js 14.",
+    "code": "// Using SWR for Data Fetching example\n// Install SWR: npm install swr\nimport useSWR from 'swr';\nimport React from 'react';\n\nconst fetcher = (url) => fetch(url).then((res) => res.json());\n\nconst DataFetchingPage = () => {\n  const { data, error } = useSWR('/api/data', fetcher);\n\n  if (error) return <div>Failed to load</div>;\n  if (!data) return <div>Loading...</div>;\n\n  return (\n    <div>\n      <h1>Data: {JSON.stringify(data)}</h1>\n    </div>\n  );\n};\n\nexport default DataFetchingPage;"
+  },
+  {
+    "title": "Using Recoil for State Management",
+    "description": "How to use Recoil for state management in Next.js 14.",
+    "code": "// Using Recoil for State Management example\n// Install Recoil: npm install recoil\nimport { atom, useRecoilState } from 'recoil';\nimport React from 'react';\n\nconst countState = atom({\n  key: 'countState',\n  default: 0,\n});\n\nconst Counter = () => {\n  const [count, setCount] = useRecoilState(countState);\n  return (\n    <div>\n      <h1>Count: {count}</h1>\n      <button onClick={() => setCount(count + 1)}>Increment</button>\n    </div>\n  );\n};\n\nconst App = ({ Component, pageProps }) => {\n  return (\n    <RecoilRoot>\n      <Component {...pageProps} />\n    </RecoilRoot>\n  );\n};\n\nexport default App;"
+  },
+  {
+    "title": "Custom Babel Plugin",
+    "description": "How to create a custom Babel plugin in Next.js 14.",
+    "code": "// Custom Babel Plugin example\n// File: babel-plugin-console.js\nmodule.exports = function () {\n  return {\n    visitor: {\n      CallExpression(path) {\n        if (path.node.callee.object && path.node.callee.object.name === 'console') {\n          path.remove();\n        }\n      },\n    },\n  };\n};\n\n// File: .babelrc\n{\n  \"plugins\": [\"./babel-plugin-console\"]\n}"
+  },
+  {
+    "title": "Using styled-components",
+    "description": "How to use styled-components in Next.js 14.",
+    "code": "// Using styled-components example\n// Install styled-components: npm install styled-components\nimport styled from 'styled-components';\nimport React from 'react';\n\nconst Title = styled.h1`\n  color: blue;\n`;\n\nconst HomePage = () => {\n  return (\n    <div>\n      <Title>Welcome to Next.js 14!</Title>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Redirects in next.config.js",
+    "description": "How to set up redirects in next.config.js in Next.js 14.",
+    "code": "// Redirects in next.config.js example\n// File: next.config.js\nmodule.exports = {\n  async redirects() {\n    return [\n      {\n        source: '/old-page',\n        destination: '/new-page',\n        permanent: true,\n      },\n    ];\n  },\n};"
+  },
+  {
+    "title": "Rewrites in next.config.js",
+    "description": "How to set up rewrites in next.config.js in Next.js 14.",
+    "code": "// Rewrites in next.config.js example\n// File: next.config.js\nmodule.exports = {\n  async rewrites() {\n    return [\n      {\n        source: '/about',\n        destination: '/company/about',\n      },\n    ];\n  },\n};"
+  },
+  {
+    "title": "Fetching Data with GraphQL",
+    "description": "How to fetch data with GraphQL in Next.js 14.",
+    "code": "// Fetching Data with GraphQL example\n// Install GraphQL: npm install graphql\nimport { request } from 'graphql-request';\nimport React from 'react';\n\nexport async function getStaticProps() {\n  const query = `{\n    posts {\n      title\n    }\n  }`;\n  const data = await request('https://api.example.com/graphql', query);\n  return { props: { posts: data.posts } };\n}\n\nconst GraphQLPage = ({ posts }) => {\n  return (\n    <div>\n      <h1>Posts</h1>\n      <ul>\n        {posts.map((post) => (\n          <li key={post.title}>{post.title}</li>\n        ))}\n      </ul>\n    </div>\n  );\n};\n\nexport default GraphQLPage;"
+  },
+  {
+    "title": "Custom Server with Express",
+    "description": "How to create a custom server with Express in Next.js 14.",
+    "code": "// Custom Server with Express example\n// Install Express: npm install express\nconst express = require('express');\nconst next = require('next');\n\nconst dev = process.env.NODE_ENV !== 'production';\nconst app = next({ dev });\nconst handle = app.getRequestHandler();\n\napp.prepare().then(() => {\n  const server = express();\n\n  server.get('/custom-route', (req, res) => {\n    return app.render(req, res, '/custom-page', req.query);\n  });\n\n  server.all('*', (req, res) => {\n    return handle(req, res);\n  });\n\n  server.listen(3000, (err) => {\n    if (err) throw err;\n    console.log('> Ready on http://localhost:3000');\n  });\n});"
+  },
+  {
+    "title": "Custom API Middleware",
+    "description": "How to add custom middleware to an API route in Next.js 14.",
+    "code": "// Custom API Middleware example\n// File: pages/api/middleware.js\nconst customMiddleware = (req, res, next) => {\n  console.log('Request received');\n  next();\n};\n\nexport default function handler(req, res) {\n  customMiddleware(req, res, () => {\n    res.status(200).json({ message: 'Hello from middleware!' });\n  });\n}"
+  },
+  {
+    "title": "Setting Up a Proxy",
+    "description": "How to set up a proxy in Next.js 14.",
+    "code": "// Setting Up a Proxy example\n// Install http-proxy-middleware: npm install http-proxy-middleware\nconst { createProxyMiddleware } = require('http-proxy-middleware');\n\nmodule.exports = {\n  async rewrites() {\n    return [\n      {\n        source: '/api/:path*',\n        destination: 'https://api.example.com/:path*', // Proxy to Backend\n      },\n    ];\n  },\n};"
+  },
+  {
+    "title": "Adding Google Analytics",
+    "description": "How to add Google Analytics to a Next.js 14 project.",
+    "code": "// Adding Google Analytics example\n// File: pages/_app.js\nimport { useEffect } from 'react';\nimport { useRouter } from 'next/router';\nimport ReactGA from 'react-ga';\n\nconst MyApp = ({ Component, pageProps }) => {\n  const router = useRouter();\n\n  useEffect(() => {\n    ReactGA.initialize('UA-XXXXXXXXX-X');\n    const handleRouteChange = (url) => {\n      ReactGA.pageview(url);\n    };\n    router.events.on('routeChangeComplete', handleRouteChange);\n    return () => {\n      router.events.off('routeChangeComplete', handleRouteChange);\n    };\n  }, [router.events]);\n\n  return <Component {...pageProps} />;\n};\n\nexport default MyApp;"
+  },
+  {
+    "title": "Custom Headers in next.config.js",
+    "description": "How to set custom headers in next.config.js in Next.js 14.",
+    "code": "// Custom Headers in next.config.js example\n// File: next.config.js\nmodule.exports = {\n  async headers() {\n    return [\n      {\n        source: '/:path*',\n        headers: [\n          { key: 'X-Custom-Header', value: 'my custom header value' },\n          { key: 'X-Another-Custom-Header', value: 'my other custom header value' },\n        ],\n      },\n    ];\n  },\n};"
+  },
+  {
+    "title": "Adding Material-UI",
+    "description": "How to add Material-UI to a Next.js 14 project.",
+    "code": "// Adding Material-UI example\n// Install Material-UI: npm install @mui/material @emotion/react @emotion/styled\nimport React from 'react';\nimport { Button } from '@mui/material';\n\nconst HomePage = () => {\n  return (\n    <div>\n      <Button variant=\"contained\" color=\"primary\">\n        Hello World\n      </Button>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Adding a Sitemap",
+    "description": "How to add a sitemap to a Next.js 14 project.",
+    "code": "// Adding a Sitemap example\n// Install next-sitemap: npm install next-sitemap\n// File: next-sitemap.js\nmodule.exports = {\n  siteUrl: 'https://www.example.com',\n  generateRobotsTxt: true, // (optional)\n};\n\n// File: package.json\n{\n  \"scripts\": {\n    \"postbuild\": \"next-sitemap\"\n  }\n}"
+  },
+  {
+    "title": "SEO with next-seo",
+    "description": "How to add SEO to a Next.js 14 project using next-seo.",
+    "code": "// SEO with next-seo example\n// Install next-seo: npm install next-seo\nimport { NextSeo } from 'next-seo';\nimport React from 'react';\n\nconst HomePage = () => {\n  return (\n    <div>\n      <NextSeo\n        title=\"Next.js 14 Example\"\n        description=\"An example of how to use next-seo in a Next.js 14 project\"\n      />\n      <h1>Welcome to Next.js 14!</h1>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Integrating with Apollo Client",
+    "description": "How to integrate Apollo Client for GraphQL in Next.js 14.",
+    "code": "// Integrating with Apollo Client example\n// Install Apollo Client: npm install @apollo/client graphql\nimport { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';\nimport React from 'react';\n\nconst client = new ApolloClient({\n  uri: 'https://api.example.com/graphql',\n  cache: new InMemoryCache(),\n});\n\nconst App = ({ Component, pageProps }) => {\n  return (\n    <ApolloProvider client={client}>\n      <Component {...pageProps} />\n    </ApolloProvider>\n  );\n};\n\nexport default App;"
+  },
+  {
+    "title": "Using next/image with External Domains",
+    "description": "How to configure next/image to work with external domains in Next.js 14.",
+    "code": "// Using next/image with External Domains example\n// File: next.config.js\nmodule.exports = {\n  images: {\n    domains: ['example.com'],\n  },\n};\n\n// File: pages/index.js\nimport Image from 'next/image';\nimport React from 'react';\n\nconst HomePage = () => {\n  return (\n    <div>\n      <Image src=\"https://example.com/path/to/image.jpg\" alt=\"My Image\" width={500} height={500} />\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Using next/link for Client-Side Navigation",
+    "description": "How to use next/link for client-side navigation in Next.js 14.",
+    "code": "// Using next/link for Client-Side Navigation example\nimport Link from 'next/link';\nimport React from 'react';\n\nconst HomePage = () => {\n  return (\n    <div>\n      <h1>Welcome to Next.js 14!</h1>\n      <Link href=\"/about\">\n        <a>About Us</a>\n      </Link>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Environment Variables",
+    "description": "How to use environment variables in Next.js 14.",
+    "code": "// Environment Variables example\n// File: next.config.js\nmodule.exports = {\n  env: {\n    CUSTOM_KEY: 'my-value',\n  },\n};\n\n// File: pages/index.js\nimport React from 'react';\n\nconst HomePage = () => {\n  return (\n    <div>\n      <h1>Environment Variable: {process.env.CUSTOM_KEY}</h1>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Setting Up Jest",
+    "description": "How to set up Jest for testing in Next.js 14.",
+    "code": "// Setting Up Jest example\n// Install Jest: npm install jest @testing-library/react @testing-library/jest-dom\n// File: jest.config.js\nmodule.exports = {\n  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],\n  testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],\n};\n\n// File: jest.setup.js\nimport '@testing-library/jest-dom/extend-expect';\n\n// File: __tests__/index.test.js\nimport { render } from '@testing-library/react';\nimport HomePage from '../pages/index';\n\ntest('renders homepage', () => {\n  const { getByText } = render(<HomePage />);\n  expect(getByText('Welcome to Next.js 14!')).toBeInTheDocument();\n});"
+  },
+  {
+    "title": "Adding Redux",
+    "description": "How to add Redux for state management in Next.js 14.",
+    "code": "// Adding Redux example\n// Install Redux: npm install redux react-redux\nimport { createStore } from 'redux';\nimport { Provider } from 'react-redux';\nimport React from 'react';\n\nconst reducer = (state = { count: 0 }, action) => {\n  switch (action.type) {\n    case 'INCREMENT':\n      return { count: state.count + 1 };\n    default:\n      return state;\n  }\n};\n\nconst store = createStore(reducer);\n\nconst Counter = () => {\n  const count = useSelector((state) => state.count);\n  const dispatch = useDispatch();\n  return (\n    <div>\n      <h1>Count: {count}</h1>\n      <button onClick={() => dispatch({ type: 'INCREMENT' })}>Increment</button>\n    </div>\n  );\n};\n\nconst App = ({ Component, pageProps }) => {\n  return (\n    <Provider store={store}>\n      <Component {...pageProps} />\n    </Provider>\n  );\n};\n\nexport default App;"
+  },
+  {
+    "title": "Using TypeScript",
+    "description": "How to set up and use TypeScript in Next.js 14.",
+    "code": "// Using TypeScript example\n// Install TypeScript: npm install typescript @types/react @types/node\n// Create tsconfig.json file\n{\n  \"compilerOptions\": {\n    \"target\": \"es5\",\n    \"lib\": [\"dom\", \"dom.iterable\", \"esnext\"],\n    \"allowJs\": true,\n    \"skipLibCheck\": true,\n    \"strict\": true,\n    \"forceConsistentCasingInFileNames\": true,\n    \"noEmit\": true,\n    \"esModuleInterop\": true,\n    \"module\": \"esnext\",\n    \"moduleResolution\": \"node\",\n    \"resolveJsonModule\": true,\n    \"isolatedModules\": true,\n    \"jsx\": \"preserve\"\n  },\n  \"include\": [\"next-env.d.ts\", \"**/*.ts\", \"**/*.tsx\"],\n  \"exclude\": [\"node_modules\"]\n}\n\n// File: pages/index.tsx\nimport React from 'react';\n\nconst HomePage: React.FC = () => {\n  return (\n    <div>\n      <h1>Welcome to Next.js 14 with TypeScript!</h1>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Incremental Static Regeneration (ISR)",
+    "description": "How to use Incremental Static Regeneration (ISR) in Next.js 14.",
+    "code": "// Incremental Static Regeneration (ISR) example\n// File: pages/posts/[id].js\nimport React from 'react';\n\nexport async function getStaticPaths() {\n  return {\n    paths: [{ params: { id: '1' } }, { params: { id: '2' } }],\n    fallback: 'blocking',\n  };\n}\n\nexport async function getStaticProps({ params }) {\n  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);\n  const post = await res.json();\n\n  return { props: { post }, revalidate: 10 };\n}\n\nconst PostPage = ({ post }) => {\n  return (\n    <div>\n      <h1>{post.title}</h1>\n      <p>{post.body}</p>\n    </div>\n  );\n};\n\nexport default PostPage;"
+  },
+  {
+    "title": "Deploying to Vercel",
+    "description": "How to deploy a Next.js 14 application to Vercel.",
+    "code": "// Deploying to Vercel example\n// 1. Install Vercel CLI: npm install -g vercel\n// 2. Run the following commands:\n//    vercel login\n//    vercel\n// 3. Follow the prompts to deploy your application\n// The `vercel` command automatically detects and configures your Next.js application for deployment."
+  },
+  {
+    "title": "Using Custom Fonts",
+    "description": "How to add custom fonts to a Next.js 14 application.",
+    "code": "// Using Custom Fonts example\n// File: pages/_document.js\nimport Document, { Html, Head, Main, NextScript } from 'next/document';\n\nclass MyDocument extends Document {\n  render() {\n    return (\n      <Html>\n        <Head>\n          <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\" />\n          <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossOrigin=\"true\" />\n          <link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap\" rel=\"stylesheet\" />\n        </Head>\n        <body>\n          <Main />\n          <NextScript />\n        </body>\n      </Html>\n    );\n  }\n}\n\nexport default MyDocument;\n\n// File: pages/index.js\nimport React from 'react';\n\nconst HomePage = () => {\n  return (\n    <div>\n      <h1 className=\"font-roboto\">Welcome to Next.js with Custom Fonts!</h1>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Dynamic Imports",
+    "description": "How to use dynamic imports in Next.js 14 to load components on demand.",
+    "code": "// Dynamic Imports example\n// File: pages/index.js\nimport dynamic from 'next/dynamic';\nimport React from 'react';\n\nconst DynamicComponent = dynamic(() => import('../components/DynamicComponent'));\n\nconst HomePage = () => {\n  return (\n    <div>\n      <h1>Dynamic Imports in Next.js</h1>\n      <DynamicComponent />\n    </div>\n  );\n};\n\nexport default HomePage;\n\n// File: components/DynamicComponent.js\nimport React from 'react';\n\nconst DynamicComponent = () => {\n  return <div>This is a dynamically imported component!</div>;\n};\n\nexport default DynamicComponent;"
+  },
+  {
+    "title": "Static Export",
+    "description": "How to export a Next.js 14 application to static HTML.",
+    "code": "// Static Export example\n// Add the following script to package.json\n// \"scripts\": {\n//   \"build\": \"next build\",\n//   \"export\": \"next export\"\n// }\n\n// Run the following commands to export:\n// npm run build\n// npm run export\n// The output will be in the `out` directory."
+  },
+  {
+    "title": "Custom Server",
+    "description": "How to create a custom server in Next.js 14 using Node.js.",
+    "code": "// Custom Server example\n// Install express: npm install express\n// File: server.js\nconst express = require('express');\nconst next = require('next');\n\nconst dev = process.env.NODE_ENV !== 'production';\nconst app = next({ dev });\nconst handle = app.getRequestHandler();\n\napp.prepare().then(() => {\n  const server = express();\n\n  server.get('*', (req, res) => {\n    return handle(req, res);\n  });\n\n  server.listen(3000, (err) => {\n    if (err) throw err;\n    console.log('> Ready on http://localhost:3000');\n  });\n});"
+  },
+  {
+    "title": "Custom Headers",
+    "description": "How to add custom headers in Next.js 14.",
+    "code": "// Custom Headers example\n// File: next.config.js\nmodule.exports = {\n  async headers() {\n    return [\n      {\n        source: '/:path*',\n        headers: [\n          { key: 'X-Custom-Header', value: 'my-custom-header' },\n        ],\n      },\n    ];\n  },\n};"
+  },
+  {
+    "title": "Using Sass",
+    "description": "How to add Sass to a Next.js 14 project.",
+    "code": "// Using Sass example\n// Install Sass: npm install sass\n// File: next.config.js\nconst path = require('path');\n\nmodule.exports = {\n  sassOptions: {\n    includePaths: [path.join(__dirname, 'styles')],\n  },\n};\n\n// File: styles/globals.scss\nbody {\n  font-family: Arial, sans-serif;\n}\n\n// File: pages/_app.js\nimport '../styles/globals.scss';\nimport React from 'react';\n\nconst MyApp = ({ Component, pageProps }) => {\n  return <Component {...pageProps} />;\n};\n\nexport default MyApp;"
+  },
+  {
+    "title": "Static Generation with Data",
+    "description": "How to use getStaticProps for static generation with data in Next.js 14.",
+    "code": "// Static Generation with Data example\n// File: pages/index.js\nimport React from 'react';\n\nexport async function getStaticProps() {\n  const res = await fetch('https://jsonplaceholder.typicode.com/posts');\n  const posts = await res.json();\n  return { props: { posts } };\n}\n\nconst HomePage = ({ posts }) => {\n  return (\n    <div>\n      <h1>Static Generation with Data</h1>\n      <ul>\n        {posts.map((post) => (\n          <li key={post.id}>{post.title}</li>\n        ))}\n      </ul>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "API Middleware",
+    "description": "How to add middleware to API routes in Next.js 14.",
+    "code": "// API Middleware example\n// File: pages/api/middleware.js\nimport nextConnect from 'next-connect';\n\nconst middleware = nextConnect();\n\nmiddleware.use((req, res, next) => {\n  console.log('Middleware log');\n  next();\n});\n\nexport default middleware;\n\n// File: pages/api/hello.js\nimport middleware from './middleware';\n\nconst handler = (req, res) => {\n  res.status(200).json({ message: 'Hello from API route with middleware!' });\n};\n\nexport default middleware(handler);"
+  },
+  {
+    "title": "Custom Middleware",
+    "description": "How to add custom middleware in Next.js 14.",
+    "code": "// Custom Middleware example\n// File: middleware.ts\nimport { NextResponse } from 'next/server';\n\nexport function middleware(req) {\n  const url = req.nextUrl.clone();\n  url.pathname = '/new-path';\n  return NextResponse.rewrite(url);\n}\n\n// File: next.config.js\nmodule.exports = {\n  async redirects() {\n    return [\n      {\n        source: '/old-path',\n        destination: '/new-path',\n        permanent: true,\n      },\n    ];\n  },\n};"
+  },
+  {
+    "title": "Custom Babel Configuration",
+    "description": "How to add a custom Babel configuration in Next.js 14.",
+    "code": "// Custom Babel Configuration example\n// File: .babelrc\n{\n  \"presets\": [\"next/babel\"],\n  \"plugins\": [\n    [\"styled-components\", { \"ssr\": true }]\n  ]\n}"
+  },
+  {
+    "title": "Using Tailwind CSS",
+    "description": "How to add Tailwind CSS to a Next.js 14 project.",
+    "code": "// Using Tailwind CSS example\n// Install Tailwind CSS: npm install tailwindcss@latest postcss@latest autoprefixer@latest\n// Initialize Tailwind CSS: npx tailwindcss init -p\n\n// File: tailwind.config.js\nmodule.exports = {\n  content: [\n    './pages/**/*.{js,ts,jsx,tsx}',\n    './components/**/*.{js,ts,jsx,tsx}',\n  ],\n  theme: {\n    extend: {},\n  },\n  plugins: [],\n};\n\n// File: styles/globals.css\n@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n// File: pages/_app.js\nimport '../styles/globals.css';\nimport React from 'react';\n\nconst MyApp = ({ Component, pageProps }) => {\n  return <Component {...pageProps} />;\n};\n\nexport default MyApp;"
+  },
+  {
+    "title": "Configuring ESLint",
+    "description": "How to configure ESLint in a Next.js 14 project.",
+    "code": "// Configuring ESLint example\n// Install ESLint: npm install eslint\n// Initialize ESLint: npx eslint --init\n\n// File: .eslintrc.js\nmodule.exports = {\n  env: {\n    browser: true,\n    es2021: true,\n  },\n  extends: [\n    'eslint:recommended',\n    'plugin:react/recommended',\n    'plugin:@typescript-eslint/recommended',\n  ],\n  parser: '@typescript-eslint/parser',\n  parserOptions: {\n    ecmaFeatures: {\n      jsx: true,\n    },\n    ecmaVersion: 12,\n    sourceType: 'module',\n  },\n  plugins: ['react', '@typescript-eslint'],\n  rules: {},\n};"
+  },
+  {
+    "title": "TypeScript Support",
+    "description": "How to add TypeScript support in a Next.js 14 project.",
+    "code": "// TypeScript Support example\n// Install TypeScript: npm install --save-dev typescript @types/react @types/node\n// Create a tsconfig.json file:\n// File: tsconfig.json\n{\n  \"compilerOptions\": {\n    \"target\": \"es5\",\n    \"lib\": [\"dom\", \"dom.iterable\", \"esnext\"],\n    \"allowJs\": true,\n    \"skipLibCheck\": true,\n    \"strict\": false,\n    \"forceConsistentCasingInFileNames\": true,\n    \"noEmit\": true,\n    \"esModuleInterop\": true,\n    \"moduleResolution\": \"node\",\n    \"resolveJsonModule\": true,\n    \"isolatedModules\": true,\n    \"jsx\": \"preserve\"\n  },\n  \"include\": [\"next-env.d.ts\", \"**/*.ts\", \"**/*.tsx\"],\n  \"exclude\": [\"node_modules\"]\n}\n\n// File: next-env.d.ts\n/// <reference types=\"next\" />\n/// <reference types=\"next/types/global\" />\n/// <reference types=\"next/image-types/global\" />\n\n// File: pages/index.tsx\nimport React from 'react';\n\nconst HomePage: React.FC = () => {\n  return (\n    <div>\n      <h1>Next.js with TypeScript</h1>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Pre-rendering with getStaticProps",
+    "description": "How to pre-render pages with getStaticProps in Next.js 14.",
+    "code": "// Pre-rendering with getStaticProps example\n// File: pages/index.js\nimport React from 'react';\n\nexport async function getStaticProps() {\n  const res = await fetch('https://jsonplaceholder.typicode.com/posts');\n  const posts = await res.json();\n  return { props: { posts } };\n}\n\nconst HomePage = ({ posts }) => {\n  return (\n    <div>\n      <h1>Pre-rendering with getStaticProps</h1>\n      <ul>\n        {posts.map((post) => (\n          <li key={post.id}>{post.title}</li>\n        ))}\n      </ul>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Pre-rendering with getServerSideProps",
+    "description": "How to pre-render pages with getServerSideProps in Next.js 14.",
+    "code": "// Pre-rendering with getServerSideProps example\n// File: pages/index.js\nimport React from 'react';\n\nexport async function getServerSideProps() {\n  const res = await fetch('https://jsonplaceholder.typicode.com/posts');\n  const posts = await res.json();\n  return { props: { posts } };\n}\n\nconst HomePage = ({ posts }) => {\n  return (\n    <div>\n      <h1>Pre-rendering with getServerSideProps</h1>\n      <ul>\n        {posts.map((post) => (\n          <li key={post.id}>{post.title}</li>\n        ))}\n      </ul>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Custom App Layout",
+    "description": "How to create a custom app layout in Next.js 14.",
+    "code": "// Custom App Layout example\n// File: pages/_app.js\nimport React from 'react';\nimport Layout from '../components/Layout';\n\nconst MyApp = ({ Component, pageProps }) => {\n  return (\n    <Layout>\n      <Component {...pageProps} />\n    </Layout>\n  );\n};\n\nexport default MyApp;\n\n// File: components/Layout.js\nimport React from 'react';\n\nconst Layout = ({ children }) => {\n  return (\n    <div>\n      <header>\n        <h1>My App</h1>\n      </header>\n      <main>{children}</main>\n      <footer>\n        <p>Footer content here</p>\n      </footer>\n    </div>\n  );\n};\n\nexport default Layout;"
+  },
+  {
+    "title": "Image Component",
+    "description": "Using the Next.js Image component for optimized image loading.",
+    "code": "// Image Component example\n// File: pages/index.js\nimport Image from 'next/image';\n\nconst HomePage = () => {\n  return (\n    <div>\n      <h1>Image Component Example</h1>\n      <Image\n        src=\"/image.jpg\"\n        alt=\"Example Image\"\n        width={500}\n        height={300}\n      />\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Static Generation with getStaticProps",
+    "description": "Fetching data at build time using getStaticProps in Next.js 14.",
+    "code": "// Static Generation with getStaticProps example\n// File: pages/index.js\nimport React from 'react';\n\nexport async function getStaticProps() {\n  const res = await fetch('https://api.example.com/data');\n  const data = await res.json();\n  return {\n    props: { data },\n  };\n}\n\nconst HomePage = ({ data }) => {\n  return (\n    <div>\n      <h1>Static Generation with getStaticProps</h1>\n      <ul>\n        {data.map((item) => (\n          <li key={item.id}>{item.name}</li>\n        ))}\n      </ul>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Server-side Rendering with getServerSideProps",
+    "description": "Fetching data at request time using getServerSideProps in Next.js 14.",
+    "code": "// Server-side Rendering with getServerSideProps example\n// File: pages/index.js\nimport React from 'react';\n\nexport async function getServerSideProps() {\n  const res = await fetch('https://api.example.com/data');\n  const data = await res.json();\n  return {\n    props: { data },\n  };\n}\n\nconst HomePage = ({ data }) => {\n  return (\n    <div>\n      <h1>Server-side Rendering with getServerSideProps</h1>\n      <ul>\n        {data.map((item) => (\n          <li key={item.id}>{item.name}</li>\n        ))}\n      </ul>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Client-side Data Fetching with useEffect and useState",
+    "description": "Fetching data dynamically on the client side using useEffect and useState in Next.js 14.",
+    "code": "// Client-side Data Fetching with useEffect and useState example\n// File: pages/index.js\nimport React, { useState, useEffect } from 'react';\n\nconst HomePage = () => {\n  const [data, setData] = useState([]);\n\n  useEffect(() => {\n    const fetchData = async () => {\n      const res = await fetch('https://api.example.com/data');\n      const newData = await res.json();\n      setData(newData);\n    };\n    fetchData();\n  }, []);\n\n  return (\n    <div>\n      <h1>Client-side Data Fetching with useEffect and useState</h1>\n      <ul>\n        {data.map((item) => (\n          <li key={item.id}>{item.name}</li>\n        ))}\n      </ul>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Incremental Static Regeneration with revalidate",
+    "description": "Using incremental static regeneration to update data in Next.js 14.",
+    "code": "// Incremental Static Regeneration with revalidate example\n// File: pages/index.js\nimport React from 'react';\n\nexport async function getStaticProps() {\n  const res = await fetch('https://api.example.com/data');\n  const data = await res.json();\n  return {\n    props: { data },\n    revalidate: 60, // Re-generate every 60 seconds\n  };\n}\n\nconst HomePage = ({ data }) => {\n  return (\n    <div>\n      <h1>Incremental Static Regeneration with revalidate</h1>\n      <ul>\n        {data.map((item) => (\n          <li key={item.id}>{item.name}</li>\n        ))}\n      </ul>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Data Fetching with SWR (React Hooks for Remote Data)",
+    "description": "Using SWR for data fetching and caching in Next.js 14.",
+    "code": "// Data Fetching with SWR (React Hooks for Remote Data) example\n// File: pages/index.js\nimport React from 'react';\nimport useSWR from 'swr';\n\nconst fetcher = (url) => fetch(url).then((res) => res.json());\n\nconst HomePage = () => {\n  const { data, error } = useSWR('https://api.example.com/data', fetcher);\n\n  if (error) return <div>Error fetching data</div>;\n  if (!data) return <div>Loading...</div>;\n\n  return (\n    <div>\n      <h1>Data Fetching with SWR (React Hooks for Remote Data)</h1>\n      <ul>\n        {data.map((item) => (\n          <li key={item.id}>{item.name}</li>\n        ))}\n      </ul>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Data Fetching with GraphQL using Apollo Client",
+    "description": "Fetching data with GraphQL using Apollo Client in Next.js 14.",
+    "code": "// Data Fetching with GraphQL using Apollo Client example\n// File: pages/index.js\nimport React from 'react';\nimport { useQuery, gql } from '@apollo/client';\n\nconst GET_DATA = gql`\n  query {\n    items {\n      id\n      name\n    }\n  }\n`;\n\nconst HomePage = () => {\n  const { loading, error, data } = useQuery(GET_DATA);\n\n  if (loading) return <div>Loading...</div>;\n  if (error) return <div>Error fetching data</div>;\n\n  return (\n    <div>\n      <h1>Data Fetching with GraphQL using Apollo Client</h1>\n      <ul>\n        {data.items.map((item) => (\n          <li key={item.id}>{item.name}</li>\n        ))}\n      </ul>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Data Fetching with Redux Toolkit",
+    "description": "Fetching data using Redux Toolkit in Next.js 14.",
+    "code": "// Data Fetching with Redux Toolkit example\n// File: pages/index.js\nimport React, { useEffect } from 'react';\nimport { useDispatch, useSelector } from 'react-redux';\nimport { fetchItems, selectItems } from '../redux/itemsSlice';\n\nconst HomePage = () => {\n  const dispatch = useDispatch();\n  const items = useSelector(selectItems);\n\n  useEffect(() => {\n    dispatch(fetchItems());\n  }, [dispatch]);\n\n  return (\n    <div>\n      <h1>Data Fetching with Redux Toolkit</h1>\n      <ul>\n        {items.map((item) => (\n          <li key={item.id}>{item.name}</li>\n        ))}\n      </ul>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Data Fetching with Axios",
+    "description": "Fetching data using Axios in Next.js 14.",
+    "code": "// Data Fetching with Axios example\n// File: pages/index.js\nimport React, { useState, useEffect } from 'react';\nimport axios from 'axios';\n\nconst HomePage = () => {\n  const [data, setData] = useState([]);\n\n  useEffect(() => {\n    const fetchData = async () => {\n      const response = await axios.get('https://api.example.com/data');\n      setData(response.data);\n    };\n    fetchData();\n  }, []);\n\n  return (\n    <div>\n      <h1>Data Fetching with Axios</h1>\n      <ul>\n        {data.map((item) => (\n          <li key={item.id}>{item.name}</li>\n        ))}\n      </ul>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Data Fetching with Fetch API (Native JavaScript)",
+    "description": "Fetching data using the Fetch API in Next.js 14.",
+    "code": "// Data Fetching with Fetch API (Native JavaScript) example\n// File: pages/index.js\nimport React, { useState, useEffect } from 'react';\n\nconst HomePage = () => {\n  const [data, setData] = useState([]);\n\n  useEffect(() => {\n    const fetchData = async () => {\n      const response = await fetch('https://api.example.com/data');\n      const newData = await response.json();\n      setData(newData);\n    };\n    fetchData();\n  }, []);\n\n  return (\n    <div>\n      <h1>Data Fetching with Fetch API (Native JavaScript)</h1>\n      <ul>\n        {data.map((item) => (\n          <li key={item.id}>{item.name}</li>\n        ))}\n      </ul>\n    </div>\n  );\n};\n\nexport default HomePage;"
+  },
+  {
+    "title": "Rendering Elements with For Loop in Next.js 14",
+    "description": "Using a for loop to render elements in a Next.js component.",
+    "code": "// Rendering Elements with For Loop in Next.js 14 example\nimport React from 'react';\n\nconst ForLoopExample = () => {\n  const items = ['Apple', 'Banana', 'Orange', 'Mango'];\n\n  return (\n    <div>\n      <h1>Fruits List</h1>\n      <ul>\n        {items.map((item, index) => (\n          <li key={index}>{item}</li>\n        ))}\n      </ul>\n    </div>\n  );\n};\n\nexport default ForLoopExample;"
+  },
+  {
+    "title": "Iterating Over Data with For Loop in Next.js 14",
+    "description": "Iterating over an array of objects using a for loop in a Next.js component.",
+    "code": "// Iterating Over Data with For Loop in Next.js 14 example\nimport React from 'react';\n\nconst DataIterationExample = () => {\n  const data = [\n    { id: 1, name: 'John' },\n    { id: 2, name: 'Jane' },\n    { id: 3, name: 'Doe' }\n  ];\n\n  return (\n    <div>\n      <h1>User List</h1>\n      <ul>\n        {data.map((user) => (\n          <li key={user.id}>{user.name}</li>\n        ))}\n      </ul>\n    </div>\n  );\n};\n\nexport default DataIterationExample;"
+  },
+  {
+    "title": "Using For Loop to Fetch Data in Next.js 14",
+    "description": "Fetching and rendering data using a for loop in a Next.js component.",
+    "code": "// Using For Loop to Fetch Data in Next.js 14 example\nimport React, { useState, useEffect } from 'react';\n\nconst FetchDataExample = () => {\n  const [data, setData] = useState([]);\n\n  useEffect(() => {\n    const fetchData = async () => {\n      const response = await fetch('https://api.example.com/data');\n      const newData = await response.json();\n      setData(newData);\n    };\n    fetchData();\n  }, []);\n\n  return (\n    <div>\n      <h1>Data List</h1>\n      <ul>\n        {data.map((item) => (\n          <li key={item.id}>{item.name}</li>\n        ))}\n      </ul>\n    </div>\n  );\n};\n\nexport default FetchDataExample;"
+  },
+  {
+    "title": "useState Hook in Next.js 14",
+    "description": "Example of useState hook to manage state in a functional component.",
+    "code": "// useState Hook in Next.js 14 example\nimport React, { useState } from 'react';\n\nconst Counter = () => {\n  const [count, setCount] = useState(0);\n\n  return (\n    <div>\n      <p>Count: {count}</p>\n      <button onClick={() => setCount(count + 1)}>Increment</button>\n      <button onClick={() => setCount(count - 1)}>Decrement</button>\n    </div>\n  );\n};\n\nexport default Counter;"
+  },
+  {
+    "title": "useEffect Hook in Next.js 14",
+    "description": "Example of useEffect hook to perform side effects in a functional component.",
+    "code": "// useEffect Hook in Next.js 14 example\nimport React, { useState, useEffect } from 'react';\n\nconst DataFetcher = () => {\n  const [data, setData] = useState(null);\n\n  useEffect(() => {\n    const fetchData = async () => {\n      const response = await fetch('https://api.example.com/data');\n      const result = await response.json();\n      setData(result);\n    };\n\n    fetchData();\n  }, []);\n\n  return (\n    <div>\n      <h2>Data:</h2>\n      <pre>{JSON.stringify(data, null, 2)}</pre>\n    </div>\n  );\n};\n\nexport default DataFetcher;"
+  },
+  {
+    "title": "useContext Hook in Next.js 14",
+    "description": "Example of useContext hook to access context values in a functional component.",
+    "code": "// useContext Hook in Next.js 14 example\nimport React, { useContext } from 'react';\nimport { ThemeContext } from './ThemeContext';\n\nconst ThemeToggler = () => {\n  const { theme, toggleTheme } = useContext(ThemeContext);\n\n  return (\n    <button onClick={toggleTheme}>\n      Toggle Theme ({theme})\n    </button>\n  );\n};\n\nexport default ThemeToggler;"
+  },
+  {
+    "title": "useReducer Hook in Next.js 14",
+    "description": "Example of useReducer hook to manage state with complex logic in a functional component.",
+    "code": "// useReducer Hook in Next.js 14 example\nimport React, { useReducer } from 'react';\n\nconst initialState = { count: 0 };\n\nconst reducer = (state, action) => {\n  switch (action.type) {\n    case 'increment':\n      return { count: state.count + 1 };\n    case 'decrement':\n      return { count: state.count - 1 };\n    default:\n      throw new Error();\n  }\n};\n\nconst Counter = () => {\n  const [state, dispatch] = useReducer(reducer, initialState);\n\n  return (\n    <div>\n      <p>Count: {state.count}</p>\n      <button onClick={() => dispatch({ type: 'increment' })}>Increment</button>\n      <button onClick={() => dispatch({ type: 'decrement' })}>Decrement</button>\n    </div>\n  );\n};\n\nexport default Counter;"
+  },
+  {
+    "title": "useCallback Hook in Next.js 14",
+    "description": "Example of useCallback hook to memoize functions in a functional component.",
+    "code": "// useCallback Hook in Next.js 14 example\nimport React, { useState, useCallback } from 'react';\n\nconst MemoizedComponent = () => {\n  const [count, setCount] = useState(0);\n\n  const memoizedFunction = useCallback(() => {\n    // Some expensive computation based on count\n    return count * 2;\n  }, [count]);\n\n  return (\n    <div>\n      <p>Count: {count}</p>\n      <p>Memoized Result: {memoizedFunction()}</p>\n      <button onClick={() => setCount(count + 1)}>Increment</button>\n    </div>\n  );\n};\n\nexport default MemoizedComponent;"
+  },
+  {
+    "title": "useMemo Hook in Next.js 14",
+    "description": "Example of useMemo hook to memoize values in a functional component.",
+    "code": "// useMemo Hook in Next.js 14 example\nimport React, { useState, useMemo } from 'react';\n\nconst MemoizedValue = () => {\n  const [count, setCount] = useState(0);\n\n  const memoizedValue = useMemo(() => {\n    // Some expensive computation based on count\n    return count * 2;\n  }, [count]);\n\n  return (\n    <div>\n      <p>Count: {count}</p>\n      <p>Memoized Value: {memoizedValue}</p>\n      <button onClick={() => setCount(count + 1)}>Increment</button>\n    </div>\n  );\n};\n\nexport default MemoizedValue;"
+  },
+  {
+    "title": "Using Context API in Next.js 14",
+    "description": "Example of creating and using context with useContext and Context.Provider.",
+    "code": "// ThemeContext.js\nimport React, { createContext, useState } from 'react';\n\nexport const ThemeContext = createContext();\n\nexport const ThemeProvider = ({ children }) => {\n  const [theme, setTheme] = useState('light');\n\n  const toggleTheme = () => {\n    setTheme(theme === 'light' ? 'dark' : 'light');\n  };\n\n  return (\n    <ThemeContext.Provider value={{ theme, toggleTheme }}>\n      {children}\n    </ThemeContext.Provider>\n  );\n};\n\n// App.js\nimport React from 'react';\nimport { ThemeProvider } from './ThemeContext';\nimport ThemeToggler from './ThemeToggler';\n\nconst App = () => {\n  return (\n    <ThemeProvider>\n      <div className={theme === 'dark' ? 'dark' : ''}>\n        <h1>Next.js App with Context API</h1>\n        <ThemeToggler />\n      </div>\n    </ThemeProvider>\n  );\n};\n\nexport default App;\n\n// ThemeToggler.js\nimport React, { useContext } from 'react';\nimport { ThemeContext } from './ThemeContext';\n\nconst ThemeToggler = () => {\n  const { theme, toggleTheme } = useContext(ThemeContext);\n\n  return (\n    <button onClick={toggleTheme}>\n      Toggle Theme ({theme})\n    </button>\n  );\n};\n\nexport default ThemeToggler;"
+  },
+  {
+    "title": "Handling Forms with useState in Next.js 14",
+    "description": "Example of handling form input and state using useState.",
+    "code": "// FormExample.js\nimport React, { useState } from 'react';\n\nconst FormExample = () => {\n  const [formData, setFormData] = useState({\n    username: '',\n    password: ''\n  });\n\n  const handleChange = (event) => {\n    const { name, value } = event.target;\n    setFormData({\n      ...formData,\n      [name]: value\n    });\n  };\n\n  const handleSubmit = (event) => {\n    event.preventDefault();\n    // Handle form submission with formData\n    console.log('Form submitted:', formData);\n  };\n\n  return (\n    <form onSubmit={handleSubmit}>\n      <input type=\"text\" name=\"username\" value={formData.username} onChange={handleChange} />\n      <input type=\"password\" name=\"password\" value={formData.password} onChange={handleChange} />\n      <button type=\"submit\">Submit</button>\n    </form>\n  );\n};\n\nexport default FormExample;\n"
+  },
+  {
+    "title": "Custom Hook Example in Next.js 14",
+    "description": "Example of creating a custom hook to encapsulate and reuse stateful logic.",
+    "code": "// useLocalStorage.js\nimport { useState } from 'react';\n\nconst useLocalStorage = (key, initialValue) => {\n  const [storedValue, setStoredValue] = useState(() => {\n    try {\n      const item = window.localStorage.getItem(key);\n      return item ? JSON.parse(item) : initialValue;\n    } catch (error) {\n      console.error('Error retrieving from localStorage:', error);\n      return initialValue;\n    }\n  });\n\n  const setValue = (value) => {\n    try {\n      setStoredValue(value);\n      window.localStorage.setItem(key, JSON.stringify(value));\n    } catch (error) {\n      console.error('Error storing in localStorage:', error);\n    }\n  };\n\n  return [storedValue, setValue];\n};\n\nexport default useLocalStorage;\n"
+  },
+  {
+    "title": "Next.js 14 Example with Hooks and Context API",
+    "description": "Demonstrates usage of useState, useEffect, useContext, and custom hooks in a Next.js 14 application.",
+    "code": "import React, { useState, useEffect, useContext, useRef } from 'react';\nimport { BsClipboard } from 'react-icons/bs';\nimport { FiSearch } from 'react-icons/fi';\n\ninterface HtmlExample {\n  title: string;\n  description: string;\n  code: string;\n}\n\ninterface ModalProps {\n  isOpen: boolean;\n  onClose: () => void;\n  message: string;\n}\n\nconst HtmlDocumentation: React.FC = () => {\n  const [modalOpen, setModalOpen] = useState(false);\n  const [modalMessage, setModalMessage] = useState('');\n  const [searchTerm, setSearchTerm] = useState('');\n  const [filteredExamples, setFilteredExamples] = useState<HtmlExample[]>([]);\n\n  useEffect(() => {\n    const filterExamples = () => {\n      const filtered = examples.filter((example) =>\n        example.title.toLowerCase().includes(searchTerm.toLowerCase())\n      );\n      setFilteredExamples(filtered);\n    };\n\n    filterExamples();\n  }, [searchTerm]);\n\n  const copyToClipboard = (code: string) => {\n    navigator.clipboard\n      .writeText(code)\n      .then(() => {\n        setModalMessage('Code copied to clipboard!');\n        setModalOpen(true);\n      })\n      .catch((error) => console.error('Copy failed', error));\n  };\n\n  const closeModal = () => {\n    setModalOpen(false);\n    setModalMessage('');\n  };\n\n  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {\n    if (event.ctrlKey && event.key === 'k') {\n      event.preventDefault();\n      const searchInput = document.getElementById(\n        'searchInput'\n      ) as HTMLInputElement;\n      if (searchInput) {\n        searchInput.focus();\n      }\n    }\n  };\n\n  const examples: HtmlExample[] = [\n    {\n      \"title\": \"Conditional (Ternary) Operator\",\n      \"description\": \"Evaluate a condition and return one of two expressions.\",\n      \"code\": \"// Conditional (Ternary) Operator example\\nlet age = 18;\\nlet message = (age >= 18) ? 'Adult' : 'Minor';\\nconsole.log('Message:', message);\"\n    },\n    {\n      \"title\": \"Bitwise Operators\",\n      \"description\": \"Perform bitwise operations on binary representations of numbers.\",\n      \"code\": \"// Bitwise Operators example\\nlet a = 5; // Binary: 101\\nlet b = 3; // Binary: 011\\nconsole.log('Bitwise AND:', a & b); // Result: 1 (Binary: 001)\\nconsole.log('Bitwise OR:', a | b); // Result: 7 (Binary: 111)\\nconsole.log('Bitwise XOR:', a ^ b); // Result: 6 (Binary: 110)\\nconsole.log('Bitwise NOT:', ~a); // Result: -6 (Binary: 11111111111111111111111111111010)\\nconsole.log('Left Shift:', a << 1); // Result: 10 (Binary: 1010)\\nconsole.log('Right Shift:', a >> 1); // Result: 2 (Binary: 10)\"\n    }\n  ];\n\n  return (\n    <div className=\"bg-black min-h-screen\">\n      <div className=\"container mx-auto py-8 px-4\">\n        <h1 className=\"text-3xl font-bold mb-4 text-center\">\n          HTML Examples Documentation\n        </h1>\n        <div className=\"flex items-center mb-4\">\n          <div className=\"relative\">\n            <input\n              id=\"searchInput\"\n              type=\"text\"\n              placeholder=\"Search examples...\"\n              className=\"input rounded-full px-8 py-3 border-2 border-transparent focus:outline-none focus:border-blue-500 dark:text-black transition-all duration-300 shadow-md md:w-[20rem] w-full cursor-pointer\"\n              value={searchTerm}\n              onChange={(e) => setSearchTerm(e.target.value)}\n              onKeyDown={handleKeyPress}\n            />\n            <div className=\"absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none\">\n              <FiSearch className=\"text-gray-400\" />\n            </div>\n          </div>\n        </div>\n        <div className=\"prose\">\n          <p>\n            This documentation provides examples of HTML code snippets that you\n            can use in your web development projects.\n          </p>\n          {filteredExamples.map((example, index) => (\n            <div key={index} className=\"my-8\">\n              <h2 className=\"text-xl font-semibold mb-2\">{example.title}</h2>\n              <p>{example.description}</p>\n              <div className=\"flex items-center mt-4 bg-gray-700 p-4 rounded-md relative overflow-x-auto\">\n                <pre className=\"whitespace-pre-wrap\">\n                  <code className=\"language-html\">{example.code}</code>\n                </pre>\n                <button\n                  className=\"absolute top-2 right-2 text-gray-300 hover:text-white\"\n                  onClick={() => copyToClipboard(example.code)}\n                >\n                  <BsClipboard className=\"text-xl\" />\n                </button>\n              </div>\n            </div>\n          ))}\n        </div>\n        {modalOpen && (\n          <div className=\"fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50\">\n            <div className=\"bg-black rounded-lg p-8\">\n              <p className=\"text-lg\">{modalMessage}</p>\n              <button\n                className=\"mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600\"\n                onClick={closeModal}\n              >\n                Close\n              </button>\n            </div>\n          </div>\n        )}\n      </div>\n    </div>\n  );\n};\n\nexport default HtmlDocumentation;"
+  },
+  {
+    "title": "Next.js 14 Example with Hooks, Context API, and Folder Structure",
+    "description": "Enhanced example with useState, useEffect, useContext, custom hooks, and folder structure in Next.js 14.",
+    "code": "import React, { useState, useEffect, useContext, useRef } from 'react';\nimport { BsClipboard } from 'react-icons/bs';\nimport { FiSearch } from 'react-icons/fi';\n\ninterface HtmlExample {\n  title: string;\n  description: string;\n  code: string;\n}\n\ninterface ModalProps {\n  isOpen: boolean;\n  onClose: () => void;\n  message: string;\n}\n\nconst HtmlDocumentation: React.FC = () => {\n  const [modalOpen, setModalOpen] = useState(false);\n  const [modalMessage, setModalMessage] = useState('');\n  const [searchTerm, setSearchTerm] = useState('');\n  const [filteredExamples, setFilteredExamples] = useState<HtmlExample[]>([]);\n\n  useEffect(() => {\n    const filterExamples = () => {\n      const filtered = examples.filter((example) =>\n        example.title.toLowerCase().includes(searchTerm.toLowerCase())\n      );\n      setFilteredExamples(filtered);\n    };\n\n    filterExamples();\n  }, [searchTerm]);\n\n  const handleModalOpen = (message: string) => {\n    setModalMessage(message);\n    setModalOpen(true);\n  };\n\n  const handleModalClose = () => {\n    setModalOpen(false);\n  };\n\n  return (\n    <div>\n      <div>\n        <input\n          type='text'\n          placeholder='Search examples...'\n          value={searchTerm}\n          onChange={(e) => setSearchTerm(e.target.value)}\n        />\n        <FiSearch />\n      </div>\n      <ul>\n        {filteredExamples.map((example, index) => (\n          <li key={index}>\n            <h3>{example.title}</h3>\n            <p>{example.description}</p>\n            <pre>{example.code}</pre>\n            <button onClick={() => handleModalOpen(example.description)}>Show Description</button>\n          </li>\n        ))}\n      </ul>\n      {modalOpen && (\n        <div>\n          <Modal isOpen={modalOpen} onClose={handleModalClose} message={modalMessage} />\n        </div>\n      )}\n    </div>\n  );\n};\n\nconst Modal: React.FC<ModalProps> = ({ isOpen, onClose, message }) => {\n  return (\n    <div>\n      {isOpen && (\n        <div>\n          <h2>Modal</h2>\n          <p>{message}</p>\n          <button onClick={onClose}>Close Modal</button>\n        </div>\n      )}\n    </div>\n  );\n};\n"
+  },
+  {
+    "title": "Custom 404 Page Not Found",
+    "description": "This page could not be found. Please check the URL or navigate back to the homepage.",
+    "code": "import Link from 'next/link';\n\nconst NotFoundPage = () => {\n  return (\n    <div>\n      <h1>404 - Page Not Found</h1>\n      <p>This page could not be found. Please check the URL or navigate back to the <Link href='/'>homepage</Link>.</p>\n    </div>\n  );\n};\n\nexport default NotFoundPage;"
+  }
+]

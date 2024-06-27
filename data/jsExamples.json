@@ -1,0 +1,1287 @@
+[
+  {
+    "title": "Hello World",
+    "description": "Print 'Hello, World!' to the console.",
+    "code": "console.log('Hello, World!');"
+  },
+  {
+    "title": "Variables and Constants",
+    "description": "Declare variables and constants.",
+    "code": "// Variable declaration\nlet age = 30;\n\n// Constant declaration\nconst PI = 3.14;"
+  },
+  {
+    "title": "Functions",
+    "description": "Create and call a function.",
+    "code": "// Function declaration\nfunction greet(name) {\n  return 'Hello, ' + name + '!';\n}\n\n// Function call\nlet message = greet('Alice');\nconsole.log(message);"
+  },
+  {
+    "title": "Arrays",
+    "description": "Create and manipulate arrays.",
+    "code": "// Array declaration\nlet fruits = ['Apple', 'Banana', 'Cherry'];\n\n// Accessing elements\nconsole.log(fruits[0]); // Output: 'Apple'\n\n// Adding elements\nfruits.push('Date');\n\n// Iterating over array\nfruits.forEach(function(fruit) {\n  console.log(fruit);\n});"
+  },
+  {
+    "title": "Objects",
+    "description": "Create and manipulate objects.",
+    "code": "// Object declaration\nlet person = {\n  name: 'John',\n  age: 25,\n  city: 'New York'\n};\n\n// Accessing properties\nconsole.log(person.name); // Output: 'John'\n\n// Modifying properties\nperson.age = 26;\n\n// Adding new properties\nperson.job = 'Developer';"
+  },
+  {
+    "title": "Conditional Statements",
+    "description": "Use if-else statements for conditional logic.",
+    "code": "// Conditional statement\nlet hour = 15;\nif (hour < 12) {\n  console.log('Good morning!');\n} else if (hour < 18) {\n  console.log('Good afternoon!');\n} else {\n  console.log('Good evening!');\n}"
+  },
+  {
+    "title": "Loops",
+    "description": "Use for and while loops for iteration.",
+    "code": "// For loop\nfor (let i = 0; i < 5; i++) {\n  console.log(i);\n}\n\n// While loop\nlet count = 0;\nwhile (count < 3) {\n  console.log('Count:', count);\n  count++;\n}"
+  },
+  {
+    "title": "Error Handling (try-catch)",
+    "description": "Handle errors using try-catch blocks.",
+    "code": "// Try-catch block\ntry {\n  let result = 10 / 0; // Division by zero\n  console.log('Result:', result);\n} catch (error) {\n  console.log('Error:', error.message);\n}"
+  },
+  {
+    "title": "Asynchronous Programming (Promises)",
+    "description": "Use promises for asynchronous operations.",
+    "code": "// Promise example\nfunction fetchData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve('Data fetched!');\n    }, 2000);\n  });\n}\n\nfetchData().then((data) => {\n  console.log(data);\n}).catch((error) => {\n  console.log('Error:', error);\n});"
+  },
+  {
+    "title": "DOM Manipulation",
+    "description": "Access and modify the Document Object Model (DOM).",
+    "code": "// DOM manipulation\ndocument.getElementById('myElement').textContent = 'Updated text';\n\n// Event handling\nfunction buttonClick() {\n  console.log('Button clicked!');\n}\n\ndocument.getElementById('myButton').addEventListener('click', buttonClick);"
+  },
+  {
+    "title": "Template Literals",
+    "description": "Use template literals for string interpolation.",
+    "code": "// Template literal example\nlet name = 'Alice';\nlet message = `Hello, ${name}!`;\nconsole.log(message);"
+  },
+  {
+    "title": "Arrow Functions",
+    "description": "Use arrow functions for concise function syntax.",
+    "code": "// Arrow function example\nconst add = (a, b) => a + b;\nconsole.log(add(3, 5)); // Output: 8"
+  },
+  {
+    "title": "Rest Parameters",
+    "description": "Use rest parameters to handle variable number of arguments.",
+    "code": "// Rest parameter example\nfunction sum(...numbers) {\n  return numbers.reduce((total, num) => total + num, 0);\n}\n\nconsole.log(sum(1, 2, 3, 4)); // Output: 10"
+  },
+  {
+    "title": "Spread Operator",
+    "description": "Use spread operator for array and object manipulation.",
+    "code": "// Spread operator example\nlet array1 = [1, 2, 3];\nlet array2 = [...array1, 4, 5];\nconsole.log(array2); // Output: [1, 2, 3, 4, 5]"
+  },
+  {
+    "title": "Destructuring Assignment",
+    "description": "Use destructuring assignment to extract values from arrays or objects.",
+    "code": "// Destructuring assignment example\nlet person = { name: 'John', age: 30 };\nlet { name, age } = person;\nconsole.log(name, age); // Output: John 30"
+  },
+  {
+    "title": "Map Function",
+    "description": "Use the map function to transform elements in an array.",
+    "code": "// Map function example\nlet numbers = [1, 2, 3, 4, 5];\nlet doubled = numbers.map(num => num * 2);\nconsole.log(doubled); // Output: [2, 4, 6, 8, 10]"
+  },
+  {
+    "title": "Filter Function",
+    "description": "Use the filter function to filter elements in an array based on a condition.",
+    "code": "// Filter function example\nlet numbers = [1, 2, 3, 4, 5];\nlet evenNumbers = numbers.filter(num => num % 2 === 0);\nconsole.log(evenNumbers); // Output: [2, 4]"
+  },
+  {
+    "title": "Reduce Function",
+    "description": "Use the reduce function to reduce an array to a single value (e.g., sum, average).",
+    "code": "// Reduce function example\nlet numbers = [1, 2, 3, 4, 5];\nlet sum = numbers.reduce((total, num) => total + num, 0);\nconsole.log(sum); // Output: 15"
+  },
+  {
+    "title": "Classes",
+    "description": "Use ES6 classes for object-oriented programming.",
+    "code": "// Class example\nclass Person {\n  constructor(name, age) {\n    this.name = name;\n    this.age = age;\n  }\n\n  greet() {\n    return `Hello, my name is ${this.name} and I am ${this.age} years old.`;\n  }\n}\n\nlet person = new Person('Alice', 25);\nconsole.log(person.greet());"
+  },
+  {
+    "title": "Promises (Async/Await)",
+    "description": "Use async/await syntax for asynchronous operations with promises.",
+    "code": "// Async/await example\nfunction fetchData() {\n  return new Promise(resolve => {\n    setTimeout(() => {\n      resolve('Data fetched!');\n    }, 2000);\n  });\n}\n\nasync function getData() {\n  try {\n    let data = await fetchData();\n    console.log(data);\n  } catch (error) {\n    console.error('Error:', error);\n  }\n}\n\ngetData();"
+  },
+  {
+    "title": "LocalStorage",
+    "description": "Use localStorage to store and retrieve data locally in the browser.",
+    "code": "// LocalStorage example\nlocalStorage.setItem('username', 'Alice');\nlet username = localStorage.getItem('username');\nconsole.log('Username:', username);"
+  },
+  {
+    "title": "Event Handling",
+    "description": "Handle events such as clicks and key presses.",
+    "code": "// Event handling example\nfunction handleClick() {\n  console.log('Button clicked!');\n}\n\ndocument.getElementById('myButton').addEventListener('click', handleClick);"
+  },
+  {
+    "title": "Date and Time",
+    "description": "Manipulate dates and times.",
+    "code": "// Date and time example\nlet now = new Date();\nconsole.log('Current date:', now.toLocaleDateString());\nconsole.log('Current time:', now.toLocaleTimeString());"
+  },
+  {
+    "title": "Regular Expressions",
+    "description": "Use regular expressions for pattern matching and validation.",
+    "code": "// Regular expression example\nlet pattern = /[a-zA-Z]+/;\nlet isValid = pattern.test('abc123');\nconsole.log('Valid:', isValid);"
+  },
+  {
+    "title": "Error Handling (try-catch-finally)",
+    "description": "Use try-catch-finally blocks for error handling with cleanup actions.",
+    "code": "// Try-catch-finally example\nfunction divide(a, b) {\n  try {\n    if (b === 0) {\n      throw new Error('Division by zero');\n    }\n    return a / b;\n  } catch (error) {\n    console.error('Error:', error);\n  } finally {\n    console.log('Division operation completed.');\n  }\n}\n\ndivide(10, 0);"
+  },
+  {
+    "title": "JSON Parsing",
+    "description": "Parse JSON data into JavaScript objects and stringify JavaScript objects into JSON.",
+    "code": "// JSON parsing example\nlet jsonStr = '{\"name\":\"Alice\",\"age\":30}';\nlet obj = JSON.parse(jsonStr);\nconsole.log('Parsed object:', obj);\n\nlet jsonObj = { name: 'Bob', age: 25 };\nlet jsonString = JSON.stringify(jsonObj);\nconsole.log('JSON string:', jsonString);"
+  },
+  {
+    "title": "Callbacks",
+    "description": "Use callbacks for asynchronous operations and event handling.",
+    "code": "// Callback example\nfunction fetchData(callback) {\n  setTimeout(() => {\n    callback('Data fetched!');\n  }, 2000);\n}\n\nfunction displayData(data) {\n  console.log('Data:', data);\n}\n\nfetchData(displayData);"
+  },
+  {
+    "title": "Browser Object Model (BOM)",
+    "description": "Interact with the browser window and its components.",
+    "code": "// BOM example\nconsole.log('Window width:', window.innerWidth);\nconsole.log('Window height:', window.innerHeight);\n\nfunction openNewTab(url) {\n  window.open(url, '_blank');\n}"
+  },
+  {
+    "title": "DOM Manipulation (Creating Elements)",
+    "description": "Create and manipulate HTML elements in the Document Object Model (DOM).",
+    "code": "// DOM manipulation example\nlet element = document.createElement('div');\nelement.textContent = 'Hello, World!';\ndocument.body.appendChild(element);"
+  },
+  {
+    "title": "DOM Events (Event Delegation)",
+    "description": "Use event delegation to handle events on dynamically created elements.",
+    "code": "// Event delegation example\nconst parent = document.getElementById('parentElement');\n\nparent.addEventListener('click', function(event) {\n  if (event.target.classList.contains('childElement')) {\n    console.log('Clicked on child element:', event.target.textContent);\n  }\n});"
+  },
+  {
+    "title": "Math Operations",
+    "description": "Perform basic math operations.",
+    "code": "// Math operations example\nlet a = 10;\nlet b = 5;\n\nconsole.log('Addition:', a + b);\nconsole.log('Subtraction:', a - b);\nconsole.log('Multiplication:', a * b);\nconsole.log('Division:', a / b);\nconsole.log('Modulus:', a % b);"
+  },
+  {
+    "title": "Type Conversion",
+    "description": "Convert between different data types.",
+    "code": "// Type conversion example\nlet numStr = '123';\nlet num = Number(numStr);\nconsole.log('Converted number:', num);\n\nlet boolStr = 'true';\nlet bool = Boolean(boolStr);\nconsole.log('Converted boolean:', bool);"
+  },
+  {
+    "title": "String Methods",
+    "description": "Use string methods for manipulation (e.g., substring, replace).",
+    "code": "// String methods example\nlet message = 'Hello, World!';\n\nconsole.log('Length:', message.length);\nconsole.log('Substring:', message.substring(7));\nconsole.log('Replace:', message.replace('World', 'JavaScript'));"
+  },
+  {
+    "title": "Array Methods (forEach)",
+    "description": "Use forEach to iterate through array elements.",
+    "code": "// Array forEach example\nlet numbers = [1, 2, 3, 4, 5];\n\nnumbers.forEach(function(num) {\n  console.log(num);\n});"
+  },
+  {
+    "title": "Array Methods (map)",
+    "description": "Use map to transform elements in an array.",
+    "code": "// Array map example\nlet numbers = [1, 2, 3, 4, 5];\nlet doubled = numbers.map(num => num * 2);\nconsole.log('Doubled:', doubled);"
+  },
+  {
+    "title": "Array Methods (filter)",
+    "description": "Use filter to filter elements based on a condition.",
+    "code": "// Array filter example\nlet numbers = [1, 2, 3, 4, 5];\nlet evenNumbers = numbers.filter(num => num % 2 === 0);\nconsole.log('Even numbers:', evenNumbers);"
+  },
+  {
+    "title": "Array Methods (reduce)",
+    "description": "Use reduce to accumulate a single value from an array.",
+    "code": "// Array reduce example\nlet numbers = [1, 2, 3, 4, 5];\nlet sum = numbers.reduce((total, num) => total + num, 0);\nconsole.log('Sum:', sum);"
+  },
+  {
+    "title": "Array Methods (find)",
+    "description": "Use find to retrieve the first element that satisfies a condition.",
+    "code": "// Array find example\nlet numbers = [1, 2, 3, 4, 5];\nlet found = numbers.find(num => num > 3);\nconsole.log('First number greater than 3:', found);"
+  },
+  {
+    "title": "Array Methods (some)",
+    "description": "Use some to check if at least one element satisfies a condition.",
+    "code": "// Array some example\nlet numbers = [1, 2, 3, 4, 5];\nlet hasEven = numbers.some(num => num % 2 === 0);\nconsole.log('Has even numbers:', hasEven);"
+  },
+  {
+    "title": "Array Methods (every)",
+    "description": "Use every to check if all elements satisfy a condition.",
+    "code": "// Array every example\nlet numbers = [2, 4, 6, 8, 10];\nlet allEven = numbers.every(num => num % 2 === 0);\nconsole.log('All numbers even:', allEven);"
+  },
+  {
+    "title": "Array Methods (includes)",
+    "description": "Use includes to check if an array contains a specific element.",
+    "code": "// Array includes example\nlet numbers = [1, 2, 3, 4, 5];\nlet includesThree = numbers.includes(3);\nconsole.log('Includes 3:', includesThree);"
+  },
+  {
+    "title": "Array Methods (sort)",
+    "description": "Use sort to sort array elements.",
+    "code": "// Array sort example\nlet fruits = ['Banana', 'Apple', 'Orange'];\nfruits.sort();\nconsole.log('Sorted fruits:', fruits);"
+  },
+  {
+    "title": "Date Formatting",
+    "description": "Format dates using built-in methods.",
+    "code": "// Date formatting example\nlet now = new Date();\nconsole.log('ISO String:', now.toISOString());\nconsole.log('Locale String:', now.toLocaleString());"
+  },
+  {
+    "title": "Regular Expressions (Match)",
+    "description": "Use match to find matches based on a regular expression.",
+    "code": "// Regular expression match example\nlet text = 'Hello, JavaScript!';\nlet pattern = /JavaScript/;\nlet isMatch = text.match(pattern);\nconsole.log('Match:', isMatch);"
+  },
+  {
+    "title": "Regular Expressions (Replace)",
+    "description": "Use replace to replace matches based on a regular expression.",
+    "code": "// Regular expression replace example\nlet text = 'Hello, JavaScript!';\nlet newText = text.replace(/JavaScript/, 'TypeScript');\nconsole.log('Replaced text:', newText);"
+  },
+  {
+    "title": "Async Functions",
+    "description": "Define and use asynchronous functions.",
+    "code": "// Async function example\nasync function fetchData() {\n  let response = await fetch('https://api.example.com/data');\n  let data = await response.json();\n  console.log('Fetched data:', data);\n}\n\nfetchData();"
+  },
+  {
+    "title": "Promise Chaining",
+    "description": "Chain multiple promises together.",
+    "code": "// Promise chaining example\nfunction fetchData() {\n  return fetch('https://api.example.com/data')\n    .then(response => response.json())\n    .then(data => console.log('Fetched data:', data))\n    .catch(error => console.error('Error fetching data:', error));\n}\n\nfetchData();"
+  },
+  {
+    "title": "Object Methods",
+    "description": "Define methods in objects.",
+    "code": "// Object methods example\nlet circle = {\n  radius: 5,\n  area: function() {\n    return Math.PI * this.radius * this.radius;\n  }\n};\n\nconsole.log('Circle area:', circle.area());"
+  },
+  {
+    "title": "Object Prototypes",
+    "description": "Use prototypes to add methods to objects.",
+    "code": "// Object prototypes example\nfunction Circle(radius) {\n  this.radius = radius;\n}\n\nCircle.prototype.area = function() {\n  return Math.PI * this.radius * this.radius;\n};\n\nlet circle = new Circle(5);\nconsole.log('Circle area:', circle.area());"
+  },
+  {
+    "title": "Object Destructuring",
+    "description": "Use object destructuring to extract values from objects.",
+    "code": "// Object destructuring example\nlet person = { name: 'John', age: 30 };\nlet { name, age } = person;\nconsole.log('Name:', name, 'Age:', age);"
+  },
+  {
+    "title": "Promise All",
+    "description": "Use Promise.all to handle multiple promises simultaneously.",
+    "code": "// Promise.all example\nlet promise1 = Promise.resolve('Data 1');\nlet promise2 = Promise.resolve('Data 2');\n\nPromise.all([promise1, promise2])\n  .then(values => console.log('Promise.all result:', values))\n  .catch(error => console.error('Promise.all error:', error));"
+  },
+  {
+    "title": "Set Object",
+    "description": "Use set objects to store unique values.",
+    "code": "// Set object example\nlet mySet = new Set(['apple', 'banana', 'apple', 'orange']);\nconsole.log('Set size:', mySet.size);\nconsole.log('Set values:', mySet);"
+  },
+  {
+    "title": "Map Object",
+    "description": "Use map objects for key-value pair storage and retrieval.",
+    "code": "// Map object example\nlet myMap = new Map();\n\nmyMap.set('name', 'Alice');\nmyMap.set('age', 25);\n\nconsole.log('Name:', myMap.get('name'));\nconsole.log('Age:', myMap.get('age'));"
+  },
+  {
+    "title": "Generators",
+    "description": "Define and use generator functions.",
+    "code": "// Generator function example\nfunction* generateSequence() {\n  yield 1;\n  yield 2;\n  yield 3;\n}\n\nlet generator = generateSequence();\n\nconsole.log(generator.next().value); // Output: 1\nconsole.log(generator.next().value); // Output: 2\nconsole.log(generator.next().value); // Output: 3"
+  },
+  {
+    "title": "Symbol Data Type",
+    "description": "Use symbols as unique identifiers.",
+    "code": "// Symbol data type example\nlet id1 = Symbol('id');\nlet id2 = Symbol('id');\n\nconsole.log(id1 === id2); // Output: false"
+  },
+  {
+    "title": "Modules (Export/Import)",
+    "description": "Use modules for code organization and sharing.",
+    "code": "// Module export/import example (module1.js)\nexport function greet(name) {\n  return `Hello, ${name}!`;\n}\n\n// (main.js)\nimport { greet } from './module1.js';\n\nconsole.log(greet('Alice')); // Output: Hello, Alice!"
+  },
+  {
+    "title": "Async Iterators",
+    "description": "Use async iterators to asynchronously iterate over data streams.",
+    "code": "// Async iterator example\nconst fetchUserDetails = async function* (userIds) {\n  for (const id of userIds) {\n    let response = await fetch(`https://api.example.com/users/${id}`);\n    let userDetails = await response.json();\n    yield userDetails;\n  }\n};\n\n(async () => {\n  for await (const user of fetchUserDetails([1, 2, 3])) {\n    console.log('User:', user);\n  }\n})();"
+  },
+  {
+    "title": "BigInt Data Type",
+    "description": "Use BigInt for handling large integers.",
+    "code": "// BigInt data type example\nconst bigNumber = 1234567890123456789012345678901234567890n;\nconsole.log('Big number:', bigNumber);"
+  },
+  {
+    "title": "Optional Chaining",
+    "description": "Use optional chaining to safely access nested object properties.",
+    "code": "// Optional chaining example\nlet user = {\n  name: 'Alice',\n  address: {\n    city: 'New York'\n  }\n};\n\nconsole.log(user.address?.city); // Output: New York"
+  },
+  {
+    "title": "Nullish Coalescing Operator",
+    "description": "Use nullish coalescing operator (??) to provide a default value when encountering null or undefined.",
+    "code": "// Nullish coalescing operator example\nlet username = null;\nlet defaultUsername = username ?? 'Guest';\nconsole.log('Username:', defaultUsername);"
+  },
+  {
+    "title": "Default Parameters",
+    "description": "Use default parameters in function definitions.",
+    "code": "// Default parameters example\nfunction greet(name = 'Guest') {\n  return `Hello, ${name}!`;\n}\nconsole.log(greet()); // Output: Hello, Guest!"
+  },
+  {
+    "title": "Spread Syntax",
+    "description": "Use spread syntax to expand elements.",
+    "code": "// Spread syntax example\nlet array1 = [1, 2, 3];\nlet array2 = [4, 5, 6];\nlet combinedArray = [...array1, ...array2];\nconsole.log('Combined array:', combinedArray);"
+  },
+  {
+    "title": "Object Spread",
+    "description": "Use object spread to merge object properties.",
+    "code": "// Object spread example\nlet person1 = { name: 'Alice', age: 30 };\nlet person2 = { ...person1, city: 'New York' };\nconsole.log('Merged object:', person2);"
+  },
+  {
+    "title": "Destructuring Arrays",
+    "description": "Use array destructuring to extract values from arrays.",
+    "code": "// Array destructuring example\nlet numbers = [1, 2, 3];\nlet [first, second, third] = numbers;\nconsole.log('First:', first, 'Second:', second, 'Third:', third);"
+  },
+  {
+    "title": "Async/Await with Fetch API",
+    "description": "Use async/await with Fetch API to make asynchronous HTTP requests.",
+    "code": "// Async/await with Fetch API example\nasync function fetchData() {\n  try {\n    let response = await fetch('https://jsonplaceholder.typicode.com/posts/1');\n    let data = await response.json();\n    console.log('Fetched data:', data);\n  } catch (error) {\n    console.error('Error fetching data:', error);\n  }\n}\n\nfetchData();"
+  },
+  {
+    "title": "Array Iteration (for...of)",
+    "description": "Use for...of loop to iterate over elements of an array.",
+    "code": "// Array iteration (for...of) example\nlet colors = ['red', 'green', 'blue'];\nfor (let color of colors) {\n  console.log('Color:', color);\n}"
+  },
+  {
+    "title": "Object Iteration (for...in)",
+    "description": "Use for...in loop to iterate over object properties.",
+    "code": "// Object iteration (for...in) example\nlet person = { name: 'Bob', age: 25 };\nfor (let key in person) {\n  console.log(key + ':', person[key]);\n}"
+  },
+  {
+    "title": "Truthy and Falsy Values",
+    "description": "Understand truthy and falsy values in JavaScript.",
+    "code": "// Truthy and falsy values example\nconsole.log(Boolean('Hello')); // Output: true\nconsole.log(Boolean('')); // Output: false\nconsole.log(Boolean(0)); // Output: false\nconsole.log(Boolean(1)); // Output: true"
+  },
+  {
+    "title": "Error Handling (try...catch)",
+    "description": "Use try...catch block for error handling.",
+    "code": "// Error handling (try...catch) example\ntry {\n  let result = 10 / 0;\n  console.log('Result:', result);\n} catch (error) {\n  console.error('Error:', error);\n}"
+  },
+  {
+    "title": "SessionStorage",
+    "description": "Use SessionStorage to store session-specific data in the browser.",
+    "code": "// SessionStorage example\nsessionStorage.setItem('theme', 'dark');\nconsole.log('Stored theme:', sessionStorage.getItem('theme'));"
+  },
+  {
+    "title": "JSON Stringify",
+    "description": "Convert JavaScript objects to JSON strings using JSON.stringify.",
+    "code": "// JSON stringify example\nlet person = { name: 'Alice', age: 30 };\nlet jsonString = JSON.stringify(person);\nconsole.log('JSON string:', jsonString);"
+  },
+  {
+    "title": "Array.find vs Array.filter",
+    "description": "Understand the difference between Array.find and Array.filter.",
+    "code": "// Array.find vs Array.filter example\nlet numbers = [1, 2, 3, 4, 5];\nlet foundNumber = numbers.find(num => num > 3);\nconsole.log('Found number:', foundNumber);\n\nlet filteredNumbers = numbers.filter(num => num > 3);\nconsole.log('Filtered numbers:', filteredNumbers);"
+  },
+  {
+    "title": "Promise.resolve vs new Promise",
+    "description": "Understand the difference between Promise.resolve and creating a new Promise.",
+    "code": "// Promise.resolve vs new Promise example\nlet promise1 = Promise.resolve('Resolved data');\nlet promise2 = new Promise((resolve, reject) => {\n  setTimeout(() => resolve('Resolved data after timeout'), 1000);\n});\n\npromise1.then(data => console.log('Promise 1:', data));\npromise2.then(data => console.log('Promise 2:', data));"
+  },
+  {
+    "title": "Array.every vs Array.some",
+    "description": "Understand the difference between Array.every and Array.some.",
+    "code": "// Array.every vs Array.some example\nlet numbers = [2, 4, 6, 8, 10];\nlet allEven = numbers.every(num => num % 2 === 0);\nconsole.log('All numbers even:', allEven);\n\nlet hasEven = numbers.some(num => num % 2 === 0);\nconsole.log('Has even numbers:', hasEven);"
+  },
+  {
+    "title": "Promise.finally",
+    "description": "Use Promise.finally to execute code after a promise settles.",
+    "code": "// Promise.finally example\nlet promise = new Promise((resolve, reject) => {\n  setTimeout(() => resolve('Resolved'), 1000);\n});\n\npromise\n  .then(result => console.log('Result:', result))\n  .catch(error => console.error('Error:', error))\n  .finally(() => console.log('Finally block executed.'));"
+  },
+  {
+    "title": "Array.flat",
+    "description": "Use Array.flat to flatten nested arrays.",
+    "code": "// Array.flat example\nlet nestedArray = [1, [2, 3], [4, [5, 6]]];\nlet flatArray = nestedArray.flat(2);\nconsole.log('Flattened array:', flatArray);"
+  },
+  {
+    "title": "Object.entries",
+    "description": "Use Object.entries to iterate over object entries.",
+    "code": "// Object.entries example\nlet user = { name: 'Alice', age: 30 };\nfor (let [key, value] of Object.entries(user)) {\n  console.log(key + ':', value);\n}"
+  },
+  {
+    "title": "Array.findIndex",
+    "description": "Use Array.findIndex to find the index of an element in an array.",
+    "code": "// Array.findIndex example\nlet numbers = [1, 2, 3, 4, 5];\nlet index = numbers.findIndex(num => num === 3);\nconsole.log('Index of 3:', index);"
+  },
+  {
+    "title": "Object.keys",
+    "description": "Use Object.keys to get an array of object keys.",
+    "code": "// Object.keys example\nlet user = { name: 'Alice', age: 30 };\nlet keys = Object.keys(user);\nconsole.log('Object keys:', keys);"
+  },
+  {
+    "title": "Array.slice",
+    "description": "Use Array.slice to extract a portion of an array.",
+    "code": "// Array.slice example\nlet numbers = [1, 2, 3, 4, 5];\nlet slicedArray = numbers.slice(2);\nconsole.log('Sliced array:', slicedArray);"
+  },
+  {
+    "title": "Math Methods",
+    "description": "Use Math methods for mathematical operations.",
+    "code": "// Math methods example\nconsole.log('Random number:', Math.random());\nconsole.log('Square root of 16:', Math.sqrt(16));\nconsole.log('Ceiling of 3.14:', Math.ceil(3.14));"
+  },
+  {
+    "title": "Array Methods (forEach vs map)",
+    "description": "Understand the difference between Array.forEach and Array.map.",
+    "code": "// Array.forEach vs Array.map example\nlet numbers = [1, 2, 3];\nnumbers.forEach(num => console.log('forEach:', num));\nlet doubledNumbers = numbers.map(num => num * 2);\nconsole.log('map:', doubledNumbers);"
+  },
+  {
+    "title": "Array Methods (reduceRight)",
+    "description": "Use Array.reduceRight for reducing arrays from right to left.",
+    "code": "// Array.reduceRight example\nlet numbers = [1, 2, 3, 4, 5];\nlet concatenatedString = numbers.reduceRight((acc, num) => acc + num.toString(), '');\nconsole.log('Concatenated string:', concatenatedString);"
+  },
+  {
+    "title": "Array Methods (findIndex)",
+    "description": "Use Array.findIndex to find the index of an element based on a condition.",
+    "code": "// Array.findIndex example\nlet numbers = [10, 20, 30, 40, 50];\nlet index = numbers.findIndex(num => num > 25);\nconsole.log('Index of number > 25:', index);"
+  },
+  {
+    "title": "Date Object",
+    "description": "Use Date object for date and time manipulation.",
+    "code": "// Date object example\nlet currentDate = new Date();\nconsole.log('Current date:', currentDate);\nconsole.log('Current time:', currentDate.toLocaleTimeString());"
+  },
+  {
+    "title": "Regular Expressions (test)",
+    "description": "Use RegExp.test to test if a string matches a regular expression pattern.",
+    "code": "// Regular Expressions (test) example\nlet pattern = /hello/i;\nlet text = 'Hello, World!';\nlet isMatch = pattern.test(text);\nconsole.log('Is there a match?', isMatch);"
+  },
+  {
+    "title": "Object Methods (Object.keys)",
+    "description": "Use Object.keys to get an array of object keys.",
+    "code": "// Object.keys example\nlet user = { name: 'Alice', age: 30 };\nlet keys = Object.keys(user);\nconsole.log('Object keys:', keys);"
+  },
+  {
+    "title": "Object Methods (Object.values)",
+    "description": "Use Object.values to get an array of object values.",
+    "code": "// Object.values example\nlet user = { name: 'Alice', age: 30 };\nlet values = Object.values(user);\nconsole.log('Object values:', values);"
+  },
+  {
+    "title": "Object Methods (Object.entries)",
+    "description": "Use Object.entries to get an array of object entries.",
+    "code": "// Object.entries example\nlet user = { name: 'Alice', age: 30 };\nlet entries = Object.entries(user);\nconsole.log('Object entries:', entries);"
+  },
+  {
+    "title": "Math Constants (PI)",
+    "description": "Use Math.PI for the value of Pi.",
+    "code": "// Math.PI example\nconsole.log('Value of Pi:', Math.PI);"
+  },
+  {
+    "title": "Math Methods (round)",
+    "description": "Use Math.round to round a number to the nearest integer.",
+    "code": "// Math.round example\nlet number = 3.7;\nconsole.log('Rounded number:', Math.round(number));"
+  },
+  {
+    "title": "Math Methods (ceil)",
+    "description": "Use Math.ceil to round a number up to the nearest integer.",
+    "code": "// Math.ceil example\nlet number = 3.2;\nconsole.log('Ceiling of number:', Math.ceil(number));"
+  },
+  {
+    "title": "Math Methods (floor)",
+    "description": "Use Math.floor to round a number down to the nearest integer.",
+    "code": "// Math.floor example\nlet number = 3.8;\nconsole.log('Floor of number:', Math.floor(number));"
+  },
+  {
+    "title": "Math Methods (abs)",
+    "description": "Use Math.abs to get the absolute value of a number.",
+    "code": "// Math.abs example\nlet number = -10;\nconsole.log('Absolute value:', Math.abs(number));"
+  },
+  {
+    "title": "Math Methods (min)",
+    "description": "Use Math.min to get the smallest of zero or more numbers.",
+    "code": "// Math.min example\nlet minNumber = Math.min(10, 5, 8);\nconsole.log('Minimum number:', minNumber);"
+  },
+  {
+    "title": "Math Methods (max)",
+    "description": "Use Math.max to get the largest of zero or more numbers.",
+    "code": "// Math.max example\nlet maxNumber = Math.max(10, 5, 8);\nconsole.log('Maximum number:', maxNumber);"
+  },
+  {
+    "title": "String Methods (startsWith)",
+    "description": "Use startsWith to check if a string starts with a specified substring.",
+    "code": "// String startsWith example\nlet message = 'Hello, World!';\nconsole.log('Starts with Hello:', message.startsWith('Hello'));"
+  },
+  {
+    "title": "String Methods (endsWith)",
+    "description": "Use endsWith to check if a string ends with a specified substring.",
+    "code": "// String endsWith example\nlet message = 'Hello, World!';\nconsole.log('Ends with World:', message.endsWith('World!'));"
+  },
+  {
+    "title": "String Methods (includes)",
+    "description": "Use includes to check if a string contains a specified substring.",
+    "code": "// String includes example\nlet message = 'Hello, World!';\nconsole.log('Includes World:', message.includes('World'));"
+  },
+  {
+    "title": "String Methods (indexOf)",
+    "description": "Use indexOf to find the first occurrence of a substring in a string.",
+    "code": "// String indexOf example\nlet message = 'Hello, World!';\nconsole.log('Index of World:', message.indexOf('World'));"
+  },
+  {
+    "title": "String Methods (replace)",
+    "description": "Use replace to replace occurrences of a substring with another substring.",
+    "code": "// String replace example\nlet message = 'Hello, World!';\nlet newMessage = message.replace('World', 'Universe');\nconsole.log('Replaced message:', newMessage);"
+  },
+  {
+    "title": "String Methods (toUpperCase)",
+    "description": "Use toUpperCase to convert a string to uppercase letters.",
+    "code": "// String toUpperCase example\nlet message = 'Hello, World!';\nconsole.log('Uppercase message:', message.toUpperCase());"
+  },
+  {
+    "title": "String Methods (toLowerCase)",
+    "description": "Use toLowerCase to convert a string to lowercase letters.",
+    "code": "// String toLowerCase example\nlet message = 'Hello, World!';\nconsole.log('Lowercase message:', message.toLowerCase());"
+  },
+  {
+    "title": "String Methods (trim)",
+    "description": "Use trim to remove whitespace from both ends of a string.",
+    "code": "// String trim example\nlet message = '   Hello, World!   ';\nconsole.log('Trimmed message:', message.trim());"
+  },
+  {
+    "title": "String Methods (charAt)",
+    "description": "Use charAt to get the character at a specified index in a string.",
+    "code": "// String charAt example\nlet message = 'Hello, World!';\nconsole.log('Character at index 7:', message.charAt(7));"
+  },
+  {
+    "title": "String Methods (charCodeAt)",
+    "description": "Use charCodeAt to get the Unicode value of the character at a specified index in a string.",
+    "code": "// String charCodeAt example\nlet message = 'Hello, World!';\nconsole.log('Unicode value of character at index 7:', message.charCodeAt(7));"
+  },
+  {
+    "title": "String Methods (split)",
+    "description": "Use split to split a string into an array of substrings based on a separator.",
+    "code": "// String split example\nlet message = 'Hello, World!';\nlet words = message.split(' ');\nconsole.log('Split words:', words);"
+  },
+  {
+    "title": "String Methods (concat)",
+    "description": "Use concat to concatenate two or more strings.",
+    "code": "// String concat example\nlet str1 = 'Hello';\nlet str2 = 'World';\nconsole.log('Concatenated string:', str1.concat(', ', str2, '!'));"
+  },
+  {
+    "title": "String Methods (slice)",
+    "description": "Use slice to extract a portion of a string.",
+    "code": "// String slice example\nlet message = 'Hello, World!';\nlet slicedMessage = message.slice(7, 12);\nconsole.log('Sliced message:', slicedMessage);"
+  },
+  {
+    "title": "String Methods (substring)",
+    "description": "Use substring to extract a portion of a string.",
+    "code": "// String substring example\nlet message = 'Hello, World!';\nlet substring = message.substring(7, 12);\nconsole.log('Substring:', substring);"
+  },
+  {
+    "title": "String Methods (startsWith with index)",
+    "description": "Use startsWith with index to check if a string starts with a specified substring at a specific index.",
+    "code": "// String startsWith with index example\nlet message = 'Hello, World!';\nconsole.log('Starts with World at index 7:', message.startsWith('World', 7));"
+  },
+  {
+    "title": "String Methods (repeat)",
+    "description": "Use repeat to repeat a string a specified number of times.",
+    "code": "// String repeat example\nlet message = 'Hello';\nconsole.log('Repeated message:', message.repeat(3));"
+  },
+  {
+    "title": "String Methods (replaceAll)",
+    "description": "Use replaceAll to replace all occurrences of a substring with another substring.",
+    "code": "// String replaceAll example\nlet message = 'Hello, World! Hello, Universe!';\nlet newMessage = message.replaceAll('Hello', 'Hi');\nconsole.log('Replaced message:', newMessage);"
+  },
+  {
+    "title": "String Methods (padStart)",
+    "description": "Use padStart to pad a string with another string until it reaches a specified length.",
+    "code": "// String padStart example\nlet number = '42';\nconsole.log('Padded number:', number.padStart(5, '0'));"
+  },
+  {
+    "title": "String Methods (padEnd)",
+    "description": "Use padEnd to pad a string with another string until it reaches a specified length.",
+    "code": "// String padEnd example\nlet number = '42';\nconsole.log('Padded number:', number.padEnd(5, '0'));"
+  },
+  {
+    "title": "String Methods (match)",
+    "description": "Use match to search a string for a specified pattern and return matches as an array.",
+    "code": "// String match example\nlet text = 'The rain in Spain falls mainly on the plain';\nlet pattern = /ain/g;\nlet matches = text.match(pattern);\nconsole.log('Matches:', matches);"
+  },
+  {
+    "title": "String Methods (toLocaleLowerCase)",
+    "description": "Use toLocaleLowerCase to convert a string to lowercase letters, according to the host's locale.",
+    "code": "// String toLocaleLowerCase example\nlet message = 'HELLO';\nconsole.log('Lowercase message based on locale:', message.toLocaleLowerCase());"
+  },
+  {
+    "title": "String Methods (toLocaleUpperCase)",
+    "description": "Use toLocaleUpperCase to convert a string to uppercase letters, according to the host's locale.",
+    "code": "// String toLocaleUpperCase example\nlet message = 'hello';\nconsole.log('Uppercase message based on locale:', message.toLocaleUpperCase());"
+  },
+  {
+    "title": "String Methods (trimStart)",
+    "description": "Use trimStart to remove whitespace from the beginning of a string.",
+    "code": "// String trimStart example\nlet message = '   Hello, World!   ';\nconsole.log('Trimmed start message:', message.trimStart());"
+  },
+  {
+    "title": "String Methods (trimEnd)",
+    "description": "Use trimEnd to remove whitespace from the end of a string.",
+    "code": "// String trimEnd example\nlet message = '   Hello, World!   ';\nconsole.log('Trimmed end message:', message.trimEnd());"
+  },
+  {
+    "title": "String Methods (valueOf)",
+    "description": "Use valueOf to return the primitive value of a String object.",
+    "code": "// String valueOf example\nlet message = new String('Hello, World!');\nconsole.log('Primitive value:', message.valueOf());"
+  },
+  {
+    "title": "String Methods (toLocaleString)",
+    "description": "Use toLocaleString to return a string representing the object, according to the host's locale.",
+    "code": "// String toLocaleString example\nlet number = 123456.789;\nconsole.log('Locale string:', number.toLocaleString());"
+  },
+  {
+    "title": "Arrow Functions (with multiple parameters)",
+    "description": "Use arrow functions with multiple parameters.",
+    "code": "// Arrow functions with multiple parameters example\nlet add = (a, b) => a + b;\nconsole.log('Sum:', add(3, 7));"
+  },
+  {
+    "title": "Arrow Functions (implicit return)",
+    "description": "Use arrow functions with implicit return.",
+    "code": "// Arrow functions with implicit return example\nlet multiply = (a, b) => a * b;\nconsole.log('Product:', multiply(4, 5));"
+  },
+  {
+    "title": "Arrow Functions (with object literals)",
+    "description": "Use arrow functions with object literals.",
+    "code": "// Arrow functions with object literals example\nlet createPerson = (name, age) => ({ name: name, age: age });\nconsole.log('Person:', createPerson('Alice', 30));"
+  },
+  {
+    "title": "Spread Syntax (arrays)",
+    "description": "Use spread syntax (...) to expand elements of an array.",
+    "code": "// Spread syntax (arrays) example\nlet numbers1 = [1, 2, 3];\nlet numbers2 = [...numbers1, 4, 5];\nconsole.log('Combined array:', numbers2);"
+  },
+  {
+    "title": "Spread Syntax (objects)",
+    "description": "Use spread syntax (...) to clone or merge objects.",
+    "code": "// Spread syntax (objects) example\nlet person = { name: 'Alice', age: 30 };\nlet clonePerson = { ...person };\nconsole.log('Cloned person:', clonePerson);"
+  },
+  {
+    "title": "Destructuring Assignment (Arrays)",
+    "description": "Use destructuring assignment with arrays to extract values into variables.",
+    "code": "// Destructuring assignment (arrays) example\nlet numbers = [1, 2, 3];\nlet [a, b, c] = numbers;\nconsole.log('Destructured values:', a, b, c);"
+  },
+  {
+    "title": "Destructuring Assignment (Objects)",
+    "description": "Use destructuring assignment with objects to extract properties into variables.",
+    "code": "// Destructuring assignment (objects) example\nlet person = { name: 'Alice', age: 30 };\nlet { name, age } = person;\nconsole.log('Destructured properties:', name, age);"
+  },
+  {
+    "title": "Object Literal Shorthand",
+    "description": "Use object literal shorthand for concise object property definition.",
+    "code": "// Object literal shorthand example\nlet name = 'Alice';\nlet age = 30;\nlet person = { name, age };\nconsole.log('Person:', person);"
+  },
+  {
+    "title": "Object Destructuring with Alias",
+    "description": "Use object destructuring with alias for renaming extracted properties.",
+    "code": "// Object destructuring with alias example\nlet user = { firstName: 'John', lastName: 'Doe' };\nlet { firstName: fName, lastName: lName } = user;\nconsole.log('User:', fName, lName);"
+  },
+  {
+    "title": "Array Destructuring with Default Values",
+    "description": "Use array destructuring with default values for handling undefined or missing elements.",
+    "code": "// Array destructuring with default values example\nlet numbers = [1, 2];\nlet [x, y, z = 0] = numbers;\nconsole.log('Destructured values with default:', x, y, z);"
+  },
+  {
+    "title": "Function Declaration",
+    "description": "Use function declaration to define named functions.",
+    "code": "// Function declaration example\nfunction greet(name) {\n  return `Hello, ${name}!`;\n}\nconsole.log(greet('Alice'));"
+  },
+  {
+    "title": "Function Expression",
+    "description": "Use function expression to define anonymous functions assigned to variables.",
+    "code": "// Function expression example\nlet greet = function(name) {\n  return `Hello, ${name}!`;\n};\nconsole.log(greet('Bob'));"
+  },
+  {
+    "title": "Immediately Invoked Function Expression (IIFE)",
+    "description": "Use IIFE to execute a function immediately after its definition.",
+    "code": "// IIFE example\n(function() {\n  let message = 'Hello, World!';\n  console.log(message);\n})();"
+  },
+  {
+    "title": "Higher-Order Functions",
+    "description": "Use higher-order functions that accept other functions as arguments or return functions.",
+    "code": "// Higher-order functions example\nfunction applyOperation(x, y, operation) {\n  return operation(x, y);\n}\nfunction add(a, b) {\n  return a + b;\n}\nlet result = applyOperation(3, 4, add);\nconsole.log('Result:', result);"
+  },
+  {
+    "title": "Closures",
+    "description": "Understand closures where a function retains access to its lexical scope even after the function has finished executing.",
+    "code": "// Closures example\nfunction outerFunction() {\n  let outerVariable = 'I am outer';\n  function innerFunction() {\n    console.log(outerVariable);\n  }\n  return innerFunction;\n}\nlet innerFunc = outerFunction();\ninnerFunc();"
+  },
+  {
+    "title": "Promises (Basic)",
+    "description": "Use promises for asynchronous operations and handle eventual success or failure.",
+    "code": "// Promises (Basic) example\nfunction fetchData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve('Data fetched');\n    }, 2000);\n  });\n}\nfetchData().then(data => console.log(data));"
+  },
+  {
+    "title": "Promises (Chaining)",
+    "description": "Chain promises to perform multiple asynchronous operations sequentially.",
+    "code": "// Promises (Chaining) example\nfunction fetchUserData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve({ name: 'Alice', age: 30 });\n    }, 1000);\n  });\n}\nfetchUserData().then(user => {\n  console.log('User:', user);\n  return fetchUserData();\n}).then(user => console.log('User again:', user));"
+  },
+  {
+    "title": "Async/Await (Basic)",
+    "description": "Use async functions and await operator for writing asynchronous code in a synchronous style.",
+    "code": "// Async/Await (Basic) example\nfunction fetchData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve('Data fetched');\n    }, 2000);\n  });\n}\nasync function fetchAndLogData() {\n  let data = await fetchData();\n  console.log(data);\n}\nfetchAndLogData();"
+  },
+  {
+    "title": "Async/Await (Error Handling)",
+    "description": "Use try...catch block with async/await for error handling in asynchronous functions.",
+    "code": "// Async/Await (Error Handling) example\nfunction fetchData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      reject('Error: Data fetch failed');\n    }, 2000);\n  });\n}\nasync function fetchAndHandleError() {\n  try {\n    let data = await fetchData();\n    console.log(data);\n  } catch (error) {\n    console.error(error);\n  }\n}\nfetchAndHandleError();"
+  },
+  {
+    "title": "Classes (Basic)",
+    "description": "Use ES6 classes for object-oriented programming in JavaScript.",
+    "code": "// Classes (Basic) example\nclass Person {\n  constructor(name, age) {\n    this.name = name;\n    this.age = age;\n  }\n  greet() {\n    return `Hello, my name is ${this.name} and I am ${this.age} years old.`;\n  }\n}\nlet person = new Person('Alice', 30);\nconsole.log(person.greet());"
+  },
+  {
+    "title": "Classes (Inheritance)",
+    "description": "Use class inheritance to create subclasses with shared functionality.",
+    "code": "// Classes (Inheritance) example\nclass Animal {\n  constructor(name) {\n    this.name = name;\n  }\n  speak() {\n    return `${this.name} makes a noise.`;\n  }\n}\nclass Dog extends Animal {\n  speak() {\n    return `${this.name} barks.`;\n  }\n}\nlet dog = new Dog('Buddy');\nconsole.log(dog.speak());"
+  },
+  {
+    "title": "Modules (Export)",
+    "description": "Use export to make functions, classes, or variables available for import in other modules.",
+    "code": "// Modules (Export) example\n// file: utils.js\nexport function square(x) {\n  return x * x;\n}\n// file: main.js\nimport { square } from './utils.js';\nconsole.log(square(5));"
+  },
+  {
+    "title": "Modules (Import)",
+    "description": "Use import to import functions, classes, or variables exported from other modules.",
+    "code": "// Modules (Import) example\n// file: utils.js\nexport function cube(x) {\n  return x * x * x;\n}\n// file: main.js\nimport { cube } from './utils.js';\nconsole.log(cube(3));"
+  },
+  {
+    "title": "SetTimeout",
+    "description": "Use setTimeout to execute a function after a specified delay.",
+    "code": "// setTimeout example\nfunction delayedFunction() {\n  console.log('Delayed function executed');\n}\nsetTimeout(delayedFunction, 2000);"
+  },
+  {
+    "title": "SetInterval",
+    "description": "Use setInterval to execute a function repeatedly at a specified interval.",
+    "code": "// setInterval example\nfunction intervalFunction() {\n  console.log('Interval function executed');\n}\nsetInterval(intervalFunction, 1000);"
+  },
+  {
+    "title": "Local Storage",
+    "description": "Use localStorage to store key-value pairs persistently in the browser.",
+    "code": "// Local Storage example\nlocalStorage.setItem('username', 'Alice');\nlet username = localStorage.getItem('username');\nconsole.log('Username:', username);"
+  },
+  {
+    "title": "JSON Stringifying",
+    "description": "Convert JavaScript objects into JSON strings.",
+    "code": "// JSON Stringifying example\nlet object = { name: 'Bob', age: 25 };\nlet jsonString = JSON.stringify(object);\nconsole.log('JSON string:', jsonString);"
+  },
+  {
+    "title": "Global Object (window)",
+    "description": "Access global variables and functions using the window object in browser environments.",
+    "code": "// Global Object (window) example\nwindow.alert('Hello, World!');"
+  },
+  {
+    "title": "Document Object Model (DOM) Manipulation",
+    "description": "Manipulate HTML and CSS through JavaScript using the Document Object Model.",
+    "code": "// DOM Manipulation example\nlet element = document.createElement('div');\nelement.textContent = 'Hello, DOM!';\ndocument.body.appendChild(element);"
+  },
+  {
+    "title": "Regular Expressions (RegExp)",
+    "description": "Use regular expressions for pattern matching and text search.",
+    "code": "// Regular Expressions (RegExp) example\nlet text = 'Hello, World!';\nlet pattern = /Hello/g;\nlet matches = text.match(pattern);\nconsole.log('Matches:', matches);"
+  },
+  {
+    "title": "Array Methods (flat)",
+    "description": "Use flat to flatten nested arrays to a specified depth.",
+    "code": "// Array Methods (flat) example\nlet nestedArray = [1, [2, [3, [4]]]];\nlet flattenedArray = nestedArray.flat(2);\nconsole.log('Flattened array:', flattenedArray);"
+  },
+  {
+    "title": "Map Object (Basic)",
+    "description": "Use Map object for key-value pairs with iterable interface.",
+    "code": "// Map Object (Basic) example\nlet myMap = new Map();\nmyMap.set('name', 'Alice');\nmyMap.set('age', 30);\nconsole.log('Map size:', myMap.size);\nconsole.log('Value by key:', myMap.get('name'));"
+  },
+  {
+    "title": "Map Object (Iterating)",
+    "description": "Iterate over entries, keys, or values of a Map object.",
+    "code": "// Map Object (Iterating) example\nlet myMap = new Map([\n  ['name', 'Alice'],\n  ['age', 30]\n]);\nfor (let [key, value] of myMap.entries()) {\n  console.log(`${key}: ${value}`);\n}"
+  },
+  {
+    "title": "Set Object (Basic)",
+    "description": "Use Set object for unique values with iterable interface.",
+    "code": "// Set Object (Basic) example\nlet mySet = new Set([1, 2, 3, 4, 4, 5]);\nconsole.log('Set size:', mySet.size);\nconsole.log('Has 3:', mySet.has(3));"
+  },
+  {
+    "title": "Set Object (Iterating)",
+    "description": "Iterate over values of a Set object.",
+    "code": "// Set Object (Iterating) example\nlet mySet = new Set([1, 2, 3]);\nmySet.forEach(value => {\n  console.log('Set value:', value);\n});"
+  },
+  {
+    "title": "Math Object (Constants)",
+    "description": "Access mathematical constants such as PI using the Math object.",
+    "code": "// Math Object (Constants) example\nconsole.log('Value of PI:', Math.PI);"
+  },
+  {
+    "title": "Math Object (Methods)",
+    "description": "Use mathematical methods such as round, ceil, floor, abs, min, max using the Math object.",
+    "code": "// Math Object (Methods) example\nconsole.log('Round:', Math.round(4.7));\nconsole.log('Ceil:', Math.ceil(4.4));\nconsole.log('Floor:', Math.floor(4.7));\nconsole.log('Absolute:', Math.abs(-4.7));\nconsole.log('Minimum:', Math.min(0, 150, 30, 20, -8));\nconsole.log('Maximum:', Math.max(0, 150, 30, 20, -8));"
+  },
+  {
+    "title": "Date Object (Basic)",
+    "description": "Create and manipulate date and time using the Date object.",
+    "code": "// Date Object (Basic) example\nlet now = new Date();\nconsole.log('Current date and time:', now);"
+  },
+  {
+    "title": "Date Object (Formatting)",
+    "description": "Format date and time using methods of the Date object.",
+    "code": "// Date Object (Formatting) example\nlet now = new Date();\nconsole.log('Formatted date:', now.toLocaleDateString());\nconsole.log('Formatted time:', now.toLocaleTimeString());"
+  },
+  {
+    "title": "Object Methods (Object.assign)",
+    "description": "Copy values from one or more source objects to a target object.",
+    "code": "// Object Methods (Object.assign) example\nlet target = { name: 'David' };\nlet source = { age: 40 };\nObject.assign(target, source);\nconsole.log('Merged object:', target);"
+  },
+  {
+    "title": "Object Methods (Object.freeze)",
+    "description": "Freeze an object to prevent modifications to its properties.",
+    "code": "// Object Methods (Object.freeze) example\nlet user = { name: 'Eve' };\nObject.freeze(user);\nuser.age = 45;\nconsole.log('Frozen object:', user);"
+  },
+  {
+    "title": "Object Methods (Object.seal)",
+    "description": "Seal an object to prevent adding or deleting properties, but allows modifying existing properties.",
+    "code": "// Object Methods (Object.seal) example\nlet user = { name: 'Frank' };\nObject.seal(user);\nuser.age = 50;\nconsole.log('Sealed object:', user);"
+  },
+  {
+    "title": "Promise (Basic)",
+    "description": "Create a promise object for asynchronous operations.",
+    "code": "// Promise (Basic) example\nlet promise = new Promise((resolve, reject) => {\n  setTimeout(() => {\n    resolve('Operation completed');\n  }, 2000);\n});\npromise.then(result => console.log('Promise result:', result));"
+  },
+  {
+    "title": "Promise (Chaining)",
+    "description": "Chain multiple promises for sequential asynchronous operations.",
+    "code": "// Promise (Chaining) example\nlet delay = ms => new Promise(resolve => setTimeout(resolve, ms));\ndelay(1000)\n  .then(() => console.log('One second passed'))\n  .then(() => delay(2000))\n  .then(() => console.log('Two seconds passed'));"
+  },
+  {
+    "title": "Promise (Error Handling)",
+    "description": "Handle errors in promise chains using catch.",
+    "code": "// Promise (Error Handling) example\nlet promise = new Promise((resolve, reject) => {\n  setTimeout(() => {\n    reject(new Error('Operation failed'));\n  }, 2000);\n});\npromise.catch(error => console.error('Promise error:', error.message));"
+  },
+  {
+    "title": "Promise (Promise.all)",
+    "description": "Wait for all promises to resolve and return their results.",
+    "code": "// Promise (Promise.all) example\nlet promise1 = Promise.resolve('One');\nlet promise2 = Promise.resolve('Two');\nPromise.all([promise1, promise2])\n  .then(results => console.log('Promise.all results:', results));"
+  },
+  {
+    "title": "Promise (Promise.race)",
+    "description": "Wait for the first promise to resolve or reject.",
+    "code": "// Promise (Promise.race) example\nlet promise1 = new Promise(resolve => setTimeout(resolve, 2000, 'One'));\nlet promise2 = new Promise((resolve, reject) => setTimeout(reject, 1000, new Error('Two')));\nPromise.race([promise1, promise2])\n  .then(result => console.log('Promise.race result:', result))\n  .catch(error => console.error('Promise.race error:', error.message));"
+  },
+  {
+    "title": "Async Function (Basic)",
+    "description": "Define an asynchronous function using async/await.",
+    "code": "// Async Function (Basic) example\nasync function fetchData() {\n  let response = await fetch('https://api.example.com/data');\n  let data = await response.json();\n  console.log('Fetched data:', data);\n}\nfetchData();"
+  },
+  {
+    "title": "Async Function (Error Handling)",
+    "description": "Handle errors in async functions using try...catch.",
+    "code": "// Async Function (Error Handling) example\nasync function fetchData() {\n  try {\n    let response = await fetch('https://api.example.com/data');\n    let data = await response.json();\n    console.log('Fetched data:', data);\n  } catch (error) {\n    console.error('Fetch error:', error.message);\n  }\n}\nfetchData();"
+  },
+  {
+    "title": "Async Function (Parallel Requests)",
+    "description": "Execute multiple asynchronous operations in parallel using async functions.",
+    "code": "// Async Function (Parallel Requests) example\nasync function fetchData() {\n  let [result1, result2] = await Promise.all([\n    fetch('https://api.example.com/data1').then(response => response.json()),\n    fetch('https://api.example.com/data2').then(response => response.json())\n  ]);\n  console.log('Data 1:', result1);\n  console.log('Data 2:', result2);\n}\nfetchData();"
+  },
+  {
+    "title": "Async Function (Sequential Requests)",
+    "description": "Execute asynchronous operations sequentially using async functions.",
+    "code": "// Async Function (Sequential Requests) example\nasync function fetchData() {\n  let response1 = await fetch('https://api.example.com/data1');\n  let data1 = await response1.json();\n  let response2 = await fetch('https://api.example.com/data2');\n  let data2 = await response2.json();\n  console.log('Data 1:', data1);\n  console.log('Data 2:', data2);\n}\nfetchData();"
+  },
+  {
+    "title": "Async Function (Timeout)",
+    "description": "Set a timeout for async operations using Promise.race.",
+    "code": "// Async Function (Timeout) example\nasync function fetchDataWithTimeout() {\n  let fetchDataPromise = fetch('https://api.example.com/data');\n  let timeoutPromise = new Promise((resolve, reject) => {\n    setTimeout(() => reject(new Error('Timeout')), 5000);\n  });\n  let response = await Promise.race([fetchDataPromise, timeoutPromise]);\n  if (response) {\n    let data = await response.json();\n    console.log('Fetched data:', data);\n  }\n}\nfetchDataWithTimeout();"
+  },
+  {
+    "title": "Generator Function (Basic)",
+    "description": "Define a generator function using function* and yield.",
+    "code": "// Generator Function (Basic) example\nfunction* generateSequence() {\n  yield 1;\n  yield 2;\n  yield 3;\n}\nlet generator = generateSequence();\nconsole.log(generator.next().value);\nconsole.log(generator.next().value);\nconsole.log(generator.next().value);"
+  },
+  {
+    "title": "Generator Function (Infinite Sequence)",
+    "description": "Generate an infinite sequence using a generator function.",
+    "code": "// Generator Function (Infinite Sequence) example\nfunction* generateInfiniteSequence() {\n  let index = 0;\n  while (true) {\n    yield index++;\n  }\n}\nlet generator = generateInfiniteSequence();\nconsole.log(generator.next().value);\nconsole.log(generator.next().value);\nconsole.log(generator.next().value);"
+  },
+  {
+    "title": "Generator Function (Iterate Over Iterable)",
+    "description": "Iterate over an iterable using a generator function.",
+    "code": "// Generator Function (Iterate Over Iterable) example\nfunction* generateFromIterable(iterable) {\n  for (let item of iterable) {\n    yield item;\n  }\n}\nlet generator = generateFromIterable(['a', 'b', 'c']);\nconsole.log(generator.next().value);\nconsole.log(generator.next().value);\nconsole.log(generator.next().value);"
+  },
+  {
+    "title": "Generator Function (Async Iteration)",
+    "description": "Asynchronously iterate over an iterable using a generator function.",
+    "code": "// Generator Function (Async Iteration) example\nasync function* generateAsyncData() {\n  let data = await fetchData();\n  for (let item of data) {\n    yield item;\n  }\n}\nlet generator = generateAsyncData();\nconsole.log(generator.next());\nconsole.log(generator.next());\nconsole.log(generator.next());"
+  },
+  {
+    "title": "Spread Syntax (Arrays)",
+    "description": "Spread elements of an array into another array or function call.",
+    "code": "// Spread Syntax (Arrays) example\nlet numbers1 = [1, 2, 3];\nlet numbers2 = [4, 5, 6];\nlet combinedNumbers = [...numbers1, ...numbers2];\nconsole.log('Combined array:', combinedNumbers);"
+  },
+  {
+    "title": "Spread Syntax (Objects)",
+    "description": "Copy properties from one object into another object using spread syntax.",
+    "code": "// Spread Syntax (Objects) example\nlet user = { name: 'Kate', age: 35 };\nlet updatedUser = { ...user, age: 40 };\nconsole.log('Updated user:', updatedUser);"
+  },
+  {
+    "title": "Optional Chaining (?.)",
+    "description": "Access nested object properties without needing to check each level's existence.",
+    "code": "// Optional Chaining example\nlet user = {\n  name: 'Michael',\n  address: {\n    city: 'New York'\n  }\n};\nlet city = user.address?.city;\nconsole.log('City:', city);"
+  },
+  {
+    "title": "Nullish Coalescing Operator (??)",
+    "description": "Provide a default value when encountering null or undefined.",
+    "code": "// Nullish Coalescing Operator example\nlet user = {\n  name: 'Olivia',\n  age: 0,\n  address: ''\n};\nlet age = user.age ?? 'Age not specified';\nlet address = user.address ?? 'Address not specified';\nconsole.log('Age:', age);\nconsole.log('Address:', address);"
+  },
+  {
+    "title": "String Methods (lastIndexOf)",
+    "description": "Retrieve the last occurrence of a substring within a string.",
+    "code": "// String Methods (lastIndexOf) example\nlet message = 'Hello, World!';\nlet lastIndex = message.lastIndexOf('o');\nconsole.log('Last index of o:', lastIndex);"
+  },
+  {
+    "title": "String Methods (search)",
+    "description": "Search for a substring within a string and return its index.",
+    "code": "// String Methods (search) example\nlet message = 'Hello, World!';\nlet index = message.search('World');\nconsole.log('Index of World:', index);"
+  },
+  {
+    "title": "Array Methods (push)",
+    "description": "Add one or more elements to the end of an array.",
+    "code": "// Array Methods (push) example\nlet numbers = [1, 2, 3];\nnumbers.push(4, 5);\nconsole.log('Array after push:', numbers);"
+  },
+  {
+    "title": "Array Methods (pop)",
+    "description": "Remove the last element from an array and return it.",
+    "code": "// Array Methods (pop) example\nlet numbers = [1, 2, 3];\nlet lastNumber = numbers.pop();\nconsole.log('Removed element:', lastNumber);\nconsole.log('Array after pop:', numbers);"
+  },
+  {
+    "title": "Array Methods (shift)",
+    "description": "Remove the first element from an array and return it.",
+    "code": "// Array Methods (shift) example\nlet numbers = [1, 2, 3];\nlet firstNumber = numbers.shift();\nconsole.log('Removed element:', firstNumber);\nconsole.log('Array after shift:', numbers);"
+  },
+  {
+    "title": "Array Methods (unshift)",
+    "description": "Add one or more elements to the beginning of an array.",
+    "code": "// Array Methods (unshift) example\nlet numbers = [2, 3];\nnumbers.unshift(0, 1);\nconsole.log('Array after unshift:', numbers);"
+  },
+  {
+    "title": "Array Methods (splice)",
+    "description": "Remove elements from an array and optionally replace them with new elements.",
+    "code": "// Array Methods (splice) example\nlet numbers = [1, 2, 3, 4, 5];\nnumbers.splice(2, 2, 'a', 'b');\nconsole.log('Array after splice:', numbers);"
+  },
+  {
+    "title": "Array Methods (slice)",
+    "description": "Extract a section of an array and return a new array.",
+    "code": "// Array Methods (slice) example\nlet numbers = [1, 2, 3, 4, 5];\nlet slicedNumbers = numbers.slice(1, 4);\nconsole.log('Sliced array:', slicedNumbers);"
+  },
+  {
+    "title": "Array Methods (concat)",
+    "description": "Concatenate two or more arrays.",
+    "code": "// Array Methods (concat) example\nlet numbers1 = [1, 2];\nlet numbers2 = [3, 4];\nlet concatenatedNumbers = numbers1.concat(numbers2);\nconsole.log('Concatenated array:', concatenatedNumbers);"
+  },
+  {
+    "title": "Array Methods (indexOf)",
+    "description": "Find the index of the first occurrence of a specified value in an array.",
+    "code": "// Array Methods (indexOf) example\nlet numbers = [1, 2, 3, 4, 5, 2];\nlet index = numbers.indexOf(2);\nconsole.log('Index of 2:', index);"
+  },
+  {
+    "title": "Array Methods (lastIndexOf)",
+    "description": "Find the index of the last occurrence of a specified value in an array.",
+    "code": "// Array Methods (lastIndexOf) example\nlet numbers = [1, 2, 3, 4, 5, 2];\nlet lastIndex = numbers.lastIndexOf(2);\nconsole.log('Last index of 2:', lastIndex);"
+  },
+  {
+    "title": "Arrow Functions (with block body)",
+    "description": "Use arrow functions with block body for multiline operations.",
+    "code": "// Arrow Functions (with block body) example\nlet greet = (name) => {\n  return `Hello, ${name}!`;\n};\nconsole.log(greet('Alice'));"
+  },
+  {
+    "title": "Arrow Functions (lexical this)",
+    "description": "Arrow functions do not bind their own 'this', instead, they inherit it from the parent scope.",
+    "code": "// Arrow Functions (lexical this) example\nfunction Person() {\n  this.age = 0;\n  setInterval(() => {\n    this.age++;\n    console.log('Age:', this.age);\n  }, 1000);\n}\nlet person = new Person();"
+  },
+  {
+    "title": "Template Literals (multiline)",
+    "description": "Use backticks (`) for multiline strings and embedded expressions.",
+    "code": "// Template Literals (multiline) example\nlet message = `\n  Hello,\n  World!\n`;\nconsole.log(message);"
+  },
+  {
+    "title": "Template Literals (tagged template)",
+    "description": "Use tagged template literals for advanced string processing.",
+    "code": "// Template Literals (tagged template) example\nfunction tag(strings, ...values) {\n  console.log(strings); // Array of string literals\n  console.log(values); // Array of interpolated values\n}\nlet name = 'Alice';\nlet age = 30;\ntag`My name is ${name} and I am ${age} years old.`;"
+  },
+  {
+    "title": "Destructuring Assignment (object)",
+    "description": "Extract properties from objects and bind them to variables.",
+    "code": "// Destructuring Assignment (object) example\nlet person = { name: 'Alice', age: 30 };\nlet { name, age } = person;\nconsole.log(name, age);"
+  },
+  {
+    "title": "Destructuring Assignment (array)",
+    "description": "Extract elements from arrays and bind them to variables.",
+    "code": "// Destructuring Assignment (array) example\nlet numbers = [1, 2, 3];\nlet [first, second, third] = numbers;\nconsole.log(first, second, third);"
+  },
+  {
+    "title": "Object Shorthand",
+    "description": "Use shorthand syntax to define object properties.",
+    "code": "// Object Shorthand example\nlet name = 'Alice';\nlet age = 30;\nlet person = { name, age };\nconsole.log(person);"
+  },
+  {
+    "title": "Computed Property Names",
+    "description": "Use expressions for object property names.",
+    "code": "// Computed Property Names example\nlet propKey = 'name';\nlet person = { [propKey]: 'Alice' };\nconsole.log(person.name);"
+  },
+  {
+    "title": "Class Inheritance",
+    "description": "Extend classes to create subclasses.",
+    "code": "// Class Inheritance example\nclass Animal {\n  constructor(name) {\n    this.name = name;\n  }\n  speak() {\n    console.log(`${this.name} makes a noise.`);\n  }\n}\nclass Dog extends Animal {\n  speak() {\n    console.log(`${this.name} barks.`);\n  }\n}\nlet dog = new Dog('Spot');\ndog.speak();"
+  },
+  {
+    "title": "Modules (export)",
+    "description": "Export functions, classes, or variables from modules.",
+    "code": "// Modules (export) example\n// File: utils.js\nexport function greet(name) {\n  console.log(`Hello, ${name}!`);\n}\n\n// File: main.js\nimport { greet } from './utils.js';\ngreet('Alice');"
+  },
+  {
+    "title": "Modules (import)",
+    "description": "Import functions, classes, or variables from modules.",
+    "code": "// Modules (import) example\n// File: utils.js\nexport function greet(name) {\n  console.log(`Hello, ${name}!`);\n}\n\n// File: main.js\nimport { greet } from './utils.js';\ngreet('Alice');"
+  },
+  {
+    "title": "Promise (basic)",
+    "description": "Use promises for asynchronous operations.",
+    "code": "// Promise (basic) example\nfunction fetchData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve('Data fetched successfully');\n    }, 2000);\n  });\n}\nfetchData().then((data) => {\n  console.log(data);\n});"
+  },
+  {
+    "title": "Async/Await",
+    "description": "Simplify handling of asynchronous operations using async functions and await keyword.",
+    "code": "// Async/Await example\nfunction fetchData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve('Data fetched successfully');\n    }, 2000);\n  });\n}\nasync function getData() {\n  let data = await fetchData();\n  console.log(data);\n}\ngetData();"
+  },
+  {
+    "title": "Object Destructuring (with default values)",
+    "description": "Assign default values during object destructuring.",
+    "code": "// Object Destructuring (with default values) example\nlet person = { name: 'Alice' };\nlet { name, age = 30 } = person;\nconsole.log(name, age);"
+  },
+  {
+    "title": "Array Destructuring (with default values)",
+    "description": "Assign default values during array destructuring.",
+    "code": "// Array Destructuring (with default values) example\nlet numbers = [1];\nlet [first, second = 2] = numbers;\nconsole.log(first, second);"
+  },
+  {
+    "title": "Array.find()",
+    "description": "Find the first element in an array that satisfies a condition.",
+    "code": "// Array.find() example\nlet numbers = [10, 20, 30, 40, 50];\nlet found = numbers.find(num => num > 25);\nconsole.log('Found:', found);"
+  },
+  {
+    "title": "Array.findIndex()",
+    "description": "Find the index of the first element in an array that satisfies a condition.",
+    "code": "// Array.findIndex() example\nlet numbers = [10, 20, 30, 40, 50];\nlet index = numbers.findIndex(num => num > 25);\nconsole.log('Index:', index);"
+  },
+  {
+    "title": "Array.includes()",
+    "description": "Check if an array includes a certain element.",
+    "code": "// Array.includes() example\nlet numbers = [1, 2, 3, 4, 5];\nlet includesThree = numbers.includes(3);\nconsole.log('Includes 3:', includesThree);"
+  },
+  {
+    "title": "Array.from()",
+    "description": "Create a new array from an iterable object.",
+    "code": "// Array.from() example\nlet str = 'Hello';\nlet chars = Array.from(str);\nconsole.log('Characters:', chars);"
+  },
+  {
+    "title": "Array.of()",
+    "description": "Create a new array with any number of arguments passed to it.",
+    "code": "// Array.of() example\nlet numbers = Array.of(1, 2, 3, 4, 5);\nconsole.log('Numbers:', numbers);"
+  },
+  {
+    "title": "Array.flat()",
+    "description": "Flatten nested arrays into a single-level array.",
+    "code": "// Array.flat() example\nlet nestedArray = [1, [2, [3, [4]]]];\nlet flatArray = nestedArray.flat(Infinity);\nconsole.log('Flat array:', flatArray);"
+  },
+  {
+    "title": "Array.flatMap()",
+    "description": "Map each element to a new array, then flatten the result by one level.",
+    "code": "// Array.flatMap() example\nlet numbers = [1, 2, 3];\nlet doubled = numbers.flatMap(num => [num, num * 2]);\nconsole.log('Doubled:', doubled);"
+  },
+  {
+    "title": "Array.some()",
+    "description": "Check if at least one element in an array satisfies a condition.",
+    "code": "// Array.some() example\nlet numbers = [10, 20, 30, 40, 50];\nlet hasOver30 = numbers.some(num => num > 30);\nconsole.log('Has over 30:', hasOver30);"
+  },
+  {
+    "title": "Array.every()",
+    "description": "Check if all elements in an array satisfy a condition.",
+    "code": "// Array.every() example\nlet numbers = [10, 20, 30, 40, 50];\nlet allOver5 = numbers.every(num => num > 5);\nconsole.log('All over 5:', allOver5);"
+  },
+  {
+    "title": "Object.entries()",
+    "description": "Return an array of a given object's own enumerable property [key, value] pairs.",
+    "code": "// Object.entries() example\nlet person = { name: 'Alice', age: 30 };\nlet entries = Object.entries(person);\nconsole.log('Entries:', entries);"
+  },
+  {
+    "title": "Object.keys()",
+    "description": "Return an array of a given object's own enumerable property keys.",
+    "code": "// Object.keys() example\nlet person = { name: 'Alice', age: 30 };\nlet keys = Object.keys(person);\nconsole.log('Keys:', keys);"
+  },
+  {
+    "title": "Object.values()",
+    "description": "Return an array of a given object's own enumerable property values.",
+    "code": "// Object.values() example\nlet person = { name: 'Alice', age: 30 };\nlet values = Object.values(person);\nconsole.log('Values:', values);"
+  },
+  {
+    "title": "Object.freeze()",
+    "description": "Freeze an object: other code cannot delete or change any properties.",
+    "code": "// Object.freeze() example\nlet person = { name: 'Alice' };\nObject.freeze(person);\nperson.age = 30; // This will not have any effect\nconsole.log('Frozen person:', person);"
+  },
+  {
+    "title": "Object.seal()",
+    "description": "Seal an object: prevents new properties from being added and marks all existing properties as non-configurable.",
+    "code": "// Object.seal() example\nlet person = { name: 'Alice' };\nObject.seal(person);\nperson.age = 30; // This will not add 'age' property\nconsole.log('Sealed person:', person);"
+  },
+  {
+    "title": "String.padStart()",
+    "description": "Pad the current string with another string until the resulting string reaches the given length.",
+    "code": "// String.padStart() example\nlet number = '42';\nconsole.log('Padded number:', number.padStart(5, '0'));"
+  },
+  {
+    "title": "String.padEnd()",
+    "description": "Pad the current string with another string until the resulting string reaches the given length.",
+    "code": "// String.padEnd() example\nlet number = '42';\nconsole.log('Padded number:', number.padEnd(5, '0'));"
+  },
+  {
+    "title": "String.trimStart()",
+    "description": "Remove whitespace from the beginning of a string.",
+    "code": "// String.trimStart() example\nlet message = '   Hello, World!   ';\nconsole.log('Trimmed start message:', message.trimStart());"
+  },
+  {
+    "title": "String.trimEnd()",
+    "description": "Remove whitespace from the end of a string.",
+    "code": "// String.trimEnd() example\nlet message = '   Hello, World!   ';\nconsole.log('Trimmed end message:', message.trimEnd());"
+  },
+  {
+    "title": "Promise.all()",
+    "description": "Combine multiple promises into a single promise that resolves when all of the input promises have resolved.",
+    "code": "// Promise.all() example\nlet promise1 = Promise.resolve('Hello');\nlet promise2 = Promise.resolve('World');\nPromise.all([promise1, promise2]).then(values => {\n  console.log(values.join(' '));\n});"
+  },
+  {
+    "title": "Promise.race()",
+    "description": "Return a promise that resolves or rejects as soon as one of the promises in the iterable resolves or rejects, with the value or reason from that promise.",
+    "code": "// Promise.race() example\nlet promise1 = new Promise(resolve => setTimeout(resolve, 1000, 'First'));\nlet promise2 = new Promise(resolve => setTimeout(resolve, 500, 'Second'));\nPromise.race([promise1, promise2]).then(value => {\n  console.log('First resolved:', value);\n});"
+  },
+  {
+    "title": "Async Function",
+    "description": "Define asynchronous functions using async keyword.",
+    "code": "// Async Function example\nasync function fetchData() {\n  let response = await fetch('https://jsonplaceholder.typicode.com/posts/1');\n  let data = await response.json();\n  console.log('Data:', data);\n}\nfetchData();"
+  },
+  {
+    "title": "BigInt",
+    "description": "Supports arbitrary precision integers with BigInt type.",
+    "code": "// BigInt example\nlet bigNumber = 123456789012345678901234567890n;\nconsole.log('Big number:', bigNumber);"
+  },
+  {
+    "title": "Async Function with Error Handling",
+    "description": "Handle errors in asynchronous functions using try...catch.",
+    "code": "// Async Function with Error Handling example\nasync function fetchData() {\n  try {\n    let response = await fetch('https://jsonplaceholder.typicode.com/posts/1');\n    if (!response.ok) {\n      throw new Error('HTTP error ' + response.status);\n    }\n    let data = await response.json();\n    console.log('Data:', data);\n  } catch (error) {\n    console.error('Error fetching data:', error);\n  }\n}\nfetchData();"
+  },
+  {
+    "title": "Default Imports and Exports (ES6 Modules)",
+    "description": "Import and export modules using default exports and imports.",
+    "code": "// Default Imports and Exports (ES6 Modules) example\n// Module: math.js\n// export default function\nexport default function add(a, b) {\n  return a + b;\n}\n\n// Module: app.js\n// import default function\nimport add from './math.js';\nconsole.log('Sum:', add(5, 3));"
+  },
+  {
+    "title": "Named Imports and Exports (ES6 Modules)",
+    "description": "Import and export modules using named exports and imports.",
+    "code": "// Named Imports and Exports (ES6 Modules) example\n// Module: math.js\n// export named function\nexport function multiply(a, b) {\n  return a * b;\n}\n\n// Module: app.js\n// import named function\nimport { multiply } from './math.js';\nconsole.log('Product:', multiply(4, 2));"
+  },
+  {
+    "title": "Set",
+    "description": "Store unique values of any type, whether primitive values or object references.",
+    "code": "// Set example\nlet set = new Set([1, 2, 3, 4, 4, 5]);\nset.add(6);\nset.delete(3);\nconsole.log('Set:', set);\nconsole.log('Set size:', set.size);\nconsole.log('Has 2:', set.has(2));"
+  },
+  {
+    "title": "Map",
+    "description": "Store key-value pairs where keys can be any data type.",
+    "code": "// Map example\nlet map = new Map();\nlet key1 = 'key1', key2 = { name: 'John' }, key3 = function() {};\nmap.set(key1, 'Value for key1');\nmap.set(key2, 'Value for key2');\nmap.set(key3, 'Value for key3');\nconsole.log('Map:', map);\nconsole.log('Map size:', map.size);\nconsole.log('Get key2:', map.get(key2));"
+  },
+  {
+    "title": "Symbol",
+    "description": "Create unique identifiers for object properties.",
+    "code": "// Symbol example\nlet sym1 = Symbol('key1');\nlet sym2 = Symbol('key2');\nlet obj = {\n  [sym1]: 'Value for sym1'\n};\nconsole.log('Symbol:', obj[sym1]);"
+  },
+  {
+    "title": "Generator Functions",
+    "description": "Generate a sequence of values lazily.",
+    "code": "// Generator Functions example\nfunction* generateSequence() {\n  yield 1;\n  yield 2;\n  yield 3;\n}\nlet generator = generateSequence();\nconsole.log('Generated values:', generator.next().value, generator.next().value, generator.next().value);"
+  },
+  {
+    "title": "Iterators and Iterables",
+    "description": "Implement iteration in custom objects using iterators and iterables.",
+    "code": "// Iterators and Iterables example\nlet iterableObject = {\n  [Symbol.iterator]() {\n    let step = 0;\n    let values = ['A', 'B', 'C'];\n    return {\n      next() {\n        if (step < values.length) {\n          return { value: values[step++], done: false };\n        } else {\n          return { done: true };\n        }\n      }\n    };\n  }\n};\nfor (let value of iterableObject) {\n  console.log('Value:', value);\n}"
+  },
+  {
+    "title": "Proxy",
+    "description": "Define custom behavior for fundamental operations on objects.",
+    "code": "// Proxy example\nlet target = {\n  message: 'Hello'\n};\nlet handler = {\n  get: function(target, prop, receiver) {\n    return prop in target ? target[prop] : `Property '${prop}' does not exist.`;\n  }\n};\nlet proxy = new Proxy(target, handler);\nconsole.log(proxy.message);\nconsole.log(proxy.unknownProperty);"
+  },
+  {
+    "title": "Reflect",
+    "description": "Provide methods for interceptable JavaScript operations.",
+    "code": "// Reflect example\nlet obj = {};\nReflect.defineProperty(obj, 'property', {\n  value: 42\n});\nconsole.log('Property defined:', obj.property);"
+  },
+  {
+    "title": "Array Buffer and Typed Arrays",
+    "description": "Manipulate binary data using ArrayBuffer and Typed Arrays.",
+    "code": "// Array Buffer and Typed Arrays example\nlet buffer = new ArrayBuffer(16);\nlet int32View = new Int32Array(buffer);\nint32View[0] = 42;\nconsole.log('Buffer value:', int32View[0]);"
+  },
+  {
+    "title": "Promise",
+    "description": "Handle asynchronous operations and represent a value that may be available in the future.",
+    "code": "// Promise example\nfunction fetchData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve('Data fetched successfully!');\n    }, 2000);\n  });\n}\nfetchData()\n  .then(data => console.log('Promise resolved:', data))\n  .catch(error => console.error('Promise rejected:', error));"
+  },
+  {
+    "title": "While Loop",
+    "description": "Execute a block of code while a specified condition is true.",
+    "code": "// While Loop example\nlet count = 0;\nwhile (count < 5) {\n  console.log('Count:', count);\n  count++;\n}"
+  },
+  {
+    "title": "Do-While Loop",
+    "description": "Execute a block of code at least once, then repeat as long as a specified condition is true.",
+    "code": "// Do-While Loop example\nlet count = 0;\ndo {\n  console.log('Count:', count);\n  count++;\n} while (count < 5);"
+  },
+  {
+    "title": "Switch Statement",
+    "description": "Execute one of many possible blocks of code based on a specified expression.",
+    "code": "// Switch Statement example\nlet day = 'Monday';\nswitch (day) {\n  case 'Monday':\n    console.log('Today is Monday.');\n    break;\n  case 'Tuesday':\n    console.log('Today is Tuesday.');\n    break;\n  default:\n    console.log('Today is neither Monday nor Tuesday.');\n}"
+  },
+  {
+    "title": "If-Else Statement",
+    "description": "Execute a block of code if a specified condition is true; otherwise, execute an alternative block of code.",
+    "code": "// If-Else Statement example\nlet age = 25;\nif (age >= 18) {\n  console.log('You are an adult.');\n} else {\n  console.log('You are a minor.');\n}"
+  },
+  {
+    "title": "Nested If-Else Statement",
+    "description": "Execute different blocks of code based on multiple conditions.",
+    "code": "// Nested If-Else Statement example\nlet temperature = 25;\nif (temperature > 30) {\n  console.log('It's very hot outside.');\n} else if (temperature > 20) {\n  console.log('It's warm outside.');\n} else {\n  console.log('It's cold outside.');\n}"
+  },
+  {
+    "title": "Boolean",
+    "description": "A boolean value represents true or false.",
+    "code": "// Boolean example\nlet isTrue = true;\nlet isFalse = false;\nconsole.log('True:', isTrue);\nconsole.log('False:', isFalse);"
+  },
+  {
+    "title": "Number",
+    "description": "A number can be an integer or a floating-point number.",
+    "code": "// Number example\nlet integerNumber = 42;\nlet floatingPointNumber = 3.14;\nconsole.log('Integer number:', integerNumber);\nconsole.log('Floating-point number:', floatingPointNumber);"
+  },
+  {
+    "title": "Comparison Operators",
+    "description": "Use comparison operators to compare values and return a boolean result.",
+    "code": "// Comparison Operators example\nlet a = 10;\nlet b = 5;\nconsole.log('a > b:', a > b);\nconsole.log('a < b:', a < b);\nconsole.log('a === b:', a === b);"
+  },
+  {
+    "title": "Logical Operators",
+    "description": "Use logical operators (&&, ||, !) to combine or negate boolean values.",
+    "code": "// Logical Operators example\nlet sunny = true;\nlet warm = false;\nconsole.log('Sunny and warm:', sunny && warm);\nconsole.log('Sunny or warm:', sunny || warm);\nconsole.log('Not sunny:', !sunny);"
+  },
+  {
+    "title": "Number Methods",
+    "description": "Use methods like parseInt, parseFloat, and isNaN to work with numbers.",
+    "code": "// Number Methods example\nlet numString = '42';\nlet parsedInt = parseInt(numString);\nlet parsedFloat = parseFloat(numString);\nconsole.log('Parsed integer:', parsedInt);\nconsole.log('Parsed float:', parsedFloat);\nconsole.log('Is NaN:', isNaN(parsedInt));"
+  },
+  {
+    "title": "Arithmetic Operators",
+    "description": "Perform basic arithmetic operations like addition, subtraction, multiplication, division, and modulus.",
+    "code": "// Arithmetic Operators example\nlet a = 10;\nlet b = 5;\nconsole.log('Addition:', a + b);\nconsole.log('Subtraction:', a - b);\nconsole.log('Multiplication:', a * b);\nconsole.log('Division:', a / b);\nconsole.log('Modulus:', a % b);"
+  },
+  {
+    "title": "Assignment Operators",
+    "description": "Assign values to variables and perform operations in a concise manner.",
+    "code": "// Assignment Operators example\nlet x = 10;\nx += 5; // Equivalent to x = x + 5\nconsole.log('Updated x:', x);\nlet y = 20;\ny -= 3; // Equivalent to y = y - 3\nconsole.log('Updated y:', y);"
+  },
+  {
+    "title": "Unary Operators",
+    "description": "Perform operations on a single operand.",
+    "code": "// Unary Operators example\nlet num = 10;\nconsole.log('Increment:', ++num);\nconsole.log('Decrement:', --num);\nlet isSunny = true;\nconsole.log('Negation:', !isSunny);"
+  },
+  {
+    "title": "Conditional (Ternary) Operator",
+    "description": "Evaluate a condition and return one of two expressions.",
+    "code": "// Conditional (Ternary) Operator example\nlet age = 18;\nlet message = (age >= 18) ? 'Adult' : 'Minor';\nconsole.log('Message:', message);"
+  },
+  {
+    "title": "Bitwise Operators",
+    "description": "Perform bitwise operations on binary representations of numbers.",
+    "code": "// Bitwise Operators example\nlet a = 5; // Binary: 101\nlet b = 3; // Binary: 011\nconsole.log('Bitwise AND:', a & b); // Result: 1 (Binary: 001)\nconsole.log('Bitwise OR:', a | b); // Result: 7 (Binary: 111)\nconsole.log('Bitwise XOR:', a ^ b); // Result: 6 (Binary: 110)\nconsole.log('Bitwise NOT:', ~a); // Result: -6 (Binary: 11111111111111111111111111111010)\nconsole.log('Left Shift:', a << 1); // Result: 10 (Binary: 1010)\nconsole.log('Right Shift:', a >> 1); // Result: 2 (Binary: 10)"
+  }
+]

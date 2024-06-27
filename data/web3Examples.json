@@ -1,0 +1,332 @@
+[
+  {
+    "title": "Initializing Web3",
+    "description": "Initialize Web3 and connect to MetaMask or other Ethereum provider.",
+    "code": "import Web3 from 'web3';\n\nconst web3 = new Web3(window.ethereum);\n\n// Example: Connect to MetaMask\nconst connectToMetaMask = async () => {\n  try {\n    await window.ethereum.request({ method: 'eth_requestAccounts' });\n    console.log('Connected to MetaMask:', web3.eth.accounts[0]);\n  } catch (error) {\n    console.error('Error connecting to MetaMask:', error);\n  }\n};"
+  },
+  {
+    "title": "Checking Network",
+    "description": "Check which Ethereum network the user is connected to.",
+    "code": "const networkId = await web3.eth.net.getId();\nconsole.log('Network ID:', networkId);"
+  },
+  {
+    "title": "Getting Account Balance",
+    "description": "Retrieve the balance of a specific Ethereum account.",
+    "code": "const balance = await web3.eth.getBalance('0x123abc...');\nconsole.log('Account Balance:', web3.utils.fromWei(balance, 'ether'));"
+  },
+  {
+    "title": "Sending Ether",
+    "description": "Send Ether from one Ethereum account to another.",
+    "code": "const sendEther = async (recipient, amount) => {\n  try {\n    const accounts = await web3.eth.getAccounts();\n    await web3.eth.sendTransaction({\n      from: accounts[0],\n      to: recipient,\n      value: web3.utils.toWei(amount, 'ether')\n    });\n    console.log('Transaction successful!');\n  } catch (error) {\n    console.error('Error sending Ether:', error);\n  }\n};"
+  },
+  {
+    "title": "Contract Interaction",
+    "description": "Interact with a deployed Ethereum smart contract.",
+    "code": "// Example contract ABI (Application Binary Interface)\nconst contractABI = [...];\n\n// Example contract address\nconst contractAddress = '0xabc...';\n\n// Load contract\nconst contract = new web3.eth.Contract(contractABI, contractAddress);\n\n// Example: Call contract method\nconst callMethod = async () => {\n  try {\n    const result = await contract.methods.methodName().call();\n    console.log('Method result:', result);\n  } catch (error) {\n    console.error('Error calling method:', error);\n  }\n};"
+  },
+  {
+    "title": "Listening to Events",
+    "description": "Listen to events emitted by a smart contract.",
+    "code": "// Example: Subscribe to event\ncontract.events.EventName({ fromBlock: 0 }, (error, event) => {\n  if (!error)\n    console.log('Event:', event.returnValues);\n});"
+  },
+  {
+    "title": "Deploying a Contract",
+    "description": "Deploy a new Ethereum smart contract.",
+    "code": "// Example contract bytecode and ABI\nconst bytecode = '0xabc...';\nconst abi = [...];\n\n// Deploy contract\nconst deployContract = async () => {\n  try {\n    const accounts = await web3.eth.getAccounts();\n    const deployedContract = await new web3.eth.Contract(abi)\n      .deploy({\n        data: bytecode,\n        arguments: [constructorArguments]\n      })\n      .send({\n        from: accounts[0],\n        gas: 2000000\n      });\n    console.log('Contract deployed at:', deployedContract.options.address);\n  } catch (error) {\n    console.error('Error deploying contract:', error);\n  }\n};"
+  },
+  {
+    "title": "Interacting with ERC-20 Tokens",
+    "description": "Interact with ERC-20 compliant tokens on Ethereum.",
+    "code": "// Example token contract address and ABI\nconst tokenAddress = '0xabc...';\nconst tokenABI = [...];\n\n// Load token contract\nconst tokenContract = new web3.eth.Contract(tokenABI, tokenAddress);\n\n// Example: Get token balance\nconst getTokenBalance = async () => {\n  try {\n    const accounts = await web3.eth.getAccounts();\n    const balance = await tokenContract.methods.balanceOf(accounts[0]).call();\n    console.log('Token Balance:', balance);\n  } catch (error) {\n    console.error('Error getting token balance:', error);\n  }\n};"
+  },
+  {
+    "title": "Signing Transactions",
+    "description": "Sign transactions offline and send them later.",
+    "code": "// Example: Sign and send transaction\nconst signAndSendTransaction = async () => {\n  try {\n    const accounts = await web3.eth.getAccounts();\n    const transactionObject = {\n      from: accounts[0],\n      to: '0xrecipientAddress',\n      value: web3.utils.toWei('1', 'ether'),\n      gas: 2000000\n    };\n    const signedTransaction = await web3.eth.accounts.signTransaction(transactionObject, 'privateKey');\n    const result = await web3.eth.sendSignedTransaction(signedTransaction.rawTransaction);\n    console.log('Transaction hash:', result.transactionHash);\n  } catch (error) {\n    console.error('Error signing and sending transaction:', error);\n  }\n};"
+  },
+  {
+    "title": "Listening to New Blocks",
+    "description": "Listen for new blocks mined on the Ethereum blockchain.",
+    "code": "// Example: Subscribe to new block headers\nweb3.eth.subscribe('newBlockHeaders', (error, blockHeader) => {\n  if (!error)\n    console.log('New Block:', blockHeader);\n});"
+  },
+  {
+    "title": "Fetching Transaction Details",
+    "description": "Retrieve details of a specific Ethereum transaction.",
+    "code": "// Example: Get transaction details\nconst getTransactionDetails = async (txHash) => {\n  try {\n    const transaction = await web3.eth.getTransaction(txHash);\n    console.log('Transaction details:', transaction);\n  } catch (error) {\n    console.error('Error fetching transaction details:', error);\n  }\n};"
+  },
+  {
+    "title": "Creating Ethereum Wallet",
+    "description": "Generate a new Ethereum wallet address and private key.",
+    "code": "// Example: Create new wallet\nconst createWallet = () => {\n  try {\n    const newWallet = web3.eth.accounts.create();\n    console.log('New wallet created:', newWallet);\n  } catch (error) {\n    console.error('Error creating wallet:', error);\n  }\n};"
+  },
+  {
+    "title": "Estimating Gas Cost",
+    "description": "Estimate the gas cost for a transaction.",
+    "code": "// Example: Estimate gas cost\nconst estimateGasCost = async () => {\n  try {\n    const gasCost = await web3.eth.estimateGas({\n      to: '0xrecipientAddress',\n      data: '0xdata'\n    });\n    console.log('Gas cost:', gasCost);\n  } catch (error) {\n    console.error('Error estimating gas cost:', error);\n  }\n};"
+  },
+  {
+    "title": "Decoding Transaction Logs",
+    "description": "Decode transaction logs from Ethereum smart contracts.",
+    "code": "// Example: Decode transaction logs\nconst decodeLogs = (logs) => {\n  const decodedLogs = web3.eth.abi.decodeLog(\n    [\n      { type: 'uint256', name: 'amount' },\n      { type: 'address', name: 'recipient' }\n    ],\n    logs.data,\n    logs.topics\n  );\n  console.log('Decoded logs:', decodedLogs);\n};"
+  },
+  {
+    "title": "Working with BigNumber",
+    "description": "Handle large numbers in Ethereum smart contracts using BigNumber.",
+    "code": "// Example: Use BigNumber\nconst BigNumber = require('bignumber.js');\n\nconst value = new BigNumber('1000000000000000000');\nconsole.log('Value in Ether:', web3.utils.fromWei(value, 'ether'));\n"
+  },
+  {
+    "title": "Fetching Block Details",
+    "description": "Retrieve details of a specific Ethereum block.",
+    "code": "// Example: Get block details\nconst getBlockDetails = async (blockNumber) => {\n  try {\n    const block = await web3.eth.getBlock(blockNumber);\n    console.log('Block details:', block);\n  } catch (error) {\n    console.error('Error fetching block details:', error);\n  }\n};"
+  },
+  {
+    "title": "Handling Errors",
+    "description": "Handle errors when interacting with the Ethereum blockchain.",
+    "code": "// Example: Error handling\ntry {\n  const balance = await web3.eth.getBalance('0xrecipientAddress');\n  console.log('Account balance:', balance);\n} catch (error) {\n  console.error('Error:', error);\n}"
+  },
+  {
+    "title": "Listening to Contract Events",
+    "description": "Subscribe to events emitted by an Ethereum smart contract.",
+    "code": "// Example: Listen to contract events\ncontract.events.Transfer({\n  filter: { from: '0xfromAddress' },\n  fromBlock: 0\n}, (error, event) => {\n  if (!error)\n    console.log('Transfer event:', event);\n});"
+  },
+  {
+    "title": "Converting Wei to Ether",
+    "description": "Convert a value from Wei to Ether.",
+    "code": "// Example: Convert Wei to Ether\nconst convertWeiToEther = (weiValue) => {\n  const etherValue = web3.utils.fromWei(weiValue, 'ether');\n  console.log('Value in Ether:', etherValue);\n};"
+  },
+  {
+    "title": "Fetching Past Events",
+    "description": "Retrieve past events emitted by an Ethereum smart contract.",
+    "code": "// Example: Fetch past events\ncontract.getPastEvents('EventName', {\n  filter: { from: '0xfromAddress' },\n  fromBlock: 0,\n  toBlock: 'latest'\n}, (error, events) => {\n  if (!error)\n    console.log('Past events:', events);\n});"
+  },
+  {
+    "title": "Fetching Token Metadata",
+    "description": "Retrieve metadata information from an ERC-721 or ERC-1155 token.",
+    "code": "// Example: Fetch token metadata\nconst fetchTokenMetadata = async (tokenId) => {\n  try {\n    const tokenUri = await tokenContract.methods.tokenURI(tokenId).call();\n    const metadataResponse = await fetch(tokenUri);\n    const metadata = await metadataResponse.json();\n    console.log('Token Metadata:', metadata);\n  } catch (error) {\n    console.error('Error fetching token metadata:', error);\n  }\n};"
+  },
+  {
+    "title": "Interacting with IPFS",
+    "description": "Store and retrieve files using IPFS (InterPlanetary File System).",
+    "code": "// Example: Interact with IPFS\nconst ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });\n\nconst addToIPFS = async (file) => {\n  try {\n    const added = await ipfs.add(file);\n    console.log('File added to IPFS. CID:', added.cid.toString());\n  } catch (error) {\n    console.error('Error adding file to IPFS:', error);\n  }\n};"
+  },
+  {
+    "title": "Using Infura as a Provider",
+    "description": "Connect to Ethereum using Infura as a Web3 provider.",
+    "code": "// Example: Connect to Ethereum via Infura\nconst infuraProjectId = 'yourInfuraProjectId';\nconst infuraUrl = `https://mainnet.infura.io/v3/${infuraProjectId}`;\n\nconst web3 = new Web3(new Web3.providers.HttpProvider(infuraUrl));"
+  },
+  {
+    "title": "Creating Multisig Wallets",
+    "description": "Deploy and interact with a multi-signature Ethereum wallet.",
+    "code": "// Example: Create multisig wallet\nconst createMultiSigWallet = async (owners, requiredConfirmations) => {\n  try {\n    const factory = new web3.eth.Contract(factoryAbi, factoryAddress);\n    const result = await factory.methods.create(owners, requiredConfirmations).send({ from: accounts[0] });\n    console.log('Multisig wallet created at:', result.events.ContractCreated.returnValues.wallet);\n  } catch (error) {\n    console.error('Error creating multisig wallet:', error);\n  }\n};"
+  },
+  {
+    "title": "Verifying Smart Contracts",
+    "description": "Verify your deployed smart contract on Etherscan.",
+    "code": "// Example: Verify smart contract on Etherscan\nconst etherscanApiUrl = 'https://api.etherscan.io/api';\n\nconst verifyContract = async (contractAddress) => {\n  try {\n    const apiKey = 'yourEtherscanApiKey';\n    const response = await fetch(`${etherscanApiUrl}?module=contract&action=verifysourcecode&address=${contractAddress}&apikey=${apiKey}`);\n    const verificationResult = await response.json();\n    console.log('Verification result:', verificationResult);\n  } catch (error) {\n    console.error('Error verifying contract:', error);\n  }\n};"
+  },
+  {
+    "title": "Generating Ethereum Vanity Addresses",
+    "description": "Generate Ethereum addresses with specific patterns (vanity addresses).",
+    "code": "// Example: Generate vanity Ethereum address\nconst generateVanityAddress = () => {\n  try {\n    const pattern = '^0x[1-9a-fA-F]{6}42';\n    const vanityAddress = ethVanity.createVanityAddress(pattern);\n    console.log('Vanity Address:', vanityAddress);\n  } catch (error) {\n    console.error('Error generating vanity address:', error);\n  }\n};"
+  },
+  {
+    "title": "Interacting with Ethereum Name Service (ENS)",
+    "description": "Resolve ENS names to Ethereum addresses and vice versa.",
+    "code": "// Example: Resolve ENS name\nconst resolveENS = async (ensName) => {\n  try {\n    const resolvedAddress = await web3.eth.ens.getAddress(ensName);\n    console.log('Resolved Address:', resolvedAddress);\n  } catch (error) {\n    console.error('Error resolving ENS:', error);\n  }\n};"
+  },
+  {
+    "title": "Working with Chainlink Oracles",
+    "description": "Integrate Chainlink oracles to fetch external data on-chain.",
+    "code": "// Example: Use Chainlink oracle\nconst chainlinkOracle = '0xChainlinkOracleAddress';\n\nconst fetchExternalData = async () => {\n  try {\n    const result = await contract.methods.requestDataFrom(chainlinkOracle).send({ from: accounts[0] });\n    console.log('External data fetched:', result);\n  } catch (error) {\n    console.error('Error fetching external data:', error);\n  }\n};"
+  },
+  {
+    "title": "Implementing Reentrancy Protection",
+    "description": "Prevent reentrancy attacks in Ethereum smart contracts.",
+    "code": "// Example: Implement reentrancy guard\nconst lock = false;\n\nconst safeFunction = async () => {\n  try {\n    if (!lock) {\n      lock = true;\n      // Execute function code\n      lock = false;\n    }\n  } catch (error) {\n    console.error('Reentrancy guard error:', error);\n  }\n};"
+  },
+  {
+    "title": "Creating Ethereum Subscriptions",
+    "description": "Subscribe to Ethereum blockchain events using WebSockets.",
+    "code": "// Example: Subscribe to Ethereum events\nconst subscribeToEvents = () => {\n  try {\n    const subscription = web3.eth.subscribe('logs', { address: '0xContractAddress' }, (error, log) => {\n      if (!error)\n        console.log('Log event:', log);\n    });\n  } catch (error) {\n    console.error('Error subscribing to events:', error);\n  }\n};"
+  },
+  {
+    "title": "Accessing Block Timestamp",
+    "description": "Retrieve the timestamp of a specific Ethereum block.",
+    "code": "// Example: Get block timestamp\nconst getBlockTimestamp = async (blockNumber) => {\n  try {\n    const block = await web3.eth.getBlock(blockNumber);\n    console.log('Block timestamp:', new Date(block.timestamp * 1000));\n  } catch (error) {\n    console.error('Error fetching block timestamp:', error);\n  }\n};"
+  },
+  {
+    "title": "Calculating Gas Price",
+    "description": "Retrieve the current gas price in Wei.",
+    "code": "// Example: Get current gas price\nconst getGasPrice = async () => {\n  try {\n    const gasPrice = await web3.eth.getGasPrice();\n    console.log('Current gas price (Wei):', gasPrice);\n  } catch (error) {\n    console.error('Error fetching gas price:', error);\n  }\n};"
+  },
+  {
+    "title": "Generating Ethereum Signatures",
+    "description": "Generate cryptographic signatures for Ethereum transactions.",
+    "code": "// Example: Generate Ethereum signature\nconst generateSignature = async (message, privateKey) => {\n  try {\n    const signedMessage = web3.eth.accounts.sign(message, privateKey);\n    console.log('Signed message:', signedMessage);\n  } catch (error) {\n    console.error('Error generating signature:', error);\n  }\n};"
+  },
+  {
+    "title": "Using Off-chain Signatures",
+    "description": "Verify off-chain signatures for Ethereum transactions.",
+    "code": "// Example: Verify off-chain signature\nconst verifySignature = async (message, signature, address) => {\n  try {\n    const signer = web3.eth.accounts.recover(message, signature);\n    const isValid = signer.toLowerCase() === address.toLowerCase();\n    console.log('Signature verification result:', isValid);\n  } catch (error) {\n    console.error('Error verifying signature:', error);\n  }\n};"
+  },
+  {
+    "title": "Integrating with DeFi Protocols",
+    "description": "Interact with decentralized finance (DeFi) protocols on Ethereum.",
+    "code": "// Example: Interact with DeFi protocol\nconst interactWithDeFi = async () => {\n  try {\n    const compoundContract = new web3.eth.Contract(compoundABI, compoundAddress);\n    const balance = await compoundContract.methods.getAccountSnapshot(userAddress).call();\n    console.log('Compound balance:', balance);\n  } catch (error) {\n    console.error('Error interacting with DeFi protocol:', error);\n  }\n};"
+  },
+  {
+    "title": "Performing Token Swaps (DEX)",
+    "description": "Swap tokens on decentralized exchanges (DEX) like Uniswap.",
+    "code": "// Example: Perform token swap on Uniswap\nconst performTokenSwap = async (inputToken, outputToken, inputAmount) => {\n  try {\n    const uniswapRouter = new web3.eth.Contract(uniswapRouterABI, uniswapRouterAddress);\n    const tx = await uniswapRouter.methods.swapExactTokensForTokens(\n      web3.utils.toWei(inputAmount, 'ether'), 0, [inputToken, outputToken], userAddress, Date.now() + 1000 * 60 * 10\n    ).send({ from: userAddress });\n    console.log('Swap transaction:', tx);\n  } catch (error) {\n    console.error('Error performing token swap:', error);\n  }\n};"
+  },
+  {
+    "title": "Implementing ERC-721 Token Minting",
+    "description": "Mint new ERC-721 tokens in a smart contract.",
+    "code": "// Example: Mint ERC-721 token\nconst mintERC721Token = async (tokenURI) => {\n  try {\n    const contract = new web3.eth.Contract(erc721ABI, erc721Address);\n    const tx = await contract.methods.mint(userAddress, tokenURI).send({ from: userAddress });\n    console.log('ERC-721 token minted. Transaction:', tx);\n  } catch (error) {\n    console.error('Error minting ERC-721 token:', error);\n  }\n};"
+  },
+  {
+    "title": "Implementing Layer 2 Solutions",
+    "description": "Integrate with Ethereum Layer 2 scaling solutions like Optimism or Polygon.",
+    "code": "// Example: Deposit to Layer 2\nconst depositToLayer2 = async (amount) => {\n  try {\n    const bridge = new web3.eth.Contract(optimismBridgeABI, optimismBridgeAddress);\n    const tx = await bridge.methods.deposit(amount).send({ from: userAddress });\n    console.log('Deposit to Layer 2 successful. Transaction:', tx);\n  } catch (error) {\n    console.error('Error depositing to Layer 2:', error);\n  }\n};"
+  },
+  {
+    "title": "Working with Flash Loans",
+    "description": "Execute flash loans on platforms like Aave or dydx.",
+    "code": "// Example: Execute flash loan\nconst executeFlashLoan = async (asset, amount) => {\n  try {\n    const flashLoan = new web3.eth.Contract(aaveFlashLoanABI, aaveFlashLoanAddress);\n    const tx = await flashLoan.methods.execute(asset, amount).send({ from: userAddress });\n    console.log('Flash loan executed. Transaction:', tx);\n  } catch (error) {\n    console.error('Error executing flash loan:', error);\n  }\n};"
+  },
+  {
+    "title": "Implementing DAO Governance",
+    "description": "Participate in DAO (Decentralized Autonomous Organization) governance.",
+    "code": "// Example: Vote on DAO proposal\nconst voteOnProposal = async (proposalId, vote) => {\n  try {\n    const daoContract = new web3.eth.Contract(daoABI, daoAddress);\n    const tx = await daoContract.methods.vote(proposalId, vote).send({ from: userAddress });\n    console.log('Vote on DAO proposal. Transaction:', tx);\n  } catch (error) {\n    console.error('Error voting on DAO proposal:', error);\n  }\n};"
+  },
+  {
+    "title": "Managing ERC-20 Allowances",
+    "description": "Approve and manage allowances for ERC-20 token transfers.",
+    "code": "// Example: Manage ERC-20 allowance\nconst manageERC20Allowance = async (spender, amount) => {\n  try {\n    const tokenContract = new web3.eth.Contract(erc20ABI, erc20Address);\n    const tx = await tokenContract.methods.approve(spender, amount).send({ from: userAddress });\n    console.log('Allowance approved. Transaction:', tx);\n  } catch (error) {\n    console.error('Error managing ERC-20 allowance:', error);\n  }\n};"
+  },
+  {
+    "title": "Creating Ethereum Name Service (ENS) Domains",
+    "description": "Register new ENS domains and set their resolver and address.",
+    "code": "// Example: Register ENS domain\nconst registerENS = async (domain, address) => {\n  try {\n    const ensContract = new web3.eth.Contract(ensABI, ensAddress);\n    const tx = await ensContract.methods.setSubnodeOwner('0x0', web3.utils.sha3(domain), address).send({ from: userAddress });\n    console.log('ENS domain registered. Transaction:', tx);\n  } catch (error) {\n    console.error('Error registering ENS domain:', error);\n  }\n};"
+  },
+  {
+    "title": "Using Chainlink VRF (Verifiable Random Function)",
+    "description": "Integrate Chainlink VRF to generate random numbers securely on-chain.",
+    "code": "// Example: Use Chainlink VRF\nconst useChainlinkVRF = async () => {\n  try {\n    const vrfContract = new web3.eth.Contract(chainlinkVRFABI, chainlinkVRFAddress);\n    const result = await vrfContract.methods.getRandomNumber().send({ from: userAddress });\n    console.log('Chainlink VRF result:', result);\n  } catch (error) {\n    console.error('Error using Chainlink VRF:', error);\n  }\n};"
+  },
+  {
+    "title": "Managing Ethereum Smart Contract Upgrades",
+    "description": "Upgrade and manage the lifecycle of Ethereum smart contracts.",
+    "code": "// Example: Upgrade smart contract\nconst upgradeSmartContract = async (newImplementationAddress) => {\n  try {\n    const upgradeableContract = new web3.eth.Contract(upgradeableABI, upgradeableAddress);\n    const tx = await upgradeableContract.methods.upgradeTo(newImplementationAddress).send({ from: adminAddress });\n    console.log('Smart contract upgraded. Transaction:', tx);\n  } catch (error) {\n    console.error('Error upgrading smart contract:', error);\n  }\n};"
+  },
+  {
+    "title": "Creating Ethereum Tokens (ERC-20)",
+    "description": "Deploy and manage ERC-20 tokens on the Ethereum blockchain.",
+    "code": "// Example: Create ERC-20 token\nconst createERC20Token = async (name, symbol, initialSupply) => {\n  try {\n    const factoryContract = new web3.eth.Contract(erc20FactoryABI, erc20FactoryAddress);\n    const tx = await factoryContract.methods.createToken(name, symbol, initialSupply).send({ from: adminAddress });\n    console.log('ERC-20 token created. Transaction:', tx);\n  } catch (error) {\n    console.error('Error creating ERC-20 token:', error);\n  }\n};"
+  },
+  {
+    "title": "Fetching Contract Code",
+    "description": "Retrieve the bytecode of a deployed Ethereum smart contract.",
+    "code": "// Example: Get contract bytecode\nconst getContractBytecode = async (contractAddress) => {\n  try {\n    const bytecode = await web3.eth.getCode(contractAddress);\n    console.log('Contract bytecode:', bytecode);\n  } catch (error) {\n    console.error('Error fetching contract bytecode:', error);\n  }\n};"
+  },
+  {
+    "title": "Estimating Token Transfer Fee",
+    "description": "Estimate the transaction fee for transferring ERC-20 tokens.",
+    "code": "// Example: Estimate token transfer fee\nconst estimateTokenTransferFee = async (tokenAddress, recipient, amount) => {\n  try {\n    const gasEstimate = await web3.eth.estimateGas({\n      to: tokenAddress,\n      data: web3.eth.abi.encodeFunctionCall({\n        name: 'transfer',\n        type: 'function',\n        inputs: [{ type: 'address', name: 'recipient' }, { type: 'uint256', name: 'amount' }]\n      }, [recipient, amount])\n    });\n    const gasPrice = await web3.eth.getGasPrice();\n    const fee = gasEstimate * gasPrice;\n    console.log('Estimated transfer fee:', web3.utils.fromWei(String(fee), 'ether'), 'ETH');\n  } catch (error) {\n    console.error('Error estimating token transfer fee:', error);\n  }\n};"
+  },
+  {
+    "title": "Interacting with IPFS",
+    "description": "Store and retrieve data on the InterPlanetary File System (IPFS) using Ethereum smart contracts.",
+    "code": "// Example: Interact with IPFS\nconst interactWithIPFS = async (data) => {\n  try {\n    const ipfsHash = await ipfs.add(data);\n    console.log('IPFS hash:', ipfsHash);\n  } catch (error) {\n    console.error('Error interacting with IPFS:', error);\n  }\n};"
+  },
+  {
+    "title": "Using Chainlink Price Feeds",
+    "description": "Retrieve real-time price feeds from Chainlink oracles for accurate token valuations.",
+    "code": "// Example: Use Chainlink Price Feeds\nconst useChainlinkPriceFeeds = async (token) => {\n  try {\n    const priceFeed = new web3.eth.Contract(chainlinkPriceFeedABI, chainlinkPriceFeedAddress);\n    const latestPrice = await priceFeed.methods.getLatestPrice(token).call();\n    console.log('Latest price:', latestPrice);\n  } catch (error) {\n    console.error('Error using Chainlink Price Feeds:', error);\n  }\n};"
+  },
+  {
+    "title": "Implementing Multi-Signature Wallets",
+    "description": "Deploy and manage multi-signature wallets for secure Ethereum transactions.",
+    "code": "// Example: Manage multi-signature wallet\nconst manageMultiSigWallet = async (owners, requiredSignatures, transactionData) => {\n  try {\n    const multiSigWallet = new web3.eth.Contract(multiSigWalletABI, multiSigWalletAddress);\n    const tx = await multiSigWallet.methods.submitTransaction(...transactionData).send({ from: owners[0] });\n    console.log('Multi-signature transaction submitted. Transaction:', tx);\n  } catch (error) {\n    console.error('Error managing multi-signature wallet:', error);\n  }\n};"
+  },
+  {
+    "title": "Using zk-SNARKs for Privacy",
+    "description": "Implement zero-knowledge proofs using zk-SNARKs to ensure transaction privacy on Ethereum.",
+    "code": "// Example: Use zk-SNARKs for privacy\nconst useZkSnarks = async (proof, inputs) => {\n  try {\n    const zkSnarksContract = new web3.eth.Contract(zkSnarksABI, zkSnarksAddress);\n    const result = await zkSnarksContract.methods.verifyProof(proof, inputs).call();\n    console.log('zk-SNARKs verification result:', result);\n  } catch (error) {\n    console.error('Error using zk-SNARKs:', error);\n  }\n};"
+  },
+  {
+    "title": "Handling Ethereum Name Service (ENS) Resolution",
+    "description": "Resolve Ethereum Name Service (ENS) domains to retrieve associated addresses and metadata.",
+    "code": "// Example: Resolve ENS domain\nconst resolveENS = async (domain) => {\n  try {\n    const resolver = await ensContract.methods.resolver(web3.utils.sha3(domain)).call();\n    const address = await ensContract.methods.addr(resolver).call();\n    console.log('Resolved address for', domain, ':', address);\n  } catch (error) {\n    console.error('Error resolving ENS domain:', error);\n  }\n};"
+  },
+  {
+    "title": "Auditing Smart Contracts",
+    "description": "Perform security audits on Ethereum smart contracts to identify vulnerabilities.",
+    "code": "// Example: Audit smart contract\nconst auditSmartContract = async (contractAddress) => {\n  try {\n    const auditReport = await securityAuditService.audit(contractAddress);\n    console.log('Security audit report:', auditReport);\n  } catch (error) {\n    console.error('Error auditing smart contract:', error);\n  }\n};"
+  },
+  {
+    "title": "Implementing Chainlink Verifiable Random Function (VRF)",
+    "description": "Integrate Chainlink VRF to generate provably random numbers for secure applications.",
+    "code": "// Example: Use Chainlink VRF for random number\nconst useChainlinkVRF = async () => {\n  try {\n    const vrfContract = new web3.eth.Contract(chainlinkVRFABI, chainlinkVRFAddress);\n    const randomness = await vrfContract.methods.getRandomNumber().call();\n    console.log('Chainlink VRF randomness:', randomness);\n  } catch (error) {\n    console.error('Error using Chainlink VRF:', error);\n  }\n};"
+  },
+  {
+    "title": "Accessing Ethereum Historical Data",
+    "description": "Retrieve historical data such as past block information or transaction details.",
+    "code": "// Example: Get historical block details\nconst getHistoricalData = async () => {\n  try {\n    const block = await web3.eth.getBlock('latest');\n    console.log('Latest block details:', block);\n  } catch (error) {\n    console.error('Error fetching historical data:', error);\n  }\n};"
+  },
+  {
+    "title": "Implementing Token Vesting Contracts",
+    "description": "Create and manage token vesting contracts for distributing tokens over time.",
+    "code": "// Example: Manage token vesting contract\nconst manageTokenVesting = async (beneficiary, startTimestamp, cliffDuration, totalDuration, tokens) => {\n  try {\n    const vestingContract = new web3.eth.Contract(tokenVestingABI, tokenVestingAddress);\n    const tx = await vestingContract.methods.createVesting(beneficiary, startTimestamp, cliffDuration, totalDuration, tokens).send({ from: adminAddress });\n    console.log('Token vesting contract created. Transaction:', tx);\n  } catch (error) {\n    console.error('Error managing token vesting contract:', error);\n  }\n};"
+  },
+  {
+    "title": "Using Ethereum State Channels",
+    "description": "Implement state channels for off-chain transactions with reduced gas fees and faster settlement.",
+    "code": "// Example: Use Ethereum state channels\nconst useStateChannels = async () => {\n  try {\n    const stateChannel = new web3.eth.Contract(stateChannelABI, stateChannelAddress);\n    const channelState = await stateChannel.methods.getState().call();\n    console.log('State channel state:', channelState);\n  } catch (error) {\n    console.error('Error using Ethereum state channels:', error);\n  }\n};"
+  },
+  {
+    "title": "Implementing Delegated Voting",
+    "description": "Integrate delegated voting mechanisms using ERC-721 tokens for governance.",
+    "code": "// Example: Implement delegated voting\nconst implementDelegatedVoting = async (proposalId, delegateTokenId) => {\n  try {\n    const votingContract = new web3.eth.Contract(delegatedVotingABI, delegatedVotingAddress);\n    const tx = await votingContract.methods.delegateVote(proposalId, delegateTokenId).send({ from: userAddress });\n    console.log('Delegated voting transaction:', tx);\n  } catch (error) {\n    console.error('Error implementing delegated voting:', error);\n  }\n};"
+  },
+  {
+    "title": "Deploying Ethereum Smart Contracts",
+    "description": "Deploy new Ethereum smart contracts programmatically from your application.",
+    "code": "// Example: Deploy Ethereum smart contract\nconst deploySmartContract = async (bytecode, abi, constructorArgs) => {\n  try {\n    const accounts = await web3.eth.getAccounts();\n    const deployedContract = await new web3.eth.Contract(abi)\n      .deploy({\n        data: bytecode,\n        arguments: constructorArgs\n      })\n      .send({\n        from: accounts[0],\n        gas: 2000000\n      });\n    console.log('Contract deployed at:', deployedContract.options.address);\n  } catch (error) {\n    console.error('Error deploying smart contract:', error);\n  }\n};"
+  },
+  {
+    "title": "Implementing Ethereum Payment Channels",
+    "description": "Set up payment channels for efficient and fast microtransactions on Ethereum.",
+    "code": "// Example: Implement Ethereum payment channel\nconst implementPaymentChannel = async (recipient, amount) => {\n  try {\n    const paymentChannel = new web3.eth.Contract(paymentChannelABI, paymentChannelAddress);\n    const tx = await paymentChannel.methods.openChannel(recipient, amount).send({ from: userAddress });\n    console.log('Payment channel opened. Transaction:', tx);\n  } catch (error) {\n    console.error('Error implementing payment channel:', error);\n  }\n};"
+  },
+  {
+    "title": "Managing Ethereum Gas Fees",
+    "description": "Estimate and optimize gas fees for Ethereum transactions.",
+    "code": "// Example: Manage Ethereum gas fees\nconst manageGasFees = async () => {\n  try {\n    const gasPrice = await web3.eth.getGasPrice();\n    console.log('Current gas price:', gasPrice);\n  } catch (error) {\n    console.error('Error managing gas fees:', error);\n  }\n};"
+  },
+  {
+    "title": "Creating and Managing DAOs (Decentralized Autonomous Organizations)",
+    "description": "Deploy and manage DAOs for decentralized governance and decision-making.",
+    "code": "// Example: Create and manage DAO\nconst manageDAO = async (members, votingPeriod, quorum) => {\n  try {\n    const daoContract = new web3.eth.Contract(daoABI, daoAddress);\n    const tx = await daoContract.methods.createDAO(members, votingPeriod, quorum).send({ from: adminAddress });\n    console.log('DAO created. Transaction:', tx);\n  } catch (error) {\n    console.error('Error managing DAO:', error);\n  }\n};"
+  },
+  {
+    "title": "Using Ethereum Identity Standards (ERC-725/ERC-735)",
+    "description": "Implement decentralized identity solutions on Ethereum using ERC-725 and ERC-735 standards.",
+    "code": "// Example: Use ERC-725/ERC-735 identity\nconst useIdentityStandards = async (identityAddress, claim) => {\n  try {\n    const identityContract = new web3.eth.Contract(erc725ABI, identityAddress);\n    const tx = await identityContract.methods.addClaim(claim).send({ from: userAddress });\n    console.log('Claim added to identity. Transaction:', tx);\n  } catch (error) {\n    console.error('Error using identity standards:', error);\n  }\n};"
+  },
+  {
+    "title": "Implementing Batch Transactions",
+    "description": "Execute multiple Ethereum transactions atomically in a single batch.",
+    "code": "// Example: Execute batch transactions\nconst executeBatchTransactions = async (transactions) => {\n  try {\n    const batch = new web3.BatchRequest();\n    transactions.forEach(tx => {\n      const contract = new web3.eth.Contract(tx.abi, tx.address);\n      batch.add(contract.methods[tx.method](...tx.args).send.request({ from: userAddress }));\n    });\n    batch.execute();\n    console.log('Batch transactions executed successfully.');\n  } catch (error) {\n    console.error('Error executing batch transactions:', error);\n  }\n};"
+  },
+  {
+    "title": "Integrating Web3.js with React Components",
+    "description": "Integrate Web3.js functionality into React components for decentralized applications (dApps).",
+    "code": "// Example: Integrate Web3.js with React\nimport React, { useState, useEffect } from 'react';\nimport Web3 from 'web3';\n\nconst App = () => {\n  const [web3, setWeb3] = useState(null);\n\n  useEffect(() => {\n    const initWeb3 = async () => {\n      if (window.ethereum) {\n        const web3Instance = new Web3(window.ethereum);\n        try {\n          await window.ethereum.request({ method: 'eth_requestAccounts' });\n          setWeb3(web3Instance);\n        } catch (error) {\n          console.error('User denied account access:', error);\n        }\n      }\n    };\n\n    initWeb3();\n  }, []);\n\n  return (\n    <div>\n      <h1>Integrating Web3.js with React</h1>\n      {web3 ? (\n        <p>Web3 connected!</p>\n      ) : (\n        <p>Connecting to Web3...</p>\n      )}\n    </div>\n  );\n};\n\nexport default App;"
+  },
+  {
+    "title": "Implementing Ethereum Time-Lock Contracts",
+    "description": "Deploy and manage time-locked contracts to delay execution of Ethereum transactions.",
+    "code": "// Example: Implement Ethereum time-lock contract\nconst implementTimeLock = async (beneficiary, releaseTime, amount) => {\n  try {\n    const timeLockContract = new web3.eth.Contract(timeLockABI, timeLockAddress);\n    const tx = await timeLockContract.methods.lock(beneficiary, releaseTime, amount).send({ from: adminAddress });\n    console.log('Time-lock transaction:', tx);\n  } catch (error) {\n    console.error('Error implementing time-lock contract:', error);\n  }\n};"
+  }
+]

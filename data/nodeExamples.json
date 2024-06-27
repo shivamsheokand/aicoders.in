@@ -1,0 +1,1322 @@
+[
+  {
+    "title": "Node.js HTTP Server",
+    "description": "Create a basic HTTP server using Node.js.",
+    "code": "const http = require('http');\n\nconst server = http.createServer((req, res) => {\n  res.writeHead(200, { 'Content-Type': 'text/plain' });\n  res.end('Hello, World!');\n});\n\nserver.listen(3000, () => {\n  console.log('Server is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Basic Routing",
+    "description": "Create basic routes using Express.js.",
+    "code": "const express = require('express');\nconst app = express();\n\napp.get('/', (req, res) => {\n  res.send('Hello, Express!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js File System (Read File)",
+    "description": "Read contents from a file using Node.js File System module.",
+    "code": "const fs = require('fs');\n\nfs.readFile('file.txt', 'utf8', (err, data) => {\n  if (err) throw err;\n  console.log(data);\n});"
+  },
+  {
+    "title": "Node.js File System (Write File)",
+    "description": "Write content to a file using Node.js File System module.",
+    "code": "const fs = require('fs');\n\nconst content = 'Hello, File!';\n\nfs.writeFile('file.txt', content, (err) => {\n  if (err) throw err;\n  console.log('File has been saved.');\n});"
+  },
+  {
+    "title": "Node.js Promises (Read File)",
+    "description": "Read file using promises in Node.js.",
+    "code": "const fs = require('fs').promises;\n\nfs.readFile('file.txt', 'utf8')\n  .then(data => console.log(data))\n  .catch(err => console.error('Error reading file', err));"
+  },
+  {
+    "title": "Node.js Events (Event Emitter)",
+    "description": "Implement event emitter in Node.js to handle custom events.",
+    "code": "const EventEmitter = require('events');\n\nclass MyEmitter extends EventEmitter {}\n\nconst myEmitter = new MyEmitter();\nmyEmitter.on('event', () => {\n  console.log('Event occurred!');\n});\n\nmyEmitter.emit('event');"
+  },
+  {
+    "title": "Node.js Streams (Read Stream)",
+    "description": "Read data from a stream using Node.js streams.",
+    "code": "const fs = require('fs');\nconst readStream = fs.createReadStream('file.txt', 'utf8');\n\nreadStream.on('data', (chunk) => {\n  console.log(chunk);\n});"
+  },
+  {
+    "title": "Node.js Streams (Write Stream)",
+    "description": "Write data to a stream using Node.js streams.",
+    "code": "const fs = require('fs');\nconst writeStream = fs.createWriteStream('output.txt', 'utf8');\n\nwriteStream.write('Hello, Stream!');\nwriteStream.end();\nconsole.log('Data has been written to output.txt.');"
+  },
+  {
+    "title": "Express.js Middleware (Logger)",
+    "description": "Create a middleware function in Express.js to log request details.",
+    "code": "const express = require('express');\nconst app = express();\n\n// Logger middleware\napp.use((req, res, next) => {\n  console.log(`${req.method} ${req.url}`);\n  next();\n});\n\napp.get('/', (req, res) => {\n  res.send('Hello, Express with Middleware!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Error Handling)",
+    "description": "Implement error handling middleware in Express.js.",
+    "code": "const express = require('express');\nconst app = express();\n\n// Error handling middleware\napp.use((err, req, res, next) => {\n  console.error(err.stack);\n  res.status(500).send('Something broke!');\n});\n\napp.get('/', (req, res) => {\n  throw new Error('Example error.');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with error handling is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Routing (Dynamic Route)",
+    "description": "Handle dynamic routes using Express.js.",
+    "code": "const express = require('express');\nconst app = express();\n\napp.get('/users/:userId', (req, res) => {\n  const userId = req.params.userId;\n  res.send(`User ID: ${userId}`);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with dynamic routing is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Routing (Router)",
+    "description": "Organize routes using Express.js Router.",
+    "code": "const express = require('express');\nconst app = express();\nconst router = express.Router();\n\nrouter.get('/', (req, res) => {\n  res.send('Main route');\n});\n\nrouter.get('/about', (req, res) => {\n  res.send('About page');\n});\n\napp.use('/', router);\n\napp.listen(3000, () => {\n  console.log('Express server with router is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Body Parser)",
+    "description": "Parse incoming request bodies in Express.js.",
+    "code": "const express = require('express');\nconst app = express();\n\n// Body parser middleware\napp.use(express.json());\n\napp.post('/api/users', (req, res) => {\n  const user = req.body;\n  console.log('Received user:', user);\n  res.json(user);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with body parser is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Cookie Parser)",
+    "description": "Parse cookie headers in Express.js.",
+    "code": "const express = require('express');\nconst cookieParser = require('cookie-parser');\nconst app = express();\n\n// Cookie parser middleware\napp.use(cookieParser());\n\napp.get('/', (req, res) => {\n  const cookies = req.cookies;\n  console.log('Cookies:', cookies);\n  res.send('Cookies parsed!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with cookie parser is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Template Engine (Handlebars)",
+    "description": "Integrate Handlebars as a template engine in Express.js.",
+    "code": "const express = require('express');\nconst exphbs  = require('express-handlebars');\nconst app = express();\n\n// Setup Handlebars middleware\napp.engine('handlebars', exphbs());\napp.set('view engine', 'handlebars');\n\napp.get('/', (req, res) => {\n  res.render('home', { title: 'Express with Handlebars' });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with Handlebars template engine is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Error Handling (Async Await)",
+    "description": "Handle errors using async/await in Express.js.",
+    "code": "const express = require('express');\nconst app = express();\n\napp.get('/users/:userId', async (req, res, next) => {\n  try {\n    const userId = req.params.userId;\n    const user = await getUserById(userId);\n    res.json(user);\n  } catch (err) {\n    next(err);\n  }\n});\n\n// Error handling middleware\napp.use((err, req, res, next) => {\n  console.error(err.stack);\n  res.status(500).send('Something broke!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with async error handling is running on http://localhost:3000/');\n});\n\nasync function getUserById(userId) {\n  // Example async function\n  return { id: userId, name: 'John Doe' };\n}"
+  },
+  {
+    "title": "Express.js Middleware (Session)",
+    "description": "Implement session management using Express.js middleware.",
+    "code": "const express = require('express');\nconst session = require('express-session');\nconst app = express();\n\n// Session middleware\napp.use(session({\n  secret: 'secret',\n  resave: false,\n  saveUninitialized: true\n}));\n\napp.get('/login', (req, res) => {\n  req.session.user = { id: 1, name: 'John' };\n  res.send('Logged in!');\n});\n\napp.get('/profile', (req, res) => {\n  const user = req.session.user;\n  if (user) {\n    res.send(`Welcome ${user.name}!`);\n  } else {\n    res.status(401).send('Unauthorized');\n  }\n});\n\napp.listen(3000, () => {\n  console.log('Express server with session middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Error Handling (Custom Error)",
+    "description": "Implement custom error handling in Express.js.",
+    "code": "const express = require('express');\nconst app = express();\n\n// Custom error handler\napp.use((err, req, res, next) => {\n  console.error('Custom error:', err);\n  if (res.headersSent) {\n    return next(err);\n  }\n  res.status(500).send('Something went wrong!');\n});\n\napp.get('/', (req, res, next) => {\n  const err = new Error('Example error');\n  next(err);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with custom error handling is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Static Files)",
+    "description": "Serve static files using Express.js middleware.",
+    "code": "const express = require('express');\nconst path = require('path');\nconst app = express();\n\n// Serve static files\napp.use(express.static(path.join(__dirname, 'public')));\n\napp.get('/', (req, res) => {\n  res.send('Hello, Static Files!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server serving static files is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Authentication (Passport.js)",
+    "description": "Implement authentication using Passport.js in Express.js.",
+    "code": "const express = require('express');\nconst passport = require('passport');\nconst LocalStrategy = require('passport-local').Strategy;\nconst app = express();\n\n// Configure Passport.js\npassport.use(new LocalStrategy(\n  (username, password, done) => {\n    // Verify user credentials\n    if (username === 'user' && password === 'password') {\n      return done(null, { id: 1, username: 'user' });\n    } else {\n      return done(null, false);\n    }\n  }\n));\n\napp.post('/login', passport.authenticate('local', { session: false }), (req, res) => {\n  res.json(req.user);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with Passport.js authentication is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Compression)",
+    "description": "Implement response compression using compression middleware in Express.js.",
+    "code": "const express = require('express');\nconst compression = require('compression');\nconst app = express();\n\n// Compression middleware\napp.use(compression());\n\napp.get('/', (req, res) => {\n  res.send('Hello, Compression!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with compression middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Rate Limiting)",
+    "description": "Implement rate limiting using rate-limit middleware in Express.js.",
+    "code": "const express = require('express');\nconst rateLimit = require('express-rate-limit');\nconst app = express();\n\n// Rate limiting middleware\nconst limiter = rateLimit({\n  windowMs: 15 * 60 * 1000, // 15 minutes\n  max: 100 // limit each IP to 100 requests per windowMs\n});\n\napp.use(limiter);\n\napp.get('/', (req, res) => {\n  res.send('Hello, Rate Limiting!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with rate limiting middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (CORS)",
+    "description": "Handle Cross-Origin Resource Sharing (CORS) using CORS middleware in Express.js.",
+    "code": "const express = require('express');\nconst cors = require('cors');\nconst app = express();\n\n// CORS middleware\napp.use(cors());\n\napp.get('/', (req, res) => {\n  res.send('Hello, CORS!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with CORS middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Template Engine (EJS)",
+    "description": "Integrate EJS as a template engine in Express.js.",
+    "code": "const express = require('express');\nconst app = express();\n\n// Setup EJS\napp.set('view engine', 'ejs');\n\napp.get('/', (req, res) => {\n  res.render('index', { title: 'Express with EJS' });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with EJS template engine is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Helmet)",
+    "description": "Enhance Express.js app security using Helmet middleware.",
+    "code": "const express = require('express');\nconst helmet = require('helmet');\nconst app = express();\n\n// Helmet middleware\napp.use(helmet());\n\napp.get('/', (req, res) => {\n  res.send('Hello, Helmet!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with Helmet middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Modules (Export Function)",
+    "description": "Export a function from a module in Node.js.",
+    "code": "// module.js\n\nfunction greet(name) {\n  return `Hello, ${name}!`;\n}\n\nmodule.exports = greet;\n\n// main.js\nconst greet = require('./module');\n\nconsole.log(greet('John')); // Output: Hello, John!"
+  },
+  {
+    "title": "Node.js Modules (Export Class)",
+    "description": "Export a class from a module in Node.js.",
+    "code": "// module.js\n\nclass Calculator {\n  add(a, b) {\n    return a + b;\n  }\n}\n\nmodule.exports = Calculator;\n\n// main.js\nconst Calculator = require('./module');\nconst calc = new Calculator();\n\nconsole.log(calc.add(2, 3)); // Output: 5"
+  },
+  {
+    "title": "Node.js Modules (Import Module)",
+    "description": "Import a module in Node.js.",
+    "code": "// module.js\n\nmodule.exports = {\n  greet(name) {\n    return `Hello, ${name}!`;\n  },\n  multiply(a, b) {\n    return a * b;\n  }\n};\n\n// main.js\nconst { greet, multiply } = require('./module');\n\nconsole.log(greet('Alice')); // Output: Hello, Alice!\nconsole.log(multiply(2, 4)); // Output: 8"
+  },
+  {
+    "title": "Node.js Promises (Chain)",
+    "description": "Chain promises in Node.js.",
+    "code": "function delay(ms) {\n  return new Promise(resolve => setTimeout(resolve, ms));\n}\n\ndelay(1000)\n  .then(() => console.log('Hello'))\n  .then(() => delay(1000))\n  .then(() => console.log('World'));\n"
+  },
+  {
+    "title": "Node.js Promises (Error Handling)",
+    "description": "Handle errors in promises in Node.js.",
+    "code": "function asyncFunction() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      const success = Math.random() > 0.5;\n      if (success) {\n        resolve('Success!');\n      } else {\n        reject(new Error('Failure!'));\n      }\n    }, 1000);\n  });\n}\n\nasyncFunction()\n  .then(result => console.log(result))\n  .catch(error => console.error(error));"
+  },
+  {
+    "title": "Node.js Events (Custom Event)",
+    "description": "Implement and handle custom events in Node.js.",
+    "code": "const EventEmitter = require('events');\n\nclass MyEmitter extends EventEmitter {}\n\nconst myEmitter = new MyEmitter();\n\nmyEmitter.on('customEvent', (arg) => {\n  console.log('Event triggered with argument:', arg);\n});\n\nmyEmitter.emit('customEvent', 'Hello, Event!');"
+  },
+  {
+    "title": "Node.js Streams (Transform Stream)",
+    "description": "Create a transform stream using Node.js streams.",
+    "code": "const { Transform } = require('stream');\n\nconst upperCaseTransform = new Transform({\n  transform(chunk, encoding, callback) {\n    this.push(chunk.toString().toUpperCase());\n    callback();\n  }\n});\n\nprocess.stdin.pipe(upperCaseTransform).pipe(process.stdout);"
+  },
+  {
+    "title": "Node.js Child Processes (Spawn)",
+    "description": "Spawn a child process in Node.js.",
+    "code": "const { spawn } = require('child_process');\n\nconst ls = spawn('ls', ['-lh', '/usr']);\n\nls.stdout.on('data', (data) => {\n  console.log(`stdout: ${data}`);\n});\n\nls.stderr.on('data', (data) => {\n  console.error(`stderr: ${data}`);\n});\n\nls.on('close', (code) => {\n  console.log(`child process exited with code ${code}`);\n});"
+  },
+  {
+    "title": "Node.js File System (Delete File)",
+    "description": "Delete a file using Node.js File System module.",
+    "code": "const fs = require('fs');\n\nfs.unlink('file.txt', (err) => {\n  if (err) throw err;\n  console.log('File deleted!');\n});"
+  },
+  {
+    "title": "Node.js File System (Rename File)",
+    "description": "Rename a file using Node.js File System module.",
+    "code": "const fs = require('fs');\n\nfs.rename('oldFile.txt', 'newFile.txt', (err) => {\n  if (err) throw err;\n  console.log('File renamed!');\n});"
+  },
+  {
+    "title": "Node.js Crypto (Encrypt)",
+    "description": "Encrypt data using Node.js crypto module.",
+    "code": "const crypto = require('crypto');\nconst algorithm = 'aes-256-cbc';\nconst key = crypto.randomBytes(32);\nconst iv = crypto.randomBytes(16);\n\nfunction encrypt(text) {\n  const cipher = crypto.createCipheriv(algorithm, key, iv);\n  let encrypted = cipher.update(text, 'utf8', 'hex');\n  encrypted += cipher.final('hex');\n  return encrypted;\n}\n\nconst encryptedText = encrypt('Hello, World!');\nconsole.log('Encrypted:', encryptedText);"
+  },
+  {
+    "title": "Node.js Crypto (Decrypt)",
+    "description": "Decrypt data using Node.js crypto module.",
+    "code": "const crypto = require('crypto');\nconst algorithm = 'aes-256-cbc';\nconst key = crypto.randomBytes(32);\nconst iv = crypto.randomBytes(16);\n\nfunction decrypt(encryptedText) {\n  const decipher = crypto.createDecipheriv(algorithm, key, iv);\n  let decrypted = decipher.update(encryptedText, 'hex', 'utf8');\n  decrypted += decipher.final('utf8');\n  return decrypted;\n}\n\nconst encryptedText = '...'; // Provide encrypted text\nconst decryptedText = decrypt(encryptedText);\nconsole.log('Decrypted:', decryptedText);"
+  },
+  {
+    "title": "Node.js HTTP Client (GET Request)",
+    "description": "Make a GET request using Node.js HTTP client.",
+    "code": "const http = require('http');\n\nhttp.get('http://api.example.com/data', (res) => {\n  let data = '';\n  res.on('data', (chunk) => {\n    data += chunk;\n  });\n  res.on('end', () => {\n    console.log(JSON.parse(data));\n  });\n}).on('error', (err) => {\n  console.error('Error:', err.message);\n});"
+  },
+  {
+    "title": "Node.js HTTP Client (POST Request)",
+    "description": "Make a POST request using Node.js HTTP client.",
+    "code": "const http = require('http');\n\nconst postData = JSON.stringify({\n  name: 'John Doe',\n  email: 'john.doe@example.com'\n});\n\nconst options = {\n  hostname: 'api.example.com',\n  port: 80,\n  path: '/users',\n  method: 'POST',\n  headers: {\n    'Content-Type': 'application/json',\n    'Content-Length': postData.length\n  }\n};\n\nconst req = http.request(options, (res) => {\n  let data = '';\n  res.on('data', (chunk) => {\n    data += chunk;\n  });\n  res.on('end', () => {\n    console.log('Response:', JSON.parse(data));\n  });\n});\n\nreq.on('error', (err) => {\n  console.error('Error:', err.message);\n});\n\nreq.write(postData);\nreq.end();"
+  },
+  {
+    "title": "Node.js URL Module (Parse URL)",
+    "description": "Parse URL using Node.js URL module.",
+    "code": "const url = require('url');\n\nconst urlString = 'https://example.com/path?key=value';\nconst parsedUrl = url.parse(urlString, true);\n\nconsole.log('Protocol:', parsedUrl.protocol);\nconsole.log('Host:', parsedUrl.host);\nconsole.log('Path:', parsedUrl.pathname);\nconsole.log('Query:', parsedUrl.query);"
+  },
+  {
+    "title": "Node.js URL Module (Format URL)",
+    "description": "Format URL using Node.js URL module.",
+    "code": "const url = require('url');\n\nconst parsedUrl = {\n  protocol: 'https:',\n  host: 'example.com',\n  pathname: '/path',\n  query: {\n    key: 'value'\n  }\n};\n\nconst formattedUrl = url.format(parsedUrl);\nconsole.log('Formatted URL:', formattedUrl);"
+  },
+  {
+    "title": "Node.js DNS Module (Lookup)",
+    "description": "Lookup DNS using Node.js DNS module.",
+    "code": "const dns = require('dns');\n\ndns.lookup('example.com', (err, address, family) => {\n  console.log('Address:', address);\n});"
+  },
+  {
+    "title": "Node.js OS Module (System Information)",
+    "description": "Get system information using Node.js OS module.",
+    "code": "const os = require('os');\n\nconsole.log('Platform:', os.platform());\nconsole.log('Architecture:', os.arch());\nconsole.log('CPU Cores:', os.cpus().length);\nconsole.log('Total Memory (GB):', (os.totalmem() / 1024 / 1024 / 1024).toFixed(2));\nconsole.log('Free Memory (GB):', (os.freemem() / 1024 / 1024 / 1024).toFixed(2));"
+  },
+  {
+    "title": "Express.js Middleware (Cookie Parsing)",
+    "description": "Parse cookies using cookie-parser middleware in Express.js.",
+    "code": "const express = require('express');\nconst cookieParser = require('cookie-parser');\nconst app = express();\n\n// Cookie parsing middleware\napp.use(cookieParser());\n\napp.get('/', (req, res) => {\n  res.cookie('user', 'John Doe');\n  res.send('Cookie set!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with cookie parsing middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Body Parsing - JSON)",
+    "description": "Parse JSON bodies using body-parser middleware in Express.js.",
+    "code": "const express = require('express');\nconst bodyParser = require('body-parser');\nconst app = express();\n\n// Body parsing middleware - JSON\napp.use(bodyParser.json());\n\napp.post('/data', (req, res) => {\n  console.log(req.body);\n  res.send('Data received!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with JSON body parsing middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Body Parsing - URL Encoded)",
+    "description": "Parse URL-encoded bodies using body-parser middleware in Express.js.",
+    "code": "const express = require('express');\nconst bodyParser = require('body-parser');\nconst app = express();\n\n// Body parsing middleware - URL-encoded\napp.use(bodyParser.urlencoded({ extended: true }));\n\napp.post('/data', (req, res) => {\n  console.log(req.body);\n  res.send('Data received!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with URL-encoded body parsing middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Routing (Dynamic Route)",
+    "description": "Handle dynamic routes using Express.js.",
+    "code": "const express = require('express');\nconst app = express();\n\napp.get('/user/:id', (req, res) => {\n  res.send(`User ID: ${req.params.id}`);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with dynamic route is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Routing (Router)",
+    "description": "Implement routers using Express.js.",
+    "code": "// usersRouter.js\nconst express = require('express');\nconst router = express.Router();\n\nrouter.get('/', (req, res) => {\n  res.send('List of users');\n});\n\nrouter.get('/:id', (req, res) => {\n  res.send(`User ID: ${req.params.id}`);\n});\n\nmodule.exports = router;\n\n// app.js\nconst express = require('express');\nconst usersRouter = require('./usersRouter');\nconst app = express();\n\napp.use('/users', usersRouter);\n\napp.listen(3000, () => {\n  console.log('Express server with router is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Session)",
+    "description": "Implement session management using express-session middleware in Express.js.",
+    "code": "const express = require('express');\nconst session = require('express-session');\nconst app = express();\n\n// Session middleware\napp.use(session({\n  secret: 'secret',\n  resave: false,\n  saveUninitialized: true\n}));\n\napp.get('/', (req, res) => {\n  if (req.session.views) {\n    req.session.views++;\n    res.send(`Views: ${req.session.views}`);\n  } else {\n    req.session.views = 1;\n    res.send('Welcome!');\n  }\n});\n\napp.listen(3000, () => {\n  console.log('Express server with session middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Error Handling (Custom Error)",
+    "description": "Implement custom error handling in Express.js.",
+    "code": "const express = require('express');\nconst app = express();\n\n// Custom error handler\napp.use((err, req, res, next) => {\n  console.error('Custom error:', err);\n  if (res.headersSent) {\n    return next(err);\n  }\n  res.status(500).send('Something went wrong!');\n});\n\napp.get('/', (req, res, next) => {\n  const err = new Error('Example error');\n  next(err);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with custom error handling is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Static Files)",
+    "description": "Serve static files using Express.js middleware.",
+    "code": "const express = require('express');\nconst path = require('path');\nconst app = express();\n\n// Serve static files\napp.use(express.static(path.join(__dirname, 'public')));\n\napp.get('/', (req, res) => {\n  res.send('Hello, Static Files!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server serving static files is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Authentication (Passport.js)",
+    "description": "Implement authentication using Passport.js in Express.js.",
+    "code": "const express = require('express');\nconst passport = require('passport');\nconst LocalStrategy = require('passport-local').Strategy;\nconst app = express();\n\n// Configure Passport.js\npassport.use(new LocalStrategy(\n  (username, password, done) => {\n    // Verify user credentials\n    if (username === 'user' && password === 'password') {\n      return done(null, { id: 1, username: 'user' });\n    } else {\n      return done(null, false);\n    }\n  }\n));\n\napp.post('/login', passport.authenticate('local', { session: false }), (req, res) => {\n  res.json(req.user);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with Passport.js authentication is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Compression)",
+    "description": "Implement response compression using compression middleware in Express.js.",
+    "code": "const express = require('express');\nconst compression = require('compression');\nconst app = express();\n\n// Compression middleware\napp.use(compression());\n\napp.get('/', (req, res) => {\n  res.send('Hello, Compression!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with compression middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Rate Limiting)",
+    "description": "Implement rate limiting using rate-limit middleware in Express.js.",
+    "code": "const express = require('express');\nconst rateLimit = require('express-rate-limit');\nconst app = express();\n\n// Rate limiting middleware\nconst limiter = rateLimit({\n  windowMs: 15 * 60 * 1000, // 15 minutes\n  max: 100 // limit each IP to 100 requests per windowMs\n});\n\napp.use(limiter);\n\napp.get('/', (req, res) => {\n  res.send('Hello, Rate Limiting!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with rate limiting middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (CSRF Protection)",
+    "description": "Implement CSRF protection using csurf middleware in Express.js.",
+    "code": "const express = require('express');\nconst csrf = require('csurf');\nconst cookieParser = require('cookie-parser');\nconst app = express();\n\n// CSRF protection middleware\nconst csrfProtection = csrf({ cookie: true });\napp.use(cookieParser());\napp.use(csrfProtection);\n\napp.get('/form', (req, res) => {\n  res.render('csrf-form', { csrfToken: req.csrfToken() });\n});\n\napp.post('/process', (req, res) => {\n  res.send('CSRF Token verified!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with CSRF protection middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Logging)",
+    "description": "Implement request logging using morgan middleware in Express.js.",
+    "code": "const express = require('express');\nconst morgan = require('morgan');\nconst app = express();\n\n// Logging middleware\napp.use(morgan('dev'));\n\napp.get('/', (req, res) => {\n  res.send('Hello, Logging!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with logging middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Templating Engine (EJS)",
+    "description": "Use EJS as the templating engine in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst app = express();\n\napp.set('view engine', 'ejs');\napp.set('views', './views');\n\napp.get('/', (req, res) => {\n  res.render('index', { title: 'Express with EJS', message: 'Hello, EJS!' });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with EJS template engine is running on http://localhost:3000/');\n});\n\n// views/index.ejs\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title><%= title %></title>\n</head>\n<body>\n  <h1><%= message %></h1>\n</body>\n</html>"
+  },
+  {
+    "title": "Express.js File Upload (Multer)",
+    "description": "Handle file uploads using Multer middleware in Express.js.",
+    "code": "const express = require('express');\nconst multer = require('multer');\nconst path = require('path');\nconst app = express();\n\n// File upload middleware\nconst upload = multer({\n  dest: path.join(__dirname, 'uploads')\n});\n\napp.post('/upload', upload.single('file'), (req, res) => {\n  console.log('File uploaded:', req.file);\n  res.send('File uploaded successfully!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with file upload using Multer is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js WebSocket (Socket.io)",
+    "description": "Implement WebSocket using Socket.io in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst http = require('http');\nconst socketIo = require('socket.io');\nconst app = express();\nconst server = http.createServer(app);\nconst io = socketIo(server);\n\nio.on('connection', (socket) => {\n  console.log('Client connected');\n  socket.on('message', (data) => {\n    console.log('Message from client:', data);\n  });\n});\n\nserver.listen(3000, () => {\n  console.log('Express server with WebSocket using Socket.io is running on http://localhost:3000/');\n});\n\n// client.html (client-side WebSocket)\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>WebSocket Client</title>\n  <script src=\"https://cdn.socket.io/4.3.2/socket.io.js\"></script>\n  <script>\n    const socket = io('http://localhost:3000');\n    socket.emit('message', 'Hello, Server!');\n  </script>\n</head>\n<body>\n  <h1>WebSocket Client</h1>\n</body>\n</html>"
+  },
+  {
+    "title": "Express.js Middleware (Helmet)",
+    "description": "Improve security using Helmet middleware in Express.js.",
+    "code": "const express = require('express');\nconst helmet = require('helmet');\nconst app = express();\n\n// Helmet middleware\napp.use(helmet());\n\napp.get('/', (req, res) => {\n  res.send('Hello, Helmet!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with Helmet middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Error Handling (Global Handler)",
+    "description": "Implement global error handling in Express.js.",
+    "code": "const express = require('express');\nconst app = express();\n\n// Global error handler\napp.use((err, req, res, next) => {\n  console.error('Global error handler:', err);\n  res.status(500).send('Something went wrong!');\n});\n\napp.get('/', (req, res, next) => {\n  const err = new Error('Example error');\n  next(err);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with global error handling is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Testing (Supertest)",
+    "description": "Write tests using Supertest for Express.js applications.",
+    "code": "// test.js\nconst request = require('supertest');\nconst app = require('./app');\n\ndescribe('GET /', () => {\n  it('responds with 200', async () => {\n    const response = await request(app).get('/');\n    expect(response.status).toBe(200);\n  });\n});\n\n// app.js\nconst express = require('express');\nconst app = express();\n\napp.get('/', (req, res) => {\n  res.send('Hello, Supertest!');\n});\n\nmodule.exports = app;"
+  },
+  {
+    "title": "Express.js Middleware (CORS)",
+    "description": "Enable CORS using cors middleware in Express.js.",
+    "code": "const express = require('express');\nconst cors = require('cors');\nconst app = express();\n\n// CORS middleware\napp.use(cors());\n\napp.get('/', (req, res) => {\n  res.send('Hello, CORS!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with CORS middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Authentication)",
+    "description": "Implement authentication middleware in Express.js.",
+    "code": "// authMiddleware.js\nconst authMiddleware = (req, res, next) => {\n  const token = req.headers.authorization;\n  if (!token || token !== 'Bearer myToken') {\n    return res.status(401).json({ message: 'Unauthorized' });\n  }\n  next();\n};\n\nmodule.exports = authMiddleware;\n\n// app.js\nconst express = require('express');\nconst authMiddleware = require('./authMiddleware');\nconst app = express();\n\napp.get('/protected', authMiddleware, (req, res) => {\n  res.send('Protected route');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with authentication middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Error Handling (Async Errors)",
+    "description": "Handle async errors using async middleware in Express.js.",
+    "code": "// asyncMiddleware.js\nconst asyncMiddleware = (fn) => (req, res, next) => {\n  Promise.resolve(fn(req, res, next)).catch(next);\n};\n\nmodule.exports = asyncMiddleware;\n\n// app.js\nconst express = require('express');\nconst asyncMiddleware = require('./asyncMiddleware');\nconst app = express();\n\napp.get('/', asyncMiddleware(async (req, res) => {\n  throw new Error('Async error');\n}));\n\napp.use((err, req, res, next) => {\n  console.error('Error:', err);\n  res.status(500).send('Something went wrong!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with async error handling is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Request Timeout)",
+    "description": "Implement request timeout using connect-timeout middleware in Express.js.",
+    "code": "const express = require('express');\nconst timeout = require('connect-timeout');\nconst app = express();\n\n// Request timeout middleware\napp.use(timeout('15s'));\n\napp.get('/', (req, res) => {\n  res.send('Hello, Request Timeout!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with request timeout middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Testing (Jest)",
+    "description": "Write tests using Jest for Express.js applications.",
+    "code": "// server.js\nconst express = require('express');\nconst app = express();\n\napp.get('/', (req, res) => {\n  res.send('Hello, Jest!');\n});\n\nmodule.exports = app;\n\n// server.test.js\nconst request = require('supertest');\nconst app = require('./server');\n\ndescribe('GET /', () => {\n  it('responds with 200', async () => {\n    const response = await request(app).get('/');\n    expect(response.status).toBe(200);\n  });\n});"
+  },
+  {
+    "title": "Express.js Middleware (JWT Authentication)",
+    "description": "Implement JWT authentication middleware in Express.js.",
+    "code": "// authMiddleware.js\nconst jwt = require('jsonwebtoken');\nconst authMiddleware = (req, res, next) => {\n  const token = req.headers.authorization;\n  if (!token) {\n    return res.status(401).json({ message: 'Unauthorized' });\n  }\n  try {\n    const decoded = jwt.verify(token, 'secret');\n    req.user = decoded;\n    next();\n  } catch (err) {\n    return res.status(401).json({ message: 'Unauthorized' });\n  }\n};\n\nmodule.exports = authMiddleware;\n\n// app.js\nconst express = require('express');\nconst authMiddleware = require('./authMiddleware');\nconst app = express();\n\napp.get('/protected', authMiddleware, (req, res) => {\n  res.send('Protected route');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with JWT authentication middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Request Validation)",
+    "description": "Implement request validation using Joi middleware in Express.js.",
+    "code": "// Joi validation middleware\nconst Joi = require('joi');\n\nconst validateRequest = (schema) => (req, res, next) => {\n  const { error } = schema.validate(req.body);\n  if (error) {\n    return res.status(400).json({ message: error.details[0].message });\n  }\n  next();\n};\n\nmodule.exports = validateRequest;\n\n// app.js\nconst express = require('express');\nconst validateRequest = require('./validateRequest');\nconst app = express();\nconst Joi = require('joi');\n\n// Joi schema\nconst schema = Joi.object({\n  username: Joi.string().required()\n});\n\napp.post('/validate', validateRequest(schema), (req, res) => {\n  res.send('Valid request');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with request validation middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Body Parsing - Raw)",
+    "description": "Parse raw bodies using body-parser middleware in Express.js.",
+    "code": "const express = require('express');\nconst bodyParser = require('body-parser');\nconst app = express();\n\n// Body parsing middleware - Raw\napp.use(bodyParser.raw());\n\napp.post('/data', (req, res) => {\n  console.log(req.body.toString());\n  res.send('Data received!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with raw body parsing middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js File System Module (fs)",
+    "description": "Read, write, and manipulate files using Node.js fs module.",
+    "code": "const fs = require('fs');\n\n// Read file asynchronously\nfs.readFile('file.txt', 'utf8', (err, data) => {\n  if (err) throw err;\n  console.log(data);\n});\n\n// Write to file asynchronously\nfs.writeFile('newfile.txt', 'Hello, Node.js!', (err) => {\n  if (err) throw err;\n  console.log('File written!');\n});"
+  },
+  {
+    "title": "Node.js Events Module",
+    "description": "Implement event-driven architecture using Node.js events module.",
+    "code": "const EventEmitter = require('events');\nclass MyEmitter extends EventEmitter {}\nconst myEmitter = new MyEmitter();\n\n// Event listener\nmyEmitter.on('event', () => {\n  console.log('Event emitted!');\n});\n\n// Emit event\nmyEmitter.emit('event');"
+  },
+  {
+    "title": "Node.js Stream Module",
+    "description": "Process large datasets efficiently using Node.js stream module.",
+    "code": "const fs = require('fs');\nconst readStream = fs.createReadStream('data.txt', 'utf8');\nconst writeStream = fs.createWriteStream('output.txt');\n\n// Pipe data from read stream to write stream\nreadStream.pipe(writeStream);\n\nreadStream.on('end', () => {\n  console.log('File processing finished!');\n});"
+  },
+  {
+    "title": "Node.js HTTP Module",
+    "description": "Create HTTP server using Node.js http module.",
+    "code": "const http = require('http');\n\nconst server = http.createServer((req, res) => {\n  res.writeHead(200, { 'Content-Type': 'text/plain' });\n  res.end('Hello, Node.js HTTP Server!');\n});\n\nserver.listen(3000, () => {\n  console.log('Node.js HTTP server is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js HTTPS Module",
+    "description": "Create HTTPS server using Node.js https module with self-signed certificate.",
+    "code": "const https = require('https');\nconst fs = require('fs');\n\nconst options = {\n  key: fs.readFileSync('server-key.pem'),\n  cert: fs.readFileSync('server-cert.pem')\n};\n\nconst server = https.createServer(options, (req, res) => {\n  res.writeHead(200, { 'Content-Type': 'text/plain' });\n  res.end('Hello, Node.js HTTPS Server!');\n});\n\nserver.listen(3000, () => {\n  console.log('Node.js HTTPS server is running on https://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Child Processes",
+    "description": "Execute external commands or scripts using Node.js child_process module.",
+    "code": "const { exec } = require('child_process');\n\nexec('ls -lh /usr', (err, stdout, stderr) => {\n  if (err) {\n    console.error(err);\n    return;\n  }\n  console.log('Command output:', stdout);\n});"
+  },
+  {
+    "title": "Express.js Middleware (Error Handling)",
+    "description": "Handle errors using error-handling middleware in Express.js.",
+    "code": "const express = require('express');\nconst app = express();\n\n// Error-handling middleware\napp.use((err, req, res, next) => {\n  console.error('Error:', err);\n  res.status(500).send('Something went wrong!');\n});\n\napp.get('/', (req, res, next) => {\n  const err = new Error('Example error');\n  next(err);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with error-handling middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (JWT Authentication)",
+    "description": "Implement JWT authentication middleware in Express.js.",
+    "code": "// authMiddleware.js\nconst jwt = require('jsonwebtoken');\nconst authMiddleware = (req, res, next) => {\n  const token = req.headers.authorization;\n  if (!token) {\n    return res.status(401).json({ message: 'Unauthorized' });\n  }\n  try {\n    const decoded = jwt.verify(token, 'secret');\n    req.user = decoded;\n    next();\n  } catch (err) {\n    return res.status(401).json({ message: 'Unauthorized' });\n  }\n};\n\nmodule.exports = authMiddleware;\n\n// app.js\nconst express = require('express');\nconst authMiddleware = require('./authMiddleware');\nconst app = express();\n\napp.get('/protected', authMiddleware, (req, res) => {\n  res.send('Protected route');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with JWT authentication middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Request Validation)",
+    "description": "Implement request validation using Joi middleware in Express.js.",
+    "code": "// Joi validation middleware\nconst Joi = require('joi');\n\nconst validateRequest = (schema) => (req, res, next) => {\n  const { error } = schema.validate(req.body);\n  if (error) {\n    return res.status(400).json({ message: error.details[0].message });\n  }\n  next();\n};\n\nmodule.exports = validateRequest;\n\n// app.js\nconst express = require('express');\nconst validateRequest = require('./validateRequest');\nconst app = express();\nconst Joi = require('joi');\n\n// Joi schema\nconst schema = Joi.object({\n  username: Joi.string().required()\n});\n\napp.post('/validate', validateRequest(schema), (req, res) => {\n  res.send('Valid request');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with request validation middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Body Parsing - Raw)",
+    "description": "Parse raw bodies using body-parser middleware in Express.js.",
+    "code": "const express = require('express');\nconst bodyParser = require('body-parser');\nconst app = express();\n\n// Body parsing middleware - Raw\napp.use(bodyParser.raw());\n\napp.post('/data', (req, res) => {\n  console.log(req.body.toString());\n  res.send('Data received!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with raw body parsing middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Compression)",
+    "description": "Implement response compression using compression middleware in Express.js.",
+    "code": "const express = require('express');\nconst compression = require('compression');\nconst app = express();\n\n// Compression middleware\napp.use(compression());\n\napp.get('/', (req, res) => {\n  res.send('Hello, Compression!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with compression middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Rate Limiting)",
+    "description": "Implement rate limiting using rate-limit middleware in Express.js.",
+    "code": "const express = require('express');\nconst rateLimit = require('express-rate-limit');\nconst app = express();\n\n// Rate limiting middleware\nconst limiter = rateLimit({\n  windowMs: 15 * 60 * 1000, // 15 minutes\n  max: 100 // limit each IP to 100 requests per windowMs\n});\n\napp.use(limiter);\n\napp.get('/', (req, res) => {\n  res.send('Hello, Rate Limiting!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with rate limiting middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (CSRF Protection)",
+    "description": "Implement CSRF protection using csurf middleware in Express.js.",
+    "code": "const express = require('express');\nconst csrf = require('csurf');\nconst cookieParser = require('cookie-parser');\nconst app = express();\n\n// CSRF protection middleware\nconst csrfProtection = csrf({ cookie: true });\napp.use(cookieParser());\napp.use(csrfProtection);\n\napp.get('/form', (req, res) => {\n  res.render('csrf-form', { csrfToken: req.csrfToken() });\n});\n\napp.post('/process', (req, res) => {\n  res.send('CSRF Token verified!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with CSRF protection middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Logging)",
+    "description": "Implement request logging using morgan middleware in Express.js.",
+    "code": "const express = require('express');\nconst morgan = require('morgan');\nconst app = express();\n\n// Logging middleware\napp.use(morgan('dev'));\n\napp.get('/', (req, res) => {\n  res.send('Hello, Logging!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with logging middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Templating Engine (EJS)",
+    "description": "Use EJS as the templating engine in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst app = express();\n\napp.set('view engine', 'ejs');\napp.set('views', './views');\n\napp.get('/', (req, res) => {\n  res.render('index', { title: 'Express with EJS', message: 'Hello, EJS!' });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with EJS template engine is running on http://localhost:3000/');\n});\n\n// views/index.ejs\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title><%= title %></title>\n</head>\n<body>\n  <h1><%= message %></h1>\n</body>\n</html>"
+  },
+  {
+    "title": "Express.js File Upload (Multer)",
+    "description": "Handle file uploads using Multer middleware in Express.js.",
+    "code": "const express = require('express');\nconst multer = require('multer');\nconst path = require('path');\nconst app = express();\n\n// File upload middleware\nconst upload = multer({\n  dest: path.join(__dirname, 'uploads')\n});\n\napp.post('/upload', upload.single('file'), (req, res) => {\n  console.log('File uploaded:', req.file);\n  res.send('File uploaded successfully!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with file upload using Multer is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js WebSocket (Socket.io)",
+    "description": "Implement WebSocket using Socket.io in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst http = require('http');\nconst socketIo = require('socket.io');\nconst app = express();\nconst server = http.createServer(app);\nconst io = socketIo(server);\n\nio.on('connection', (socket) => {\n  console.log('Client connected');\n  socket.on('message', (data) => {\n    console.log('Message from client:', data);\n  });\n});\n\nserver.listen(3000, () => {\n  console.log('Express server with WebSocket using Socket.io is running on http://localhost:3000/');\n});\n\n// client.html (client-side WebSocket)\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>WebSocket Client</title>\n  <script src=\"https://cdn.socket.io/4.3.2/socket.io.js\"></script>\n  <script>\n    const socket = io('http://localhost:3000');\n    socket.emit('message', 'Hello, Server!');\n  </script>\n</head>\n<body>\n  <h1>WebSocket Client</h1>\n</body>\n</html>"
+  },
+  {
+    "title": "Express.js Middleware (Helmet)",
+    "description": "Improve security using Helmet middleware in Express.js.",
+    "code": "const express = require('express');\nconst helmet = require('helmet');\nconst app = express();\n\n// Helmet middleware\napp.use(helmet());\n\napp.get('/', (req, res) => {\n  res.send('Hello, Helmet!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with Helmet middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Child Processes (Spawn)",
+    "description": "Execute external commands using child_process.spawn in Node.js.",
+    "code": "const { spawn } = require('child_process');\n\nconst ls = spawn('ls', ['-lh', '/usr']);\n\nls.stdout.on('data', (data) => {\n  console.log(`stdout: ${data}`);\n});\n\nls.stderr.on('data', (data) => {\n  console.error(`stderr: ${data}`);\n});\n\nls.on('close', (code) => {\n  console.log(`child process exited with code ${code}`);\n});"
+  },
+  {
+    "title": "Node.js DNS Module",
+    "description": "Perform DNS lookup using Node.js dns module.",
+    "code": "const dns = require('dns');\n\ndns.lookup('example.com', (err, address, family) => {\n  console.log('address:', address);\n  console.log('family:', family);\n});"
+  },
+  {
+    "title": "Node.js OS Module",
+    "description": "Access operating system information using Node.js os module.",
+    "code": "const os = require('os');\n\nconsole.log('Hostname:', os.hostname());\nconsole.log('OS Type:', os.type());\nconsole.log('Total Memory (bytes):', os.totalmem());"
+  },
+  {
+    "title": "Node.js Path Module",
+    "description": "Manipulate file paths using Node.js path module.",
+    "code": "const path = require('path');\n\nconst filePath = '/path/to/file.txt';\n\nconsole.log('Directory name:', path.dirname(filePath));\nconsole.log('File name:', path.basename(filePath));\nconsole.log('File extension:', path.extname(filePath));"
+  },
+  {
+    "title": "Node.js Crypto Module",
+    "description": "Encrypt and decrypt data using Node.js crypto module.",
+    "code": "const crypto = require('crypto');\n\nconst algorithm = 'aes-256-cbc';\nconst key = crypto.randomBytes(32);\nconst iv = crypto.randomBytes(16);\n\nconst cipher = crypto.createCipheriv(algorithm, key, iv);\nlet encrypted = cipher.update('Hello, Node.js!', 'utf8', 'hex');\nencrypted += cipher.final('hex');\nconsole.log('Encrypted:', encrypted);\n\nconst decipher = crypto.createDecipheriv(algorithm, key, iv);\nlet decrypted = decipher.update(encrypted, 'hex', 'utf8');\ndecrypted += decipher.final('utf8');\nconsole.log('Decrypted:', decrypted);"
+  },
+  {
+    "title": "Node.js Events Module (EventEmitter)",
+    "description": "Create custom events using Node.js EventEmitter.",
+    "code": "const EventEmitter = require('events');\n\nclass MyEmitter extends EventEmitter {}\n\nconst myEmitter = new MyEmitter();\n\nmyEmitter.on('event', () => {\n  console.log('Event emitted!');\n});\n\nmyEmitter.emit('event');"
+  },
+  {
+    "title": "Node.js HTTP/2 Module",
+    "description": "Create HTTP/2 server using Node.js http2 module.",
+    "code": "const http2 = require('http2');\n\nconst server = http2.createSecureServer();\n\nserver.on('stream', (stream, headers) => {\n  stream.respond({\n    'content-type': 'text/html',\n    ':status': 200\n  });\n  stream.end('<h1>Hello, HTTP/2!</h1>');\n});\n\nserver.listen(3000, () => {\n  console.log('Node.js HTTP/2 server is running on https://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js URL Module",
+    "description": "Parse URLs and query strings using Node.js url module.",
+    "code": "const url = require('url');\n\nconst urlString = 'https://example.com/path?key=value';\n\nconst parsedUrl = new URL(urlString);\n\nconsole.log('Protocol:', parsedUrl.protocol);\nconsole.log('Host:', parsedUrl.host);\nconsole.log('Path:', parsedUrl.pathname);\nconsole.log('Query Parameters:', parsedUrl.searchParams.toString());"
+  },
+  {
+    "title": "Node.js Buffers",
+    "description": "Create and manipulate binary data using Node.js buffers.",
+    "code": "const buffer1 = Buffer.alloc(10);\nconst buffer2 = Buffer.from('Hello, Node.js!');\n\nconsole.log('Buffer 1:', buffer1);\nconsole.log('Buffer 2:', buffer2.toString('utf8'));"
+  },
+  {
+    "title": "Node.js Process Module",
+    "description": "Access process information and control using Node.js process module.",
+    "code": "console.log('Process ID:', process.pid);\nconsole.log('Node.js Version:', process.version);\nconsole.log('Platform:', process.platform);"
+  },
+  {
+    "title": "Express.js Middleware (Body Parsing - JSON)",
+    "description": "Parse JSON bodies using body-parser middleware in Express.js.",
+    "code": "const express = require('express');\nconst bodyParser = require('body-parser');\nconst app = express();\n\n// Body parsing middleware - JSON\napp.use(bodyParser.json());\n\napp.post('/data', (req, res) => {\n  console.log(req.body);\n  res.json({ message: 'JSON data received!' });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with JSON body parsing middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Body Parsing - URL Encoded)",
+    "description": "Parse URL-encoded bodies using body-parser middleware in Express.js.",
+    "code": "const express = require('express');\nconst bodyParser = require('body-parser');\nconst app = express();\n\n// Body parsing middleware - URL encoded\napp.use(bodyParser.urlencoded({ extended: false }));\n\napp.post('/data', (req, res) => {\n  console.log(req.body);\n  res.send('URL-encoded data received!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with URL-encoded body parsing middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Session)",
+    "description": "Implement session management using express-session middleware in Express.js.",
+    "code": "const express = require('express');\nconst session = require('express-session');\nconst app = express();\n\n// Session middleware\napp.use(session({\n  secret: 'secret',\n  resave: false,\n  saveUninitialized: true\n}));\n\napp.get('/', (req, res) => {\n  req.session.views = req.session.views ? req.session.views + 1 : 1;\n  res.send(`Views: ${req.session.views}`);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with session middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (CORS)",
+    "description": "Enable CORS (Cross-Origin Resource Sharing) using cors middleware in Express.js.",
+    "code": "const express = require('express');\nconst cors = require('cors');\nconst app = express();\n\n// CORS middleware\napp.use(cors());\n\napp.get('/api/data', (req, res) => {\n  res.json({ message: 'Data from API' });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with CORS middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Error Handling (Async Middleware)",
+    "description": "Handle errors in async middleware functions in Express.js.",
+    "code": "const express = require('express');\nconst app = express();\n\napp.get('/', async (req, res, next) => {\n  try {\n    await someAsyncFunction();\n    res.send('Data retrieved');\n  } catch (err) {\n    next(err);\n  }\n});\n\napp.use((err, req, res, next) => {\n  console.error(err);\n  res.status(500).send('Internal Server Error');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with async error handling middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Custom)",
+    "description": "Implement custom middleware in Express.js.",
+    "code": "const express = require('express');\nconst app = express();\n\n// Custom middleware\nconst myMiddleware = (req, res, next) => {\n  console.log('Custom middleware executed');\n  next();\n};\n\napp.use(myMiddleware);\n\napp.get('/', (req, res) => {\n  res.send('Hello, Custom Middleware!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with custom middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js File System (fs Module)",
+    "description": "Read and write files using Node.js fs module.",
+    "code": "const fs = require('fs');\n\n// Write to a file\nfs.writeFile('example.txt', 'Hello, Node.js!', (err) => {\n  if (err) throw err;\n  console.log('File written successfully');\n});\n\n// Read from a file\nfs.readFile('example.txt', 'utf8', (err, data) => {\n  if (err) throw err;\n  console.log('File content:', data);\n});"
+  },
+  {
+    "title": "Node.js Streams",
+    "description": "Process data with streams in Node.js.",
+    "code": "const fs = require('fs');\n\nconst readStream = fs.createReadStream('input.txt');\nconst writeStream = fs.createWriteStream('output.txt');\n\nreadStream.pipe(writeStream);\n\nreadStream.on('end', () => {\n  console.log('Data copied using streams');\n});"
+  },
+  {
+    "title": "Node.js Events Module (EventEmitter)",
+    "description": "Create custom events using Node.js EventEmitter.",
+    "code": "const EventEmitter = require('events');\n\nclass MyEmitter extends EventEmitter {}\n\nconst myEmitter = new MyEmitter();\n\nmyEmitter.on('event', () => {\n  console.log('Event emitted');\n});\n\nmyEmitter.emit('event');"
+  },
+  {
+    "title": "Node.js NPM (Package.json)",
+    "description": "Manage Node.js packages using npm and package.json.",
+    "code": "// package.json\n{\n  \"name\": \"my-node-app\",\n  \"version\": \"1.0.0\",\n  \"dependencies\": {\n    \"express\": \"^4.17.1\",\n    \"lodash\": \"^4.17.21\"\n  }\n}\n\n// Install dependencies\n// npm install\n\n// Start Node.js application\n// node app.js"
+  },
+  {
+    "title": "Node.js Cluster Module",
+    "description": "Create a cluster of Node.js processes for scalability.",
+    "code": "const cluster = require('cluster');\nconst http = require('http');\nconst numCPUs = require('os').cpus().length;\n\nif (cluster.isMaster) {\n  console.log(`Master ${process.pid} is running`);\n\n  // Fork workers\n  for (let i = 0; i < numCPUs; i++) {\n    cluster.fork();\n  }\n\n  cluster.on('exit', (worker, code, signal) => {\n    console.log(`Worker ${worker.process.pid} died`);\n  });\n} else {\n  // Workers can share any TCP connection\n  // In this case, it is an HTTP server\n  http.createServer((req, res) => {\n    res.writeHead(200);\n    res.end('Hello, World!');\n  }).listen(8000);\n\n  console.log(`Worker ${process.pid} started`);\n}"
+  },
+  {
+    "title": "Node.js JWT Authentication",
+    "description": "Implement JWT (JSON Web Token) authentication in Node.js.",
+    "code": "const jwt = require('jsonwebtoken');\n\nconst secretKey = 'mysecretkey';\nconst payload = { username: 'user1' };\nconst token = jwt.sign(payload, secretKey, { expiresIn: '1h' });\nconsole.log('JWT:', token);\n\nconst verifiedToken = jwt.verify(token, secretKey);\nconsole.log('Verified Token:', verifiedToken);"
+  },
+  {
+    "title": "Node.js Cron Jobs",
+    "description": "Schedule tasks using cron jobs in Node.js.",
+    "code": "const cron = require('node-cron');\n\ncron.schedule('* * * * *', () => {\n  console.log('Running a task every minute');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Rate Limiting)",
+    "description": "Implement rate limiting using express-rate-limit middleware in Express.js.",
+    "code": "const express = require('express');\nconst rateLimit = require('express-rate-limit');\nconst app = express();\n\nconst limiter = rateLimit({\n  windowMs: 15 * 60 * 1000, // 15 minutes\n  max: 100 // limit each IP to 100 requests per windowMs\n});\n\n// Apply rate limiter to all requests\napp.use(limiter);\n\napp.get('/data', (req, res) => {\n  res.send('Data retrieved');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with rate limiting middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Middleware (Compression)",
+    "description": "Compress HTTP responses using compression middleware in Express.js.",
+    "code": "const express = require('express');\nconst compression = require('compression');\nconst app = express();\n\n// Compression middleware\napp.use(compression());\n\napp.get('/', (req, res) => {\n  res.send('Hello, Compression!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with compression middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Error Handling (Custom Error Handler)",
+    "description": "Implement custom error handling middleware in Express.js.",
+    "code": "const express = require('express');\nconst app = express();\n\napp.get('/', (req, res, next) => {\n  const err = new Error('Custom error');\n  err.status = 500;\n  next(err);\n});\n\napp.use((err, req, res, next) => {\n  res.status(err.status || 500);\n  res.send(`Error: ${err.message}`);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with custom error handling middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Authentication (Passport.js - Local Strategy)",
+    "description": "Implement local authentication strategy using Passport.js in Express.js.",
+    "code": "const express = require('express');\nconst passport = require('passport');\nconst LocalStrategy = require('passport-local').Strategy;\nconst app = express();\n\n// Configure passport with local strategy\npassport.use(new LocalStrategy(\n  (username, password, done) => {\n    // Validate username and password\n    if (username === 'user' && password === 'password') {\n      return done(null, { id: 1, username: 'user' });\n    } else {\n      return done(null, false, { message: 'Invalid credentials' });\n    }\n  }\n));\n\napp.post('/login',\n  passport.authenticate('local', { failureRedirect: '/login-failure' }),\n  (req, res) => {\n    res.redirect('/login-success');\n  }\n);\n\napp.listen(3000, () => {\n  console.log('Express server with Passport.js local authentication strategy is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Authentication (Passport.js - JWT Strategy)",
+    "description": "Implement JWT authentication strategy using Passport.js in Express.js.",
+    "code": "const express = require('express');\nconst passport = require('passport');\nconst JwtStrategy = require('passport-jwt').Strategy;\nconst ExtractJwt = require('passport-jwt').ExtractJwt;\nconst app = express();\n\nconst secretKey = 'mysecretkey';\nconst opts = {\n  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),\n  secretOrKey: secretKey\n};\n\n// Configure passport with JWT strategy\npassport.use(new JwtStrategy(opts, (jwtPayload, done) => {\n  // Find user by ID in database\n  const user = { id: jwtPayload.sub, username: jwtPayload.username };\n  return done(null, user);\n}));\n\napp.get('/protected',\n  passport.authenticate('jwt', { session: false }),\n  (req, res) => {\n    res.send('Protected route');\n  }\n);\n\napp.listen(3000, () => {\n  console.log('Express server with Passport.js JWT authentication strategy is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js WebSocket (ws)",
+    "description": "Implement WebSocket using ws library in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst http = require('http');\nconst WebSocket = require('ws');\nconst app = express();\nconst server = http.createServer(app);\nconst wss = new WebSocket.Server({ server });\n\nwss.on('connection', (ws) => {\n  console.log('Client connected');\n  ws.on('message', (message) => {\n    console.log(`Received message => ${message}`);\n  });\n  ws.send('Welcome to WebSocket server');\n});\n\nserver.listen(3000, () => {\n  console.log('WebSocket server is running on http://localhost:3000/');\n});\n\n// client.html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>WebSocket Client</title>\n  <script>\n    const ws = new WebSocket('ws://localhost:3000');\n    ws.onopen = () => {\n      console.log('Connected to WebSocket server');\n    };\n    ws.onmessage = (event) => {\n      console.log(`Message from server => ${event.data}`);\n    };\n    function sendMessage() {\n      ws.send('Hello, WebSocket!');\n    }\n  </script>\n</head>\n<body>\n  <button onclick=\"sendMessage()\">Send Message</button>\n</body>\n</html>"
+  },
+  {
+    "title": "Express.js Templating Engine (EJS)",
+    "description": "Render dynamic content using EJS templating engine in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst app = express();\n\napp.set('view engine', 'ejs');\n\napp.get('/', (req, res) => {\n  const data = { title: 'Express.js with EJS', message: 'Hello, EJS!' };\n  res.render('index', data);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with EJS templating engine is running on http://localhost:3000/');\n});\n\n// views/index.ejs\n<!DOCTYPE html>\n<html>\n<head>\n  <title><%= title %></title>\n</head>\n<body>\n  <h1><%= message %></h1>\n</body>\n</html>"
+  },
+  {
+    "title": "Express.js File Upload (multer)",
+    "description": "Handle file uploads using multer middleware in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst multer = require('multer');\nconst app = express();\n\nconst storage = multer.diskStorage({\n  destination: (req, file, cb) => {\n    cb(null, 'uploads/');\n  },\n  filename: (req, file, cb) => {\n    cb(null, file.originalname);\n  }\n});\n\nconst upload = multer({ storage: storage });\n\napp.post('/upload', upload.single('file'), (req, res) => {\n  res.send('File uploaded successfully');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with file upload using multer is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Pagination (Mongoose)",
+    "description": "Implement pagination using Mongoose in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst mongoose = require('mongoose');\nconst app = express();\n\nmongoose.connect('mongodb://localhost:27017/myapp', { useNewUrlParser: true, useUnifiedTopology: true });\n\nconst User = mongoose.model('User', { name: String });\n\napp.get('/users', async (req, res) => {\n  const page = parseInt(req.query.page) || 1;\n  const limit = parseInt(req.query.limit) || 10;\n  const skip = (page - 1) * limit;\n\n  const users = await User.find().skip(skip).limit(limit);\n\n  res.json(users);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with pagination using Mongoose is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Logging (morgan)",
+    "description": "Implement logging using morgan middleware in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst morgan = require('morgan');\nconst app = express();\n\napp.use(morgan('dev'));\n\napp.get('/', (req, res) => {\n  res.send('Hello, Logging!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with logging using morgan middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Validation (Joi)",
+    "description": "Implement input validation using Joi in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst Joi = require('joi');\nconst app = express();\n\napp.use(express.json());\n\napp.post('/api/users', (req, res) => {\n  const schema = Joi.object({\n    name: Joi.string().min(3).required()\n  });\n\n  const { error } = schema.validate(req.body);\n  if (error) return res.status(400).send(error.details[0].message);\n\n  // Create user\n  // ...\n\n  res.send('User created');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with input validation using Joi is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js File System (Read Directory)",
+    "description": "Read a directory using Node.js fs module.",
+    "code": "const fs = require('fs');\n\nfs.readdir('.', (err, files) => {\n  if (err) throw err;\n  console.log('Files in directory:', files);\n});"
+  },
+  {
+    "title": "Node.js Child Processes (Spawn)",
+    "description": "Spawn a child process using Node.js child_process module.",
+    "code": "const { spawn } = require('child_process');\n\nconst ls = spawn('ls', ['-lh', '/usr']);\n\nls.stdout.on('data', (data) => {\n  console.log(`stdout: ${data}`);\n});\n\nls.stderr.on('data', (data) => {\n  console.error(`stderr: ${data}`);\n});\n\nls.on('close', (code) => {\n  console.log(`child process exited with code ${code}`);\n});"
+  },
+  {
+    "title": "Node.js DNS Module (Lookup)",
+    "description": "Perform DNS lookup using Node.js dns module.",
+    "code": "const dns = require('dns');\n\ndns.lookup('www.example.com', (err, address, family) => {\n  console.log('IP address:', address);\n});"
+  },
+  {
+    "title": "Node.js OS Module (Platform Information)",
+    "description": "Get platform information using Node.js os module.",
+    "code": "const os = require('os');\n\nconsole.log('Platform:', os.platform());\nconsole.log('Architecture:', os.arch());\nconsole.log('CPU cores:', os.cpus().length);"
+  },
+  {
+    "title": "Node.js Path Module (Path Manipulation)",
+    "description": "Manipulate file paths using Node.js path module.",
+    "code": "const path = require('path');\n\nconst filePath = '/home/user/example.txt';\nconsole.log('Directory:', path.dirname(filePath));\nconsole.log('Filename:', path.basename(filePath));\nconsole.log('Extension:', path.extname(filePath));"
+  },
+  {
+    "title": "Node.js Cryptography (Crypto Module)",
+    "description": "Perform cryptographic operations using Node.js crypto module.",
+    "code": "const crypto = require('crypto');\n\nconst secret = 'mysecret';\nconst hash = crypto.createHmac('sha256', secret)\n                   .update('hello world')\n                   .digest('hex');\nconsole.log('Hash:', hash);"
+  },
+  {
+    "title": "Node.js HTTP/2 Server",
+    "description": "Create an HTTP/2 server using Node.js.",
+    "code": "const http2 = require('http2');\n\nconst server = http2.createSecureServer();\n\nserver.on('stream', (stream, headers) => {\n  stream.respond({\n    'content-type': 'text/html',\n    ':status': 200\n  });\n  stream.end('<h1>Hello, HTTP/2!</h1>');\n});\n\nserver.listen(3000, () => {\n  console.log('HTTP/2 server is running on https://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js URL Module (Parsing)",
+    "description": "Parse URLs using Node.js url module.",
+    "code": "const url = require('url');\n\nconst urlString = 'https://www.example.com/path?query=1';\nconst parsedUrl = new URL(urlString);\n\nconsole.log('Host:', parsedUrl.host);\nconsole.log('Path:', parsedUrl.pathname);\nconsole.log('Query:', parsedUrl.searchParams.get('query'));"
+  },
+  {
+    "title": "Node.js Buffers",
+    "description": "Create and manipulate buffers using Node.js buffer module.",
+    "code": "const buffer = Buffer.from('Hello, Buffer!');\nconsole.log('Buffer:', buffer.toString('utf8'));\nconsole.log('Length:', buffer.length);"
+  },
+  {
+    "title": "Express.js Body Parsing (JSON)",
+    "description": "Parse JSON bodies using body-parser middleware in Express.js.",
+    "code": "const express = require('express');\nconst bodyParser = require('body-parser');\nconst app = express();\n\napp.use(bodyParser.json());\n\napp.post('/api/data', (req, res) => {\n  console.log('Received JSON data:', req.body);\n  res.send('Data received');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with JSON body parsing is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Body Parsing (URL-encoded)",
+    "description": "Parse URL-encoded bodies using body-parser middleware in Express.js.",
+    "code": "const express = require('express');\nconst bodyParser = require('body-parser');\nconst app = express();\n\napp.use(bodyParser.urlencoded({ extended: true }));\n\napp.post('/api/data', (req, res) => {\n  console.log('Received URL-encoded data:', req.body);\n  res.send('Data received');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with URL-encoded body parsing is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Session Management (express-session)",
+    "description": "Implement session management using express-session middleware in Express.js.",
+    "code": "const express = require('express');\nconst session = require('express-session');\nconst app = express();\n\napp.use(session({\n  secret: 'mysecret',\n  resave: false,\n  saveUninitialized: true\n}));\n\napp.get('/login', (req, res) => {\n  req.session.user = { id: 1, username: 'user' };\n  res.send('Logged in');\n});\n\napp.get('/profile', (req, res) => {\n  const user = req.session.user;\n  if (!user) return res.redirect('/login');\n  res.send(`Welcome, ${user.username}!`);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with session management is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js CORS (cors)",
+    "description": "Enable CORS (Cross-Origin Resource Sharing) using cors middleware in Express.js.",
+    "code": "const express = require('express');\nconst cors = require('cors');\nconst app = express();\n\napp.use(cors());\n\napp.get('/api/data', (req, res) => {\n  res.json({ message: 'Hello, CORS!' });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with CORS enabled is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Custom Middleware",
+    "description": "Implement custom middleware in Express.js.",
+    "code": "const express = require('express');\nconst app = express();\n\nconst customMiddleware = (req, res, next) => {\n  console.log('Custom middleware called');\n  next();\n};\n\napp.use(customMiddleware);\n\napp.get('/', (req, res) => {\n  res.send('Hello, Custom Middleware!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with custom middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Events (EventEmitter)",
+    "description": "Implement event handling using EventEmitter in Node.js.",
+    "code": "const EventEmitter = require('events');\n\nclass MyEmitter extends EventEmitter {}\n\nconst myEmitter = new MyEmitter();\n\nmyEmitter.on('event', () => {\n  console.log('Event emitted');\n});\n\nmyEmitter.emit('event');"
+  },
+  {
+    "title": "Node.js Streams (Readable Stream)",
+    "description": "Create a readable stream using Node.js.",
+    "code": "const fs = require('fs');\n\nconst readableStream = fs.createReadStream('input.txt');\n\nreadableStream.on('data', (chunk) => {\n  console.log('Chunk received:', chunk.toString());\n});\n\nreadableStream.on('end', () => {\n  console.log('Read operation complete');\n});"
+  },
+  {
+    "title": "Node.js Streams (Writable Stream)",
+    "description": "Create a writable stream using Node.js.",
+    "code": "const fs = require('fs');\n\nconst writableStream = fs.createWriteStream('output.txt');\n\nwritableStream.write('Writing to file\\n');\nwritableStream.end('Stream closed');\n\nconsole.log('Write operation complete');"
+  },
+  {
+    "title": "Node.js NPM (Package.json)",
+    "description": "Manage packages using npm and package.json in Node.js.",
+    "code": "// package.json\n{\n  \"name\": \"myapp\",\n  \"version\": \"1.0.0\",\n  \"dependencies\": {\n    \"express\": \"^4.17.1\"\n  },\n  \"scripts\": {\n    \"start\": \"node app.js\"\n  }\n}"
+  },
+  {
+    "title": "Node.js Clustering",
+    "description": "Implement clustering in Node.js to take advantage of multi-core systems.",
+    "code": "const cluster = require('cluster');\nconst http = require('http');\nconst numCPUs = require('os').cpus().length;\n\nif (cluster.isMaster) {\n  console.log(`Master ${process.pid} is running`);\n\n  for (let i = 0; i < numCPUs; i++) {\n    cluster.fork();\n  }\n\n  cluster.on('exit', (worker, code, signal) => {\n    console.log(`Worker ${worker.process.pid} died`);\n  });\n} else {\n  http.createServer((req, res) => {\n    res.writeHead(200);\n    res.end('Hello, World!');\n  }).listen(8000);\n\n  console.log(`Worker ${process.pid} started`);\n}"
+  },
+  {
+    "title": "Node.js JWT Authentication (jsonwebtoken)",
+    "description": "Implement JWT authentication in Node.js using jsonwebtoken package.",
+    "code": "const jwt = require('jsonwebtoken');\n\nconst secretKey = 'mysecret';\nconst payload = { user: 'john.doe' };\nconst token = jwt.sign(payload, secretKey, { expiresIn: '1h' });\nconsole.log('JWT:', token);\n\nconst decoded = jwt.verify(token, secretKey);\nconsole.log('Decoded:', decoded);"
+  },
+  {
+    "title": "Node.js Cron Jobs (node-cron)",
+    "description": "Schedule cron jobs using node-cron in Node.js.",
+    "code": "const cron = require('node-cron');\n\ncron.schedule('* * * * *', () => {\n  console.log('Running a task every minute');\n});"
+  },
+  {
+    "title": "Node.js Rate Limiting (express-rate-limit)",
+    "description": "Implement rate limiting in Express.js using express-rate-limit middleware.",
+    "code": "const express = require('express');\nconst rateLimit = require('express-rate-limit');\nconst app = express();\n\nconst limiter = rateLimit({\n  windowMs: 15 * 60 * 1000, // 15 minutes\n  max: 100 // limit each IP to 100 requests per windowMs\n});\n\napp.use(limiter);\n\napp.get('/api/data', (req, res) => {\n  res.json({ message: 'Data fetched' });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with rate limiting is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Compression (compression)",
+    "description": "Enable response compression in Express.js using compression middleware.",
+    "code": "const express = require('express');\nconst compression = require('compression');\nconst app = express();\n\napp.use(compression());\n\napp.get('/api/data', (req, res) => {\n  res.json({ message: 'Compressed response' });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with response compression is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Error Handling (Custom)",
+    "description": "Implement custom error handling middleware in Express.js.",
+    "code": "const express = require('express');\nconst app = express();\n\napp.get('/', (req, res, next) => {\n  const error = new Error('Custom error message');\n  error.status = 400;\n  next(error);\n});\n\napp.use((err, req, res, next) => {\n  res.status(err.status || 500).send(err.message);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with custom error handling is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js JWT Authentication (Passport.js)",
+    "description": "Implement JWT authentication using Passport.js in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst passport = require('passport');\nconst JwtStrategy = require('passport-jwt').Strategy;\nconst ExtractJwt = require('passport-jwt').ExtractJwt;\nconst app = express();\n\nconst opts = {\n  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),\n  secretOrKey: 'mysecret'\n};\n\npassport.use(new JwtStrategy(opts, (jwt_payload, done) => {\n  User.findById(jwt_payload.sub, (err, user) => {\n    if (err) return done(err, false);\n    if (user) return done(null, user);\n    else return done(null, false);\n  });\n}));\n\napp.get('/profile', passport.authenticate('jwt', { session: false }), (req, res) => {\n  res.send(`Welcome, ${req.user.username}!`);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with JWT authentication using Passport.js is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js WebSocket (ws)",
+    "description": "Implement WebSocket server using ws library in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst http = require('http');\nconst WebSocket = require('ws');\nconst app = express();\n\nconst server = http.createServer(app);\nconst wss = new WebSocket.Server({ server });\n\nwss.on('connection', (ws) => {\n  console.log('WebSocket client connected');\n  ws.on('message', (message) => {\n    console.log(`Received message => ${message}`);\n  });\n  ws.send('Welcome to WebSocket server');\n});\n\nserver.listen(3000, () => {\n  console.log('WebSocket server is running on http://localhost:3000/');\n});\n\n// client.html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>WebSocket Client</title>\n  <script>\n    const ws = new WebSocket('ws://localhost:3000');\n    ws.onopen = () => {\n      console.log('Connected to WebSocket server');\n    };\n    ws.onmessage = (event) => {\n      console.log(`Message from server => ${event.data}`);\n    };\n    function sendMessage() {\n      ws.send('Hello, WebSocket!');\n    }\n  </script>\n</head>\n<body>\n  <button onclick=\"sendMessage()\">Send Message</button>\n</body>\n</html>"
+  },
+  {
+    "title": "Node.js Events (EventEmitter)",
+    "description": "Implement event handling using EventEmitter in Node.js.",
+    "code": "const EventEmitter = require('events');\n\nclass MyEmitter extends EventEmitter {}\n\nconst myEmitter = new MyEmitter();\n\nmyEmitter.on('event', () => {\n  console.log('Event emitted');\n});\n\nmyEmitter.emit('event');"
+  },
+  {
+    "title": "Node.js Streams (Readable Stream)",
+    "description": "Create a readable stream using Node.js.",
+    "code": "const fs = require('fs');\n\nconst readableStream = fs.createReadStream('input.txt');\n\nreadableStream.on('data', (chunk) => {\n  console.log('Chunk received:', chunk.toString());\n});\n\nreadableStream.on('end', () => {\n  console.log('Read operation complete');\n});"
+  },
+  {
+    "title": "Node.js Streams (Writable Stream)",
+    "description": "Create a writable stream using Node.js.",
+    "code": "const fs = require('fs');\n\nconst writableStream = fs.createWriteStream('output.txt');\n\nwritableStream.write('Writing to file\\n');\nwritableStream.end('Stream closed');\n\nconsole.log('Write operation complete');"
+  },
+  {
+    "title": "Node.js NPM (Package.json)",
+    "description": "Manage packages using npm and package.json in Node.js.",
+    "code": "// package.json\n{\n  \"name\": \"myapp\",\n  \"version\": \"1.0.0\",\n  \"dependencies\": {\n    \"express\": \"^4.17.1\"\n  },\n  \"scripts\": {\n    \"start\": \"node app.js\"\n  }\n}"
+  },
+  {
+    "title": "Node.js Clustering",
+    "description": "Implement clustering in Node.js to take advantage of multi-core systems.",
+    "code": "const cluster = require('cluster');\nconst http = require('http');\nconst numCPUs = require('os').cpus().length;\n\nif (cluster.isMaster) {\n  console.log(`Master ${process.pid} is running`);\n\n  for (let i = 0; i < numCPUs; i++) {\n    cluster.fork();\n  }\n\n  cluster.on('exit', (worker, code, signal) => {\n    console.log(`Worker ${worker.process.pid} died`);\n  });\n} else {\n  http.createServer((req, res) => {\n    res.writeHead(200);\n    res.end('Hello, World!');\n  }).listen(8000);\n\n  console.log(`Worker ${process.pid} started`);\n}"
+  },
+  {
+    "title": "Node.js JWT Authentication (jsonwebtoken)",
+    "description": "Implement JWT authentication in Node.js using jsonwebtoken package.",
+    "code": "const jwt = require('jsonwebtoken');\n\nconst secretKey = 'mysecret';\nconst payload = { user: 'john.doe' };\nconst token = jwt.sign(payload, secretKey, { expiresIn: '1h' });\nconsole.log('JWT:', token);\n\nconst decoded = jwt.verify(token, secretKey);\nconsole.log('Decoded:', decoded);"
+  },
+  {
+    "title": "Node.js Cron Jobs (node-cron)",
+    "description": "Schedule cron jobs using node-cron in Node.js.",
+    "code": "const cron = require('node-cron');\n\ncron.schedule('* * * * *', () => {\n  console.log('Running a task every minute');\n});"
+  },
+  {
+    "title": "Node.js Rate Limiting (express-rate-limit)",
+    "description": "Implement rate limiting in Express.js using express-rate-limit middleware.",
+    "code": "const express = require('express');\nconst rateLimit = require('express-rate-limit');\nconst app = express();\n\nconst limiter = rateLimit({\n  windowMs: 15 * 60 * 1000, // 15 minutes\n  max: 100 // limit each IP to 100 requests per windowMs\n});\n\napp.use(limiter);\n\napp.get('/api/data', (req, res) => {\n  res.json({ message: 'Data fetched' });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with rate limiting is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Compression (compression)",
+    "description": "Enable response compression in Express.js using compression middleware.",
+    "code": "const express = require('express');\nconst compression = require('compression');\nconst app = express();\n\napp.use(compression());\n\napp.get('/api/data', (req, res) => {\n  res.json({ message: 'Compressed response' });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with response compression is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Error Handling (Custom)",
+    "description": "Implement custom error handling middleware in Express.js.",
+    "code": "const express = require('express');\nconst app = express();\n\napp.get('/', (req, res, next) => {\n  const error = new Error('Custom error message');\n  error.status = 400;\n  next(error);\n});\n\napp.use((err, req, res, next) => {\n  res.status(err.status || 500).send(err.message);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with custom error handling is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js JWT Authentication (Passport.js)",
+    "description": "Implement JWT authentication using Passport.js in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst passport = require('passport');\nconst JwtStrategy = require('passport-jwt').Strategy;\nconst ExtractJwt = require('passport-jwt').ExtractJwt;\nconst app = express();\n\nconst opts = {\n  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),\n  secretOrKey: 'mysecret'\n};\n\npassport.use(new JwtStrategy(opts, (jwt_payload, done) => {\n  User.findById(jwt_payload.sub, (err, user) => {\n    if (err) return done(err, false);\n    if (user) return done(null, user);\n    else return done(null, false);\n  });\n}));\n\napp.get('/profile', passport.authenticate('jwt', { session: false }), (req, res) => {\n  res.send(`Welcome, ${req.user.username}!`);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with JWT authentication using Passport.js is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js WebSocket (ws)",
+    "description": "Implement WebSocket server using ws library in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst http = require('http');\nconst WebSocket = require('ws');\nconst app = express();\n\nconst server = http.createServer(app);\nconst wss = new WebSocket.Server({ server });\n\nwss.on('connection', (ws) => {\n  console.log('WebSocket client connected');\n  ws.on('message', (message) => {\n    console.log(`Received message => ${message}`);\n  });\n  ws.send('Welcome to WebSocket server');\n});\n\nserver.listen(3000, () => {\n  console.log('WebSocket server is running on http://localhost:3000/');\n});\n\n// client.html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>WebSocket Client</title>\n  <script>\n    const ws = new WebSocket('ws://localhost:3000');\n    ws.onopen = () => {\n      console.log('Connected to WebSocket server');\n    };\n    ws.onmessage = (event) => {\n      console.log(`Message from server => ${event.data}`);\n    };\n    function sendMessage() {\n      ws.send('Hello, WebSocket!');\n    }\n  </script>\n</head>\n<body>\n  <button onclick=\"sendMessage()\">Send Message</button>\n</body>\n</html>"
+  },
+  {
+    "title": "Express.js Template Engine (Handlebars)",
+    "description": "Render dynamic content using Handlebars template engine in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst exphbs = require('express-handlebars');\nconst app = express();\n\napp.engine('handlebars', exphbs());\napp.set('view engine', 'handlebars');\n\napp.get('/', (req, res) => {\n  res.render('home', { title: 'Home', message: 'Welcome to Express with Handlebars!' });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with Handlebars template engine is running on http://localhost:3000/');\n});\n\n// views/home.handlebars\n<!DOCTYPE html>\n<html>\n<head>\n  <title>{{ title }}</title>\n</head>\n<body>\n  <h1>{{ message }}</h1>\n</body>\n</html>"
+  },
+  {
+    "title": "Express.js Middleware (morgan)",
+    "description": "Implement request logging using morgan middleware in Express.js.",
+    "code": "const express = require('express');\nconst morgan = require('morgan');\nconst app = express();\n\napp.use(morgan('combined'));\n\napp.get('/', (req, res) => {\n  res.send('Hello, Morgan!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with request logging using Morgan is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js File Upload (multer)",
+    "description": "Implement file upload handling using multer middleware in Express.js.",
+    "code": "const express = require('express');\nconst multer = require('multer');\nconst upload = multer({ dest: 'uploads/' });\nconst app = express();\n\napp.post('/upload', upload.single('file'), (req, res) => {\n  console.log('Uploaded file:', req.file);\n  res.send('File uploaded successfully');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with file upload using multer is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Validation (express-validator)",
+    "description": "Implement input validation using express-validator middleware in Express.js.",
+    "code": "const express = require('express');\nconst { body, validationResult } = require('express-validator');\nconst app = express();\n\napp.post('/user',\n  body('username').isEmail(),\n  body('password').isLength({ min: 5 }),\n  (req, res) => {\n    const errors = validationResult(req);\n    if (!errors.isEmpty()) {\n      return res.status(400).json({ errors: errors.array() });\n    }\n    res.send('Validated successfully');\n  });\n\napp.listen(3000, () => {\n  console.log('Express server with input validation using express-validator is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js GraphQL (express-graphql)",
+    "description": "Implement GraphQL API using express-graphql middleware in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst { graphqlHTTP } = require('express-graphql');\nconst { buildSchema } = require('graphql');\nconst app = express();\n\nconst schema = buildSchema(`\n  type Query {\n    message: String\n  }\n`);\n\nconst root = {\n  message: () => 'Hello, GraphQL!'\n};\n\napp.use('/graphql', graphqlHTTP({\n  schema: schema,\n  rootValue: root,\n  graphiql: true\n}));\n\napp.listen(3000, () => {\n  console.log('Express server with GraphQL API is running on http://localhost:3000/graphql');\n});\n\n// GraphQL Query\n// http://localhost:3000/graphql?query={message}"
+  },
+  {
+    "title": "Express.js WebSocket (socket.io)",
+    "description": "Implement WebSocket server using socket.io library in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst http = require('http');\nconst socketIo = require('socket.io');\nconst app = express();\nconst server = http.createServer(app);\nconst io = socketIo(server);\n\nio.on('connection', (socket) => {\n  console.log('WebSocket client connected');\n  socket.on('message', (message) => {\n    console.log(`Received message => ${message}`);\n  });\n  socket.emit('welcome', 'Welcome to Socket.IO');\n});\n\nserver.listen(3000, () => {\n  console.log('WebSocket server with Socket.IO is running on http://localhost:3000/');\n});\n\n// client.html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>Socket.IO Client</title>\n  <script src=\"/socket.io/socket.io.js\"></script>\n  <script>\n    const socket = io();\n    socket.on('welcome', (data) => {\n      console.log('Received message from server:', data);\n    });\n    function sendMessage() {\n      socket.emit('message', 'Hello, Socket.IO!');\n    }\n  </script>\n</head>\n<body>\n  <button onclick=\"sendMessage()\">Send Message</button>\n</body>\n</html>"
+  },
+  {
+    "title": "Express.js Logging (winston)",
+    "description": "Implement logging using winston in Express.js.",
+    "code": "const express = require('express');\nconst winston = require('winston');\nconst app = express();\n\nconst logger = winston.createLogger({\n  transports: [\n    new winston.transports.Console(),\n    new winston.transports.File({ filename: 'logfile.log' })\n  ]\n});\n\napp.use((req, res, next) => {\n  logger.info(`${req.method} ${req.url}`);\n  next();\n});\n\napp.get('/', (req, res) => {\n  res.send('Hello, Winston!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with logging using Winston is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Authentication (Passport.js with Local Strategy)",
+    "description": "Implement local authentication strategy using Passport.js in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst passport = require('passport');\nconst LocalStrategy = require('passport-local').Strategy;\nconst app = express();\n\nconst users = [\n  { id: 1, username: 'user', password: 'password' }\n];\n\npassport.use(new LocalStrategy((username, password, done) => {\n  const user = users.find(u => u.username === username && u.password === password);\n  if (!user) return done(null, false);\n  return done(null, user);\n}));\n\napp.use(passport.initialize());\n\napp.post('/login', passport.authenticate('local', { successRedirect: '/profile', failureRedirect: '/login' }));\n\napp.get('/profile', (req, res) => {\n  res.send(`Welcome, ${req.user.username}!`);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with local authentication using Passport.js is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Pagination",
+    "description": "Implement pagination in Express.js for fetching large datasets.",
+    "code": "const express = require('express');\nconst app = express();\n\nconst data = [...]; // Array of data\nconst pageSize = 10;\n\napp.get('/data', (req, res) => {\n  const page = req.query.page || 1;\n  const startIndex = (page - 1) * pageSize;\n  const endIndex = startIndex + pageSize;\n  const paginatedData = data.slice(startIndex, endIndex);\n  res.json(paginatedData);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with pagination is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Authentication (OAuth with Passport.js)",
+    "description": "Implement OAuth authentication using Passport.js in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst passport = require('passport');\nconst GitHubStrategy = require('passport-github2').Strategy;\nconst app = express();\n\npassport.use(new GitHubStrategy({\n  clientID: 'your_client_id',\n  clientSecret: 'your_client_secret',\n  callbackURL: 'http://localhost:3000/auth/github/callback'\n},\n(accessToken, refreshToken, profile, done) => {\n  // Verify user and save to database\n  done(null, profile);\n}));\n\napp.use(passport.initialize());\n\napp.get('/auth/github', passport.authenticate('github', { scope: ['user:email'] }));\n\napp.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }),\n  (req, res) => {\n    res.redirect('/profile');\n  });\n\napp.get('/profile', (req, res) => {\n  res.send(`Welcome, ${req.user.username}!`);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with OAuth authentication using Passport.js is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js File System (fs Module)",
+    "description": "Read and write files using the fs module in Node.js.",
+    "code": "const fs = require('fs');\n\n// Write to a file\nfs.writeFileSync('output.txt', 'Hello, Node.js!');\n\n// Read from a file\nconst data = fs.readFileSync('input.txt', 'utf8');\nconsole.log('File content:', data);"
+  },
+  {
+    "title": "Node.js Error Handling (try...catch)",
+    "description": "Handle errors using try...catch block in Node.js.",
+    "code": "try {\n  // Code that may throw an error\n  throw new Error('Custom error');\n} catch (error) {\n  console.error('Error:', error.message);\n}"
+  },
+  {
+    "title": "Node.js Child Processes (child_process Module)",
+    "description": "Execute child processes using the child_process module in Node.js.",
+    "code": "const { exec } = require('child_process');\n\nexec('ls -l', (error, stdout, stderr) => {\n  if (error) {\n    console.error('Error:', error.message);\n    return;\n  }\n  if (stderr) {\n    console.error('stderr:', stderr);\n    return;\n  }\n  console.log('stdout:', stdout);\n});"
+  },
+  {
+    "title": "Node.js Buffers",
+    "description": "Create and manipulate buffers in Node.js.",
+    "code": "// Create a buffer\nconst buffer = Buffer.from('Hello, Buffer!', 'utf8');\n\n// Convert buffer to string\nconst text = buffer.toString('utf8');\nconsole.log('Buffer to string:', text);\n\n// Concatenate buffers\nconst buffer1 = Buffer.from('Hello', 'utf8');\nconst buffer2 = Buffer.from('Node.js', 'utf8');\nconst concatenatedBuffer = Buffer.concat([buffer1, buffer2]);\nconsole.log('Concatenated buffer:', concatenatedBuffer.toString('utf8'));"
+  },
+  {
+    "title": "Node.js DNS Lookup",
+    "description": "Perform DNS lookup using dns module in Node.js.",
+    "code": "const dns = require('dns');\n\ndns.lookup('www.example.com', (err, address, family) => {\n  console.log('Address:', address);\n});"
+  },
+  {
+    "title": "Node.js Crypto (Hashing)",
+    "description": "Generate hashes using crypto module in Node.js.",
+    "code": "const crypto = require('crypto');\n\nconst hash = crypto.createHash('sha256');\nhash.update('Hello, Crypto!');\nconsole.log('Hash:', hash.digest('hex'));"
+  },
+  {
+    "title": "Node.js Events (EventEmitter)",
+    "description": "Implement event handling using EventEmitter in Node.js.",
+    "code": "const EventEmitter = require('events');\n\nclass MyEmitter extends EventEmitter {}\n\nconst myEmitter = new MyEmitter();\n\nmyEmitter.on('event', () => {\n  console.log('Event emitted');\n});\n\nmyEmitter.emit('event');"
+  },
+  {
+    "title": "Node.js Streams (Readable Stream)",
+    "description": "Create a readable stream using Node.js.",
+    "code": "const fs = require('fs');\n\nconst readableStream = fs.createReadStream('input.txt');\n\nreadableStream.on('data', (chunk) => {\n  console.log('Chunk received:', chunk.toString());\n});\n\nreadableStream.on('end', () => {\n  console.log('Read operation complete');\n});"
+  },
+  {
+    "title": "Node.js Streams (Writable Stream)",
+    "description": "Create a writable stream using Node.js.",
+    "code": "const fs = require('fs');\n\nconst writableStream = fs.createWriteStream('output.txt');\n\nwritableStream.write('Writing to file\\n');\nwritableStream.end('Stream closed');\n\nconsole.log('Write operation complete');"
+  },
+  {
+    "title": "Node.js NPM (Package.json)",
+    "description": "Manage packages using npm and package.json in Node.js.",
+    "code": "// package.json\n{\n  \"name\": \"myapp\",\n  \"version\": \"1.0.0\",\n  \"dependencies\": {\n    \"express\": \"^4.17.1\"\n  },\n  \"scripts\": {\n    \"start\": \"node app.js\"\n  }\n}"
+  },
+  {
+    "title": "Node.js Clustering",
+    "description": "Implement clustering in Node.js to take advantage of multi-core systems.",
+    "code": "const cluster = require('cluster');\nconst http = require('http');\nconst numCPUs = require('os').cpus().length;\n\nif (cluster.isMaster) {\n  console.log(`Master ${process.pid} is running`);\n\n  for (let i = 0; i < numCPUs; i++) {\n    cluster.fork();\n  }\n\n  cluster.on('exit', (worker, code, signal) => {\n    console.log(`Worker ${worker.process.pid} died`);\n  });\n} else {\n  http.createServer((req, res) => {\n    res.writeHead(200);\n    res.end('Hello, World!');\n  }).listen(8000);\n\n  console.log(`Worker ${process.pid} started`);\n}"
+  },
+  {
+    "title": "Node.js JWT Authentication (jsonwebtoken)",
+    "description": "Implement JWT authentication in Node.js using jsonwebtoken package.",
+    "code": "const jwt = require('jsonwebtoken');\n\nconst secretKey = 'mysecret';\nconst payload = { user: 'john.doe' };\nconst token = jwt.sign(payload, secretKey, { expiresIn: '1h' });\nconsole.log('JWT:', token);\n\nconst decoded = jwt.verify(token, secretKey);\nconsole.log('Decoded:', decoded);"
+  },
+  {
+    "title": "Node.js Cron Jobs (node-cron)",
+    "description": "Schedule cron jobs using node-cron in Node.js.",
+    "code": "const cron = require('node-cron');\n\ncron.schedule('* * * * *', () => {\n  console.log('Running a task every minute');\n});"
+  },
+  {
+    "title": "Node.js Rate Limiting (express-rate-limit)",
+    "description": "Implement rate limiting in Express.js using express-rate-limit middleware.",
+    "code": "const express = require('express');\nconst rateLimit = require('express-rate-limit');\nconst app = express();\n\nconst limiter = rateLimit({\n  windowMs: 15 * 60 * 1000, // 15 minutes\n  max: 100 // limit each IP to 100 requests per windowMs\n});\n\napp.use(limiter);\n\napp.get('/api/data', (req, res) => {\n  res.json({ message: 'Data fetched' });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with rate limiting is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Compression (compression)",
+    "description": "Enable response compression in Express.js using compression middleware.",
+    "code": "const express = require('express');\nconst compression = require('compression');\nconst app = express();\n\napp.use(compression());\n\napp.get('/api/data', (req, res) => {\n  res.json({ message: 'Compressed response' });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with response compression is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Error Handling (Custom)",
+    "description": "Implement custom error handling middleware in Express.js.",
+    "code": "const express = require('express');\nconst app = express();\n\napp.get('/', (req, res, next) => {\n  const error = new Error('Custom error message');\n  error.status = 400;\n  next(error);\n});\n\napp.use((err, req, res, next) => {\n  res.status(err.status || 500).send(err.message);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with custom error handling is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js JWT Authentication (Passport.js)",
+    "description": "Implement JWT authentication using Passport.js in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst passport = require('passport');\nconst JwtStrategy = require('passport-jwt').Strategy;\nconst ExtractJwt = require('passport-jwt').ExtractJwt;\nconst app = express();\n\nconst opts = {\n  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),\n  secretOrKey: 'your_secret_key'\n};\n\npassport.use(new JwtStrategy(opts, (jwt_payload, done) => {\n  // Verify user and retrieve from database\n  const user = User.findById(jwt_payload.sub);\n  if (user) {\n    return done(null, user);\n  } else {\n    return done(null, false);\n  }\n}));\n\napp.use(passport.initialize());\n\napp.get('/profile', passport.authenticate('jwt', { session: false }), (req, res) => {\n  res.send(`Welcome, ${req.user.username}!`);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with JWT authentication using Passport.js is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Caching (Node-cache)",
+    "description": "Implement caching using node-cache in Express.js.",
+    "code": "const express = require('express');\nconst NodeCache = require('node-cache');\nconst app = express();\nconst cache = new NodeCache();\n\napp.get('/api/data', (req, res) => {\n  const key = 'data';\n  let data = cache.get(key);\n  if (!data) {\n    data = { message: 'Cached data' };\n    cache.set(key, data, 60); // Cache for 60 seconds\n  }\n  res.json(data);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with caching using node-cache is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js WebSocket (ws)",
+    "description": "Implement WebSocket server using ws library in Express.js.",
+    "code": "// app.js\nconst express = require('express');\nconst http = require('http');\nconst WebSocket = require('ws');\nconst app = express();\nconst server = http.createServer(app);\nconst wss = new WebSocket.Server({ server });\n\nwss.on('connection', (ws) => {\n  console.log('WebSocket client connected');\n  ws.on('message', (message) => {\n    console.log(`Received message => ${message}`);\n  });\n  ws.send('Welcome to WebSocket');\n});\n\nserver.listen(3000, () => {\n  console.log('WebSocket server with ws library is running on http://localhost:3000/');\n});\n\n// client.html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>WebSocket Client</title>\n  <script>\n    const socket = new WebSocket('ws://localhost:3000');\n    socket.onmessage = (event) => {\n      console.log('Received message from server:', event.data);\n    };\n    function sendMessage() {\n      socket.send('Hello, WebSocket!');\n    }\n  </script>\n</head>\n<body>\n  <button onclick=\"sendMessage()\">Send Message</button>\n</body>\n</html>"
+  },
+  {
+    "title": "Express.js Real-time Chat Application (socket.io)",
+    "description": "Create a real-time chat application using socket.io in Express.js.",
+    "code": "// server.js\nconst express = require('express');\nconst http = require('http');\nconst socketIo = require('socket.io');\nconst app = express();\nconst server = http.createServer(app);\nconst io = socketIo(server);\n\nio.on('connection', (socket) => {\n  console.log('WebSocket client connected');\n  socket.on('message', (message) => {\n    console.log(`Received message => ${message}`);\n    io.emit('message', message);\n  });\n});\n\nserver.listen(3000, () => {\n  console.log('Real-time chat server with Socket.IO is running on http://localhost:3000/');\n});\n\n// client.html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>Real-time Chat</title>\n  <script src=\"/socket.io/socket.io.js\"></script>\n  <script>\n    const socket = io();\n    socket.on('message', (data) => {\n      const messages = document.getElementById('messages');\n      const li = document.createElement('li');\n      li.textContent = data;\n      messages.appendChild(li);\n    });\n    function sendMessage() {\n      const input = document.getElementById('messageInput');\n      socket.emit('message', input.value);\n      input.value = '';\n    }\n  </script>\n</head>\n<body>\n  <ul id=\"messages\"></ul>\n  <input type=\"text\" id=\"messageInput\">\n  <button onclick=\"sendMessage()\">Send</button>\n</body>\n</html>"
+  },
+  {
+    "title": "Node.js Event Loop",
+    "description": "Understand the event loop in Node.js.",
+    "code": "// Example of event loop\nconst fs = require('fs');\n\nfs.readFile('input.txt', 'utf8', (err, data) => {\n  if (err) throw err;\n  console.log('File content:', data);\n});\n\nconsole.log('End of script');"
+  },
+  {
+    "title": "Node.js Asynchronous Programming (Callbacks)",
+    "description": "Handle asynchronous operations using callbacks in Node.js.",
+    "code": "// Example of asynchronous callback\nfunction fetchData(callback) {\n  setTimeout(() => {\n    callback('Data fetched');\n  }, 1000);\n}\n\nfetchData((data) => {\n  console.log(data);\n});\nconsole.log('Fetching data...');"
+  },
+  {
+    "title": "Node.js Promises",
+    "description": "Implement promises for asynchronous operations in Node.js.",
+    "code": "// Example of promises\nfunction fetchData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve('Data fetched');\n    }, 1000);\n  });\n}\n\nfetchData().then((data) => {\n  console.log(data);\n});\nconsole.log('Fetching data...');"
+  },
+  {
+    "title": "Node.js Async/Await",
+    "description": "Use async/await for handling asynchronous operations in Node.js.",
+    "code": "// Example of async/await\nfunction fetchData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve('Data fetched');\n    }, 1000);\n  });\n}\n\nasync function getData() {\n  try {\n    const data = await fetchData();\n    console.log(data);\n  } catch (error) {\n    console.error('Error:', error);\n  }\n}\n\ngetData();\nconsole.log('Fetching data...');"
+  },
+  {
+    "title": "Node.js RESTful API (Express.js)",
+    "description": "Create a RESTful API using Express.js.",
+    "code": "// Example of RESTful API with Express.js\nconst express = require('express');\nconst app = express();\n\napp.get('/api/users', (req, res) => {\n  res.json({\n    users: [\n      { id: 1, name: 'John Doe' },\n      { id: 2, name: 'Jane Smith' }\n    ]\n  });\n});\n\napp.post('/api/users', (req, res) => {\n  // Handle POST request\n});\n\napp.put('/api/users/:id', (req, res) => {\n  // Handle PUT request\n});\n\napp.delete('/api/users/:id', (req, res) => {\n  // Handle DELETE request\n});\n\napp.listen(3000, () => {\n  console.log('Express server with RESTful API is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Middleware (Express.js)",
+    "description": "Implement middleware in Express.js.",
+    "code": "// Example of middleware in Express.js\nconst express = require('express');\nconst app = express();\n\n// Middleware function\nconst logger = (req, res, next) => {\n  console.log(`${req.method} ${req.url}`);\n  next();\n};\n\napp.use(logger);\n\napp.get('/', (req, res) => {\n  res.send('Hello, Express with Middleware!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js GraphQL Server (Apollo Server)",
+    "description": "Create a GraphQL server using Apollo Server in Node.js.",
+    "code": "// Example of GraphQL server with Apollo Server\nconst { ApolloServer, gql } = require('apollo-server');\n\n// Define GraphQL schema\nconst typeDefs = gql`\n  type Query {\n    hello: String\n  }\n`;\n\n// Define resolvers\nconst resolvers = {\n  Query: {\n    hello: () => 'Hello, GraphQL!'\n  }\n};\n\n// Create an Apollo Server instance\nconst server = new ApolloServer({ typeDefs, resolvers });\n\n// Start the server\nserver.listen().then(({ url }) => {\n  console.log(`Apollo Server with GraphQL is running at ${url}`);\n});"
+  },
+  {
+    "title": "Node.js Logging (Winston)",
+    "description": "Implement logging using Winston in Node.js.",
+    "code": "// Example of logging with Winston\nconst winston = require('winston');\n\n// Create a logger instance\nconst logger = winston.createLogger({\n  level: 'info',\n  format: winston.format.simple(),\n  transports: [\n    new winston.transports.Console(),\n    new winston.transports.File({ filename: 'combined.log' })\n  ]\n});\n\n// Log messages\nlogger.log('info', 'Hello, Winston!');\nlogger.log('error', 'Error message');"
+  },
+  {
+    "title": "Node.js File Upload (Multer)",
+    "description": "Handle file uploads using Multer in Node.js.",
+    "code": "// Example of file upload with Multer\nconst express = require('express');\nconst multer = require('multer');\nconst app = express();\n\n// Configure Multer\nconst storage = multer.diskStorage({\n  destination: (req, file, cb) => {\n    cb(null, 'uploads/');\n  },\n  filename: (req, file, cb) => {\n    cb(null, file.originalname);\n  }\n});\nconst upload = multer({ storage });\n\n// Handle file upload\napp.post('/upload', upload.single('file'), (req, res) => {\n  res.send('File uploaded successfully');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with file upload using Multer is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Pagination (Mongoose)",
+    "description": "Implement pagination using Mongoose in Node.js.",
+    "code": "// Example of pagination with Mongoose\nconst express = require('express');\nconst mongoose = require('mongoose');\nconst app = express();\n\n// Connect to MongoDB\nmongoose.connect('mongodb://localhost:27017/myapp', { useNewUrlParser: true, useUnifiedTopology: true });\n\n// Define a mongoose model\nconst User = mongoose.model('User', {\n  name: String,\n  email: String\n});\n\n// Route for paginated users\napp.get('/users', async (req, res) => {\n  const page = parseInt(req.query.page) || 1;\n  const limit = parseInt(req.query.limit) || 10;\n  const offset = (page - 1) * limit;\n\n  const users = await User.find().skip(offset).limit(limit);\n  res.json(users);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with pagination using Mongoose is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Validation (Joi)",
+    "description": "Implement input validation using Joi in Node.js.",
+    "code": "// Example of validation with Joi\nconst express = require('express');\nconst Joi = require('joi');\nconst app = express();\n\n// Define validation schema\nconst schema = Joi.object({\n  username: Joi.string().alphanum().min(3).max(30).required(),\n  email: Joi.string().email().required(),\n});\n\n// Validate request body\napp.post('/api/user', (req, res) => {\n  const { error, value } = schema.validate(req.body);\n  if (error) {\n    return res.status(400).send(error.details[0].message);\n  }\n  res.send('Valid data');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with validation using Joi is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Testing (Jest)",
+    "description": "Write unit tests using Jest in Node.js.",
+    "code": "// Example of testing with Jest\nfunction sum(a, b) {\n  return a + b;\n}\n\n// Test case\ntest('adds 1 + 2 to equal 3', () => {\n  expect(sum(1, 2)).toBe(3);\n});"
+  },
+  {
+    "title": "Node.js JWT Authentication (Passport.js)",
+    "description": "Implement JWT authentication using Passport.js in Node.js.",
+    "code": "// Example of JWT authentication with Passport.js\nconst express = require('express');\nconst passport = require('passport');\nconst JwtStrategy = require('passport-jwt').Strategy;\nconst ExtractJwt = require('passport-jwt').ExtractJwt;\nconst app = express();\n\nconst opts = {\n  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),\n  secretOrKey: 'your_secret_key'\n};\n\npassport.use(new JwtStrategy(opts, (jwt_payload, done) => {\n  // Verify user and retrieve from database\n  const user = User.findById(jwt_payload.sub);\n  if (user) {\n    return done(null, user);\n  } else {\n    return done(null, false);\n  }\n}));\n\napp.use(passport.initialize());\n\napp.get('/profile', passport.authenticate('jwt', { session: false }), (req, res) => {\n  res.send(`Welcome, ${req.user.username}!`);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with JWT authentication using Passport.js is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Caching (Node-cache)",
+    "description": "Implement caching using node-cache in Express.js.",
+    "code": "// Example of caching with node-cache in Express.js\nconst express = require('express');\nconst NodeCache = require('node-cache');\nconst app = express();\nconst cache = new NodeCache();\n\napp.get('/api/data', (req, res) => {\n  const key = 'data';\n  let data = cache.get(key);\n  if (!data) {\n    data = { message: 'Cached data' };\n    cache.set(key, data, 60); // Cache for 60 seconds\n  }\n  res.json(data);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with caching using node-cache is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js WebSocket (ws)",
+    "description": "Implement WebSocket server using ws library in Express.js.",
+    "code": "// Example of WebSocket server with ws library in Express.js\nconst express = require('express');\nconst http = require('http');\nconst WebSocket = require('ws');\nconst app = express();\nconst server = http.createServer(app);\nconst wss = new WebSocket.Server({ server });\n\nwss.on('connection', (ws) => {\n  console.log('WebSocket client connected');\n  ws.on('message', (message) => {\n    console.log(`Received message => ${message}`);\n  });\n  ws.send('Welcome to WebSocket');\n});\n\nserver.listen(3000, () => {\n  console.log('WebSocket server with ws library is running on http://localhost:3000/');\n});\n\n// client.html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>WebSocket Client</title>\n  <script>\n    const socket = new WebSocket('ws://localhost:3000');\n    socket.onmessage = (event) => {\n      console.log('Received message from server:', event.data);\n    };\n    function sendMessage() {\n      socket.send('Hello, WebSocket!');\n    }\n  </script>\n</head>\n<body>\n  <button onclick=\"sendMessage()\">Send Message</button>\n</body>\n</html>"
+  },
+  {
+    "title": "Express.js Real-time Chat Application (socket.io)",
+    "description": "Create a real-time chat application using socket.io in Express.js.",
+    "code": "// Example of real-time chat application with socket.io in Express.js\nconst express = require('express');\nconst http = require('http');\nconst socketIo = require('socket.io');\nconst app = express();\nconst server = http.createServer(app);\nconst io = socketIo(server);\n\nio.on('connection', (socket) => {\n  console.log('WebSocket client connected');\n  socket.on('message', (message) => {\n    console.log(`Received message => ${message}`);\n    io.emit('message', message);\n  });\n});\n\nserver.listen(3000, () => {\n  console.log('Real-time chat server with Socket.IO is running on http://localhost:3000/');\n});\n\n// client.html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>Real-time Chat</title>\n  <script src=\"/socket.io/socket.io.js\"></script>\n  <script>\n    const socket = io();\n    socket.on('message', (data) => {\n      const messages = document.getElementById('messages');\n      const li = document.createElement('li');\n      li.textContent = data;\n      messages.appendChild(li);\n    });\n    function sendMessage() {\n      const input = document.getElementById('messageInput');\n      socket.emit('message', input.value);\n      input.value = '';\n    }\n  </script>\n</head>\n<body>\n  <ul id=\"messages\"></ul>\n  <input type=\"text\" id=\"messageInput\">\n  <button onclick=\"sendMessage()\">Send</button>\n</body>\n</html>"
+  },
+  {
+    "title": "Node.js Email Sending (Nodemailer)",
+    "description": "Send emails using Nodemailer in Node.js.",
+    "code": "// Example of sending emails with Nodemailer in Node.js\nconst nodemailer = require('nodemailer');\n\n// Create a transporter\nlet transporter = nodemailer.createTransport({\n  service: 'gmail',\n  auth: {\n    user: 'your_email@gmail.com',\n    pass: 'your_password'\n  }\n});\n\n// Define email options\nlet mailOptions = {\n  from: 'your_email@gmail.com',\n  to: 'recipient@example.com',\n  subject: 'Node.js Email',\n  text: 'Hello from Node.js!'\n};\n\n// Send email\ntransporter.sendMail(mailOptions, (error, info) => {\n  if (error) {\n    console.error('Error:', error);\n  } else {\n    console.log('Email sent:', info.response);\n  }\n});"
+  },
+  {
+    "title": "Node.js Cron Jobs (node-cron)",
+    "description": "Schedule cron jobs using node-cron in Node.js.",
+    "code": "// Example of cron jobs with node-cron in Node.js\nconst cron = require('node-cron');\n\ncron.schedule('* * * * *', () => {\n  console.log('Running a task every minute');\n});\n\n// Schedule a task for specific time\nconst task = cron.schedule('0 0 * * *', () => {\n  console.log('Running a task at midnight');\n}, {\n  scheduled: true,\n  timezone: 'Asia/Kolkata'\n});\n\n// Stop the task\n// task.stop();"
+  },
+  {
+    "title": "Node.js Compression (compression)",
+    "description": "Implement response compression using compression middleware in Node.js.",
+    "code": "// Example of compression with compression middleware in Node.js\nconst express = require('express');\nconst compression = require('compression');\nconst app = express();\n\napp.use(compression());\n\napp.get('/', (req, res) => {\n  res.send('Hello, Express with Compression!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with compression middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Clustering (cluster)",
+    "description": "Implement clustering in Node.js for better performance.",
+    "code": "// Example of clustering in Node.js\nconst cluster = require('cluster');\nconst http = require('http');\nconst numCPUs = require('os').cpus().length;\n\nif (cluster.isMaster) {\n  console.log(`Master ${process.pid} is running`);\n\n  // Fork workers\n  for (let i = 0; i < numCPUs; i++) {\n    cluster.fork();\n  }\n\n  cluster.on('exit', (worker, code, signal) => {\n    console.log(`Worker ${worker.process.pid} died`);\n  });\n} else {\n  // Workers can share any TCP connection\n  // In this case, it's a HTTP server\n  http.createServer((req, res) => {\n    res.writeHead(200);\n    res.end('Hello, World!');\n  }).listen(8000);\n\n  console.log(`Worker ${process.pid} started`);\n}"
+  },
+  {
+    "title": "Node.js Child Processes",
+    "description": "Execute child processes in Node.js.",
+    "code": "// Example of child processes in Node.js\nconst { exec } = require('child_process');\n\nexec('ls -lh /usr', (error, stdout, stderr) => {\n  if (error) {\n    console.error(`Error: ${error.message}`);\n    return;\n  }\n  if (stderr) {\n    console.error(`stderr: ${stderr}`);\n    return;\n  }\n  console.log(`stdout:\n${stdout}`);\n});"
+  },
+  {
+    "title": "Node.js Web Scraping (Cheerio)",
+    "description": "Scrape websites using Cheerio in Node.js.",
+    "code": "// Example of web scraping with Cheerio in Node.js\nconst axios = require('axios');\nconst cheerio = require('cheerio');\n\n// Fetch HTML content\naxios.get('https://example.com').then((response) => {\n  const html = response.data;\n  const $ = cheerio.load(html);\n  const title = $('title').text();\n  console.log('Title:', title);\n}).catch((error) => {\n  console.error('Error:', error);\n});"
+  },
+  {
+    "title": "Node.js Authentication (Passport.js Local Strategy)",
+    "description": "Implement local strategy authentication using Passport.js in Node.js.",
+    "code": "// Example of authentication with Passport.js local strategy\nconst express = require('express');\nconst passport = require('passport');\nconst LocalStrategy = require('passport-local').Strategy;\nconst session = require('express-session');\nconst app = express();\n\n// Mock users\nconst users = [\n  { id: 1, username: 'user', password: 'password' }\n];\n\npassport.use(new LocalStrategy((username, password, done) => {\n  const user = users.find((user) => user.username === username);\n  if (!user || user.password !== password) {\n    return done(null, false);\n  }\n  return done(null, user);\n}));\n\npassport.serializeUser((user, done) => {\n  done(null, user.id);\n});\n\npassport.deserializeUser((id, done) => {\n  const user = users.find((user) => user.id === id);\n  done(null, user);\n});\n\napp.use(session({ secret: 'secret', resave: false, saveUninitialized: false }));\napp.use(passport.initialize());\napp.use(passport.session());\n\napp.post('/login', passport.authenticate('local', { failureRedirect: '/login-failure' }), (req, res) => {\n  res.redirect('/profile');\n});\n\napp.get('/profile', (req, res) => {\n  if (req.isAuthenticated()) {\n    res.send(`Welcome, ${req.user.username}!`);\n  } else {\n    res.redirect('/login');\n  }\n});\n\napp.get('/logout', (req, res) => {\n  req.logout();\n  res.redirect('/');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with authentication using Passport.js local strategy is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js MongoDB CRUD Operations (Mongoose)",
+    "description": "Perform CRUD operations with MongoDB using Mongoose in Node.js.",
+    "code": "// Example of CRUD operations with MongoDB using Mongoose in Node.js\nconst mongoose = require('mongoose');\nconst express = require('express');\nconst app = express();\n\n// Connect to MongoDB\nmongoose.connect('mongodb://localhost:27017/myapp', { useNewUrlParser: true, useUnifiedTopology: true });\n\n// Define a mongoose schema\nconst User = mongoose.model('User', {\n  name: String,\n  email: String\n});\n\n// Create a new user\napp.post('/users', async (req, res) => {\n  const user = new User(req.body);\n  await user.save();\n  res.send(user);\n});\n\n// Read users\napp.get('/users', async (req, res) => {\n  const users = await User.find();\n  res.json(users);\n});\n\n// Update a user\napp.put('/users/:id', async (req, res) => {\n  const { id } = req.params;\n  const user = await User.findByIdAndUpdate(id, req.body, { new: true });\n  res.send(user);\n});\n\n// Delete a user\napp.delete('/users/:id', async (req, res) => {\n  const { id } = req.params;\n  await User.findByIdAndDelete(id);\n  res.send('User deleted');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with MongoDB CRUD operations using Mongoose is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Error Handling",
+    "description": "Implement error handling in Node.js applications.",
+    "code": "// Example of error handling in Node.js\nconst express = require('express');\nconst app = express();\n\napp.get('/', (req, res) => {\n  throw new Error('Example error');\n});\n\napp.use((err, req, res, next) => {\n  console.error('Error:', err);\n  res.status(500).send('Internal Server Error');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with error handling is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Rate Limiting (express-rate-limit)",
+    "description": "Implement rate limiting in Node.js using express-rate-limit middleware.",
+    "code": "// Example of rate limiting with express-rate-limit in Node.js\nconst express = require('express');\nconst rateLimit = require('express-rate-limit');\nconst app = express();\n\n// Apply rate limiting middleware\nconst limiter = rateLimit({\n  windowMs: 15 * 60 * 1000, // 15 minutes\n  max: 100 // limit each IP to 100 requests per windowMs\n});\napp.use(limiter);\n\napp.get('/', (req, res) => {\n  res.send('Hello, Rate Limiting!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with rate limiting using express-rate-limit is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Security Best Practices",
+    "description": "Implement security best practices in Node.js applications.",
+    "code": "// Example of security best practices in Node.js\nconst express = require('express');\nconst helmet = require('helmet');\nconst app = express();\n\n// Apply helmet middleware for security headers\napp.use(helmet());\n\napp.get('/', (req, res) => {\n  res.send('Hello, Security Best Practices!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with security best practices is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js WebSockets with Redis (socket.io-redis)",
+    "description": "Use Redis with socket.io for scaling WebSocket applications in Node.js.",
+    "code": "// Example of WebSockets with Redis and socket.io in Node.js\nconst express = require('express');\nconst http = require('http');\nconst socketIo = require('socket.io');\nconst redis = require('redis');\nconst app = express();\nconst server = http.createServer(app);\nconst io = socketIo(server);\nconst redisClient = redis.createClient();\nconst { promisify } = require('util');\nconst getAsync = promisify(redisClient.get).bind(redisClient);\n\n// Connect socket.io with Redis\nio.adapter(require('socket.io-redis')({\n  pubClient: redisClient,\n  subClient: redisClient.duplicate()\n}));\n\nio.on('connection', (socket) => {\n  console.log('WebSocket client connected');\n  socket.on('message', async (message) => {\n    console.log(`Received message => ${message}`);\n    const data = await getAsync('messages');\n    let messages = JSON.parse(data) || [];\n    messages.push(message);\n    redisClient.set('messages', JSON.stringify(messages));\n    io.emit('message', message);\n  });\n});\n\nserver.listen(3000, () => {\n  console.log('WebSocket server with Redis and socket.io is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js GraphQL with MongoDB (Apollo Server)",
+    "description": "Integrate GraphQL with MongoDB using Apollo Server in Node.js.",
+    "code": "// Example of GraphQL with MongoDB and Apollo Server in Node.js\nconst { ApolloServer, gql } = require('apollo-server');\nconst mongoose = require('mongoose');\n\n// Connect to MongoDB\nmongoose.connect('mongodb://localhost:27017/myapp', { useNewUrlParser: true, useUnifiedTopology: true });\n\n// Define a mongoose schema\nconst User = mongoose.model('User', {\n  name: String,\n  email: String\n});\n\n// Define GraphQL schema\nconst typeDefs = gql`\n  type User {\n    id: ID!\n    name: String\n    email: String\n  }\n\n  type Query {\n    users: [User]\n  }\n\n  type Mutation {\n    createUser(name: String, email: String): User\n  }\n`;\n\n// Define resolvers\nconst resolvers = {\n  Query: {\n    users: async () => await User.find()\n  },\n  Mutation: {\n    createUser: async (_, { name, email }) => {\n      const user = new User({ name, email });\n      await user.save();\n      return user;\n    }\n  }\n};\n\n// Create an Apollo Server instance\nconst server = new ApolloServer({ typeDefs, resolvers });\n\nserver.listen().then(({ url }) => {\n  console.log(`Apollo Server with GraphQL and MongoDB is running at ${url}`);\n});"
+  },
+  {
+    "title": "Node.js File Upload (Multer)",
+    "description": "Implement file upload with Multer in Node.js.",
+    "code": "// Example of file upload with Multer in Node.js\nconst express = require('express');\nconst multer = require('multer');\nconst app = express();\nconst upload = multer({ dest: 'uploads/' });\n\n// Single file upload\napp.post('/upload', upload.single('file'), (req, res) => {\n  res.send('File uploaded');\n});\n\n// Multiple files upload\napp.post('/uploads', upload.array('files', 5), (req, res) => {\n  res.send(`${req.files.length} files uploaded`);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with file upload using Multer is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Pagination",
+    "description": "Implement pagination in Node.js applications.",
+    "code": "// Example of pagination in Node.js\nconst express = require('express');\nconst app = express();\nconst items = [...Array(100).keys()].map((i) => ({ id: i + 1, name: `Item ${i + 1}` }));\n\napp.get('/items', (req, res) => {\n  const page = parseInt(req.query.page) || 1;\n  const limit = parseInt(req.query.limit) || 10;\n  const startIndex = (page - 1) * limit;\n  const endIndex = page * limit;\n  const results = {};\n\n  if (endIndex < items.length) {\n    results.next = {\n      page: page + 1,\n      limit: limit\n    };\n  }\n\n  if (startIndex > 0) {\n    results.previous = {\n      page: page - 1,\n      limit: limit\n    };\n  }\n\n  results.results = items.slice(startIndex, endIndex);\n  res.json(results);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with pagination is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js JWT Authentication (jsonwebtoken)",
+    "description": "Implement JWT authentication in Node.js using jsonwebtoken.",
+    "code": "// Example of JWT authentication with jsonwebtoken in Node.js\nconst express = require('express');\nconst jwt = require('jsonwebtoken');\nconst app = express();\nconst secretKey = 'your_secret_key';\n\n// Middleware to verify JWT\nconst verifyToken = (req, res, next) => {\n  const token = req.headers['authorization'];\n  if (!token) {\n    return res.status(403).json({ message: 'Unauthorized' });\n  }\n  jwt.verify(token, secretKey, (err, decoded) => {\n    if (err) {\n      return res.status(401).json({ message: 'Invalid token' });\n    }\n    req.user = decoded;\n    next();\n  });\n};\n\napp.post('/login', (req, res) => {\n  // Mock user\n  const user = { id: 1, username: 'user' };\n  jwt.sign({ sub: user.id, username: user.username }, secretKey, { expiresIn: '1h' }, (err, token) => {\n    res.json({ token });\n  });\n});\n\napp.get('/profile', verifyToken, (req, res) => {\n  res.json({ message: `Welcome, ${req.user.username}!` });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with JWT authentication using jsonwebtoken is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Caching (Node-cache)",
+    "description": "Implement caching using node-cache in Express.js.",
+    "code": "// Example of caching with node-cache in Express.js\nconst express = require('express');\nconst NodeCache = require('node-cache');\nconst app = express();\nconst cache = new NodeCache();\n\napp.get('/api/data', (req, res) => {\n  const key = 'data';\n  let data = cache.get(key);\n  if (!data) {\n    data = { message: 'Cached data' };\n    cache.set(key, data, 60); // Cache for 60 seconds\n  }\n  res.json(data);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with caching using node-cache is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js WebSocket (ws)",
+    "description": "Implement WebSocket server using ws library in Express.js.",
+    "code": "// Example of WebSocket server with ws library in Express.js\nconst express = require('express');\nconst http = require('http');\nconst WebSocket = require('ws');\nconst app = express();\nconst server = http.createServer(app);\nconst wss = new WebSocket.Server({ server });\n\nwss.on('connection', (ws) => {\n  console.log('WebSocket client connected');\n  ws.on('message', (message) => {\n    console.log(`Received message => ${message}`);\n  });\n  ws.send('Welcome to WebSocket');\n});\n\nserver.listen(3000, () => {\n  console.log('WebSocket server with ws library is running on http://localhost:3000/');\n});\n\n// client.html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>WebSocket Client</title>\n  <script>\n    const socket = new WebSocket('ws://localhost:3000');\n    socket.onmessage = (event) => {\n      console.log('Received message from server:', event.data);\n    };\n    function sendMessage() {\n      socket.send('Hello, WebSocket!');\n    }\n  </script>\n</head>\n<body>\n  <button onclick=\"sendMessage()\">Send Message</button>\n</body>\n</html>"
+  },
+  {
+    "title": "Express.js Real-time Chat Application (socket.io)",
+    "description": "Create a real-time chat application using socket.io in Express.js.",
+    "code": "// Example of real-time chat application with socket.io in Express.js\nconst express = require('express');\nconst http = require('http');\nconst socketIo = require('socket.io');\nconst app = express();\nconst server = http.createServer(app);\nconst io = socketIo(server);\n\nio.on('connection', (socket) => {\n  console.log('WebSocket client connected');\n  socket.on('message', (message) => {\n    console.log(`Received message => ${message}`);\n    io.emit('message', message);\n  });\n});\n\nserver.listen(3000, () => {\n  console.log('Real-time chat server with Socket.IO is running on http://localhost:3000/');\n});\n\n// client.html\n<!DOCTYPE html>\n<html>\n<head>\n  <title>Real-time Chat</title>\n  <script src=\"/socket.io/socket.io.js\"></script>\n  <script>\n    const socket = io();\n    socket.on('message', (data) => {\n      const messages = document.getElementById('messages');\n      const li = document.createElement('li');\n      li.textContent = data;\n      messages.appendChild(li);\n    });\n    function sendMessage() {\n      const input = document.getElementById('messageInput');\n      socket.emit('message', input.value);\n      input.value = '';\n    }\n  </script>\n</head>\n<body>\n  <ul id=\"messages\"></ul>\n  <input type=\"text\" id=\"messageInput\">\n  <button onclick=\"sendMessage()\">Send</button>\n</body>\n</html>"
+  },
+  {
+    "title": "Node.js Email Sending (Nodemailer)",
+    "description": "Send emails using Nodemailer in Node.js.",
+    "code": "// Example of sending emails with Nodemailer in Node.js\nconst nodemailer = require('nodemailer');\n\n// Create a transporter\nconst transporter = nodemailer.createTransport({\n  service: 'gmail',\n  auth: {\n    user: 'your_email@gmail.com',\n    pass: 'your_password'\n  }\n});\n\n// Define email options\nconst mailOptions = {\n  from: 'your_email@gmail.com',\n  to: 'recipient_email@example.com',\n  subject: 'Node.js Email',\n  text: 'Hello from Node.js!'\n};\n\n// Send email\ntransporter.sendMail(mailOptions, (error, info) => {\n  if (error) {\n    console.error('Error:', error);\n  } else {\n    console.log('Email sent:', info.response);\n  }\n});"
+  },
+  {
+    "title": "Node.js REST API Documentation (Swagger)",
+    "description": "Generate REST API documentation using Swagger in Node.js.",
+    "code": "// Example of generating REST API documentation with Swagger in Node.js\nconst express = require('express');\nconst swaggerJsdoc = require('swagger-jsdoc');\nconst swaggerUi = require('swagger-ui-express');\nconst app = express();\n\n// Swagger definition\nconst swaggerDefinition = {\n  openapi: '3.0.0',\n  info: {\n    title: 'Swagger API',\n    version: '1.0.0',\n    description: 'Swagger API documentation for Node.js application'\n  },\n  servers: [{ url: 'http://localhost:3000' }],\n};\n\n// Options for the swagger specification\nconst options = {\n  swaggerDefinition,\n  apis: ['./routes/*.js'], // Path to the API routes\n};\n\n// Initialize swagger-jsdoc\nconst swaggerSpec = swaggerJsdoc(options);\n\n// Serve swagger API documentation\napp.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));\n\napp.listen(3000, () => {\n  console.log('Express server with Swagger API documentation is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Data Validation (Joi)",
+    "description": "Implement data validation using Joi in Node.js.",
+    "code": "// Example of data validation with Joi in Node.js\nconst express = require('express');\nconst Joi = require('joi');\nconst app = express();\n\n// Validate request data\nconst schema = Joi.object({\n  username: Joi.string().alphanum().min(3).max(30).required(),\n  email: Joi.string().email().required(),\n});\n\napp.post('/validate', (req, res) => {\n  const { error, value } = schema.validate(req.body);\n  if (error) {\n    return res.status(400).json({ error: error.details[0].message });\n  }\n  res.json({ message: 'Valid data', data: value });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with data validation using Joi is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Task Scheduling (node-cron)",
+    "description": "Schedule tasks using node-cron in Node.js applications.",
+    "code": "// Example of task scheduling with node-cron in Node.js\nconst cron = require('node-cron');\n\n// Schedule a task to run every minute\ncron.schedule('* * * * *', () => {\n  console.log('Running a task every minute');\n});"
+  },
+  {
+    "title": "Node.js Command-line Arguments (yargs)",
+    "description": "Parse command-line arguments using yargs in Node.js applications.",
+    "code": "// Example of parsing command-line arguments with yargs in Node.js\nconst yargs = require('yargs');\n\n// Define command-line options\nconst options = yargs\n  .usage('Usage: $0 -n <name>')\n  .option('n', { alias: 'name', describe: 'Your name', type: 'string', demandOption: true })\n  .argv;\n\nconsole.log('Hello,', options.name);"
+  },
+  {
+    "title": "Node.js Logging (winston)",
+    "description": "Implement logging using Winston in Node.js applications.",
+    "code": "// Example of logging with Winston in Node.js\nconst winston = require('winston');\n\n// Create a logger\nconst logger = winston.createLogger({\n  level: 'info',\n  format: winston.format.json(),\n  transports: [\n    new winston.transports.Console(),\n    new winston.transports.File({ filename: 'logfile.log' })\n  ]\n});\n\n// Log messages\nlogger.log('info', 'Hello, Winston!');\nlogger.info('Info message');\nlogger.warn('Warning message');\nlogger.error('Error message');"
+  },
+  {
+    "title": "Node.js Testing (Jest)",
+    "description": "Write tests using Jest in Node.js applications.",
+    "code": "// Example of testing with Jest in Node.js\nconst sum = require('./sum');\n\ntest('adds 1 + 2 to equal 3', () => {\n  expect(sum(1, 2)).toBe(3);\n});"
+  },
+  {
+    "title": "Node.js Environment Variables (dotenv)",
+    "description": "Use dotenv to load environment variables in Node.js applications.",
+    "code": "// Example of using dotenv to load environment variables in Node.js\nconst dotenv = require('dotenv');\ndotenv.config();\n\n// Access environment variables\nconst port = process.env.PORT || 3000;\nconsole.log('Server is running on port', port);"
+  },
+  {
+    "title": "Express.js Middleware Example",
+    "description": "Implement middleware functions in Express.js for request handling.",
+    "code": "// Example of middleware functions in Express.js\nconst express = require('express');\nconst app = express();\n\n// Middleware function to log requests\nconst logger = (req, res, next) => {\n  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);\n  next();\n};\n\n// Middleware function to authenticate\nconst authenticate = (req, res, next) => {\n  const token = req.headers.authorization;\n  if (!token) {\n    return res.status(401).json({ message: 'Unauthorized' });\n  }\n  // Verify token logic here...\n  next();\n};\n\n// Use middleware functions\napp.use(logger);\napp.use('/api', authenticate);\n\napp.get('/api/data', (req, res) => {\n  res.json({ message: 'Authenticated data' });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with middleware functions is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Error Handling Middleware",
+    "description": "Implement error handling middleware in Express.js.",
+    "code": "// Example of error handling middleware in Express.js\nconst express = require('express');\nconst app = express();\n\n// Middleware function to handle errors\nconst errorHandler = (err, req, res, next) => {\n  console.error('Error:', err.stack);\n  res.status(500).json({ message: 'Internal Server Error' });\n};\n\n// Route that throws an error\napp.get('/error', (req, res, next) => {\n  const error = new Error('Sample error');\n  next(error);\n});\n\n// Use error handling middleware\napp.use(errorHandler);\n\napp.listen(3000, () => {\n  console.log('Express server with error handling middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js CORS Middleware",
+    "description": "Enable Cross-Origin Resource Sharing (CORS) in Express.js applications.",
+    "code": "// Example of CORS middleware in Express.js\nconst express = require('express');\nconst cors = require('cors');\nconst app = express();\n\n// Enable CORS for all routes\napp.use(cors());\n\n// Route that responds with JSON data\napp.get('/api/data', (req, res) => {\n  res.json({ message: 'Hello from Express with CORS!' });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with CORS middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Compression Middleware",
+    "description": "Implement response compression using compression middleware in Express.js.",
+    "code": "// Example of compression middleware in Express.js\nconst express = require('express');\nconst compression = require('compression');\nconst app = express();\n\n// Enable compression\napp.use(compression());\n\n// Route that responds with text\napp.get('/', (req, res) => {\n  res.send('Hello, Express with compression!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with compression middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Rate Limiting Middleware",
+    "description": "Implement rate limiting using express-rate-limit middleware in Express.js.",
+    "code": "// Example of rate limiting middleware in Express.js\nconst express = require('express');\nconst rateLimit = require('express-rate-limit');\nconst app = express();\n\n// Limit requests from an IP address\nconst limiter = rateLimit({\n  windowMs: 15 * 60 * 1000, // 15 minutes\n  max: 100, // limit each IP to 100 requests per windowMs\n  message: 'Too many requests from this IP, please try again after some time.'\n});\n\n// Apply to all requests\napp.use(limiter);\n\n// Route that responds with JSON data\napp.get('/api/data', (req, res) => {\n  res.json({ message: 'Rate limited data' });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with rate limiting middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js OAuth Authentication (Passport.js)",
+    "description": "Implement OAuth authentication using Passport.js in Node.js applications.",
+    "code": "// Example of OAuth authentication with Passport.js in Node.js\nconst express = require('express');\nconst passport = require('passport');\nconst GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;\nconst app = express();\n\n// Configure Google OAuth strategy\npassport.use(new GoogleStrategy({\n  clientID: 'your_client_id',\n  clientSecret: 'your_client_secret',\n  callbackURL: 'http://localhost:3000/auth/google/callback'\n},\n(accessToken, refreshToken, profile, done) => {\n  // Verify user logic here...\n  return done(null, profile);\n}));\n\n// Authenticate with Google\napp.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));\n\n// Google OAuth callback\napp.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }),\n(req, res) => {\n  res.redirect('/profile');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with OAuth authentication using Passport.js is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js WebSocket Chat Application (Socket.io)",
+    "description": "Create a WebSocket-based chat application using Socket.io in Node.js.",
+    "code": "// Example of WebSocket chat application with Socket.io in Node.js\nconst express = require('express');\nconst http = require('http');\nconst socketIo = require('socket.io');\nconst app = express();\nconst server = http.createServer(app);\nconst io = socketIo(server);\n\n// WebSocket connection handling\nio.on('connection', (socket) => {\n  console.log('WebSocket client connected');\n  socket.on('message', (message) => {\n    console.log(`Received message => ${message}`);\n    io.emit('message', message);\n  });\n});\n\nserver.listen(3000, () => {\n  console.log('WebSocket chat server with Socket.io is running on http://localhost:3000/');\n});\n\n// Client-side HTML\n<!DOCTYPE html>\n<html>\n<head>\n  <title>WebSocket Chat</title>\n  <script src=\"/socket.io/socket.io.js\"></script>\n  <script>\n    const socket = io();\n    socket.on('message', (data) => {\n      const messages = document.getElementById('messages');\n      const li = document.createElement('li');\n      li.textContent = data;\n      messages.appendChild(li);\n    });\n    function sendMessage() {\n      const input = document.getElementById('messageInput');\n      socket.emit('message', input.value);\n      input.value = '';\n    }\n  </script>\n</head>\n<body>\n  <ul id=\"messages\"></ul>\n  <input type=\"text\" id=\"messageInput\">\n  <button onclick=\"sendMessage()\">Send</button>\n</body>\n</html>"
+  },
+  {
+    "title": "Node.js Sending Emails (Nodemailer)",
+    "description": "Send emails using Nodemailer in Node.js applications.",
+    "code": "// Example of sending emails with Nodemailer in Node.js\nconst nodemailer = require('nodemailer');\n\n// Create a transporter\nconst transporter = nodemailer.createTransport({\n  service: 'gmail',\n  auth: {\n    user: 'your_email@gmail.com',\n    pass: 'your_password'\n  }\n});\n\n// Define email options\nconst mailOptions = {\n  from: 'your_email@gmail.com',\n  to: 'recipient_email@example.com',\n  subject: 'Node.js Email',\n  text: 'Hello from Node.js!'\n};\n\n// Send email\ntransporter.sendMail(mailOptions, (error, info) => {\n  if (error) {\n    console.error('Error:', error);\n  } else {\n    console.log('Email sent:', info.response);\n  }\n});"
+  },
+  {
+    "title": "Node.js REST API Documentation (Swagger)",
+    "description": "Generate REST API documentation using Swagger in Node.js.",
+    "code": "// Example of generating REST API documentation with Swagger in Node.js\nconst express = require('express');\nconst swaggerJsdoc = require('swagger-jsdoc');\nconst swaggerUi = require('swagger-ui-express');\nconst app = express();\n\n// Swagger definition\nconst swaggerDefinition = {\n  openapi: '3.0.0',\n  info: {\n    title: 'Swagger API',\n    version: '1.0.0',\n    description: 'Swagger API documentation for Node.js application'\n  },\n  servers: [{ url: 'http://localhost:3000' }],\n};\n\n// Options for the swagger specification\nconst options = {\n  swaggerDefinition,\n  apis: ['./routes/*.js'], // Path to the API routes\n};\n\n// Initialize swagger-jsdoc\nconst swaggerSpec = swaggerJsdoc(options);\n\n// Serve swagger API documentation\napp.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));\n\napp.listen(3000, () => {\n  console.log('Express server with Swagger API documentation is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Data Validation (Joi)",
+    "description": "Implement data validation using Joi in Node.js.",
+    "code": "// Example of data validation with Joi in Node.js\nconst express = require('express');\nconst Joi = require('joi');\nconst app = express();\n\n// Validate request data\nconst schema = Joi.object({\n  username: Joi.string().alphanum().min(3).max(30).required(),\n  email: Joi.string().email().required(),\n});\n\napp.post('/validate', (req, res) => {\n  const { error, value } = schema.validate(req.body);\n  if (error) {\n    return res.status(400).json({ error: error.details[0].message });\n  }\n  res.json({ message: 'Valid data', data: value });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with data validation using Joi is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Task Scheduling (node-cron)",
+    "description": "Schedule tasks using node-cron in Node.js applications.",
+    "code": "// Example of task scheduling with node-cron in Node.js\nconst cron = require('node-cron');\n\n// Schedule a task to run every minute\ncron.schedule('* * * * *', () => {\n  console.log('Running a task every minute');\n});"
+  },
+  {
+    "title": "Express.js File Upload (Multer)",
+    "description": "Implement file uploads using Multer middleware in Express.js applications.",
+    "code": "// Example of file upload with Multer in Express.js\nconst express = require('express');\nconst multer = require('multer');\nconst path = require('path');\nconst app = express();\n\n// Multer storage configuration\nconst storage = multer.diskStorage({\n  destination: (req, file, cb) => {\n    cb(null, 'uploads/');\n  },\n  filename: (req, file, cb) => {\n    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));\n  }\n});\n\n// Initialize Multer\nconst upload = multer({ storage });\n\n// Route for file upload\napp.post('/upload', upload.single('file'), (req, res) => {\n  res.json({ message: 'File uploaded successfully', filename: req.file.filename });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with file upload using Multer is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Session Management (express-session)",
+    "description": "Implement session management using express-session middleware in Express.js applications.",
+    "code": "// Example of session management with express-session in Express.js\nconst express = require('express');\nconst session = require('express-session');\nconst app = express();\n\n// Session middleware configuration\napp.use(session({\n  secret: 'your_secret_key',\n  resave: false,\n  saveUninitialized: false,\n  cookie: { secure: false, maxAge: 3600000 } // 1 hour\n}));\n\n// Route to set session data\napp.get('/set-session', (req, res) => {\n  req.session.username = 'user123';\n  res.send('Session data set');\n});\n\n// Route to get session data\napp.get('/get-session', (req, res) => {\n  const username = req.session.username || 'No session data found';\n  res.send('Session username: ' + username);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with session management using express-session is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Pagination",
+    "description": "Implement pagination for API responses in Express.js applications.",
+    "code": "// Example of pagination in Express.js\nconst express = require('express');\nconst app = express();\n\n// Dummy data for pagination\nconst data = [...Array(50).keys()].map(i => ({ id: i + 1, name: `Item ${i + 1}` }));\n\n// Route for paginated data\napp.get('/api/data', (req, res) => {\n  const page = parseInt(req.query.page) || 1;\n  const limit = parseInt(req.query.limit) || 10;\n  const startIndex = (page - 1) * limit;\n  const endIndex = page * limit;\n  const results = {};\n\n  if (endIndex < data.length) {\n    results.next = {\n      page: page + 1,\n      limit: limit\n    };\n  }\n\n  if (startIndex > 0) {\n    results.previous = {\n      page: page - 1,\n      limit: limit\n    };\n  }\n\n  results.results = data.slice(startIndex, endIndex);\n  res.json(results);\n});\n\napp.listen(3000, () => {\n  console.log('Express server with pagination is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Authentication (Passport.js Local Strategy)",
+    "description": "Implement local authentication strategy using Passport.js in Express.js applications.",
+    "code": "// Example of local authentication with Passport.js in Express.js\nconst express = require('express');\nconst passport = require('passport');\nconst LocalStrategy = require('passport-local').Strategy;\nconst app = express();\n\n// Dummy users database\nconst users = [\n  { id: 1, username: 'user1', password: 'password1' },\n  { id: 2, username: 'user2', password: 'password2' }\n];\n\n// Passport local strategy configuration\npassport.use(new LocalStrategy((username, password, done) => {\n  const user = users.find(u => u.username === username);\n  if (!user || user.password !== password) {\n    return done(null, false, { message: 'Incorrect username or password' });\n  }\n  return done(null, user);\n}));\n\n// Serialize and deserialize user\npassport.serializeUser((user, done) => done(null, user.id));\npassport.deserializeUser((id, done) => {\n  const user = users.find(u => u.id === id);\n  done(null, user);\n});\n\n// Authenticate with local strategy\napp.post('/login', passport.authenticate('local', { failureRedirect: '/login-failure' }),\n(req, res) => {\n  res.redirect('/profile');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with local authentication using Passport.js is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js WebSocket Integration (Socket.io)",
+    "description": "Integrate WebSocket functionality with Express.js using Socket.io.",
+    "code": "// Example of WebSocket integration with Express.js and Socket.io\nconst express = require('express');\nconst http = require('http');\nconst socketIo = require('socket.io');\nconst app = express();\nconst server = http.createServer(app);\nconst io = socketIo(server);\n\n// Serve HTML with WebSocket client\napp.get('/', (req, res) => {\n  res.sendFile(__dirname + '/index.html');\n});\n\n// WebSocket connection handling\nio.on('connection', (socket) => {\n  console.log('WebSocket client connected');\n  socket.on('message', (message) => {\n    console.log(`Received message => ${message}`);\n    io.emit('message', message);\n  });\n});\n\nserver.listen(3000, () => {\n  console.log('Express server with WebSocket integration using Socket.io is running on http://localhost:3000/');\n});\n\n// Client-side HTML (index.html)\n<!DOCTYPE html>\n<html>\n<head>\n  <title>WebSocket Client</title>\n  <script src=\"/socket.io/socket.io.js\"></script>\n  <script>\n    const socket = io();\n    socket.on('message', (data) => {\n      const messages = document.getElementById('messages');\n      const li = document.createElement('li');\n      li.textContent = data;\n      messages.appendChild(li);\n    });\n    function sendMessage() {\n      const input = document.getElementById('messageInput');\n      socket.emit('message', input.value);\n      input.value = '';\n    }\n  </script>\n</head>\n<body>\n  <ul id=\"messages\"></ul>\n  <input type=\"text\" id=\"messageInput\">\n  <button onclick=\"sendMessage()\">Send</button>\n</body>\n</html>"
+  },
+  {
+    "title": "Express.js MongoDB Integration (Mongoose)",
+    "description": "Integrate MongoDB with Express.js using Mongoose for schema modeling and data manipulation.",
+    "code": "// Example of MongoDB integration with Mongoose in Express.js\nconst express = require('express');\nconst mongoose = require('mongoose');\nconst app = express();\n\n// MongoDB connection\nmongoose.connect('mongodb://localhost:27017/mydatabase', { useNewUrlParser: true, useUnifiedTopology: true });\nconst db = mongoose.connection;\ndb.on('error', console.error.bind(console, 'MongoDB connection error:'));\n\ndb.once('open', () => {\n  console.log('MongoDB connected');\n});\n\n// Define schema and model\nconst Schema = mongoose.Schema;\nconst userSchema = new Schema({\n  username: String,\n  email: String\n});\nconst User = mongoose.model('User', userSchema);\n\n// Route to create a new user\napp.post('/api/users', async (req, res) => {\n  try {\n    const newUser = new User(req.body);\n    await newUser.save();\n    res.json({ message: 'User created successfully', user: newUser });\n  } catch (err) {\n    res.status(500).json({ error: err.message });\n  }\n});\n\napp.listen(3000, () => {\n  console.log('Express server with MongoDB integration using Mongoose is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js GraphQL API (Apollo Server)",
+    "description": "Implement a GraphQL API with Apollo Server in Express.js applications.",
+    "code": "// Example of GraphQL API with Apollo Server in Express.js\nconst express = require('express');\nconst { ApolloServer, gql } = require('apollo-server-express');\nconst app = express();\n\n// GraphQL schema\nconst typeDefs = gql`\ntype Query {\n  hello: String\n}\n`;\n\n// Resolvers\nconst resolvers = {\n  Query: {\n    hello: () => 'Hello, GraphQL!'\n  }\n};\n\n// Apollo Server configuration\nconst server = new ApolloServer({ typeDefs, resolvers });\n\n// Apply middleware\nserver.applyMiddleware({ app });\n\napp.listen(3000, () => {\n  console.log(`Express server with GraphQL API is running on http://localhost:3000${server.graphqlPath}`);\n});"
+  },
+  {
+    "title": "Express.js Error Handling",
+    "description": "Implement error handling middleware in Express.js applications.",
+    "code": "// Example of error handling in Express.js\nconst express = require('express');\nconst app = express();\n\n// Middleware to handle 404 errors\napp.use((req, res, next) => {\n  res.status(404).send('Route not found');\n});\n\n// Error-handling middleware\napp.use((err, req, res, next) => {\n  console.error(err.stack);\n  res.status(500).send('Something broke!');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with error handling middleware is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Rate Limiting (express-rate-limit)",
+    "description": "Implement rate limiting using express-rate-limit middleware in Express.js applications.",
+    "code": "// Example of rate limiting with express-rate-limit in Express.js\nconst express = require('express');\nconst rateLimit = require('express-rate-limit');\nconst app = express();\n\n// Rate limiting middleware configuration\nconst limiter = rateLimit({\n  windowMs: 15 * 60 * 1000, // 15 minutes\n  max: 100 // limit each IP to 100 requests per windowMs\n});\napp.use(limiter);\n\n// Route to test rate limiting\napp.get('/api', (req, res) => {\n  res.send('API response');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with rate limiting using express-rate-limit is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js CORS (Cross-Origin Resource Sharing)",
+    "description": "Implement CORS handling in Express.js applications.",
+    "code": "// Example of CORS configuration in Express.js\nconst express = require('express');\nconst app = express();\nconst cors = require('cors');\n\n// CORS middleware configuration\nconst corsOptions = {\n  origin: 'http://example.com',\n  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204\n};\napp.use(cors(corsOptions));\n\n// Route to test CORS\napp.get('/api', (req, res) => {\n  res.send('API response with CORS enabled');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with CORS handling is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Compression (compression)",
+    "description": "Implement response compression using compression middleware in Express.js applications.",
+    "code": "// Example of response compression with compression in Express.js\nconst express = require('express');\nconst compression = require('compression');\nconst app = express();\n\n// Compression middleware configuration\napp.use(compression());\n\n// Route to test compression\napp.get('/api', (req, res) => {\n  res.send('API response with compression enabled');\n});\n\napp.listen(3000, () => {\n  console.log('Express server with response compression using compression is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js OAuth Authentication (Passport.js OAuth Strategy)",
+    "description": "Implement OAuth authentication strategy using Passport.js in Express.js applications.",
+    "code": "// Example of OAuth authentication with Passport.js in Express.js\nconst express = require('express');\nconst passport = require('passport');\nconst OAuth2Strategy = require('passport-oauth2').Strategy;\nconst app = express();\n\n// OAuth configuration\npassport.use(new OAuth2Strategy({\n  authorizationURL: 'https://provider.com/oauth2/auth',\n  tokenURL: 'https://provider.com/oauth2/token',\n  clientID: 'client_id',\n  clientSecret: 'client_secret',\n  callbackURL: 'http://localhost:3000/auth/provider/callback'\n},\n(accessToken, refreshToken, profile, done) => {\n  // Verify user and create session\n  done(null, profile);\n}));\n\n// Route to authenticate with OAuth\napp.get('/auth/provider', passport.authenticate('oauth2'));\n\n// OAuth callback route\napp.get('/auth/provider/callback',\n  passport.authenticate('oauth2', { failureRedirect: '/login-failure' }),\n  (req, res) => {\n    res.redirect('/profile');\n  });\n\napp.listen(3000, () => {\n  console.log('Express server with OAuth authentication using Passport.js is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js Sending Emails (Nodemailer)",
+    "description": "Implement email sending using Nodemailer in Express.js applications.",
+    "code": "// Example of sending emails with Nodemailer in Express.js\nconst express = require('express');\nconst nodemailer = require('nodemailer');\nconst app = express();\n\n// Nodemailer configuration\nconst transporter = nodemailer.createTransport({\n  service: 'gmail',\n  auth: {\n    user: 'your_email@gmail.com',\n    pass: 'your_password'\n  }\n});\n\n// Route to send email\napp.get('/send-email', (req, res) => {\n  const mailOptions = {\n    from: 'your_email@gmail.com',\n    to: 'recipient_email@example.com',\n    subject: 'Test Email',\n    text: 'This is a test email sent from Express.js using Nodemailer.'\n  };\n  transporter.sendMail(mailOptions, (error, info) => {\n    if (error) {\n      console.log(error);\n      res.send('Error sending email');\n    } else {\n      console.log('Email sent: ' + info.response);\n      res.send('Email sent successfully');\n    }\n  });\n});\n\napp.listen(3000, () => {\n  console.log('Express server with email sending using Nodemailer is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Express.js REST API Documentation (Swagger)",
+    "description": "Generate and serve REST API documentation using Swagger in Express.js applications.",
+    "code": "// Example of REST API documentation with Swagger in Express.js\nconst express = require('express');\nconst swaggerJsdoc = require('swagger-jsdoc');\nconst swaggerUi = require('swagger-ui-express');\nconst app = express();\n\n// Swagger definition\nconst swaggerDefinition = {\n  openapi: '3.0.0',\n  info: {\n    title: 'Swagger API',\n    version: '1.0.0',\n    description: 'Swagger API documentation for Express.js application'\n  },\n  servers: [{ url: 'http://localhost:3000' }],\n};\n\n// Options for the swagger specification\nconst options = {\n  swaggerDefinition,\n  apis: ['./routes/*.js'], // Path to the API routes\n};\n\n// Initialize swagger-jsdoc\nconst swaggerSpec = swaggerJsdoc(options);\n\n// Serve swagger API documentation\napp.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));\n\napp.listen(3000, () => {\n  console.log('Express server with Swagger API documentation is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Data Validation (Joi)",
+    "description": "Implement data validation using Joi in Node.js.",
+    "code": "// Example of data validation with Joi in Node.js\nconst express = require('express');\nconst Joi = require('joi');\nconst app = express();\n\n// Validate request data\nconst schema = Joi.object({\n  username: Joi.string().alphanum().min(3).max(30).required(),\n  email: Joi.string().email().required(),\n});\n\napp.post('/validate', (req, res) => {\n  const { error, value } = schema.validate(req.body);\n  if (error) {\n    res.status(400).json({ error: error.details[0].message });\n  } else {\n    res.json({ message: 'Data validated successfully', data: value });\n  }\n});\n\napp.listen(3000, () => {\n  console.log('Node.js server with data validation using Joi is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Cron Jobs (node-cron)",
+    "description": "Schedule cron jobs using node-cron in Node.js applications.",
+    "code": "// Example of cron jobs with node-cron in Node.js\nconst cron = require('node-cron');\n\n// Schedule a cron job to run every minute\ncron.schedule('* * * * *', () => {\n  console.log('Running a cron job every minute');\n});\n\n// Schedule a cron job using a predefined schedule\nconst task = cron.schedule('0 0 * * *', () => {\n  console.log('Running a cron job at midnight');\n}, {\n  scheduled: true,\n  timezone: 'America/New_York'\n});\n\ntask.start();\nconsole.log('Node.js cron jobs scheduled');"
+  },
+  {
+    "title": "Node.js JWT Authentication (jsonwebtoken)",
+    "description": "Implement JWT (JSON Web Token) authentication in Node.js applications using jsonwebtoken.",
+    "code": "// Example of JWT authentication with jsonwebtoken in Node.js\nconst express = require('express');\nconst jwt = require('jsonwebtoken');\nconst app = express();\n\n// Secret key for JWT\nconst secretKey = 'your_secret_key';\n\n// Route for generating JWT token\napp.post('/login', (req, res) => {\n  const { username, password } = req.body;\n  // Validate username and password (dummy example)\n  if (username === 'user' && password === 'password') {\n    const token = jwt.sign({ username }, secretKey, { expiresIn: '1h' });\n    res.json({ token });\n  } else {\n    res.status(401).json({ error: 'Unauthorized' });\n  }\n});\n\n// Route with JWT authentication\napp.get('/protected', verifyToken, (req, res) => {\n  res.json({ message: 'Protected route accessed successfully' });\n});\n\n// Function to verify JWT token\nfunction verifyToken(req, res, next) {\n  const token = req.headers['authorization'];\n  if (!token) {\n    return res.status(403).json({ error: 'Token not provided' });\n  }\n  jwt.verify(token, secretKey, (err, decoded) => {\n    if (err) {\n      return res.status(401).json({ error: 'Unauthorized' });\n    }\n    req.user = decoded;\n    next();\n  });\n}\n\napp.listen(3000, () => {\n  console.log('Node.js server with JWT authentication using jsonwebtoken is running on http://localhost:3000/');\n});"
+  },
+  {
+    "title": "Node.js Sending Emails (Nodemailer)",
+    "description": "Implement email sending using Nodemailer in Node.js applications.",
+    "code": "// Example of sending emails with Nodemailer in Node.js\nconst nodemailer = require('nodemailer');\n\n// Nodemailer configuration\nconst transporter = nodemailer.createTransport({\n  service: 'gmail',\n  auth: {\n    user: 'your_email@gmail.com',\n    pass: 'your_password'\n  }\n});\n\n// Email options\nconst mailOptions = {\n  from: 'your_email@gmail.com',\n  to: 'recipient_email@example.com',\n  subject: 'Test Email',\n  text: 'This is a test email sent from Node.js using Nodemailer.'\n};\n\n// Send email\ntransporter.sendMail(mailOptions, (error, info) => {\n  if (error) {\n    console.log(error);\n  } else {\n    console.log('Email sent: ' + info.response);\n  }\n});"
+  },
+  {
+    "title": "Node.js WebSocket Server (ws)",
+    "description": "Implement WebSocket server using ws module in Node.js applications.",
+    "code": "// Example of WebSocket server with ws module in Node.js\nconst WebSocket = require('ws');\nconst wss = new WebSocket.Server({ port: 8080 });\n\nwss.on('connection', (ws) => {\n  console.log('WebSocket client connected');\n  ws.on('message', (message) => {\n    console.log(`Received message => ${message}`);\n    ws.send(`Echo: ${message}`);\n  });\n});\n\nconsole.log('WebSocket server is running on ws://localhost:8080');"
+  },
+  {
+    "title": "Node.js File System (fs)",
+    "description": "Perform file system operations using fs module in Node.js applications.",
+    "code": "// Example of file system operations with fs module in Node.js\nconst fs = require('fs');\n\n// Write data to file\nfs.writeFile('example.txt', 'Hello, Node.js!', (err) => {\n  if (err) throw err;\n  console.log('Data written to file');\n});\n\n// Read data from file\nfs.readFile('example.txt', 'utf8', (err, data) => {\n  if (err) throw err;\n  console.log('File content:', data);\n});"
+  }
+]

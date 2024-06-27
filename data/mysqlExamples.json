@@ -1,0 +1,1187 @@
+[
+  {
+    "title": "Connect to MySQL Database",
+    "description": "Establish connection to MySQL database using Node.js and mysql2 package.",
+    "code": "const mysql = require('mysql2');\n\n// Create connection\nconst connection = mysql.createConnection({\n  host: 'localhost',\n  user: 'root',\n  password: 'password',\n  database: 'mydatabase'\n});\n\n// Connect to MySQL\nconnection.connect((err) => {\n  if (err) {\n    console.error('Error connecting to MySQL database:', err);\n    return;\n  }\n  console.log('Connected to MySQL database');\n});\n\n// Close connection\nconnection.end();"
+  },
+  {
+    "title": "Create Table in MySQL",
+    "description": "Create a new table in MySQL database.",
+    "code": "CREATE TABLE users (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  username VARCHAR(50) NOT NULL,\n  email VARCHAR(100) NOT NULL,\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);"
+  },
+  {
+    "title": "Insert Data into MySQL Table",
+    "description": "Insert data into a MySQL table.",
+    "code": "INSERT INTO users (username, email) VALUES ('john_doe', 'john.doe@example.com');"
+  },
+  {
+    "title": "Select Data from MySQL Table",
+    "description": "Retrieve data from MySQL table.",
+    "code": "SELECT * FROM users;"
+  },
+  {
+    "title": "Update Data in MySQL Table",
+    "description": "Update existing data in MySQL table.",
+    "code": "UPDATE users SET email = 'john.doe.updated@example.com' WHERE id = 1;"
+  },
+  {
+    "title": "Delete Data from MySQL Table",
+    "description": "Delete data from MySQL table.",
+    "code": "DELETE FROM users WHERE id = 1;"
+  },
+  {
+    "title": "Perform Joins in MySQL",
+    "description": "Perform SQL joins in MySQL database.",
+    "code": "SELECT users.username, orders.order_number\nFROM users\nINNER JOIN orders ON users.id = orders.user_id;"
+  },
+  {
+    "title": "Create Indexes in MySQL",
+    "description": "Create indexes on MySQL table columns for optimized querying.",
+    "code": "CREATE INDEX idx_username ON users(username);"
+  },
+  {
+    "title": "Transactions in MySQL",
+    "description": "Execute transactions in MySQL to ensure atomicity of database operations.",
+    "code": "START TRANSACTION;\nINSERT INTO users (username, email) VALUES ('jane_doe', 'jane.doe@example.com');\nINSERT INTO orders (user_id, order_number) VALUES (LAST_INSERT_ID(), 'ORD-123');\nCOMMIT;"
+  },
+  {
+    "title": "Handle MySQL Errors",
+    "description": "Handle errors in MySQL queries and transactions.",
+    "code": "connection.query('SELECT * FROM non_existent_table', (err, results) => {\n  if (err) {\n    console.error('Error executing MySQL query:', err);\n    return;\n  }\n  console.log('Query results:', results);\n});"
+  },
+  {
+    "title": "MySQL Prepared Statements",
+    "description": "Use prepared statements in MySQL for secure and efficient querying.",
+    "code": "const username = 'john_doe';\nconnection.execute(\n  'SELECT * FROM users WHERE username = ?',\n  [username],\n  (err, results) => {\n    if (err) {\n      console.error('Error executing prepared statement:', err);\n      return;\n    }\n    console.log('Prepared statement results:', results);\n  }\n);"
+  },
+  {
+    "title": "Backup and Restore MySQL Database",
+    "description": "Backup and restore MySQL database using mysqldump and mysql commands.",
+    "code": "Backup:\n$ mysqldump -u username -p database_name > backup.sql\n\nRestore:\n$ mysql -u username -p database_name < backup.sql"
+  },
+  {
+    "title": "MySQL Stored Procedures",
+    "description": "Create and execute stored procedures in MySQL.",
+    "code": "DELIMITER $$\n\nCREATE PROCEDURE get_user(IN userId INT)\nBEGIN\n  SELECT * FROM users WHERE id = userId;\nEND $$\n\nDELIMITER ;\n\nCALL get_user(1);"
+  },
+  {
+    "title": "MySQL Views",
+    "description": "Create and use views in MySQL for simplified querying.",
+    "code": "CREATE VIEW active_users AS\nSELECT * FROM users WHERE status = 'active';\n\nSELECT * FROM active_users;"
+  },
+  {
+    "title": "MySQL Triggers",
+    "description": "Create and manage triggers in MySQL to automate actions based on database events.",
+    "code": "CREATE TRIGGER before_insert_user\nBEFORE INSERT ON users\nFOR EACH ROW\nBEGIN\n  SET NEW.created_at = NOW();\nEND;"
+  },
+  {
+    "title": "MySQL Full-text Search",
+    "description": "Perform full-text search in MySQL using MATCH() AGAINST() syntax.",
+    "code": "SELECT * FROM articles WHERE MATCH(title, content) AGAINST('full-text search');"
+  },
+  {
+    "title": "MySQL Foreign Keys",
+    "description": "Define and enforce foreign key constraints in MySQL tables.",
+    "code": "CREATE TABLE orders (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  order_number VARCHAR(20) NOT NULL,\n  user_id INT,\n  FOREIGN KEY (user_id) REFERENCES users(id)\n);"
+  },
+  {
+    "title": "MySQL Index Types",
+    "description": "Utilize different index types in MySQL for optimizing query performance.",
+    "code": "CREATE INDEX idx_username ON users(username);\nCREATE UNIQUE INDEX idx_email ON users(email);"
+  },
+  {
+    "title": "MySQL Group By and Having",
+    "description": "Use GROUP BY and HAVING clauses in MySQL queries for data aggregation and filtering.",
+    "code": "SELECT department, COUNT(*) AS employee_count\nFROM employees\nGROUP BY department\nHAVING employee_count > 10;"
+  },
+  {
+    "title": "MySQL Subqueries",
+    "description": "Implement subqueries in MySQL for performing nested queries and complex data manipulations.",
+    "code": "SELECT id, name\nFROM employees\nWHERE department_id IN (\n  SELECT id FROM departments WHERE name = 'Sales'\n);"
+  },
+  {
+    "title": "MySQL Transactions with Rollback",
+    "description": "Execute MySQL transactions with rollback to revert changes in case of errors.",
+    "code": "START TRANSACTION;\nUPDATE accounts SET balance = balance - 100 WHERE id = 1;\nUPDATE accounts SET balance = balance + 100 WHERE id = 2;\nCOMMIT;"
+  },
+  {
+    "title": "MySQL Date and Time Functions",
+    "description": "Utilize date and time functions in MySQL for date manipulation and calculations.",
+    "code": "SELECT NOW() AS current_datetime;\nSELECT DATE_FORMAT(date_column, '%Y-%m-%d') AS formatted_date FROM table_name;"
+  },
+  {
+    "title": "MySQL JSON Data Type",
+    "description": "Store and query JSON data in MySQL using JSON data type and functions.",
+    "code": "CREATE TABLE employees (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  info JSON\n);\nINSERT INTO employees (info) VALUES ('{\"name\": \"John Doe\", \"department\": \"IT\"}');\nSELECT info->>'$.name' AS employee_name FROM employees;"
+  },
+  {
+    "title": "MySQL Stored Functions",
+    "description": "Create and call stored functions in MySQL for reusable SQL logic.",
+    "code": "DELIMITER $$\n\nCREATE FUNCTION calculate_discount(price DECIMAL(10,2), discount_rate DECIMAL(5,2))\nRETURNS DECIMAL(10,2)\nBEGIN\n  RETURN price - (price * (discount_rate / 100));\nEND $$\n\nDELIMITER ;\n\nSELECT calculate_discount(100, 10) AS discounted_price;"
+  },
+  {
+    "title": "MySQL Stored Procedures with Parameters",
+    "description": "Create and execute stored procedures with parameters in MySQL.",
+    "code": "DELIMITER $$\n\nCREATE PROCEDURE get_employee_by_id(IN emp_id INT)\nBEGIN\n  SELECT * FROM employees WHERE id = emp_id;\nEND $$\n\nDELIMITER ;\n\nCALL get_employee_by_id(1);"
+  },
+  {
+    "title": "MySQL Cursors",
+    "description": "Use cursors in MySQL stored procedures for iterating through result sets.",
+    "code": "DELIMITER $$\n\nCREATE PROCEDURE fetch_employees()\nBEGIN\n  DECLARE done INT DEFAULT FALSE;\n  DECLARE emp_name VARCHAR(255);\n  DECLARE cur CURSOR FOR SELECT name FROM employees;\n  DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;\n  OPEN cur;\n  read_loop: LOOP\n    FETCH cur INTO emp_name;\n    IF done THEN\n      LEAVE read_loop;\n    END IF;\n    SELECT emp_name;\n  END LOOP;\n  CLOSE cur;\nEND $$\n\nDELIMITER ;\n\nCALL fetch_employees();"
+  },
+  {
+    "title": "MySQL Case Statement",
+    "description": "Use CASE statement in MySQL queries for conditional logic.",
+    "code": "SELECT\n  id,\n  name,\n  CASE\n    WHEN age < 18 THEN 'Minor'\n    WHEN age >= 18 AND age < 65 THEN 'Adult'\n    ELSE 'Senior'\n  END AS age_group\nFROM\n  customers;"
+  },
+  {
+    "title": "MySQL User Privileges",
+    "description": "Grant and revoke user privileges in MySQL for database access control.",
+    "code": "GRANT SELECT, INSERT, UPDATE ON database_name.* TO 'username'@'localhost';\nREVOKE INSERT ON database_name.* FROM 'username'@'localhost';"
+  },
+  {
+    "title": "MySQL Views with Join",
+    "description": "Create views with joins in MySQL to simplify complex queries.",
+    "code": "CREATE VIEW order_details AS\nSELECT orders.order_id, customers.customer_name, order_items.quantity, order_items.unit_price\nFROM orders\nJOIN customers ON orders.customer_id = customers.customer_id\nJOIN order_items ON orders.order_id = order_items.order_id;"
+  },
+  {
+    "title": "MySQL Error Handling",
+    "description": "Implement error handling in MySQL stored procedures to manage exceptions.",
+    "code": "DECLARE CONTINUE HANDLER FOR SQLEXCEPTION\nBEGIN\n  -- Handle exception\n  ROLLBACK;\nEND;"
+  },
+  {
+    "title": "MySQL Group Concat",
+    "description": "Use GROUP_CONCAT function in MySQL to concatenate values within groups.",
+    "code": "SELECT department_id, GROUP_CONCAT(employee_name ORDER BY employee_name SEPARATOR ', ') AS employee_list\nFROM employees\nGROUP BY department_id;"
+  },
+  {
+    "title": "MySQL Regular Expressions",
+    "description": "Utilize regular expressions (regex) in MySQL queries for pattern matching.",
+    "code": "SELECT * FROM employees WHERE REGEXP_LIKE(email, '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$');"
+  },
+  {
+    "title": "MySQL Locking",
+    "description": "Use locking mechanisms in MySQL to manage concurrent access and prevent conflicts.",
+    "code": "START TRANSACTION;\nSELECT * FROM accounts WHERE account_id = 123 FOR UPDATE;\nUPDATE accounts SET balance = balance - 100 WHERE account_id = 123;\nCOMMIT;"
+  },
+  {
+    "title": "MySQL Spatial Data Types",
+    "description": "Store and query spatial data types (e.g., points, polygons) in MySQL.",
+    "code": "CREATE TABLE locations (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  location POINT\n);\nINSERT INTO locations (location) VALUES (ST_GeomFromText('POINT(1 1)'));"
+  },
+  {
+    "title": "MySQL Event Scheduler",
+    "description": "Schedule recurring tasks using MySQL Event Scheduler.",
+    "code": "CREATE EVENT archive_logs\n  ON SCHEDULE EVERY 1 DAY\n  DO\n    DELETE FROM logs WHERE log_date < DATE_SUB(NOW(), INTERVAL 1 MONTH);"
+  },
+  {
+    "title": "MySQL Performance Tuning",
+    "description": "Optimize MySQL database performance with indexing, query optimization, and configuration tuning.",
+    "code": "EXPLAIN SELECT * FROM orders WHERE customer_id = 123;\nALTER TABLE orders ADD INDEX idx_customer_id (customer_id);"
+  },
+  {
+    "title": "MySQL Check Constraints",
+    "description": "Implement check constraints in MySQL to enforce data validation rules.",
+    "code": "CREATE TABLE employees (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  age INT,\n  CHECK (age >= 18)\n);"
+  },
+  {
+    "title": "MySQL Enum Data Type",
+    "description": "Use ENUM data type in MySQL to restrict column values to a predefined set.",
+    "code": "CREATE TABLE users (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  status ENUM('active', 'inactive', 'pending') DEFAULT 'active'\n);"
+  },
+  {
+    "title": "MySQL Unique Constraint",
+    "description": "Add unique constraint to columns in MySQL tables to ensure data integrity.",
+    "code": "CREATE TABLE employees (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  email VARCHAR(100) UNIQUE NOT NULL\n);"
+  },
+  {
+    "title": "MySQL Temporary Tables",
+    "description": "Create and use temporary tables in MySQL for storing temporary data.",
+    "code": "CREATE TEMPORARY TABLE temp_data (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  name VARCHAR(50)\n);\nINSERT INTO temp_data (name) VALUES ('John'), ('Jane');"
+  },
+  {
+    "title": "MySQL Limit and Offset",
+    "description": "Use LIMIT and OFFSET clauses in MySQL queries for pagination.",
+    "code": "SELECT * FROM products ORDER BY price LIMIT 10 OFFSET 20;"
+  },
+  {
+    "title": "MySQL Data Import and Export",
+    "description": "Import and export data into/from MySQL database using SQL statements or tools like mysqldump.",
+    "code": "Import:\n$ mysql -u username -p database_name < backup.sql\n\nExport:\n$ mysqldump -u username -p database_name > backup.sql"
+  },
+  {
+    "title": "MySQL Auto Increment",
+    "description": "Automatically generate unique values for a column using AUTO_INCREMENT in MySQL.",
+    "code": "CREATE TABLE users (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  username VARCHAR(50) NOT NULL\n);"
+  },
+  {
+    "title": "MySQL Bitwise Operators",
+    "description": "Perform bitwise operations in MySQL for manipulating binary data.",
+    "code": "SELECT 1 & 2 AS bitwise_and_result;\nSELECT ~1 AS bitwise_not_result;"
+  },
+  {
+    "title": "MySQL Date Arithmetic",
+    "description": "Perform date arithmetic in MySQL to add or subtract days, months, or years from dates.",
+    "code": "SELECT DATE_ADD(NOW(), INTERVAL 7 DAY) AS future_date;\nSELECT DATE_SUB(NOW(), INTERVAL 1 MONTH) AS past_date;"
+  },
+  {
+    "title": "MySQL Foreign Key Constraints with Actions",
+    "description": "Define foreign key constraints with ON DELETE and ON UPDATE actions in MySQL.",
+    "code": "CREATE TABLE orders (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  user_id INT,\n  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE RESTRICT\n);"
+  },
+  {
+    "title": "MySQL Table Partitioning",
+    "description": "Partition MySQL tables for improved performance and manageability.",
+    "code": "CREATE TABLE transactions (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  transaction_date DATE,\n  amount DECIMAL(10,2)\n) PARTITION BY RANGE (YEAR(transaction_date)) (\n  PARTITION p2022 VALUES LESS THAN (2023),\n  PARTITION p2023 VALUES LESS THAN (2024)\n);"
+  },
+  {
+    "title": "MySQL Optimizer Hints",
+    "description": "Use optimizer hints in MySQL queries to influence query execution plans.",
+    "code": "SELECT /*+ INDEX(users idx_username) */ * FROM users WHERE username = 'john_doe';"
+  },
+  {
+    "title": "MySQL Case-insensitive Search",
+    "description": "Perform case-insensitive search in MySQL queries using COLLATE clause.",
+    "code": "SELECT * FROM users WHERE username COLLATE utf8_general_ci = 'john_doe';"
+  },
+  {
+    "title": "MySQL JSON Functions",
+    "description": "Utilize JSON functions in MySQL for manipulating JSON data.",
+    "code": "SELECT info->'$.name' AS employee_name FROM employees WHERE id = 1;"
+  },
+  {
+    "title": "MySQL InnoDB Storage Engine",
+    "description": "Understand and optimize performance using the InnoDB storage engine in MySQL.",
+    "code": "ALTER TABLE users ENGINE=InnoDB;"
+  },
+  {
+    "title": "MySQL Memory Storage Engine",
+    "description": "Utilize the Memory storage engine in MySQL for tables that are stored in memory.",
+    "code": "CREATE TABLE memory_table (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  name VARCHAR(50)\n) ENGINE=MEMORY;"
+  },
+  {
+    "title": "MySQL Binary Data Storage",
+    "description": "Store and retrieve binary data (BLOBs) in MySQL databases.",
+    "code": "CREATE TABLE images (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  image_data LONGBLOB\n);"
+  },
+  {
+    "title": "MySQL User-defined Variables",
+    "description": "Declare and use user-defined variables in MySQL queries.",
+    "code": "SET @total := 0;\nSELECT id, amount, (@total := @total + amount) AS running_total FROM transactions ORDER BY id;"
+  },
+  {
+    "title": "MySQL Performance Schema",
+    "description": "Monitor MySQL server performance using Performance Schema.",
+    "code": "SELECT * FROM performance_schema.memory_summary_global_by_event_name;"
+  },
+  {
+    "title": "MySQL Handling Large Datasets",
+    "description": "Optimize MySQL queries and configurations for handling large datasets efficiently.",
+    "code": "SELECT * FROM big_table ORDER BY id LIMIT 100000;"
+  },
+  {
+    "title": "MySQL Point-in-Time Recovery",
+    "description": "Perform point-in-time recovery in MySQL using binary log files.",
+    "code": "RECOVER FROM 'binary-log-file-name';"
+  },
+  {
+    "title": "MySQL Row-level Security",
+    "description": "Implement row-level security in MySQL to restrict access based on user roles.",
+    "code": "CREATE VIEW secure_data AS SELECT * FROM sensitive_table WHERE user_id = CURRENT_USER_ID();"
+  },
+  {
+    "title": "MySQL Data Masking",
+    "description": "Implement data masking in MySQL to obfuscate sensitive information.",
+    "code": "SELECT CONCAT(LEFT(email, 3), '****', RIGHT(email, LENGTH(email) - 7)) AS masked_email FROM users;"
+  },
+  {
+    "title": "MySQL Time Zone Support",
+    "description": "Manage time zone settings and conversions in MySQL for accurate date and time operations.",
+    "code": "SET time_zone = '+00:00';\nSELECT CONVERT_TZ(NOW(), '+00:00', '+03:00') AS local_time;"
+  },
+  {
+    "title": "MySQL Buffer Pool Size",
+    "description": "Configure and optimize the buffer pool size in MySQL for caching data and improving performance.",
+    "code": "SHOW VARIABLES LIKE 'innodb_buffer_pool_size';\nSET GLOBAL innodb_buffer_pool_size = 2G;"
+  },
+  {
+    "title": "MySQL User-defined Functions (UDFs)",
+    "description": "Create and use user-defined functions (UDFs) in MySQL for custom calculations and data transformations.",
+    "code": "DELIMITER $$\n\nCREATE FUNCTION custom_function(param INT) RETURNS INT\nBEGIN\n  DECLARE result INT;\n  -- Function logic\n  RETURN result;\nEND $$\n\nDELIMITER ;\n\nSELECT custom_function(123) AS result;"
+  },
+  {
+    "title": "MySQL Materialized Views",
+    "description": "Implement materialized views in MySQL to store precomputed results for improved query performance.",
+    "code": "CREATE TABLE orders (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  total_amount DECIMAL(10,2)\n);\n\nCREATE MATERIALIZED VIEW mv_order_summary AS\nSELECT YEAR(order_date) AS year, SUM(total_amount) AS total_sales\nFROM orders\nGROUP BY YEAR(order_date);"
+  },
+  {
+    "title": "MySQL Virtual Columns",
+    "description": "Define virtual columns in MySQL to compute column values based on other columns.",
+    "code": "CREATE TABLE products (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  price DECIMAL(10,2),\n  quantity INT,\n  total_value DECIMAL(10,2) GENERATED ALWAYS AS (price * quantity) VIRTUAL\n);"
+  },
+  {
+    "title": "MySQL Backup and Restore",
+    "description": "Perform database backup and restore operations in MySQL using mysqldump and mysql commands.",
+    "code": "Backup:\n$ mysqldump -u username -p database_name > backup.sql\n\nRestore:\n$ mysql -u username -p database_name < backup.sql;"
+  },
+  {
+    "title": "MySQL Common Table Expressions (CTEs)",
+    "description": "Use Common Table Expressions (CTEs) in MySQL for defining temporary result sets within queries.",
+    "code": "WITH recursive_cte AS (\n  SELECT 1 AS n\n  UNION ALL\n  SELECT n + 1 FROM recursive_cte WHERE n < 10\n)\nSELECT * FROM recursive_cte;"
+  },
+  {
+    "title": "MySQL Window Functions",
+    "description": "Utilize window functions in MySQL for performing calculations across rows.",
+    "code": "SELECT id, sales_rep_id, sale_amount, ROW_NUMBER() OVER(PARTITION BY sales_rep_id ORDER BY sale_amount DESC) AS rank\nFROM sales;"
+  },
+  {
+    "title": "MySQL SSL Configuration",
+    "description": "Configure MySQL to use SSL (Secure Sockets Layer) for encrypted connections.",
+    "code": "# Enable SSL in MySQL configuration file\n[mysqld]\nssl-ca=/path/to/ca-cert.pem\nssl-cert=/path/to/server-cert.pem\nssl-key=/path/to/server-key.pem\n\n# Restart MySQL server after configuration changes\n$ sudo systemctl restart mysql;"
+  },
+  {
+    "title": "MySQL Binary Log Encryption",
+    "description": "Enable binary log encryption in MySQL for securing replication and backup files.",
+    "code": "# Enable binary log encryption in MySQL configuration file\n[mysqld]\nbinlog_encryption=ON\n\n# Restart MySQL server after configuration changes\n$ sudo systemctl restart mysql;"
+  },
+  {
+    "title": "MySQL Index Condition Pushdown (ICP)",
+    "description": "Optimize queries using Index Condition Pushdown (ICP) in MySQL for filtering rows using index metadata.",
+    "code": "SELECT * FROM orders WHERE customer_id = 123 AND order_date > '2023-01-01';"
+  },
+  {
+    "title": "MySQL Query Cache",
+    "description": "Enable and configure query cache in MySQL for caching query results.",
+    "code": "# Enable query cache in MySQL configuration file\n[mysqld]\nquery_cache_type=1\nquery_cache_size=64M\n\n# Restart MySQL server after configuration changes\n$ sudo systemctl restart mysql;"
+  },
+  {
+    "title": "MySQL Database Auditing",
+    "description": "Implement database auditing in MySQL to track and log database access and modifications.",
+    "code": "CREATE TABLE audit_log (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  event_type VARCHAR(50),\n  event_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);\n\nCREATE TRIGGER after_insert_employee\nAFTER INSERT ON employees\nFOR EACH ROW\nBEGIN\n  INSERT INTO audit_log (event_type) VALUES ('INSERT');\nEND;"
+  },
+  {
+    "title": "MySQL Global Transaction ID (GTID)",
+    "description": "Enable Global Transaction ID (GTID) in MySQL for simplifying replication and ensuring data consistency.",
+    "code": "# Enable GTID in MySQL configuration file\n[mysqld]\nenforce-gtid-consistency=ON\nlog-bin=mysql-bin\n\n# Restart MySQL server after configuration changes\n$ sudo systemctl restart mysql;"
+  },
+  {
+    "title": "MySQL Data Encryption",
+    "description": "Encrypt MySQL data at rest and in transit to enhance security.",
+    "code": "CREATE TABLE secure_data (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  sensitive_data VARBINARY(255)\n);\n\nALTER TABLE secure_data ENCRYPTED=YES;"
+  },
+  {
+    "title": "MySQL Row-based Replication",
+    "description": "Configure row-based replication in MySQL for replicating changes at row level.",
+    "code": "# Enable row-based replication in MySQL configuration file\n[mysqld]\nbinlog-format=row\n\n# Restart MySQL server after configuration changes\n$ sudo systemctl restart mysql;"
+  },
+  {
+    "title": "MySQL Query Rewrite Plugins",
+    "description": "Utilize query rewrite plugins in MySQL for modifying query execution behavior.",
+    "code": "INSTALL PLUGIN query_rewrite SONAME 'query_rewrite.so';\nALTER TABLE orders ENGINE=InnoDB;"
+  },
+  {
+    "title": "MySQL Resource Groups",
+    "description": "Manage MySQL server resources using resource groups to prioritize and allocate resources.",
+    "code": "CREATE RESOURCE GROUP reporting_group;\nALTER USER 'reporting_user' RESOURCE GROUP reporting_group;"
+  },
+  {
+    "title": "MySQL Hash Joins",
+    "description": "Optimize query performance using hash joins in MySQL for joining large tables.",
+    "code": "SELECT * FROM sales s JOIN customers c ON s.customer_id = c.customer_id WHERE s.sale_amount > 100;"
+  },
+  {
+    "title": "MySQL Transparent Data Encryption (TDE)",
+    "description": "Implement Transparent Data Encryption (TDE) in MySQL to encrypt data without changing application code.",
+    "code": "SET GLOBAL innodb_encrypt_tables=ON;\nALTER TABLE sensitive_data ENGINE=InnoDB;"
+  },
+  {
+    "title": "MySQL Error Logging",
+    "description": "Enable error logging in MySQL to capture and analyze error messages.",
+    "code": "# Enable error logging in MySQL configuration file\n[mysqld]\nlog-error=/var/log/mysql/error.log\n\n# Restart MySQL server after configuration changes\n$ sudo systemctl restart mysql;"
+  },
+  {
+    "title": "MySQL Key Management",
+    "description": "Manage encryption keys for MySQL data encryption using key management plugins.",
+    "code": "INSTALL PLUGIN keyring_file SONAME 'keyring_file.so';\nCREATE MASTER KEY;\nALTER INSTANCE ROTATE INNODB MASTER KEY;"
+  },
+  {
+    "title": "MySQL Histograms",
+    "description": "Create histograms in MySQL for optimizing query execution plans based on data distribution.",
+    "code": "ANALYZE TABLE products UPDATE HISTOGRAM ON price WITH 10 BUCKETS;"
+  },
+  {
+    "title": "MySQL Group Replication",
+    "description": "Deploy MySQL Group Replication for creating fault-tolerant replication groups.",
+    "code": "SET GLOBAL group_replication_bootstrap_group=ON;\nSTART GROUP_REPLICATION;\nSET GLOBAL group_replication_bootstrap_group=OFF;"
+  },
+  {
+    "title": "MySQL Index Statistics",
+    "description": "View and analyze index statistics in MySQL for optimizing index usage.",
+    "code": "SHOW INDEX FROM products;"
+  },
+  {
+    "title": "MySQL Database Monitoring",
+    "description": "Monitor MySQL database performance and resource usage using MySQL Enterprise Monitor or other monitoring tools.",
+    "code": "SELECT * FROM performance_schema.memory_summary_global_by_event_name;"
+  },
+  {
+    "title": "MySQL High Availability",
+    "description": "Implement High Availability (HA) solutions for MySQL using techniques like MySQL Replication, Group Replication, or MySQL InnoDB Cluster.",
+    "code": "CREATE CLUSTER mycluster USING INNODB;\nALTER CLUSTER mycluster ADD INSTANCE 'node1', 'node2', 'node3';"
+  },
+  {
+    "title": "MySQL Proxy",
+    "description": "Use MySQL Proxy for load balancing, query routing, and other proxying tasks in MySQL.",
+    "code": "mysql-proxy --proxy-backend-addresses=node1:3306,node2:3306,node3:3306 --proxy-read-only-backend-addresses=node1:3306,node2:3306;"
+  },
+  {
+    "title": "MySQL NDB Cluster",
+    "description": "Deploy MySQL Cluster (NDB Cluster) for distributed database and real-time transaction processing.",
+    "code": "ndb_mgm -e 'CREATE LOGFILE GROUP lg1 ADD UNDOFILE 'undofile.dat' INITIAL_SIZE 1G ENGINE NDB;"
+  },
+  {
+    "title": "MySQL Compression",
+    "description": "Compress MySQL tables and indexes to reduce storage requirements and improve performance.",
+    "code": "ALTER TABLE sales ENGINE=InnoDB ROW_FORMAT=COMPRESSED KEY_BLOCK_SIZE=8;\nALTER TABLE logs ENGINE=InnoDB ROW_FORMAT=COMPRESSED;"
+  },
+  {
+    "title": "MySQL Dynamic Columns",
+    "description": "Use dynamic columns in MySQL for storing and querying semi-structured data.",
+    "code": "CREATE TABLE dynamic_table (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  dynamic_column JSON\n);\n\nINSERT INTO dynamic_table (dynamic_column) VALUES ('{\"key1\": \"value1\", \"key2\": 2}');"
+  },
+  {
+    "title": "MySQL Replication Delay",
+    "description": "Configure replication delay in MySQL to control the timing of data replication.",
+    "code": "CHANGE MASTER TO MASTER_DELAY = 3600;"
+  },
+  {
+    "title": "MySQL Backup Strategies",
+    "description": "Implement backup strategies for MySQL databases, including full backups, incremental backups, and snapshot backups.",
+    "code": "mysqldump --single-transaction --all-databases > full_backup.sql\nmysqlbinlog binlog.00000* > incremental_backup.sql;"
+  },
+  {
+    "title": "MySQL Replication",
+    "description": "Configure and manage MySQL replication for replicating data across multiple database servers.",
+    "code": "# Configure replication in MySQL configuration file\n[mysqld]\nserver-id=1\nlog-bin=mysql-bin\n\n# Restart MySQL server after configuration changes\n$ sudo systemctl restart mysql;"
+  },
+  {
+    "title": "MySQL EXPLAIN Statement",
+    "description": "Use EXPLAIN statement in MySQL to analyze and optimize query execution plans.",
+    "code": "EXPLAIN SELECT * FROM products WHERE category_id = 1;"
+  },
+  {
+    "title": "MySQL Metadata Locking",
+    "description": "Understand and manage metadata locking in MySQL to prevent conflicts in concurrent transactions.",
+    "code": "SHOW ENGINE INNODB STATUS;"
+  },
+  {
+    "title": "MySQL GIS Functions",
+    "description": "Utilize GIS (Geographic Information System) functions in MySQL for spatial data analysis.",
+    "code": "SELECT ST_AsText(ST_PointFromText('POINT(1 1)')) AS point_coordinates;"
+  },
+  {
+    "title": "MySQL Memcached Integration",
+    "description": "Integrate MySQL with Memcached for caching query results and improving performance.",
+    "code": "INSTALL PLUGIN daemon_memcached SONAME 'libmemcached.so';\nSET GLOBAL query_cache_type=1;\nSET GLOBAL query_cache_size=64M;"
+  },
+  {
+    "title": "MySQL Database Sharding",
+    "description": "Implement database sharding in MySQL to horizontally partition data across multiple servers.",
+    "code": "CREATE TABLE shards (\n  shard_id INT AUTO_INCREMENT PRIMARY KEY,\n  shard_name VARCHAR(50)\n);\n\nCREATE TABLE user_data (\n  user_id INT AUTO_INCREMENT PRIMARY KEY,\n  shard_id INT,\n  username VARCHAR(50),\n  FOREIGN KEY (shard_id) REFERENCES shards(shard_id)\n);"
+  },
+  {
+    "title": "MySQL Query Rewriting",
+    "description": "Rewrite MySQL queries for optimizing performance or modifying behavior using query rewrite plugins.",
+    "code": "INSTALL PLUGIN query_rewrite SONAME 'query_rewrite.so';\nALTER TABLE orders ENGINE=InnoDB;"
+  },
+  {
+    "title": "MySQL Adaptive Hash Indexes",
+    "description": "Enable Adaptive Hash Indexes (AHI) in MySQL to improve efficiency of frequently accessed tables.",
+    "code": "SET GLOBAL innodb_adaptive_hash_index=ON;\nALTER TABLE employees ENGINE=InnoDB;"
+  },
+  {
+    "title": "MySQL Data Compression",
+    "description": "Compress MySQL tables and indexes to reduce storage requirements and improve performance.",
+    "code": "ALTER TABLE sales ENGINE=InnoDB ROW_FORMAT=COMPRESSED KEY_BLOCK_SIZE=8;\nALTER TABLE logs ENGINE=InnoDB ROW_FORMAT=COMPRESSED;"
+  },
+  {
+    "title": "MySQL Foreign Data Wrappers",
+    "description": "Access and manipulate remote data using Foreign Data Wrappers (FDW) in MySQL.",
+    "code": "INSTALL PLUGIN mysql_fdw SONAME 'mysql_fdw.so';\nCREATE SERVER remote_server FOREIGN DATA WRAPPER mysql_fdw OPTIONS (host 'remote_host', port '3306', database 'remote_db');"
+  },
+  {
+    "title": "MySQL Index Merge Optimization",
+    "description": "Optimize query performance using Index Merge Optimization (IMO) in MySQL for combining multiple indexes.",
+    "code": "SELECT * FROM products WHERE category_id = 1 AND price > 100;"
+  },
+  {
+    "title": "MySQL Query Analyzer",
+    "description": "Use Query Analyzer in MySQL for analyzing and profiling query performance.",
+    "code": "SET profiling=1;\nSELECT * FROM sales WHERE sale_amount > 100;\nSHOW PROFILES;"
+  },
+  {
+    "title": "MySQL Buffer Pool Instances",
+    "description": "Configure multiple buffer pool instances in MySQL to improve scalability and performance.",
+    "code": "# Configure buffer pool instances in MySQL configuration file\n[mysqld]\ninnodb_buffer_pool_instances=8\n\n# Restart MySQL server after configuration changes\n$ sudo systemctl restart mysql;"
+  },
+  {
+    "title": "MySQL Persistent Variables",
+    "description": "Use persistent variables in MySQL for maintaining session-specific values across multiple queries.",
+    "code": "SET PERSIST group_concat_max_len = 1000000;\nSELECT GROUP_CONCAT(column_name) FROM information_schema.columns WHERE table_schema = 'database_name';"
+  },
+  {
+    "title": "MySQL Scheduled Events",
+    "description": "Create scheduled events in MySQL for executing tasks at specific intervals.",
+    "code": "CREATE EVENT my_event\nON SCHEDULE EVERY 1 HOUR\nDO\n  BEGIN\n    INSERT INTO audit_log (event_type) VALUES ('Scheduled Event');\n  END;"
+  },
+  {
+    "title": "MySQL Information Schema",
+    "description": "Query MySQL Information Schema for retrieving metadata about databases, tables, and columns.",
+    "code": "SELECT * FROM information_schema.tables WHERE table_schema = 'database_name';"
+  },
+  {
+    "title": "MySQL Partitioning",
+    "description": "Implement table partitioning in MySQL for improving query performance and manageability.",
+    "code": "CREATE TABLE sales (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  sale_date DATE,\n  amount DECIMAL(10,2),\n  KEY (sale_date)\n) PARTITION BY RANGE (YEAR(sale_date)) (\n  PARTITION p2020 VALUES LESS THAN (2021),\n  PARTITION p2021 VALUES LESS THAN (2022)\n);"
+  },
+  {
+    "title": "MySQL ProxySQL",
+    "description": "Deploy ProxySQL for advanced query routing, load balancing, and management in MySQL.",
+    "code": "mysql -h proxysql_host -P 6033 -u admin -padmin -e \"SELECT * FROM mysql_servers;\";"
+  },
+  {
+    "title": "MySQL Enterprise Backup",
+    "description": "Use MySQL Enterprise Backup for efficient backup and recovery of MySQL databases.",
+    "code": "mysqlbackup --backup-dir=/path/to/backup --datadir=/path/to/data --user=admin --password=your_password backup-and-apply-log;"
+  },
+  {
+    "title": "MySQL Online Schema Changes",
+    "description": "Perform online schema changes in MySQL without blocking read and write operations.",
+    "code": "ALTER TABLE products ADD COLUMN new_column VARCHAR(50), ALGORITHM=INPLACE, LOCK=NONE;"
+  },
+  {
+    "title": "MySQL Thread Pool",
+    "description": "Enable and configure thread pool in MySQL to manage thread resources more efficiently.",
+    "code": "# Configure thread pool in MySQL configuration file\n[mysqld]\nthread_pool_size=100\n\n# Restart MySQL server after configuration changes\n$ sudo systemctl restart mysql;"
+  },
+  {
+    "title": "MySQL Cross-Database Queries",
+    "description": "Execute cross-database queries in MySQL for accessing data from multiple databases.",
+    "code": "SELECT db1.table1.column1, db2.table2.column2 FROM db1.table1 JOIN db2.table2 ON db1.table1.id = db2.table2.id;"
+  },
+  {
+    "title": "MySQL Spatial Indexes",
+    "description": "Create spatial indexes in MySQL for optimizing spatial data queries.",
+    "code": "CREATE TABLE locations (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  location GEOMETRY\n);\n\nCREATE SPATIAL INDEX sp_index ON locations(location);"
+  },
+  {
+    "title": "MySQL Workbench",
+    "description": "Use MySQL Workbench for database design, development, and administration tasks.",
+    "code": "CREATE TABLE employees (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  first_name VARCHAR(50),\n  last_name VARCHAR(50)\n);\n\nSELECT * FROM employees;"
+  },
+  {
+    "title": "MySQL Binlog Server",
+    "description": "Deploy MySQL Binlog Server for centralized management and distribution of binary logs.",
+    "code": "binlog_server --start --host=localhost --user=admin --password=your_password;"
+  },
+  {
+    "title": "MySQL Partition Pruning",
+    "description": "Utilize partition pruning in MySQL for optimizing query performance on partitioned tables.",
+    "code": "SELECT * FROM sales PARTITION (p2022) WHERE sale_date > '2022-01-01';"
+  },
+  {
+    "title": "MySQL Character Set and Collation",
+    "description": "Set and manage character sets and collations in MySQL for handling text data.",
+    "code": "ALTER TABLE products MODIFY COLUMN product_name VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+  },
+  {
+    "title": "MySQL Transparent Data Compression",
+    "description": "Enable Transparent Data Compression (TDC) in MySQL for reducing storage requirements.",
+    "code": "ALTER TABLE logs ENGINE=InnoDB ROW_FORMAT=COMPRESSED;"
+  },
+  {
+    "title": "MySQL Command-Line Tools",
+    "description": "Use MySQL command-line tools like mysql, mysqldump, and mysqladmin for database administration tasks.",
+    "code": "mysql -h localhost -u username -p database_name;\nmysqldump -h localhost -u username -p database_name > backup.sql;\nmysqladmin -h localhost -u username -p shutdown;"
+  },
+  {
+    "title": "MySQL System Variables",
+    "description": "View and modify system variables in MySQL for controlling server behavior and configuration.",
+    "code": "SHOW VARIABLES LIKE 'innodb_buffer_pool_size';\nSET GLOBAL innodb_buffer_pool_size=4G;"
+  },
+  {
+    "title": "MySQL Built-in Functions",
+    "description": "Use built-in functions in MySQL for performing various operations on data.",
+    "code": "SELECT CONCAT(first_name, ' ', last_name) AS full_name FROM employees;"
+  },
+  {
+    "title": "MySQL Upgrade",
+    "description": "Upgrade MySQL server to a newer version while ensuring data integrity and compatibility.",
+    "code": "mysql_upgrade --force --upgrade-system-tables --user=root --password=your_password;"
+  },
+  {
+    "title": "MySQL Delayed Replication",
+    "description": "Implement delayed replication in MySQL for delaying application of binary logs on replica servers.",
+    "code": "CHANGE MASTER TO MASTER_DELAY = 3600;"
+  },
+  {
+    "title": "MySQL Event History",
+    "description": "View event history in MySQL to monitor executed events and their status.",
+    "code": "SELECT * FROM information_schema.events WHERE event_schema = 'database_name';"
+  },
+  {
+    "title": "MySQL Cluster Configuration",
+    "description": "Configure MySQL Cluster (NDB Cluster) for distributed database and real-time transaction processing.",
+    "code": "ndb_mgm -e 'CREATE LOGFILE GROUP lg1 ADD UNDOFILE 'undofile.dat' INITIAL_SIZE 1G ENGINE NDB;"
+  },
+  {
+    "title": "MySQL SQL Modes",
+    "description": "Set SQL modes in MySQL for enforcing SQL syntax compatibility and behavior.",
+    "code": "SET sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE';\nSELECT @@sql_mode;"
+  },
+  {
+    "title": "MySQL Plugin Installation",
+    "description": "Install and manage plugins in MySQL for extending server functionality.",
+    "code": "INSTALL PLUGIN audit_log SONAME 'audit_log.so';\nSHOW PLUGINS;"
+  },
+  {
+    "title": "MySQL Replication Filters",
+    "description": "Apply replication filters in MySQL to control which databases and tables are replicated.",
+    "code": "CHANGE REPLICATION FILTER REPLICATE_DO_DB (db1, db2);\nSHOW SLAVE STATUS;"
+  },
+  {
+    "title": "MySQL Character Set Conversion",
+    "description": "Convert character set and collation for MySQL tables and columns.",
+    "code": "ALTER TABLE my_table CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+  },
+  {
+    "title": "MySQL User Management",
+    "description": "Manage MySQL user accounts and privileges.",
+    "code": "CREATE USER 'new_user'@'localhost' IDENTIFIED BY 'password';\nGRANT ALL PRIVILEGES ON *.* TO 'new_user'@'localhost';\nFLUSH PRIVILEGES;"
+  },
+  {
+    "title": "MySQL Replication Delay Monitoring",
+    "description": "Monitor replication delay in MySQL to ensure data consistency across replicas.",
+    "code": "SHOW SLAVE STATUS;"
+  },
+  {
+    "title": "MySQL Foreign Key Constraints",
+    "description": "Use foreign key constraints in MySQL for enforcing referential integrity between tables.",
+    "code": "ALTER TABLE orders ADD CONSTRAINT fk_customer_id FOREIGN KEY (customer_id) REFERENCES customers(id);"
+  },
+  {
+    "title": "MySQL Binlog Format",
+    "description": "Configure binary logging format in MySQL for controlling how changes are logged.",
+    "code": "SET GLOBAL binlog_format = 'ROW';\nSET SESSION binlog_format = 'STATEMENT';"
+  },
+  {
+    "title": "MySQL Performance Schema Configuration",
+    "description": "Configure Performance Schema in MySQL to collect performance metrics.",
+    "code": "UPDATE performance_schema.setup_instruments SET ENABLED='YES', TIMED='YES';\nUPDATE performance_schema.setup_consumers SET ENABLED='YES';"
+  },
+  {
+    "title": "MySQL Group Replication Auto-join",
+    "description": "Enable Group Replication auto-join feature in MySQL for automatic member joining.",
+    "code": "SET GLOBAL group_replication_allow_local_disjoint_gtids_join=ON;\nSTART GROUP_REPLICATION;"
+  },
+  {
+    "title": "MySQL Audit Logging",
+    "description": "Enable and configure audit logging in MySQL for tracking database activities.",
+    "code": "INSTALL PLUGIN audit_log SONAME 'audit_log.so';\nSET GLOBAL audit_log=ON;"
+  },
+  {
+    "title": "MySQL InnoDB Cluster",
+    "description": "Set up InnoDB Cluster in MySQL for high availability and scalability.",
+    "code": "CREATE CLUSTER my_cluster;\nADD INSTANCE 'node1', 'node2', 'node3' TO my_cluster;"
+  },
+  {
+    "title": "MySQL Multi-source Replication",
+    "description": "Configure multi-source replication in MySQL for replicating data from multiple masters.",
+    "code": "CHANGE MASTER TO MASTER_HOST='master1', MASTER_USER='replication_user', MASTER_PASSWORD='password' FOR CHANNEL 'channel1';"
+  },
+  {
+    "title": "MySQL Group Replication Consistency",
+    "description": "Ensure data consistency in MySQL Group Replication clusters.",
+    "code": "SELECT * FROM performance_schema.replication_group_members WHERE MEMBER_STATE='ONLINE';"
+  },
+  {
+    "title": "MySQL Point-in-Time Recovery Using Binlog",
+    "description": "Perform point-in-time recovery using binary logs in MySQL.",
+    "code": "STOP SLAVE;\nSET GLOBAL sql_log_bin=OFF;\nSET GLOBAL innodb_fast_shutdown=0;\nSTART SLAVE UNTIL SQL_AFTER_MTS_GAPS;"
+  },
+  {
+    "title": "MySQL Query Cache Configuration",
+    "description": "Configure query cache in MySQL to cache query results and improve performance.",
+    "code": "SET GLOBAL query_cache_size = 1000000;\nFLUSH QUERY CACHE;"
+  },
+  {
+    "title": "MySQL NDB Cluster Backup",
+    "description": "Backup and restore MySQL NDB Cluster data for disaster recovery.",
+    "code": "ndb_mgm -e 'START BACKUP';\nndb_restore -b 1 -n 2 -r /backup/backup-1;"
+  },
+  {
+    "title": "MySQL Partitioning by Key",
+    "description": "Use key-based partitioning in MySQL to partition tables based on specific columns.",
+    "code": "CREATE TABLE sales (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  sale_date DATE,\n  amount DECIMAL(10,2),\n  KEY (customer_id)\n) PARTITION BY KEY(customer_id) PARTITIONS 10;"
+  },
+  {
+    "title": "MySQL Replication Delay Management",
+    "description": "Manage and reduce replication delay in MySQL to maintain data consistency.",
+    "code": "STOP SLAVE;\nSTART SLAVE SQL_THREAD;"
+  },
+  {
+    "title": "MySQL Query Optimizer",
+    "description": "Optimize MySQL queries using query optimizer hints and techniques.",
+    "code": "SELECT /*+ INDEX(products idx_product_id) */ * FROM products WHERE product_id = 100;"
+  },
+  {
+    "title": "MySQL Performance Schema Filters",
+    "description": "Filter and analyze performance data using filters in MySQL Performance Schema.",
+    "code": "SELECT * FROM performance_schema.events_statements_summary_by_digest WHERE SCHEMA_NAME='my_database';"
+  },
+  {
+    "title": "MySQL Group Replication Reconfiguration",
+    "description": "Reconfigure Group Replication settings in MySQL for changing group membership or settings.",
+    "code": "STOP GROUP_REPLICATION;\nSET GLOBAL group_replication_start_on_boot=OFF;\nSTART GROUP_REPLICATION;"
+  },
+  {
+    "title": "MySQL NDB Cluster Replication",
+    "description": "Set up replication between MySQL NDB Cluster instances for data synchronization.",
+    "code": "ndb_mgm -e 'ADD BACKUP /path/to/backup/ BACKUPID=1';\nndb_restore -n 2 -r /path/to/backup/"
+  },
+  {
+    "title": "MySQL Query Profiling",
+    "description": "Profile MySQL queries to analyze performance and optimize execution.",
+    "code": "SET profiling=1;\nSELECT * FROM orders WHERE order_id = 100;\nSHOW PROFILES;"
+  },
+  {
+    "title": "MySQL Replication Topologies",
+    "description": "Deploy different replication topologies in MySQL for various use cases.",
+    "code": "CHANGE MASTER TO MASTER_HOST='master1', MASTER_USER='replication_user', MASTER_PASSWORD='password' FOR CHANNEL 'channel1';\nSTART SLAVE;"
+  },
+  {
+    "title": "MySQL Group Replication Fault Tolerance",
+    "description": "Enhance fault tolerance in MySQL Group Replication clusters for high availability.",
+    "code": "SET GLOBAL group_replication_exit_state_action='READ_ONLY';\nSTART GROUP_REPLICATION;"
+  },
+  {
+    "title": "MySQL Performance Schema Memory Summary",
+    "description": "View memory usage statistics in MySQL Performance Schema for diagnosing memory-related issues.",
+    "code": "SELECT * FROM performance_schema.memory_summary_global_by_event_name;"
+  },
+  {
+    "title": "MySQL Table Statistics",
+    "description": "View and analyze table statistics in MySQL for query optimization.",
+    "code": "ANALYZE TABLE orders;\nSHOW TABLE STATUS LIKE 'orders';"
+  },
+  {
+    "title": "MySQL Time Zone Functions",
+    "description": "Use time zone functions in MySQL for handling date and time data across different time zones.",
+    "code": "SELECT CONVERT_TZ('2024-06-30 12:00:00', '+00:00', '+03:00');\nSET time_zone = 'America/New_York';"
+  },
+  {
+    "title": "MySQL InnoDB Buffer Pool",
+    "description": "Optimize InnoDB buffer pool size in MySQL for caching frequently accessed data.",
+    "code": "SET GLOBAL innodb_buffer_pool_size=4G;\nSHOW ENGINE InnoDB STATUS;"
+  },
+  {
+    "title": "MySQL Replication Heartbeat",
+    "description": "Configure replication heartbeat in MySQL to monitor replication lag and server connectivity.",
+    "code": "CHANGE MASTER TO MASTER_HEARTBEAT_PERIOD=2;"
+  },
+  {
+    "title": "MySQL Replication Conflict Resolution",
+    "description": "Resolve replication conflicts in MySQL when conflicting changes occur on master and slave.",
+    "code": "SHOW SLAVE STATUS;\nSTOP SLAVE;\nSTART SLAVE;"
+  },
+  {
+    "title": "MySQL Information Schema Queries",
+    "description": "Query MySQL Information Schema for metadata about databases, tables, and indexes.",
+    "code": "SELECT TABLE_NAME, COLUMN_NAME, DATA_TYPE FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = 'my_database';"
+  },
+  {
+    "title": "MySQL Spatial Data",
+    "description": "Store and query spatial data types (geometric shapes) in MySQL.",
+    "code": "CREATE TABLE geom (g GEOMETRY);\nINSERT INTO geom VALUES (GeomFromText('POINT(1 1)'));"
+  },
+  {
+    "title": "MySQL Event Scheduler Troubleshooting",
+    "description": "Troubleshoot issues with MySQL Event Scheduler to ensure scheduled tasks run as expected.",
+    "code": "SHOW PROCESSLIST;\nSELECT * FROM information_schema.events WHERE event_name = 'archive_logs';"
+  },
+  {
+    "title": "MySQL Data Validation",
+    "description": "Validate and enforce data integrity constraints in MySQL using triggers and constraints.",
+    "code": "CREATE TRIGGER validate_quantity BEFORE INSERT ON orders FOR EACH ROW\nBEGIN\n  IF NEW.quantity < 1 THEN\n    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Quantity must be greater than 0';\n  END IF;\nEND;"
+  },
+  {
+    "title": "MySQL Trigger Management",
+    "description": "Create, modify, and manage triggers in MySQL for automating actions in response to database events.",
+    "code": "CREATE TRIGGER audit_log_trigger AFTER INSERT ON orders FOR EACH ROW\nBEGIN\n  INSERT INTO audit_log (action, table_name, change_date) VALUES ('INSERT', 'orders', NOW());\nEND;"
+  },
+  {
+    "title": "MySQL Query Cache Invalidation",
+    "description": "Invalidate query cache in MySQL to ensure updated query results are fetched.",
+    "code": "RESET QUERY CACHE;"
+  },
+  {
+    "title": "MySQL Authentication Plugins",
+    "description": "Install and configure authentication plugins in MySQL for secure user authentication.",
+    "code": "INSTALL PLUGIN auth_pam SONAME 'auth_pam.so';\nCREATE USER 'user'@'localhost' IDENTIFIED WITH auth_pam;"
+  },
+  {
+    "title": "MySQL User Account Management",
+    "description": "Create, modify, and delete MySQL user accounts.",
+    "code": "CREATE USER 'new_user'@'localhost' IDENTIFIED BY 'password';\nGRANT ALL PRIVILEGES ON *.* TO 'new_user'@'localhost';\nFLUSH PRIVILEGES;"
+  },
+  {
+    "title": "MySQL Database Creation",
+    "description": "Create a new database in MySQL.",
+    "code": "CREATE DATABASE new_database;"
+  },
+  {
+    "title": "MySQL Table Creation",
+    "description": "Create a new table in MySQL with columns and constraints.",
+    "code": "CREATE TABLE employees (\n  id INT PRIMARY KEY,\n  name VARCHAR(50),\n  age INT,\n  department VARCHAR(50)\n);"
+  },
+  {
+    "title": "MySQL Insert Statement",
+    "description": "Insert rows into a MySQL table.",
+    "code": "INSERT INTO employees (id, name, age, department) VALUES (1, 'John Doe', 30, 'IT');"
+  },
+  {
+    "title": "MySQL Select Statement",
+    "description": "Retrieve data from a MySQL table.",
+    "code": "SELECT * FROM employees WHERE department = 'IT';"
+  },
+  {
+    "title": "MySQL Update Statement",
+    "description": "Update rows in a MySQL table.",
+    "code": "UPDATE employees SET age = 31 WHERE name = 'John Doe';"
+  },
+  {
+    "title": "MySQL Delete Statement",
+    "description": "Delete rows from a MySQL table.",
+    "code": "DELETE FROM employees WHERE id = 1;"
+  },
+  {
+    "title": "MySQL Drop Table",
+    "description": "Delete a MySQL table.",
+    "code": "DROP TABLE employees;"
+  },
+  {
+    "title": "MySQL Alter Table Add Column",
+    "description": "Add a new column to an existing MySQL table.",
+    "code": "ALTER TABLE employees ADD COLUMN email VARCHAR(100);"
+  },
+  {
+    "title": "MySQL Create Index",
+    "description": "Create an index on a MySQL table column.",
+    "code": "CREATE INDEX idx_name ON employees(name);"
+  },
+  {
+    "title": "MySQL Foreign Key Constraint",
+    "description": "Add a foreign key constraint to ensure referential integrity in MySQL.",
+    "code": "ALTER TABLE orders ADD CONSTRAINT fk_customer_id FOREIGN KEY (customer_id) REFERENCES customers(id);"
+  },
+  {
+    "title": "MySQL Primary Key Constraint",
+    "description": "Define a primary key constraint on a MySQL table column.",
+    "code": "ALTER TABLE employees ADD PRIMARY KEY (id);"
+  },
+  {
+    "title": "MySQL Check Constraint",
+    "description": "Add a check constraint to enforce conditions on data in a MySQL table.",
+    "code": "ALTER TABLE employees ADD CONSTRAINT chk_age CHECK (age >= 18);"
+  },
+  {
+    "title": "MySQL Default Constraint",
+    "description": "Set a default value for a MySQL table column.",
+    "code": "ALTER TABLE employees ALTER COLUMN department SET DEFAULT 'IT';"
+  },
+  {
+    "title": "MySQL Not Null Constraint",
+    "description": "Ensure a MySQL table column does not contain null values.",
+    "code": "ALTER TABLE employees MODIFY COLUMN name VARCHAR(50) NOT NULL;"
+  },
+  {
+    "title": "MySQL Auto Increment Column",
+    "description": "Create an auto-increment column in a MySQL table.",
+    "code": "ALTER TABLE employees MODIFY COLUMN id INT AUTO_INCREMENT;"
+  },
+  {
+    "title": "MySQL Drop Constraint",
+    "description": "Remove a constraint (primary key, foreign key, etc.) from a MySQL table.",
+    "code": "ALTER TABLE employees DROP CONSTRAINT fk_customer_id;"
+  },
+  {
+    "title": "MySQL Grant Privileges",
+    "description": "Grant privileges to MySQL user accounts.",
+    "code": "GRANT SELECT, INSERT, UPDATE, DELETE ON employees TO 'user'@'localhost';"
+  },
+  {
+    "title": "MySQL Revoke Privileges",
+    "description": "Revoke previously granted privileges from MySQL user accounts.",
+    "code": "REVOKE INSERT ON employees FROM 'user'@'localhost';"
+  },
+  {
+    "title": "MySQL Show Databases",
+    "description": "List all databases in a MySQL server.",
+    "code": "SHOW DATABASES;"
+  },
+  {
+    "title": "MySQL Show Tables",
+    "description": "List all tables in a MySQL database.",
+    "code": "SHOW TABLES;"
+  },
+  {
+    "title": "MySQL Show Columns",
+    "description": "List all columns in a MySQL table.",
+    "code": "SHOW COLUMNS FROM employees;"
+  },
+  {
+    "title": "MySQL Show Indexes",
+    "description": "List all indexes on a MySQL table.",
+    "code": "SHOW INDEXES FROM employees;"
+  },
+  {
+    "title": "MySQL Show Constraints",
+    "description": "List all constraints (primary key, foreign key, etc.) on a MySQL table.",
+    "code": "SHOW CREATE TABLE employees;"
+  },
+  {
+    "title": "MySQL Union Query",
+    "description": "Combine results of multiple SELECT statements in MySQL.",
+    "code": "SELECT name FROM employees WHERE department = 'IT'\nUNION\nSELECT name FROM employees WHERE department = 'HR';"
+  },
+  {
+    "title": "MySQL Union All Query",
+    "description": "Combine results of multiple SELECT statements including duplicates in MySQL.",
+    "code": "SELECT name FROM employees WHERE department = 'IT'\nUNION ALL\nSELECT name FROM employees WHERE department = 'HR';"
+  },
+  {
+    "title": "MySQL Join Query",
+    "description": "Retrieve data from multiple MySQL tables using JOIN operations.",
+    "code": "SELECT orders.order_id, customers.name\nFROM orders\nINNER JOIN customers ON orders.customer_id = customers.customer_id;"
+  },
+  {
+    "title": "MySQL Left Join Query",
+    "description": "Retrieve all rows from the left table and matching rows from the right table in MySQL.",
+    "code": "SELECT employees.name, departments.department_name\nFROM employees\nLEFT JOIN departments ON employees.department_id = departments.department_id;"
+  },
+  {
+    "title": "MySQL Right Join Query",
+    "description": "Retrieve all rows from the right table and matching rows from the left table in MySQL.",
+    "code": "SELECT employees.name, departments.department_name\nFROM employees\nRIGHT JOIN departments ON employees.department_id = departments.department_id;"
+  },
+  {
+    "title": "MySQL Full Outer Join Query",
+    "description": "Retrieve all rows from both tables, with nulls where there is no match, in MySQL.",
+    "code": "SELECT employees.name, departments.department_name\nFROM employees\nFULL OUTER JOIN departments ON employees.department_id = departments.department_id;"
+  },
+  {
+    "title": "MySQL Cross Join Query",
+    "description": "Perform a Cartesian product of two MySQL tables.",
+    "code": "SELECT employees.name, departments.department_name\nFROM employees\nCROSS JOIN departments;"
+  },
+  {
+    "title": "MySQL Subquery",
+    "description": "Use a subquery to retrieve data based on results of another query in MySQL.",
+    "code": "SELECT name\nFROM employees\nWHERE department_id IN (SELECT department_id FROM departments WHERE department_name = 'IT');"
+  },
+  {
+    "title": "MySQL Exists Subquery",
+    "description": "Use an EXISTS subquery to check for the existence of rows in MySQL.",
+    "code": "SELECT name FROM employees e\nWHERE EXISTS (SELECT * FROM orders o WHERE o.employee_id = e.id);"
+  },
+  {
+    "title": "MySQL Not Exists Subquery",
+    "description": "Use a NOT EXISTS subquery to check for the absence of rows in MySQL.",
+    "code": "SELECT name FROM employees e\nWHERE NOT EXISTS (SELECT * FROM orders o WHERE o.employee_id = e.id);"
+  },
+  {
+    "title": "MySQL Group By Clause",
+    "description": "Group rows that have the same values into summary rows in MySQL.",
+    "code": "SELECT department_id, COUNT(*) AS employee_count\nFROM employees\nGROUP BY department_id;"
+  },
+  {
+    "title": "MySQL Having Clause",
+    "description": "Filter groups based on aggregate conditions in MySQL.",
+    "code": "SELECT department_id, COUNT(*) AS employee_count\nFROM employees\nGROUP BY department_id\nHAVING COUNT(*) > 10;"
+  },
+  {
+    "title": "MySQL Order By Clause",
+    "description": "Sort rows returned in a MySQL query.",
+    "code": "SELECT * FROM employees\nORDER BY name ASC;"
+  },
+  {
+    "title": "MySQL Limit Clause",
+    "description": "Limit the number of rows returned in a MySQL query.",
+    "code": "SELECT * FROM employees\nLIMIT 10;"
+  },
+  {
+    "title": "MySQL Offset Clause",
+    "description": "Skip a specified number of rows in a MySQL query.",
+    "code": "SELECT * FROM employees\nLIMIT 10 OFFSET 5;"
+  },
+  {
+    "title": "MySQL Aggregate Functions",
+    "description": "Use aggregate functions (COUNT, SUM, AVG, MAX, MIN) in MySQL queries.",
+    "code": "SELECT COUNT(*), AVG(age), MAX(salary) FROM employees;"
+  },
+  {
+    "title": "MySQL Scalar Functions",
+    "description": "Use scalar functions (DATE, TIME, CONCAT, SUBSTRING) in MySQL queries.",
+    "code": "SELECT CONCAT(first_name, ' ', last_name) AS full_name, DATE_FORMAT(birth_date, '%Y-%m-%d') AS formatted_birth_date FROM persons;"
+  },
+  {
+    "title": "MySQL String Functions",
+    "description": "Use string functions (LENGTH, LOWER, UPPER, REPLACE) in MySQL queries.",
+    "code": "SELECT LENGTH(name), LOWER(name), UPPER(name), REPLACE(email, '@', '_at_') FROM employees;"
+  },
+  {
+    "title": "MySQL Date Functions",
+    "description": "Use date functions (NOW, DATE_ADD, DATE_SUB, DATE_FORMAT) in MySQL queries.",
+    "code": "SELECT NOW(), DATE_ADD(NOW(), INTERVAL 1 MONTH), DATE_SUB(NOW(), INTERVAL 1 WEEK), DATE_FORMAT(start_date, '%Y-%m-%d') FROM projects;"
+  },
+  {
+    "title": "MySQL Control Flow Functions",
+    "description": "Use control flow functions (IF, CASE) in MySQL queries.",
+    "code": "SELECT name, age, IF(age >= 18, 'Adult', 'Minor') AS age_category FROM persons;"
+  },
+  {
+    "title": "MySQL Logical Operators",
+    "description": "Use logical operators (AND, OR, NOT) in MySQL queries.",
+    "code": "SELECT * FROM employees WHERE department = 'IT' AND salary > 50000;"
+  },
+  {
+    "title": "MySQL Transactions",
+    "description": "Use transactions in MySQL to ensure data integrity and consistency.",
+    "code": "START TRANSACTION;\nUPDATE accounts SET balance = balance - 100 WHERE account_id = 1;\nUPDATE accounts SET balance = balance + 100 WHERE account_id = 2;\nCOMMIT;"
+  },
+  {
+    "title": "MySQL Rollback Transaction",
+    "description": "Rollback a transaction in MySQL to undo changes made since the transaction started.",
+    "code": "START TRANSACTION;\nUPDATE accounts SET balance = balance - 100 WHERE account_id = 1;\nUPDATE accounts SET balance = balance + 100 WHERE account_id = 2;\nROLLBACK;"
+  },
+  {
+    "title": "MySQL Index Hint",
+    "description": "Provide index hints to MySQL optimizer to influence query execution plan.",
+    "code": "SELECT /*+ INDEX(employees idx_name) */ * FROM employees WHERE name LIKE 'J%';"
+  },
+  {
+    "title": "MySQL SSL/TLS Configuration",
+    "description": "Enable SSL/TLS encryption for secure connections to MySQL server.",
+    "code": "GRANT USAGE ON *.* TO 'ssl_user'@'localhost' REQUIRE SSL;"
+  },
+  {
+    "title": "MySQL InnoDB Buffer Pool Sizing",
+    "description": "Size InnoDB buffer pool appropriately for optimal performance in MySQL.",
+    "code": "SHOW VARIABLES LIKE 'innodb_buffer_pool_size';"
+  },
+  {
+    "title": "MySQL Query Execution Plan",
+    "description": "View and analyze query execution plan in MySQL for optimizing query performance.",
+    "code": "EXPLAIN SELECT * FROM employees WHERE department = 'IT';"
+  },
+  {
+    "title": "MySQL Stored Function",
+    "description": "Create and use stored functions in MySQL for reusable computations.",
+    "code": "DELIMITER //\nCREATE FUNCTION calculate_tax(price DECIMAL(10,2)) RETURNS DECIMAL(10,2)\nBEGIN\n  DECLARE tax DECIMAL(10,2);\n  SET tax = price * 0.1;\n  RETURN tax;\nEND //\nDELIMITER ;\nSELECT calculate_tax(100);"
+  },
+  {
+    "title": "MySQL Binary Log Purging",
+    "description": "Purge binary logs in MySQL to free up disk space.",
+    "code": "PURGE BINARY LOGS BEFORE '2023-01-01 00:00:00';"
+  },
+  {
+    "title": "MySQL Connection Pooling",
+    "description": "Configure connection pooling in MySQL to handle concurrent connections efficiently.",
+    "code": "SET GLOBAL max_connections = 100;"
+  },
+  {
+    "title": "MySQL Multi-Version Concurrency Control (MVCC)",
+    "description": "Understand and manage MVCC in MySQL for concurrent transaction management.",
+    "code": "SHOW ENGINE INNODB STATUS;"
+  },
+  {
+    "title": "MySQL Event Scheduler Management",
+    "description": "Manage and monitor MySQL Event Scheduler for scheduled tasks.",
+    "code": "SHOW EVENTS;"
+  },
+  {
+    "title": "MySQL Replication Lag Detection",
+    "description": "Detect and troubleshoot replication lag issues in MySQL replication setup.",
+    "code": "SELECT UNIX_TIMESTAMP() - UNIX_TIMESTAMP(ts) AS replication_lag FROM performance_schema.replication_connection_status;"
+  },
+  {
+    "title": "MySQL Index Optimization",
+    "description": "Optimize indexes in MySQL for improved query performance and reduced storage.",
+    "code": "ANALYZE TABLE employees;"
+  },
+  {
+    "title": "MySQL Workload Analysis",
+    "description": "Analyze workload characteristics in MySQL for capacity planning and optimization.",
+    "code": "SHOW STATUS WHERE variable_name LIKE 'Threads%';"
+  },
+  {
+    "title": "MySQL Query Optimization",
+    "description": "Optimize queries in MySQL using indexes, rewriting queries, and other techniques.",
+    "code": "EXPLAIN SELECT * FROM employees WHERE department = 'IT';"
+  },
+  {
+    "title": "MySQL Security Best Practices",
+    "description": "Implement security best practices in MySQL to protect data and prevent unauthorized access.",
+    "code": "CREATE USER 'admin'@'localhost' IDENTIFIED BY 'password';\nGRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';\nFLUSH PRIVILEGES;"
+  },
+  {
+    "title": "MySQL Restore Process",
+    "description": "Restore MySQL databases from backups for data recovery and system restoration.",
+    "code": "mysql -u username -p database_name < backup.sql;"
+  },
+  {
+    "title": "MySQL Monitoring Tools",
+    "description": "Use monitoring tools to monitor MySQL server performance, availability, and health.",
+    "code": "SHOW GLOBAL STATUS;"
+  },
+  {
+    "title": "MySQL Replication Monitoring",
+    "description": "Monitor MySQL replication for status, latency, and health.",
+    "code": "SHOW SLAVE STATUS;"
+  },
+  {
+    "title": "MySQL Buffer Pool Monitoring",
+    "description": "Monitor InnoDB buffer pool usage and performance metrics in MySQL.",
+    "code": "SHOW ENGINE INNODB STATUS;"
+  },
+  {
+    "title": "MySQL Binary Log Configuration",
+    "description": "Configure binary logging settings in MySQL for data recovery and replication.",
+    "code": "SHOW BINARY LOGS;"
+  },
+  {
+    "title": "MySQL Failover Setup",
+    "description": "Set up MySQL failover for high availability and fault tolerance.",
+    "code": "CHANGE MASTER TO MASTER_HOST = 'master_host', MASTER_USER = 'repl', MASTER_PASSWORD = 'password', MASTER_AUTO_POSITION = 1;"
+  },
+  {
+    "title": "MySQL Table Maintenance",
+    "description": "Perform table maintenance operations (optimize, analyze, check) in MySQL for improved performance and reliability.",
+    "code": "OPTIMIZE TABLE employees;"
+  },
+  {
+    "title": "MySQL Server Variables",
+    "description": "View and manage server variables in MySQL for configuration and tuning.",
+    "code": "SHOW VARIABLES LIKE 'max_connections';"
+  },
+  {
+    "title": "MySQL Error Log Analysis",
+    "description": "Analyze MySQL error logs for troubleshooting and diagnosing issues.",
+    "code": "SHOW VARIABLES LIKE 'log_error';"
+  },
+  {
+    "title": "MySQL Partitioning Strategies",
+    "description": "Implement partitioning strategies in MySQL for managing large datasets.",
+    "code": "CREATE TABLE sales (\n  id INT AUTO_INCREMENT PRIMARY KEY,\n  sale_date DATE,\n  amount DECIMAL(10,2),\n  KEY (customer_id)\n) PARTITION BY RANGE (YEAR(sale_date)) (\n  PARTITION p2020 VALUES LESS THAN (2021),\n  PARTITION p2021 VALUES LESS THAN (2022)\n);"
+  }
+]
